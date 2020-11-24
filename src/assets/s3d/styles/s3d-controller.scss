@@ -1,0 +1,171 @@
+.s3d {
+
+  &-controller {
+    z-index: 102;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: grid;
+    grid-gap: 30px;
+    padding: 0 0 20px;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    grid-template-rows: 1fr auto 3fr 1fr auto;
+    grid-template-columns: 1fr 1fr 1fr ;
+    pointer-events: none;
+    grid-template-areas: '. . .'
+                'filter . compass'
+                '. . .'
+                '. . info-flat'
+                'title buttons call';
+
+    &__elem {
+      grid-area: buttons;
+      display: flex;
+      justify-content: flex-start;
+      width: initial;
+      margin: auto;
+      border-radius: 50px;
+      overflow: hidden;
+      align-items: flex-start;
+      pointer-events: painted;
+      svg {
+        width: 31px;
+        height: 30px;
+      }
+    }
+
+    &__compass {
+      grid-area: compass;
+      display: flex;
+      width: 60px;
+      height: 60px;
+      color: $wc;
+      fill: $wc;
+      margin: 0 30px auto auto;
+
+      svg {
+        transform-origin: center;
+      }
+    }
+
+    &__openFilter {
+      grid-area: filter;
+
+      display: flex;
+      align-items: center;
+      align-content: center;
+      //width: 210px;
+      height: 40px;
+      width: auto;
+      margin: 0 auto 0 30px;
+      padding: 0;
+      position: relative;
+      justify-content: flex-start;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      border-radius: 50px;
+      overflow: hidden;
+      pointer-events: painted;
+      &__icon{
+        display: flex;
+        height: 40px;
+        width: 40px;
+
+        justify-content: center;
+        align-items: center;
+        flex: 0 0 auto;
+        border-radius: 50%;
+        background: #842990;
+      }
+
+      &__text{
+        display: flex;
+        align-items: center;
+        align-content: center;
+        height: 100%;
+        padding: 10px 20px;
+        text-align: left;
+        font-family: $default-font;
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 14px;
+        letter-spacing: 0.18em;
+        color: $wc;
+      }
+
+      svg {
+        width: 20px;
+        height: 20px;
+        fill: $wc;
+      }
+      &:after{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        background: #842990;
+        border-radius: 50px;
+        transform: translate(-100%, 0);
+        transition: transform 0.4s ease-out;
+        z-index: -1;
+      }
+      &:before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        background: #752180;
+        z-index: -2;
+      }
+
+      &:hover {
+       &:after{
+         transform: translate(0, 0);
+       }
+      }
+    }
+  }
+
+}
+
+
+@media screen and ( max-width : 1640px ) {
+
+  .s3d {
+
+    &-controller {
+    }
+  }
+}
+@media screen and ( max-width : 1023px ) {
+
+  .s3d {
+
+    &-controller {
+
+    }
+
+
+  }
+}
+
+@media screen and ( max-width : 767px ) {
+
+  .s3d {
+
+    &-controller {
+    }
+
+
+  }
+
+}

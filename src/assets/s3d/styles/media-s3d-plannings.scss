@@ -1,0 +1,25 @@
+@media screen and ( min-width : 1600px ) {
+  .s3d {
+    &-pl {
+      &__list{
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+      }
+    }
+  }
+}
+
+@media screen and ( max-width : 1023px ) {
+  .s3d {
+    &-pl {
+
+    }
+  }
+}
+
+@media screen and ( max-width : 767px ) {
+  .s3d {
+    &-pl {
+
+    }
+  }
+}

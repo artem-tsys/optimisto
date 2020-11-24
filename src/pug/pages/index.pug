@@ -1,0 +1,289 @@
+extends ../layout/main
+block variable
+block meta
+    title= 'Home'
+    meta(name='description', content='')
+block head
+    link(rel='stylesheet' href="/wp-content/themes/optimisto/assets/s3d/styles/3d.min.css")
+block scripts
+    //script(src='/wp-content/themes/optimisto/static/jquery.min.js')
+    script(src='/wp-content/themes/optimisto/assets/s3d/scripts/libs.js')
+    script(src='/wp-content/themes/optimisto/assets/s3d/scripts/index-app.js')
+
+block content
+    .page__inner
+        section.main
+            .js-s3d__slideModule.s3d__slideModule.scroll
+                .js-s3d__wrapper-slider.s3d__wrapper-slider
+                    .js-s3d__wrapper__complex.s3d__wrap.s3d__wrapper__copmlex
+                        div.s3d-controller.js-s3d-controller.unselectable
+                            //.s3d-controller__showFilter.js-s3d-controller__showFilter
+                            //    input(class='js-s3d-controller__showFilter--input' id='filter-show' type='checkbox')
+                            //    label(for="filter-show")
+                            //        span
+                            //    span Подбор по параметрам
+                            button(type="button").s3d-controller__openFilter.js-s3d-controller__openFilter
+                                .s3d-controller__openFilter__icon
+                                    +svg('filter-icon')
+                                .s3d-controller__openFilter__text Подбор по параметрам
+                            .s3d-controller__compass
+                                +svg('Compass')
+                            a(href="tel:+380677470151" type="tel").s3d-tell.s3d-genplan
+                                .s3d-tell__text (044) 299-22-03
+                                .s3d-tell__icon-wrap
+                                    .s3d-tell__icon
+                                        +svg('tell')
+                            .s3d-controller__elem.js-s3d-controller__elem
+                                button(type="button" data-type="complex").s3d-select.active 3D генплан
+                                button(type="button" data-type="courtyard").s3d-select 3D двор
+                                button(type="button" data-type="plannings").s3d-select Планировки
+                            .s3d-title  Генплан
+                            .js-s3d-infoBox.s3d-infoBox
+                                .s3d-infoBox__static
+                                    .s3d-infoBox__icon
+                                         img(src="/wp-content/themes/optimisto/assets/s3d/images/icon/house.svg")
+                                    .s3d-infoBox__text выберите квартиру на доме
+                                .s3d-infoBox__hover.js-s3d-infoBox__hover
+                                    .s3d-infoBox__icon
+                                        img( src="/wp-content/themes/optimisto/assets/s3d/images/icon/house.svg")
+                                    .s3d-infoBox__text квартира
+                                        span.js-s3d-infoBox__hover__text 4
+                                .s3d-infoBox__image
+                                    .s3d-infoBox__close.js-s3d-infoBox__close
+                                    .s3d-infoBox__type.js-s3d-infoBox__type
+                                    img( src="/wp-content/themes/optimisto/assets/s3d/images/KV.png" class="js-s3d-infoBox__image")
+                                .s3d-infoBox__table
+                                    table
+                                        tbody
+                                            tr
+                                                td.js-s3d-infoBox__table-number
+                                                td № квартиры
+                                            tr
+                                                td.js-s3d-infoBox__table-floor
+                                                td Этаж
+
+                                            tr
+                                                td.js-s3d-infoBox__table-room
+                                                td Комнаты
+
+                                            tr
+                                                td.js-s3d-infoBox__table-area 88.06
+                                                td Площадь м2
+                                .s3d-infoBox__buttons
+                                    button( type="button" class="s3d-infoBox__link" data-id="33") Подробнее
+                                    label( data-id='1' class="s3d-infoBox__add-favourites js-s3d-add__favourites")
+                                        input( type="checkbox")
+                                        svg( role="presentation")
+                                            use( xlink:href="#icon-favourites")
+
+                    .js-s3d__wrapper__courtyard.s3d__wrap.s3d__wrapper__courtyard
+                        div.s3d-controller.js-s3d-controller.unselectable
+                            button(type="button").s3d-controller__openFilter.js-s3d-controller__openFilter
+                                .s3d-controller__openFilter__icon
+                                    +svg('filter-icon')
+                                .s3d-controller__openFilter__text Подбор по параметрам
+                            .s3d-controller__compass
+                                +svg('Compass')
+                            a(href="tel:+380677470151" type="tel").s3d-tell.s3d-genplan
+                                .s3d-tell__text (044) 299-22-03
+                                .s3d-tell__icon-wrap
+                                    .s3d-tell__icon
+                                        +svg('tell')
+                            .s3d-controller__elem.js-s3d-controller__elem
+                                button(type="button" data-type="complex").s3d-select.active 3D генплан
+                                button(type="button" data-type="courtyard").s3d-select 3D двор
+                                button(type="button" data-type="plannings").s3d-select Планировки
+                            .s3d-title  Генплан
+                            .js-s3d-infoBox.s3d-infoBox
+                                .s3d-infoBox__static
+                                    .s3d-infoBox__icon
+                                        img(src="/wp-content/themes/optimisto/assets/s3d/images/icon/house.svg")
+                                    .s3d-infoBox__text выберите квартиру на доме
+                                .s3d-infoBox__hover.js-s3d-infoBox__hover
+                                    .s3d-infoBox__icon
+                                        img( src="/wp-content/themes/optimisto/assets/s3d/images/icon/house.svg")
+                                    .s3d-infoBox__text квартира
+                                        span.js-s3d-infoBox__hover__text 4
+                                .s3d-infoBox__image
+                                    .s3d-infoBox__close.js-s3d-infoBox__close
+                                    .s3d-infoBox__type.js-s3d-infoBox__type
+                                    img( src="/wp-content/themes/optimisto/assets/s3d/images/KV.png" class="js-s3d-infoBox__image")
+                                .s3d-infoBox__table
+                                    table
+                                        tbody
+                                            tr
+                                                td.js-s3d-infoBox__table-number
+                                                td № квартиры
+                                            tr
+                                                td.js-s3d-infoBox__table-floor
+                                                td Этаж
+
+                                            tr
+                                                td.js-s3d-infoBox__table-room
+                                                td Комнаты
+
+                                            tr
+                                                td.js-s3d-infoBox__table-area 88.06
+                                                td Площадь м2
+                                .s3d-infoBox__buttons
+                                    button( type="button" class="s3d-infoBox__link" data-id="33") Подробнее
+                                    label( data-id='1' class="s3d-infoBox__add-favourites js-s3d-add__favourites")
+                                        input( type="checkbox")
+                                        svg( role="presentation")
+                                            use( xlink:href="#icon-favourites")
+
+                .js-s3d__wrapper__plannings.s3d__wrap.s3d__wrapper__plannings
+                    .s3d-pl
+                        .s3d-pl__right
+                            .s3d-pl__amount-flat
+                                | Знайдено
+                                span.s3d-pl__amount-flat__num.js-s3d__amount-flat__num 25
+                                | из
+                                span.s3d-pl__amount-flat__num.js-s3d__amount-flat__num-all 456
+                            .s3d-pl__favourites.js-s3d-favorite__wrap.s3d-hidden
+                                | Избранное
+                                .s3d-pl__favourites-icon.js-s3d__favourites
+                                    svg
+                                        use(xlink:href="#icon-favourites")
+                                    span.s3d-pl__favourites-amount.js-s3d-favourites-amount 0
+
+                            .s3d-pl__list.js-s3d__pl__list
+                        .s3d-pl__bottom
+                            a(type="tel").s3d-tell.s3d-genplan
+                                .s3d-tell__icon-wrap
+                                    .s3d-tell__icon
+                                        +svg('tell')
+                                .s3d-tell__text (067) 747-0151
+                            .s3d-controller__elem.js-s3d-controller__elem
+                                button(type="button" data-type="complex").s3d-select 3D генплан
+                                button(type="button" data-type="courtyard").s3d-select 3D Двор
+                                button(type="button" data-type="plannings").s3d-select.active Планировки
+
+
+                            .s3d-pl__mouse
+                                +svg('scroll')
+                .js-s3d__wrapper__apart.s3d__wrap.s3d__wrapper__apart
+
+                .s3d-fv.js-s3d__fv
+                    .s3d-fv__close.js-s3d__fv__close
+                    .s3d-fv__top.js-s3d-favorite__wrap.s3d-hidden
+                        .s3d-fv__title Избранное
+                        .s3d-fv__favourites
+                            | Избранное
+                            .s3d-fv__favourites-icon.js-s3d__favourites
+                                svg
+                                    use(xlink:href="#icon-favourites")
+                                span.s3d-fv__favourites-amount.js-s3d-favourites-amount 0
+                    .s3d-fv__table
+                        table
+                            tr
+                                th Вид
+                                th №
+                                th Тип
+                                th Комнат
+                                th Этаж
+                                th Площадь м2
+                                th Удалить
+                    .s3d-fv__bottom
+                        a(type="tel").s3d-tell.s3d-genplan
+                            .s3d-tell__text (067) 747-0151
+                            .s3d-tell__icon-wrap
+                                .s3d-tell__icon
+                                    +svg('tell')
+
+                        //.s3d-fv__mouse
+                        //    | скролл
+                        //    +svg('scroll')
+                .translate-layer.translate-layer__down
+                    .translate-layer--2
+                    .translate-layer--3
+                    .translate-layer--4
+                    .translate-layer--5
+
+                //.gyroscope dsfds
+                .s3d-filter-wrap.js-s3d-filter.active-filter
+                    .s3d-filter
+                        .s3d-filter__title Подбор по параметрам
+                        .s3d-filter__floor.js-s3d-filter__floor
+                            .s3d-filter-select__title Поверх
+                            .s3d-filter-select__list.js-filter-range
+                                label з
+                                    input.js-s3d-filter__floor__min--input(type="number")
+                                input.js-s3d-filter__floor--input(data-type="floor" data-min="1" data-max="15" data-from="1" data-to="15")
+                                label по
+                                    input.js-s3d-filter__floor__max--input(type="number")
+                        .s3d-filter__area.js-s3d-filter__area
+                            .s3d-filter-select__title Площа м
+                                sub 2
+                            .s3d-filter-select__list.js-filter-range
+                                label з
+                                    input.js-s3d-filter__area__min--input( type="number")
+                                input.js-s3d-filter__area--input(data-type="area" data-min="5" data-max="555" data-from="5" data-to="555")
+                                label по
+                                    input.js-s3d-filter__area__max--input(type="number")
+                        .s3d-filter__rooms.js-s3d-filter__rooms.js-s3d-filter__select
+                            .s3d-filter-select__title Кімнат
+                            .s3d-filter-select__list
+                                .s3d-filter-select__input--wrap
+                                    input.js-s3d-filter__rooms--input( type="checkbox" data-type="rooms" data-rooms="1" id="rooms-1")
+                                    label.s3d-filter__rooms--label( for="rooms-1") 1
+                                .s3d-filter-select__input--wrap
+                                    input.js-s3d-filter__rooms--input( type="checkbox" data-type="rooms" data-rooms="2" id="rooms-2")
+                                    label.s3d-filter__rooms--label( for="rooms-2") 2
+                                .s3d-filter-select__input--wrap
+                                    input.js-s3d-filter__rooms--input( type="checkbox" data-type="rooms" data-rooms="3" id="rooms-3")
+                                    label.s3d-filter__rooms--label(for="rooms-3") 3
+                                .s3d-filter-select__input--wrap
+                                    input.js-s3d-filter__rooms--input( type="checkbox" data-type="rooms" data-rooms="4" id="rooms-4")
+                                    label.s3d-filter__rooms--label( for="rooms-4") 4
+                        .s3d-filter__close-wrap.js-s3d-filter__close
+                            .s3d-filter__close
+                                span
+                                span
+                        button.js-s3d-filter__button--reset.s3d-filter__button--reset( type="button")
+                            .s3d-filter__button--reset-icon
+                                svg( role="presentation")
+                                    use(xlink:href="#icon-reset")
+                            | Очистить фильтр
+                        .s3d__favourites.js-s3d__favourites.js-s3d-favorite__wrap.s3d-hidden
+                            svg( role="presentation")
+                                use( xlink:href="#icon-favourites")
+                            span.s3d__favourites-amount.js-s3d-favourites-amount 0
+                    .s3d-filter__table.js-s3d-filter__table
+                        table
+                            thead
+                                tr
+                                    th Тип
+                                    th Комнат
+                                    th Этаж
+                                    th Площадь м2
+                                    th В избранное
+                            tbody
+                    .s3d-filter__amount-flat
+                        | Знайдено
+                        span.s3d-filter__amount-flat__num.js-s3d__amount-flat__num 25
+                        | из
+                        span.s3d-filter__amount-flat__num.js-s3d__amount-flat__num-all 456
+
+                include ../includes/loader.html
+                //.js-s3d-point__help.s3d-point__help
+                //    .s3d-point__help-left
+                //        img(src="").s3d-point__help-img
+                //    .s3d-point__help-right
+                //        .s3d-point__help-close.js-s3d-point__help-close
+                //        .s3d-point__help-logo
+                //            img(src='/wp-content/themes/optimisto/assets/s3d/images/Logo.svg')
+                //        img(src='/wp-content/themes/optimisto/assets/s3d/images/bg.svg').s3d-point__help-bg
+                //        .s3d-point__help-title Скейт парк
+                //        .s3d-point__help-text Коли спорт захоплює – тіло дивує! Ми забезпечили сучасні можливості для крутих трюків – перевершуй себе!
+                //        a(href='#').s3d-point__help-button Дізнатися бітьше
+
+
+block footer
+    footer.page__footer-wrapper.s3d__footer
+        include ../includes/footer
+
+block header
+    header.header
+        include ../includes/header.pug
+

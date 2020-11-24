@@ -1,0 +1,197 @@
+.s3d-fv{
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  padding: 95px 0 0 0;
+  flex-direction: column;
+  background: #ffffff;
+  opacity: 0;
+  z-index: 2;
+  transition: opacity 0.6s cubic-bezier(.38,.43,.38,1);
+  &__title{
+    font-family: $default-font;
+    font-weight: 600;
+    font-size: 34px;
+    line-height: 44px;
+    color: #221F20;
+    margin-left: 140px;
+  }
+  &__close{
+    position: absolute;
+    top: 60px;
+    right: 30px;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    &:after,&:before{
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 2px;
+      background: $color2;
+      transition: background-color 0.3s ease-in;
+    }
+    &:after{
+      transform: translate(-50% , -50%)rotate(45deg);
+    }
+    &:before{
+      transform: translate(-50% , -50%)rotate(-45deg);
+    }
+    &:hover{
+      &:after,&:before{
+        background: $color1;
+      }
+    }
+  }
+  &__top{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__bottom{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+    padding: 0 0 20px 0;
+  }
+  &__table{
+    margin: 30px 50px 80px;
+    flex: 1 1 100%;
+    padding: 0 90px;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: 2px;
+      height: 4px;
+    }
+
+    /*Track*/
+    &::-webkit-scrollbar-track {
+      background: #DDD9D3;
+    }
+
+    /*Handle*/
+    &::-webkit-scrollbar-thumb {
+      background: $color1;
+    }
+
+    &::-webkit-scrollbar-thumb:window-inactive {
+      background: #DDD9D3;
+    }
+    table{
+      width: 100%;
+      max-height: 100%;
+    }
+
+    tr{
+    }
+    td{
+      width: 10%;
+      vertical-align: middle;
+      text-align: center;
+      padding: 13px 0;
+      border-bottom: 1px solid #DDD9D3;
+
+      font-family: $default-font;
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 56px;
+      color: #221F20;
+    }
+    th{
+      position: sticky;
+      top: 0;
+      vertical-align: middle;
+      text-align: center;
+      padding: 13px 0;
+      border-bottom: 1px solid #DDD9D3;
+      //background: #E5E5E5;
+      font-family: $default-font;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 24px;
+      color: #221F20;
+    }
+    &__remove{
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      *{
+        pointer-events: none;
+      }
+      &:hover svg{
+        fill: $color1;
+      }
+    }
+    &__icon{
+      width: 22px;
+      height: 27px;
+      fill: $color2;
+      transition: fill 0.4s ease-in;
+    }
+
+  }
+
+  &__image{
+    max-height: 100px;
+  }
+  &__favourites{
+    display: flex;
+    align-items: center;
+    font-family: $default-font;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    margin-right: 35px;
+    cursor: pointer;
+    &-icon{
+      position: relative;
+      width: initial;
+      height: 26px;
+      margin-left: 20px;
+    }
+    &-amount{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -55%);
+
+      font-family: $default-font;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 1.5em;
+      color: #FFFFFF;
+      pointer-events: none;
+      cursor: pointer;
+    }
+    svg{
+      height: 26px;
+      width: 28px;
+      fill: $color2;
+      cursor: pointer;
+    }
+  }
+  &__mouse{
+    display: flex;
+    align-items: center;
+    text-decoration: underline;
+    margin-right: 40px;
+    svg{
+      width: 15px;
+      height: 34px;
+      margin-left: 20px;
+    }
+  }
+  &__element{
+
+  }
+  .s3d-tell__text{
+    color: #221F20;
+  }
+}

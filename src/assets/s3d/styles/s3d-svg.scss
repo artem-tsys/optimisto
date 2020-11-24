@@ -1,0 +1,77 @@
+.s3d {
+
+  &__svgWrap {
+    z-index: 51;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+
+    svg {
+      display: block;
+      //display: none;
+      width: 100%;
+      height: 100%;
+      fill: #EB8271;
+      margin: 0 auto;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    &.s3d__svg__active {
+      z-index: 55;
+
+      svg {
+        opacity: 1;
+        //display: block;
+        visibility: visible;
+        pointer-events: painted;
+      }
+    }
+
+    //.polygon,
+    //.s3d-svg__house {
+    //  fill: #255763;
+    //  opacity: 0;
+    //  cursor: pointer;
+    //  &:hover {
+    //    fill: $wc;
+    //    opacity: .5;
+    //  }
+    //  &.active-selected {
+    //    fill: #255763;
+    //    opacity: .7;
+    //  }
+    //  &.active-flat {
+    //    fill: #EB8271;
+    //    opacity: .7 ;
+    //  }
+    //
+    //
+    //}
+  }
+
+  &__svg-container {
+    z-index: 25;
+    display: none;
+
+    &__complex, &__courtyard {
+      z-index: 55;
+      display: block !important;
+    }
+  }
+}
+
+//.polygon,
+//.s3d-svg__house {
+//  opacity: 0;
+//
+//  &:hover {
+//    opacity: .7;
+//  }
+//}

@@ -1,0 +1,12 @@
+mixin testCard(link, src, title, descr)
+	a(href=link).card-item
+		img.card-item__img(src=src alt='foto-1' title="title-foto")
+		h2.card-item__title=title
+		p.card-item__descr=descr
+
+mixin svg(icon, clss)
+	svg(class= clss  role="presentation")&attributes(attributes)
+		use(xlink:href="#icon-"+ icon + "")
+
+mixin link-blank(href)
+	a(herf=href rel="nofollow" target="_blank")

@@ -1,0 +1,80 @@
+.fs-preloader {
+  z-index: 10000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  //pointer-events: none;
+  display: none;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  background-color: rgba(255, 255, 255, .97);
+  cursor: not-allowed;
+  fill: $--bg;
+
+  & > svg {
+    width: 48px;
+    height: 48px;
+
+    circle {
+      stroke: $--bg;
+      transform-origin: center;
+    }
+  }
+
+  &-bg {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+  }
+}
+@keyframes preloader {
+
+  0% {
+    transform: rotate(0);
+  }
+
+  30% {
+    transform: rotate(100deg);
+  }
+
+  60% {
+    transform: rotate(250deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.preloader-active {
+  display: flex;
+
+  circle {
+    animation: preloader 1.3s infinite;
+    will-change: transform;
+  }
+}
+
+.s3d {
+
+  &-active-vertical {
+
+    .fs-preloader {
+      height: 50%;
+    }
+
+    .s3d-preloader__full.fs-preloader {
+      height: 100%;
+    }
+  }
+}
+
+.first-loader.fs-preloader {
+  height: 100% !important;
+}
