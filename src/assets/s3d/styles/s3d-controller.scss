@@ -5,7 +5,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    display: grid;
+    display: none;
+    //display: grid;
     grid-gap: 30px;
     padding: 0 0 20px;
     width: 100%;
@@ -132,6 +133,10 @@
          transform: translate(0, 0);
        }
       }
+    }
+
+    &[data-type="complex"],&[data-type="courtyard"]{
+      display: grid;
     }
   }
 

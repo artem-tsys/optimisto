@@ -6,6 +6,7 @@ function init() {
 	window.createMarkup = CreateMarkup
 	const config = {
 		complex: {
+			id: '#js-s3d__wrapper',
 			url: '',
 			imageUrl: '/wp-content/themes/optimisto/assets/s3d/images/optimisto/complex/',
 			class: 'js-s3d__wrapper',
@@ -22,6 +23,7 @@ function init() {
 		// 	id: 'js-s3d__wrapper',
 		// },
 		courtyard: {
+			id: '#js-s3d__wrapper',
 			url: '',
 			imageUrl: '/wp-content/themes/optimisto/assets/s3d/images/optimisto/courtyard/',
 			class: 'js-s3d__wrapper',
@@ -34,7 +36,7 @@ function init() {
 			mouseSpeed: 1,
 		},
 		apart: {
-			id: 'js-s3d__wrapper',
+			id: '.js-s3d__slideModule',
 		},
 	}
 

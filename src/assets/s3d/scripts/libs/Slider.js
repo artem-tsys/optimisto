@@ -147,6 +147,7 @@ class Slider {
 		this.infoBox.on('click', '.js-s3d-infoBox__close', () => {
 			this.hiddenInfo()
 		})
+
 		this.infoBox.on('click', '.s3d-infoBox__link', event => {
 			event.preventDefault()
 			// this.loader.show()
@@ -154,6 +155,7 @@ class Slider {
 			// this.click(event, this.type)
 			this.click(event.currentTarget.dataset.id, 'apart', event.currentTarget.dataset.id)
 		})
+
 		$('.js-s3d__wrap').scrollLeft($('.js-s3d__wrap').width() / 4)
 
 		$('.js-s3d-blink').on('click', () => this.flatBlink())
@@ -211,7 +213,6 @@ class Slider {
 
 	// обновить картинки в канвасе
 	updateImage() {
-		console.log('updateImage()')
 		this.ctx.canvas.width = this.width
 		this.ctx.canvas.height = this.height
 		this.loadImage(0, 'complex')
@@ -393,10 +394,6 @@ class Slider {
 
 	// меняет состояние инфоблока на активный
 	setStateInfoActive(elem) {
-		console.log('setStateInfoActiv', elem)
-		// if ((e.target && e.target.dataset && typeof +e.target.dataset.id !== 'number') || typeof +e.id !== 'number') {
-		// 	return
-		// }
 		this.addBlur('.js-s3d-infoBox', 500)
 		if (!this.infoBox.hasClass('s3d-infoBox-active')) {
 			this.infoBox.addClass('s3d-infoBox-active')
@@ -449,9 +446,12 @@ class Slider {
 		list.each((i, el) => {
 			this.updateInfoFloor(el, data)
 		})
-
-		// if (this.openHouses.includes(+data.build)) {
 		$(`[data-build=${data.build}] .floor-text`).html(data.floor)
+
+		// если не все дома в продаже (с инфой)
+		//
+		// if (this.openHouses.includes(+data.build)) {
+		// $(`[data-build=${data.build}] .floor-text`).html(data.floor)
 		// } else {
 		// 	$(`[data-build=${data.build}] .floor-text`).html('будинок не у продажу')
 		// }
@@ -586,11 +586,9 @@ class Slider {
 	}
 
 	checkDirectionRotate(data) {
-		console.log('checkDirectionRotate', data, this.rotate)
 		if (!this.rotate) return
 		// this.rotate = false
 		let direction = 'prev'
-		console.log('checkDirectionRotate', data)
 		if ((data && data.dataset && data.dataset.type === 'next')) {
 			direction = 'next'
 		} else if (!data && ((this.result.max - this.result.min) / 2) + this.result.min <= this.activeElem) {
@@ -615,23 +613,6 @@ class Slider {
 			this.repeat = this.repeatChangeSlide(this.changePrev.bind(this))
 		}
 	}
-	// вычисляет ближайшую точку остановки и запускает прокрутку в нужную сторону
-	// checkResult() {
-	// 	if (((this.result.max - this.result.min) / 2) + this.result.min <= this.activeElem) {
-	// 		this.nextSlide = this.controlPoint[0]
-	// 		if (this.result.max <= this.numberSlide.max) {
-	// 			this.nextSlide = this.result.max
-	// 		}
-	// 		this.repeat = this.repeatChangeSlide(this.changeNext.bind(this))
-	// 	} else {
-	// 		if (this.result.min > this.numberSlide.min) {
-	// 			this.nextSlide = this.result.min
-	// 		} else {
-	// 			this.nextSlide = this.controlPoint[this.controlPoint.length - 1]
-	// 		}
-	// 		this.repeat = this.repeatChangeSlide(this.changePrev.bind(this))
-	// 	}
-	// }
 
 	// остановка анимации и сброс данных прокрутки
 	cancelAnimateSlide() {
@@ -710,15 +691,11 @@ class Slider {
 		if (this.amount >= 1) {
 			this.changeNext()
 			this.amount -= 1
-			// this.changeSlide(this.amount,this.changePrev);
 			this.pret = this.x
-			// this.amount = 0;
 		} else if (this.amount <= -1) {
 			this.changePrev()
 			this.amount += 1
-			// this.changeSlide(this.amount*-1,this.changeNext);
 			this.pret = this.x
-			// this.amount = 0;
 		}
 		this.animates = requestAnimationFrame(this.animate.bind(this))
 	}

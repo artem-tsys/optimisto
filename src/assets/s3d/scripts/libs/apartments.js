@@ -4,11 +4,13 @@ class Apartments {
 		this.type = data.type
 		this.loader = data.loader
 		this.wrapperId = data.idCopmlex
+		this.imagesKeys = data.imagesKeys
 		this.wrapper = $(`.js-s3d__wrapper__ ${this.wrapperId}`)
 		this.click = data.click
 		this.scrollBlock = data.scrollBlock
 		this.activeFlat = data.activeFlat
 		this.getFavourites = data.getFavourites
+		this.getFlatObj = data.getFlatObj
 		this.addBlur = data.addBlur
 	}
 
@@ -94,6 +96,7 @@ class Apartments {
 	setPlaneInPage(response) {
 		$(`#js-s3d__${this.idCopmlex}`).html(JSON.parse(response))
 		this.loader.hide(this.type)
+		this.checkPlaning()
 		// $('.flat-group2 ').on('click', 'polygon', this.openPopup)
 		// $('.js-s3d__wrapper__apart .form-js').on('click', () => $('.common-form-popup-js').addClass('active'))
 		$('.js-flat-button-return').on('click', e => {
@@ -125,6 +128,15 @@ class Apartments {
 			this.click(event.currentTarget.dataset.id, 'complex', this.activeFlat.value)
 		})
 
+		$('.js-s3d-flat').on('change', '.js-s3d__radio-type', el => {
+			const images = this.getFlatObj(this.activeFlat.value).image
+			this.showHideRadioView(images[el.currentTarget.dataset.type])
+			this.setNewImage(images)
+		})
+
+		$('.js-s3d-flat').on('change', '.js-s3d__radio-view', el => {
+			this.setNewImage(this.getFlatObj(this.activeFlat.value).image)
+		})
 		// меняет непонятные символы в ссылке
 		// this.conf = this.updateImage()
 		// проверяет есть ли эта планировка в 3d формате
@@ -275,7 +287,7 @@ class Apartments {
                     </div>
                   </div>
                   <div class="s3d-tell__text">(067) 747-0151</div></a>
-              <img class="s3d-flat__image" src="assets/s3d/images/KV.png">
+              	<img class="s3d-flat__image js-s3d-flat__image" src="assets/s3d/images/KV.png">
               
                 <div class="s3d-flat__favourites js-s3d-favorite__wrap s3d-hidden">Избранное
                   <div class="s3d-flat__favourites-icon js-s3d__favourites">
@@ -316,9 +328,92 @@ class Apartments {
 										<input type="checkbox">
 										<svg role="presentation"><use xlink:href="#icon-favourites"></use></svg>в избранное</label>
                 </div>
+                <div class="s3d-flat__buttons  js-s3d-flat__buttons-type">
+                <label class="s3d-flat__button js-s3d__radio-type" data-type="with" >
+                	<input type="radio" name="type" class="s3d-flat__button-input" value="with" checked/>
+                	<span>с мебелью</span></label>
+                <label class="s3d-flat__button js-s3d__radio-type" data-type="without"  >
+                	<input type="radio" name="type" class="s3d-flat__button-input" value="without"/>
+                	<span>без мебели</span></label>
+                	<label class="s3d-flat__button js-s3d__radio-type" data-type="re-planning">
+                	<input type="radio" name="type" class="s3d-flat__button-input" value="re-planning"/>
+                	<span>ПЕРЕПЛАНУВАННЯ</span></label>
+								</div>
+								<div class="s3d-flat__buttons-view js-s3d-flat__buttons-view">
+								<label class="s3d-flat__button js-s3d__radio-view" data-type="2d">
+									<input type="radio" name="view" class="s3d-flat__button-input" value="2d" checked />
+									<span>2d</span>
+								</label>
+									<label  class="s3d-flat__button js-s3d__radio-view" data-type="3d">
+										<input type="radio" name="view" class="s3d-flat__button-input" value="3d" />
+										<span>3d</span>
+									</label>
+								</div>
             </div>
 		`)
 	}
+
+	checkPlaning() {
+		let active = false
+		let currentTab = ''
+		$('.js-s3d__radio-type').each((i, type) => {
+			if (this.showHideRadioType(type.dataset.type) && !active) {
+				active = true
+				currentTab = type.dataset.type
+				$(`.js-s3d__radio-type[data-type=${currentTab}] input`).prop('checked', true)
+			}
+		})
+		this.showHideRadioType(currentTab)
+		this.setNewImage(this.getFlatObj(this.activeFlat.value).image)
+	}
+
+	showHideRadioType(type) {
+		const tab = this.getFlatObj(this.activeFlat.value).image[type]
+		$(`.js-s3d__radio-type[data-type= ${type}]`).removeClass('show')
+		if (this.showHideRadioView(tab)) {
+			$(`.js-s3d__radio-type[data-type= ${type}]`).addClass('show')
+			return true
+		}
+		$(`.js-s3d__radio-type[data-type= ${type}]`).remove()
+		return false
+	}
+
+	checkActiveRadio(type) {
+		return $(`.js-s3d__radio-${type} input:checked`).val()
+	}
+
+	showHideRadioView(type) {
+		let index = 0
+		for (const el in type) {
+			if (this.checkSting(type[el])) {
+				if (index === 0) {
+					$(`.js-s3d__radio-view[data-type=${el}] input`).prop('checked', true)
+				}
+				index++
+			}
+		}
+		if (index < 2) {
+			$('.js-s3d-flat__buttons-view').removeClass('show')
+		} else {
+			$('.js-s3d-flat__buttons-view').addClass('show')
+		}
+		if (index === 0) {
+			return false
+		}
+
+		return true
+	}
+
+	checkSting(value) {
+		return (typeof value === 'string' && value !== '')
+	}
+
+	setNewImage(img) {
+		const type = this.checkActiveRadio('type')
+		const view = this.checkActiveRadio('view')
+		$('.js-s3d-flat__image').attr('src', img[type][view])
+	}
+
 // 	addHtmlAll(elem) {
 // 		return JSON.stringify(`
 // 			<div class="s3d-flat js-s3d-flat">

@@ -43,7 +43,7 @@ class Svg {
 
 	// получает
 	createSvg(data, name) {
-		const svgContainer = createMarkup('div', `.js-s3d__wrapper__${this.idCopmlex}`, { class: `s3d__svg-container s3d__svg-container__${name} js-s3d__svg-container__${name}` })
+		const svgContainer = createMarkup('div', `#js-s3d__wrapper__${this.idCopmlex}`, { class: `s3d__svg-container s3d__svg-container__${name} js-s3d__svg-container__${name}` })
 		// const svgContainer = createMarkup('div', `.js-s3d__wrapper__${this.idCopmlex}`, { class: `s3d__svg-container s3d__svg-container${name === 'complex' ? '__complex' : name} js-s3d__svg-container${name === 'complex' ? '__complex' : name}` })
 
 		for (const key in data) {

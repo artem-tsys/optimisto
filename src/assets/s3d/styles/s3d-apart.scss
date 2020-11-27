@@ -278,7 +278,63 @@
         fill: #EB8271;
       }
     }
+    &__buttons{
+      area: 'buttons';
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      height: 42px;
+      &-view{
+        area: 'buttonsView';
+        display: none;
+        justify-content: center;
+        align-content: center;
+        height: 42px;
+        &.show{
+          display: flex;
+        }
+      }
+    }
+    &__button{
+      display: inline-block;
+      height: 100%;
+      flex: 1 0 33.333%;
+      cursor: pointer;
+      span{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        height: 100%;
+        width: 100%;
+        padding: 10px;
+        background: #E1D7E4;
+        font-family: $default-font;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 24px;
+        color: #842990;
+        text-transform: capitalize;
+        text-decoration-line: underline;
+        white-space: nowrap;
+      }
+      &-input{
+        display: none;
+        &:checked~span{
+          color: #786F79;
+          text-decoration: none;
+          background: #F4F4F2;
+          box-shadow: 0 4px 20px rgba(28, 73, 84, 0.35);
+        }
+      }
 
+      &:nth-last-child(1) span{
+        border-radius: 0 40px 40px 0;
+      }
+      &:nth-child(1) span{
+        border-radius: 40px 0 0 40px;
+      }
+    }
   }
   &-mini-info{
     display: flex;

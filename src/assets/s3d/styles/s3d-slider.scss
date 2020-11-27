@@ -72,7 +72,6 @@
     padding: 0 0 52px;
     overflow: hidden;
     z-index: 999;
-    //background: #ffffff;
     pointer-events: none;
     &__static{
       position: absolute;
@@ -249,7 +248,7 @@
       margin: 0;
       align-items: center;
       justify-content: center;
-      background: #EB8271;
+      background: $color1;
       border: none;
       font-family: $default-font;
       font-weight: 500;
@@ -271,25 +270,14 @@
       justify-content: center;
       height: 100%;
       width: 44px;
-      background: #E46C59;
+      background: $color1;
       border: none;
       cursor: pointer;
-      //input{
-      //  display: none;
-      //}
-      //svg{
-      //  height: 50%;
-      //  width: 50%;
-      //  fill: transparent;
-      //  stroke: #FFFFFF;
-      //  stroke-width: 2px;
-      //}
       input{
         display: none;
       }
       input:checked + svg{
         fill: #FFFFFF;
-        //fill: #1C4954;
         stroke: transparent;
       }
 
