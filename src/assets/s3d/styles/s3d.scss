@@ -247,10 +247,10 @@
     height: 42px;
     width: 50%;
     min-width: 128px;
-    color: #99918A;
+    color: rgba(132, 41, 144, 1);
     border: none;
     align-items: center;
-    background: #F2F2F2;
+    background: #E1D7E4;
     font-family: $default-font;
     font-size: 12px;
     font-weight: 600;
@@ -259,15 +259,20 @@
     padding: 10px;
     letter-spacing: 0.1em;
     text-transform: capitalize;
+    text-decoration: underline;
     transition: all .4s linear;
     cursor: pointer;
-
+    &:focus{
+      outline: 1px solid $color1;
+    }
     &.active {
       cursor: no-drop;
       font-weight: 600;
-      color: rgba(132, 41, 144, 1);
+      color: #786F79;
       background: #FFFFFF;
-      text-decoration: underline;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(28, 73, 84, 0.15);
+      z-index: 5;
       svg {
         stroke: $wc;
       }
@@ -407,7 +412,9 @@
     height: 1080px;
     flex: 1 0 0;
   }
-
+  &__apart{
+    width: 100%;
+  }
   &__svg {
     z-index: 50;
     position: absolute;

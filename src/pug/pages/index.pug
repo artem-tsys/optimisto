@@ -35,22 +35,13 @@ block content
                     .s3d-controller__elem.js-s3d-controller__elem
                         button(type="button" data-type="complex").s3d-select.js-s3d-select.active 3D генплан
                         button(type="button" data-type="courtyard").s3d-select.js-s3d-select 3D двор
-                        button(type="button" data-type="plannings").s3d-select.js-s3d-select.js-s3d__favourites.s3d-mobile-only Планировки
+                        button(type="button" data-type="plannings").s3d-select.js-s3d-select Планировки
                     .s3d-title  Генплан
                     .js-s3d-infoBox.s3d-infoBox
-                        .s3d-infoBox__static
-                            .s3d-infoBox__icon
-                                 img(src="/wp-content/themes/optimisto/assets/s3d/images/icon/house.svg")
-                            .s3d-infoBox__text выберите квартиру на доме
-                        .s3d-infoBox__hover.js-s3d-infoBox__hover
-                            .s3d-infoBox__icon
-                                img( src="/wp-content/themes/optimisto/assets/s3d/images/icon/house.svg")
-                            .s3d-infoBox__text квартира
-                                span.js-s3d-infoBox__hover__text 4
                         .s3d-infoBox__image
                             .s3d-infoBox__close.js-s3d-infoBox__close
-                            .s3d-infoBox__type.js-s3d-infoBox__type
                             img( src="/wp-content/themes/optimisto/assets/s3d/images/KV.png" class="js-s3d-infoBox__image")
+                            .s3d-infoBox__type.js-s3d-infoBox__type
                         .s3d-infoBox__table
                             table
                                 tbody
@@ -69,11 +60,11 @@ block content
                                         td.js-s3d-infoBox__table-area 88.06
                                         td Площадь м2
                         .s3d-infoBox__buttons
-                            button( type="button" class="s3d-infoBox__link" data-id="33") Подробнее
                             label( data-id='1' class="s3d-infoBox__add-favourites js-s3d-add__favourites")
                                 input( type="checkbox")
                                 svg( role="presentation")
                                     use( xlink:href="#icon-favourites")
+                            button( type="button" class="s3d-infoBox__link" data-id="33") Посмотреть
 
                 .js-s3d__wrapper__plannings.s3d__wrap.s3d__wrapper__plannings
                     .s3d-pl
@@ -92,19 +83,19 @@ block content
 
                             .s3d-pl__list.js-s3d__pl__list
                         .s3d-pl__bottom
-                            a(type="tel").s3d-tell.s3d-genplan
-                                .s3d-tell__icon-wrap
-                                    .s3d-tell__icon
-                                        +svg('tell')
-                                .s3d-tell__text (067) 747-0151
+
                             .s3d-controller__elem.js-s3d-controller__elem
                                 button(type="button" data-type="complex").s3d-select 3D генплан
                                 button(type="button" data-type="courtyard").s3d-select 3D Двор
                                 button(type="button" data-type="plannings").s3d-select.active Планировки
+                            a(type="tel").s3d-tell.s3d-genplan
+                                .s3d-tell__text (067) 747-0151
+                                .s3d-tell__icon-wrap
+                                    .s3d-tell__icon
+                                        +svg('tell')
 
-
-                            .s3d-pl__mouse
-                                +svg('scroll')
+                            //.s3d-pl__mouse
+                            //    +svg('scroll')
                 //.js-s3d__wrapper__apart.s3d__wrap.s3d__wrapper__apart
                 .s3d-fv.js-s3d__fv
                     .s3d-fv__close.js-s3d__fv__close
@@ -142,7 +133,7 @@ block content
                     .translate-layer--4
                     .translate-layer--5
 
-                .s3d-filter-wrap.js-s3d-filter.active-filter
+                .s3d-filter-wrap.js-s3d-filter
                     .s3d-filter
                         .s3d-filter__title Подбор по параметрам
                         .s3d-filter__floor.js-s3d-filter__floor
@@ -200,6 +191,8 @@ block content
                                     th Площадь м2
                                     th В избранное
                             tbody
+                    .s3d-filter__bg
+                        img(src='/wp-content/themes/optimisto/assets/s3d/images/house.png')
                     .s3d-filter__amount-flat
                         | Знайдено
                         span.s3d-filter__amount-flat__num.js-s3d__amount-flat__num 25

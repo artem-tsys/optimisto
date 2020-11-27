@@ -173,33 +173,51 @@ class Apartments {
 	addHtmlAll(elem) {
 		return JSON.stringify(`
 			<div class="s3d-flat js-s3d-flat">
+			<div class="s3d-flat__back-wrap">
 			 <button class="s3d-flat__back js-s3d-flat__back" type="button">
-                    <svg viewBox="0 0 9 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path fill-rule="evenodd" clip-rule="evenodd" d="M9 12L-1.21594e-06 6L9 0L9 5.09367L9 6.90633L9 12Z" fill="white"></path>
-                    </svg>
-                  </button>
-                <div class="s3d-flat__mini-info">
-                 
-                  <div class="s3d-mini-info">
-                    <div class="s3d-mini-info__title">номер</div>
-                    <div class="s3d-mini-info__amount">54</div>
-                  </div>
-                  <div class="s3d-mini-info">
-                    <div class="s3d-mini-info__title">Этаж</div>
-                    <div class="s3d-mini-info__amount">6</div>
-                  </div>
-                  <div class="s3d-mini-info">
-                    <div class="s3d-mini-info__title">комнат</div>
-                    <div class="s3d-mini-info__amount">1</div>
-                  </div>
-                </div>
-                <div class="s3d-flat__table">
-                  <div class="s3d-flat__table__subtitle">Площадь 56 м2</div>
-                  <div class="s3d-flat__table__title">Квартира 2А</div>
-                  <ul class="s3d-flat__list">
-                    <li class="s3d-flat__el">
-                      <div class="s3d-flat__el__name">Спальня:</div>
-                      <div class="s3d-flat__el__value">12 м<sub>2</sub></div>
+           <svg viewBox="0 0 9 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+             <path fill-rule="evenodd" clip-rule="evenodd" d="M9 12L-1.21594e-06 6L9 0L9 5.09367L9 6.90633L9 12Z" fill="white"></path>
+           </svg>
+       </button>
+       <div class="s3d-flat__back-text">НАЗАД</div>
+       </div>
+         <div class="s3d-flat__table">
+            <div class="s3d-flat__mini-info">
+              <div class="s3d-mini-info">
+                <div class="s3d-mini-info__title">номер</div>
+                <div class="s3d-mini-info__amount">54</div>
+              </div>
+              <div class="s3d-mini-info">
+                <div class="s3d-mini-info__title">Этаж</div>
+                <div class="s3d-mini-info__amount">6</div>
+              </div>
+              <div class="s3d-mini-info">
+                <div class="s3d-mini-info__title">комнат</div>
+                <div class="s3d-mini-info__amount">1</div>
+              </div>
+              <div class="s3d-mini-info">
+                <div class="s3d-mini-info__title">метраж м2</div>
+                <div class="s3d-mini-info__amount">24</div>
+              </div>
+            </div>
+         		<div class="s3d-flat__table__subtitle">Площадь 56 м2</div>
+         		<div class="s3d-flat__table__title">Квартира 2А</div>
+              <ul class="s3d-flat__list">
+                <li class="s3d-flat__el">
+                  <div class="s3d-flat__el__name">Спальня:</div>
+                  <div class="s3d-flat__el__value">12 м<sub>2</sub></div>
+                </li>
+                <li class="s3d-flat__el">
+                  <div class="s3d-flat__el__name">Спальня:</div>
+                  <div class="s3d-flat__el__value">12 м<sub>2</sub></div>
+                </li>
+                <li class="s3d-flat__el">
+                  <div class="s3d-flat__el__name">Спальня:</div>
+                  <div class="s3d-flat__el__value">12 м<sub>2</sub></div>
+                </li>
+                <li class="s3d-flat__el">
+                  <div class="s3d-flat__el__name">Спальня:</div>
+                  <div class="s3d-flat__el__value">12 м<sub>2</sub></div>
                     </li>
                     <li class="s3d-flat__el">
                       <div class="s3d-flat__el__name">Спальня:</div>
@@ -209,50 +227,6 @@ class Apartments {
                       <div class="s3d-flat__el__name">Спальня:</div>
                       <div class="s3d-flat__el__value">12 м<sub>2</sub></div>
                     </li>
-                    <li class="s3d-flat__el">
-                      <div class="s3d-flat__el__name">Спальня:</div>
-                      <div class="s3d-flat__el__value">12 м<sub>2</sub></div>
-                    </li>
-                    <li class="s3d-flat__el">
-                      <div class="s3d-flat__el__name">Спальня:</div>
-                      <div class="s3d-flat__el__value">12 м<sub>2</sub></div>
-                    </li>
-                    <li class="s3d-flat__el">
-                      <div class="s3d-flat__el__name">Спальня:</div>
-                      <div class="s3d-flat__el__value">12 м<sub>2</sub></div>
-                    </li>
-                    <div class="s3d-flat__el">
-                      <div class="s3d-flat__el__name">Спальня:</div>
-                      <div class="s3d-flat__el__value">12 м<sub>2</sub></div>
-                    </div>
-                    <div class="s3d-flat__el">
-                      <div class="s3d-flat__el__name">Спальня:</div>
-                      <div class="s3d-flat__el__value">12 м<sub>2</sub></div>
-                    </div>
-                    <div class="s3d-flat__el">
-                      <div class="s3d-flat__el__name">Спальня:</div>
-                      <div class="s3d-flat__el__value">12 м<sub>2</sub></div>
-                    </div>
-                    <div class="s3d-flat__el">
-                      <div class="s3d-flat__el__name">Спальня:</div>
-                      <div class="s3d-flat__el__value">12 м<sub>2</sub></div>
-                    </div>
-                    <div class="s3d-flat__el">
-                      <div class="s3d-flat__el__name">Спальня:</div>
-                      <div class="s3d-flat__el__value">12 м<sub>2</sub></div>
-                    </div>
-                    <div class="s3d-flat__el">
-                      <div class="s3d-flat__el__name">Спальня:</div>
-                      <div class="s3d-flat__el__value">12 м<sub>2</sub></div>
-                    </div>
-                    <div class="s3d-flat__el">
-                      <div class="s3d-flat__el__name">Спальня:</div>
-                      <div class="s3d-flat__el__value">12 м<sub>2</sub></div>
-                    </div>
-                    <div class="s3d-flat__el">
-                      <div class="s3d-flat__el__name">Спальня:</div>
-                      <div class="s3d-flat__el__value">12 м<sub>2</sub></div>
-                    </div>
                     <div class="s3d-flat__el">
                       <div class="s3d-flat__el__name">Спальня:</div>
                       <div class="s3d-flat__el__value">12 м<sub>2</sub></div>
@@ -278,7 +252,9 @@ class Apartments {
                       <div class="s3d-flat__el__value">12 м<sub>2</sub></div>
                     </div>
                   </ul>
-                </div><a class="s3d-flat__tell s3d-tell s3d-genplan" type="tel">
+                </div>
+                <a class="s3d-flat__tell s3d-tell s3d-genplan" type="tel">
+                  <div class="s3d-tell__text">(067) 747-0151</div>
                   <div class="s3d-tell__icon-wrap">
                     <div class="s3d-tell__icon">
                       <svg role="presentation">
@@ -286,9 +262,8 @@ class Apartments {
                       </svg>
                     </div>
                   </div>
-                  <div class="s3d-tell__text">(067) 747-0151</div></a>
+                  </a>
               	<img class="s3d-flat__image js-s3d-flat__image" src="assets/s3d/images/KV.png">
-              
                 <div class="s3d-flat__favourites js-s3d-favorite__wrap s3d-hidden">Избранное
                   <div class="s3d-flat__favourites-icon js-s3d__favourites">
                     <svg>
@@ -340,16 +315,16 @@ class Apartments {
                 	<span>ПЕРЕПЛАНУВАННЯ</span></label>
 								</div>
 								<div class="s3d-flat__buttons-view js-s3d-flat__buttons-view">
-								<label class="s3d-flat__button js-s3d__radio-view" data-type="2d">
-									<input type="radio" name="view" class="s3d-flat__button-input" value="2d" checked />
-									<span>2d</span>
-								</label>
+									<label class="s3d-flat__button js-s3d__radio-view" data-type="2d">
+										<input type="radio" name="view" class="s3d-flat__button-input" value="2d" checked />
+										<span>2d</span>
+									</label>
 									<label  class="s3d-flat__button js-s3d__radio-view" data-type="3d">
 										<input type="radio" name="view" class="s3d-flat__button-input" value="3d" />
 										<span>3d</span>
 									</label>
 								</div>
-            </div>
+     </div>
 		`)
 	}
 

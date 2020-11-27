@@ -68,36 +68,40 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    margin: 0 30px 0 auto;
-    padding: 0 0 52px;
+    margin: 0 0 0 auto;
+    border-radius: 20px 0 0 20px;
+    //padding: 0 0 52px;
+    background: #ffffff;
     overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
     z-index: 999;
     pointer-events: none;
-    &__static{
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      display: flex;
-      height: 52px;
-      width: 100%;
-      background: $color1;
-      order: 2;
-      z-index: 5;
-      cursor: pointer;
-      pointer-events: painted;
-    }
+    transition: all 0.4s ease-in;
+    //&__static{
+    //  position: absolute;
+    //  bottom: 0;
+    //  right: 0;
+    //  display: flex;
+    //  height: 52px;
+    //  width: 100%;
+    //  background: $color1;
+    //  order: 2;
+    //  z-index: 5;
+    //  cursor: pointer;
+    //  pointer-events: painted;
+    //}
     &__hover{
-      position: absolute;
-      bottom: 0;
-      right: 0;
+      //position: absolute;
+      //bottom: 0;
+      //right: 0;
       display: flex;
       height: 52px;
       width: 100%;
       background: $color1;
       order: 2;
       z-index: 6;
-      transform: translateY(100%);
-      transition: transform 0.3s ease-in;
+      transition: opacity 0.4s ease-in;
       span{
         margin: 0 6px;
       }
@@ -139,14 +143,14 @@
       max-height: 40vh;
       width: 100%;
       max-width: 100%;
-      padding: 40px 20px 30px;
+      padding: 25px 20px;
       margin: 0;
       //position: absolute;
       background: #FFFFFF;
       order: 1;
       z-index: 2;
-      transition: transform 0.6s cubic-bezier(.41,.57,.26,1);
-      transform: translateY(100%);
+      transition: opacity 0.6s cubic-bezier(.41,.57,.26,1);
+      //transform: translateY(100%);
       img{
         display: inline-block;
         object-fit: contain;
@@ -159,6 +163,9 @@
       height: 20px;
       width: 20px;
       cursor: pointer;
+      visibility: hidden;
+      opacity: 0;
+      transition: all 0.3s ease-in;
       &:after{
         position: absolute;
         top: 50%;
@@ -184,8 +191,8 @@
     }
     &__type{
       position: absolute;
-      top: 0;
-      left: 0;
+      bottom: 0;
+      left: 15px;
       padding: 0 10px;
       background: #DDD9D3;
       font-family: $default-font;
@@ -198,17 +205,16 @@
     &__table{
       display: flex;
       width: 100%;
-      height: 0;
       overflow: hidden;
 
       order: 2;
       z-index: 3;
       background: #FFFFFF;
       box-sizing: content-box;
-      transition: transform 0.6s cubic-bezier(.41,.57,.26,1), height 0.6s cubic-bezier(.41,.57,.26,1);
+      //transition: transform 0.6s cubic-bezier(.41,.57,.26,1), height 0.6s cubic-bezier(.41,.57,.26,1);
       table{
         width: 100%;
-        margin: 25px 15px 20px;
+        margin: 20px 15px;
       }
       td{
         padding: 0 13px;
@@ -227,35 +233,32 @@
       }
     }
     &__buttons{
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      display: flex;
-      width: 100%;
-      height: 61px;
-      padding: 0 15px 17px;
-      margin-top: 20px;
-      order: 3;
-      transform: translateY(100%);
+      position: relative;
+      display: none;
+      width: calc(100% - 30px);
+      height: 44px;
+      border-radius: 20px;
+      overflow: hidden;
+      margin: 20px 15px;
       z-index: 7;
-      background: #ffffff;
+      order: 3;
+      visibility: hidden;
+      transition: all 0.3s ease-in;
     }
     &__link{
       height: 100%;
       flex: 1 1 auto;
       display: flex;
-      padding: 0 10px;
       margin: 0;
       align-items: center;
       justify-content: center;
-      background: $color1;
+      background: $color2;
       border: none;
       font-family: $default-font;
       font-weight: 500;
       font-size: 14px;
       line-height: 24px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
+      text-transform: capitalize;
       text-decoration: none;
       color: #FFFFFF;
       cursor: pointer;
@@ -264,13 +267,17 @@
       }
     }
     &__add-favourites{
+      position: absolute;
+      top: 0;
+      left: 0;
       display: flex;
       align-content: center;
       align-items: center;
       justify-content: center;
       height: 100%;
       width: 44px;
-      background: $color1;
+      background: #842990;
+      border-radius: 50%;
       border: none;
       cursor: pointer;
       input{
@@ -304,27 +311,27 @@
     }
 
     &.s3d-infoBox-hover{
-      pointer-events: painted;
-      .s3d-infoBox{
-        &__hover{
-          transform: translateY(0);
-        }
-        &__image{
-          transform: translateY(0);
-        }
-      }
+      opacity: 1;
+      visibility: visible;
     }
     &.s3d-infoBox-active{
+      opacity: 1;
+      visibility: visible;
       pointer-events: painted;
       .s3d-infoBox{
-        &__table{
-          height: 12em;
+        &__close{
+          pointer-events: painted;
+          visibility: visible;
+          opacity: 1;
         }
         &__image{
-          transform: translateY(0);
+          visibility: visible;
+          opacity: 1;
         }
         &__buttons{
-          transform: translateY(0);
+          display: flex;
+          visibility: visible;
+          opacity: 1;
         }
       }
     }

@@ -38,6 +38,9 @@ function init() {
 		apart: {
 			id: '.js-s3d__slideModule',
 		},
+		plannings: {
+			id: '.js-s3d__slideModule',
+		},
 	}
 
 	let app

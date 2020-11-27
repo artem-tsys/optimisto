@@ -9,6 +9,7 @@ class Plannings {
 	}
 
 	init() {
+		console.log('plannings init', this)
 		this.createList(this.list, this.wrap)
 		$('.js-s3d__pl__list').on('click', '.js-s3d-pl__link', event => {
 			console.log(($(event.currentTarget).closest('.s3d-pl__plane').data('id')))
@@ -17,6 +18,10 @@ class Plannings {
 			this.activeFlat.value = id
 			this.inApart(id, 'apart', id)
 		})
+	}
+
+	update() {
+		console.log('plannings update')
 	}
 
 	createList(data, wrap) {

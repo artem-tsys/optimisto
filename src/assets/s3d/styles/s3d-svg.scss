@@ -34,26 +34,24 @@
       }
     }
 
-    //.polygon,
-    //.s3d-svg__house {
-    //  fill: #255763;
-    //  opacity: 0;
-    //  cursor: pointer;
-    //  &:hover {
-    //    fill: $wc;
-    //    opacity: .5;
-    //  }
-    //  &.active-selected {
-    //    fill: #255763;
-    //    opacity: .7;
-    //  }
-    //  &.active-flat {
-    //    fill: #EB8271;
-    //    opacity: .7 ;
-    //  }
-    //
-    //
-    //}
+    .polygon,
+    .s3d-svg__house {
+      fill: #255763;
+      opacity: 0;
+      cursor: pointer;
+      &:hover {
+        fill: $wc;
+        opacity: .5;
+      }
+      &.active-selected {
+        fill: #255763;
+        opacity: .7;
+      }
+      &.active-flat {
+        fill: #EB8271;
+        opacity: .7 ;
+      }
+    }
   }
 
   &__svg-container {

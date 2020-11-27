@@ -17,7 +17,6 @@ class App {
 			},
 			hide: block => {
 				if (block) this.scrollToBlock(600)(block)
-
 				setTimeout(() => {
 					$('.fs-preloader').removeClass('preloader-active')
 					$('.fs-preloader-bg').css({ filter: 'none' })
@@ -58,13 +57,13 @@ class App {
 				} else {
 					deg = this.compass.defaultDeg
 				}
-				$('.s3d-filter__compass svg').css('transform', `rotate(-${deg}deg)`)
+				$('.s3d-controller__compass svg').css('transform', `rotate(-${deg}deg)`)
 			},
 			setApart: () => {
-				$('.s3d-filter__compass svg').css('transform', `rotate(${this.compass.degApart}deg)`)
+				$('.s3d-controller__compass svg').css('transform', `rotate(${this.compass.degApart}deg)`)
 			},
 			setFloor: () => {
-				$('.s3d-filter__compass svg').css('transform', `rotate(${this.compass.degFloor}deg)`)
+				$('.s3d-controller__compass svg').css('transform', `rotate(${this.compass.degFloor}deg)`)
 			},
 			save: deg => {
 				this.compass.lastDeg = deg
@@ -131,7 +130,6 @@ class App {
 			if (type && type !== this.activeSection) {
 				this.history.update(type)
 				this.selectSlider(e, type)
-				// this.scrollBlock(e, type)
 			}
 		})
 
@@ -292,8 +290,6 @@ class App {
 		// const houseNum = e.currentTarget.dataset.build || e.currentTarget.value
 		// this.loader.show()
 		this.animateBlock('translate', 'down')
-		console.log('selectSlider(id, type, numSlide)')
-		console.log(id, type, numSlide)
 		switch (type) {
 		case 'complex':
 			// this.selectSliderType(e, 'house', Slider)
@@ -315,6 +311,10 @@ class App {
 			// $('.fs-preloader').addClass('s3d-preloader__full')
 			this.selectSliderType(id, type, Apartments)
 			break
+		case 'plannings':
+			// $('.fs-preloader').addClass('s3d-preloader__full')
+			this.scrollBlock({}, type)
+			break
 		default:
 			break
 		}
@@ -325,27 +325,6 @@ class App {
 		console.log('selectSliderType(id, type, Fn, idApart)')
 		const config = this.config[type]
 		this.history.update(type)
-		// console.log('selectSliderType(e, type, Fn)', type)
-		// if (type === 'complex') {
-		// config = this.config[type]
-		// config = this.config.house.config[this.activeHouse]
-		// config = this.config.house.config[houseNum];
-		// config.activeHouse = houseNum;
-		// $('.js-s3d-select__number-house').html(this.activeHouse)
-		// } else if (type === 'courtyard') {
-		// config = this.config[type]
-		// config.idCopmlex = 'courtyard'
-		// config.type = 'courtyard'
-		// config.click = this.selectSlider.bind(this)
-		// } else {
-		// config = this.config[type]
-		// config.activeHouse = houseNum;
-		// if( e.currentTarget.dataset.house || e.target.dataset.build) config.house = e.currentTarget.dataset.house || e.currentTarget.dataset.build;
-		// if (e.currentTarget.dataset.section) config.section = e.currentTarget.dataset.section
-		// if (e.currentTarget.dataset.floor) config.floor = e.currentTarget.dataset.floor
-		// if(e.currentTarget.dataset.id) config.flat = e.currentTarget.dataset.id;
-		// if (id) config.flat = id
-		// }
 		if (id) config.flat = id
 		config.idCopmlex = type
 		config.type = type
@@ -397,9 +376,6 @@ class App {
 			$(`.js-s3d-select[data-type = ${block}]`).addClass('active')
 			$('.js-s3d-controller')[0].dataset.type = block
 			setTimeout(() => {
-				$(`.js-s3d-select[data-type = ${this.activeSection}]`).removeClass('active')
-				$(`.js-s3d-select[data-type =${block}]`).addClass('active')
-
 				this.complex.hiddenInfo()
 				this.complex.hiddenInfoFloor()
 				this.compass.save(this.compass.current)
@@ -412,40 +388,14 @@ class App {
 					break
 				case 'plannings':
 					$('.js-s3d-filter').removeClass('active-filter')
-					this.filter.show()
+					if (document.documentElement.clientWidth > 768) {
+						this.filter.show()
+					}
 					break
 				default:
 					$('.js-s3d-filter').addClass('active-filter')
 					this.compass.set(this.compass.lastDeg)
 				}
-				// case 'apart':
-				// 	this.complex.hiddenInfo()
-				// 	this.complex.hiddenInfoFloor()
-				// 	this.compass.save(this.compass.current)
-				// 	this.compass.setApart()
-				// 	break
-				// case 'floor':
-				// 	this.complex.hiddenInfo()
-				// 	this.complex.hiddenInfoFloor()
-				// 	this.compass.save(this.compass.current)
-				// 	this.compass.setFloor()
-				// 	break
-				// case 'plannings':
-				// 	// $('.js-s3d-filter').addClass('active-filter')
-				// 	$('.js-s3d-filter').removeClass('active-filter')
-				// 	this.filter.show()
-				// 	this.complex.hiddenInfo()
-				// 	this.complex.hiddenInfoFloor()
-				// 	this.compass.save(this.compass.current)
-				// 	break
-				// default:
-				// 	$('.js-s3d-filter').addClass('active-filter')
-				// 	// $('.js-s3d-filter').removeClass('active-filter')
-				// 	this.complex.showInfoFloor()
-				// 	this.compass.set(this.compass.lastDeg)
-				// }
-
-				// this.filterButtonShowHide(block);
 				this.sectionName.forEach(name => {
 					if (name === block) {
 						this.activeSection = name

@@ -208,7 +208,8 @@ class Slider {
 
 	update(config) {
 		this.setConfig(config)
-		this.updateImage()
+		// this.updateImage()
+		this.loader.hide(this.type)
 	}
 
 	// обновить картинки в канвасе
@@ -229,10 +230,9 @@ class Slider {
 		img.src = `${this.imageUrl + index}.jpg`
 		img.dataset.id = index
 		img.onload = function load() {
-			console.log('first load', index)
 			self.images[index] = this
-			// let deg = self.startDegCompass * self.activeElem + (self.startDegCompass * 57);
-			// $('.s3d-filter__compass svg').css('transform','rotate('+ deg +'deg)');
+			const deg = (self.startDegCompass * self.activeElem) + (self.startDegCompass * 57)
+			$('.s3d-controller__compass svg').css('transform', `rotate(${deg}deg)`)
 			self.compass.save(index)
 			self.ctx.drawImage(this, 0, 0, self.width, self.height)
 			self.loader.hide(self.type)
@@ -262,7 +262,7 @@ class Slider {
 				self.ctx.drawImage(self.images[self.activeElem], 0, 0, self.width, self.height)
 				// setTimeout(() => {
 				self.unActive()
-				self.loader.hide(self.type)
+				// self.loader.hide(self.type)
 				// }, 10)
 				self.rotate = true
 				return index
@@ -271,7 +271,7 @@ class Slider {
 		}
 
 		img.onerror = function (e) {
-			console.log('error')
+			// console.log('error')
 			// self.sendResponsiveError(this, self)
 			if (type === 'error') {
 				self.sendResponsiveError(this, self)
@@ -430,7 +430,7 @@ class Slider {
 		this.infoBox.find('.js-s3d-infoBox__type')[0].innerHTML = `${e.type || ''}`
 		this.infoBox.find('.js-s3d-infoBox__table-area')[0].innerHTML = `${e['all_room'] || ''}`
 		this.infoBox.find('.js-s3d-infoBox__image')[0].src = `${e['img_small'] || ''}`
-		this.infoBox.find('.js-s3d-infoBox__hover__text')[0].innerHTML = `${e.number || ''}`
+		// this.infoBox.find('.js-s3d-infoBox__hover__text')[0].innerHTML = `${e.number || ''}`
 		this.infoBox.find('.js-s3d-add__favourites input').prop('checked', e.favourite || false)
 		// this.infoBox.find('.js-s3d-infoBox__floor')[0].style.display = ''
 		// } else {
