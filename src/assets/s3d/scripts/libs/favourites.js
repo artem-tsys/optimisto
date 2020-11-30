@@ -3,6 +3,8 @@ class Favourite {
 		this.listObj = conf.data
 		this.list = conf.list
 		this.wrap = conf.wrap
+		this.click = conf.click
+		this.activeFlat = conf.activeFlat
 
 		$('.js-s3d__slideModule').on('click', '.js-s3d__favourites', () => {
 			this.createMarkup()
@@ -110,6 +112,15 @@ class Favourite {
 		$(this.wrap).append(
 			favourites.map(el => this.createElemHtml(this.listObj[el]))
 		)
+
+		$('.js-s3d__fv').on('click', '.js-s3d-fv__element', event => {
+			if (event.target.classList.contains('js-s3d-fv__remove')) return
+			this.activeFlat.value = +event.currentTarget.dataset.id
+			this.click(+event.currentTarget.dataset.id, 'apart')
+			setTimeout(() => {
+				$('.js-s3d__fv').removeClass('s3d__active')
+			}, 300)
+		})
 	}
 
 	createElemHtml(el) {
@@ -135,5 +146,6 @@ class Favourite {
 
 	updateAmount(value) {
 		$('.js-s3d-favourites-amount').html(value)
+		$('.js-s3d-favourites').attr('count', value)
 	}
 }

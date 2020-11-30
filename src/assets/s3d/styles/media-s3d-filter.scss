@@ -1,0 +1,238 @@
+.s3d-filter__result-button,
+.s3d-filter__mobile-delimiter {
+    display: none;
+}
+.s3d-filter-wrap.plannings-filter .s3d-filter__complex-img {
+    display: none;
+}
+@media screen and (max-width:768px)  and (min-width:576px) {
+    .s3d-filter {
+        padding: 0 15px ;
+    }
+    .s3d-filter__area, .s3d-filter__living-space, .s3d-filter__buttons, .s3d-filter__floor {
+        width: 100%;
+    }
+    .s3d-filter-select__list {
+        flex-wrap: wrap;
+    }
+    .s3d-filter-select__list>label{
+        order: 2;
+    }
+    .s3d-filter-select__list>span{
+        order: 1;
+    }
+    .s3d-filter .irs--flat {
+        margin: 0;
+        margin-bottom: 10px;
+    }
+    .s3d-filter__complex-img {
+        display: none;
+    }
+    //3d genplan filter 
+    .plannings-filter .s3d-filter {
+        padding:20px 15px 0;
+    }
+    .plannings-filter .s3d-filter__table {
+        padding: 0 0 15px 25px;
+        margin: 0 15px 0 0;
+    }
+    .plannings-filter .s3d-filter-select__list {
+        width: 100%;
+        margin-top: 20px;
+    }
+    .plannings-filter .s3d-filter .irs--flat {
+        margin-bottom: 15px;
+    }
+}
+@media screen and (max-width:575px) {
+    .s3d-filter-wrap .s3d-filter__complex-img {
+        display: none;
+    }
+    .s3d-filter-wrap.plannings-filter .s3d-filter__complex-img {
+        display: none;
+    }
+    .s3d-filter-wrap {
+        background-color: var(--other-gray);
+        .s3d-filter__result-button {
+            display: flex;
+            order: 3;
+            margin-top: 20px;
+            line-height: 44px;
+            margin-bottom: 15px;
+        }
+    }
+    .s3d-filter__result-button {
+        background-color: var(--blue);
+        width: 220px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--white);
+        text-transform: uppercase;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .plannings-filter,
+    .s3d-filter-wrap:not(.plannings-filter) {
+        width: 100%;
+        --bottom-block-height: 67px;
+        overflow: scroll;
+        .s3d-filter__close {
+            // display: none;
+            display: flex;
+            top: 1.6em;
+            right: 30px;
+            width: 13px;
+            height: 13px;
+            background: transparent;
+            font-size: 28px;
+            span {
+                background: var(--gray);
+                width: 100%;
+            }
+        }
+        .s3d-filter {
+            padding-left: 15px;
+            padding-right: 15px;
+            height: auto;
+            overflow: visible;
+            &__title {
+                font-size: 28px;
+                line-height: 38px;
+                margin-bottom: 10px;
+            }
+            .irs--flat {
+                margin-right: 0;
+                margin-left: 0;
+                margin: 0 0 12px 0;
+            }
+            &-select__title {
+                // margin-bottom: 0;
+            }
+            &-select__title label {
+                margin-bottom: 0;
+            }
+        }
+        .s3d-filter-select__list label {
+            margin-top: 0;
+        }
+        .s3d-filter-select__title {
+            margin-bottom: 5px;
+        }
+        .s3d-filter__table {
+            display: none;
+        }
+        .s3d-filter__amount-flat {
+            padding: 15px 0 10px 15px;
+            margin: 0;
+            background: var(--other-gray);
+            width: 100%;
+        }
+        .s3d__favourites {
+            display: none;
+        }
+        .s3d-filter__mobile-delimiter {
+            width: 100%;
+            height: 1px;
+            background: var(--very-gray);
+            display: block;
+        }
+    }
+    .s3d-filter {
+        &__area,
+        &__living-space,
+        &__buttons,
+        &__floor {
+            padding-left: 0;
+            padding-right: 0;
+        }
+        &__rooms {
+            height: var(--bottom-block-height);
+        }
+        &__button--reset {
+            font-size: 10px;
+            line-height: 24px;
+            height: var(--bottom-block-height);
+            align-items: flex-end;
+            padding-bottom: 5px;
+        }
+        &__button--reset-icon {
+            margin-right: 7px;
+            box-shadow: 0px 4px 20px rgba(28, 73, 84, 0.15);
+        }
+        &__house--label,
+        &__rooms--label {
+            margin-right: 7px;
+            margin-bottom: 0;
+            margin-left: 0;
+        }
+    }
+    .s3d-filter-select__list {
+        /*Высота цифры подсказки*/
+        padding-top: calc(15px);
+        flex-wrap: wrap;
+        label {
+            order: 1;
+        }
+        input {
+            order: 2;
+        }
+    }
+    .s3d-filter__rooms--label {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@media screen and (max-width:375px) {
+    .plannings-filter .s3d-filter__title {
+        font-size: 24px;
+    }
+}
+
+
+/*Фильтр не на генплане*/
+
+@media screen and (max-width:575px) {
+    .s3d-filter-wrap:not(.plannings-filter) {
+        padding-top: 50px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        transition: .3s ease-out;
+        &:not(.active) {
+            transform: translateX(-100vw);
+        }
+        .s3d-filter__rooms {
+            margin-bottom: 0;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .s3d-filter__amount-flat {
+            display: flex;
+        }
+        .s3d-filter__result-button {
+            margin-top: 10px;
+        }
+    }
+}
+
+
+/*Фильтр не на генплане END*/
+
+
+//HOVERS 
+@media screen and (min-width:769px) {
+    .s3d-pl__favourites {
+        transition: color .3s;
+        cursor: pointer;
+
+    }
+    .s3d-pl__favourites:hover {
+        color: var(--blue);
+    }
+    .s3d-filter__button--reset:hover {
+        color: var(--blue);
+    }
+}

@@ -1,0 +1,80 @@
+* {
+    --white: #FFFFFF;
+    --gray: #DDD9D3;
+    --orange: #EB8271;
+    --black: #221F20;
+    --very-gray: #99918A;
+    --blue: #1C4954;
+    --other-gray: #F2F2F2;
+}
+.s3d-select {
+    background-color: var(--orange);
+    color: var(--white);
+}
+@media screen and (max-width:768px)  and (min-width:576px){
+    .s3d-title {
+        display: none;
+    }
+
+}
+@media screen and (max-width:575px) {
+    .s3d__wrap {
+        padding-bottom: 50px;
+    }
+    .s3d__button {
+        width: 36px;
+        height: 36px;
+    }
+    .s3d__button svg {
+        width: 7px;
+        height: 5px;
+    }
+    .s3d__button-left {
+        left: 14px;
+    }
+    .s3d__button-right {
+        right: 14px;
+    }
+    .s3d-infoBox__type {
+        right: 0;
+        left: auto;
+    }
+    .s3d-infoBox__close {
+        right: auto;
+        left: 10px;
+        top: 10px;
+        width: 13px;
+        height: 13px;
+        &:before,
+        &:after {
+            background: var(--gray);
+        }
+    }
+    .s3d-pl__mouse {
+        display: none;
+    }
+}
+
+//HOVERS
+@media screen and (min-width:769px) {
+    .s3d-infoBox__link {
+        transition: box-shadow .3s ease-out;
+    }
+    .s3d-infoBox__link:hover {
+        box-shadow: 0 4px 15px rgba(36, 22, 19, 0.3);
+    } 
+    .irs--flat .irs-handle i {
+        transition: .3s ease-out;
+    }
+    .irs--flat .irs-handle:hover {
+
+        cursor: pointer;
+    }
+    .irs--flat .irs-handle.state_hover > i:first-child, .irs--flat .irs-handle:hover > i:first-child {
+        background-color: #255763;
+    }
+    .s3d__button:hover {
+        box-shadow: none;
+    }
+    
+}

@@ -7,11 +7,11 @@ class History {
 	}
 
 	init() {
-		this.pageLoad()
-		this.history.push('complex')
-		window.onpopstate = () => {
-			this.onPopstate()
-		}
+		// this.pageLoad()
+		// this.history.push('complex')
+		// window.onpopstate = () => {
+		// 	this.onPopstate()
+		// }
 	}
 
 	pageLoad() {
@@ -49,6 +49,6 @@ class History {
 	}
 
 	update(name) {
-		this.history.push(name)
+		// this.history.push(name)
 	}
 }

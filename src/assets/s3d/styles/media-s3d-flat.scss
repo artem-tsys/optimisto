@@ -1,0 +1,159 @@
+
+
+@media screen and (min-width:575px) and (max-width:768px) {
+    .s3d-flat {
+        padding: 100px 0 0 15px;
+
+        grid-template-columns: auto 3fr 4fr 3fr;
+        grid-template-rows: auto auto 1fr 0.5fr auto auto;
+        grid-template-areas: 'back mini . favourite'
+            'back mini img img'
+            'info info img img'
+            'info info plane plane'
+            'info info links links'
+            'tel tel links links';
+        
+    }
+    .s3d-flat__links {
+        column-count: 1;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    } 
+    
+    .s3d-flat__list {
+        padding-left: 0;
+    }
+    .s3d-flat__table {
+        margin: 30px 0 30px;
+    }
+}
+@media screen and (max-width:575px) {
+    .s3d-flat {
+        display: flex;
+        flex-wrap: wrap;
+        overflow: scroll;
+        max-height: 100%;
+        width: 100vw;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 50px;
+        --table-el-height: 42px;
+        &__image {
+            order: 2;
+            width: 100%;
+            margin-top: 25px;
+            margin-bottom: 35px;
+        }
+        &__mini-info {
+            width: 100%;
+            order: 3;
+        }
+        &__table {
+            order: 4;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0px 4px 20px rgba(12, 13, 13, 0.2);
+            width: 100%;
+            padding-left: 18px;
+            padding-right: 10px;
+            padding-top: 35px;
+            padding-bottom: 35px;
+            &__title {
+                font-size: 28px;
+            }
+        }
+        &__floor {
+            order: 5;
+        }
+        &__links {
+            width: calc(100% + 30px);
+            margin-left: -15px;
+            margin-right: -15px;
+            order: 6;
+            display: flex;
+            flex-wrap: wrap;
+            &>* {
+                width: 50%;
+                white-space: nowrap;
+            }
+            a,
+            button,
+            .s3d-flat__like {
+                margin-left: 0;
+                font-size: 12px;
+                margin-right: 0;
+            }
+            img {
+                margin-right: 6px;
+                max-width: 22px;
+            }
+        }
+        &__back {
+            width: 36px;
+            height: 36px;
+        }
+        &__list {
+            padding-left: 0px;
+            max-height: calc(var(--table-el-height) * 6);
+            overflow: scroll;
+        }
+        &__el {
+            height: var(--table-el-height);
+            margin-right: 25px;
+            &__value sub {
+                font-size: 0.5em;
+            }
+        }
+        &__floor {
+            height: auto;
+            margin-top: 40px;
+            margin-bottom: 50px;
+        }
+        .s3d-mini-info {
+            width: calc(100% / 3);
+            width: 100%;
+            &__amount {
+                font-size: 28px;
+            }
+        }
+    }
+}
+
+
+//hovers 
+
+
+@media screen and (min-width:769px){
+    .s3d-flat__back {
+        transition: background-color .3s;
+    }
+    .s3d-flat__back:hover {
+        background-color :#255763;
+    }
+    .s3d-flat__links .s3d-flat__like,
+    .s3d-flat__links a, .s3d-flat__links button
+    {
+        text-decoration: none;
+        text-decoration-line: none;
+    }
+    .s3d-flat__links>* span {
+        position: relative;
+    }
+    .s3d-flat__links>* span:before {
+       content: '';
+       height: 1px;
+       position: absolute;
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        background-color: #fff;
+        transform-origin: left;
+    }
+    .s3d-flat__links>*:hover span:before {
+        animation: x-scale .3s 1 ease-out;
+    }
+}
+@keyframes x-scale {
+    from{ transform: scaleX(0);}
+    to{transform: scaleX(1);}
+}

@@ -21,7 +21,7 @@ class App {
 					$('.fs-preloader').removeClass('preloader-active')
 					$('.fs-preloader-bg').css({ filter: 'none' })
 					$('.first-loader').removeClass('first-loader')
-				}, 300)
+				}, 200)
 			},
 		}
 		this.configProject = {}
@@ -41,6 +41,7 @@ class App {
 		this.selectSlider = this.selectSlider.bind(this)
 		this.unActive = this.unActive.bind(this)
 		this.addBlur = this.addBlur.bind(this)
+		this.changeBlockIndex = this.changeBlockIndex.bind(this)
 		// this.animateBlock = this.animateBlock.bind(this);
 		this.ActiveHouse = {
 			get: () => this.activeHouse,
@@ -98,6 +99,7 @@ class App {
 		config.compass = this.compass
 		config.addBlur = this.addBlur
 		config.unActive = this.unActive
+		config.changeBlockIndex = this.changeBlockIndex
 
 		this.createWrap(config, 'canvas')
 		this.complex = new Slider(config)
@@ -133,8 +135,8 @@ class App {
 			}
 		})
 
-		const helper = new Helper()
-		helper.init()
+		// const helper = new Helper()
+		// helper.init()
 
 		// $('.js-s3d-controller__showFilter').on('click', () => {
 		// 	$('.js-s3d-controller__showFilter--input').prop('checked',
@@ -276,6 +278,8 @@ class App {
 			wrap: '.js-s3d__fv tbody',
 			data: this.flatListObj,
 			list: this.flatList,
+			click: this.selectSlider,
+			activeFlat: this.activeFlat,
 		})
 		// $('.s3d-pl__filter').append($('.s3d-filter'))
 	}
@@ -289,7 +293,7 @@ class App {
 	selectSlider(id, type, numSlide) {
 		// const houseNum = e.currentTarget.dataset.build || e.currentTarget.value
 		// this.loader.show()
-		this.animateBlock('translate', 'down')
+		// this.animateBlock('translate', 'down')
 		switch (type) {
 		case 'complex':
 			// this.selectSliderType(e, 'house', Slider)
@@ -316,6 +320,7 @@ class App {
 			this.scrollBlock({}, type)
 			break
 		default:
+			this.animateBlock('translate', 'down')
 			break
 		}
 		this.resize()
@@ -324,7 +329,7 @@ class App {
 	selectSliderType(id, type, Fn, idApart) {
 		console.log('selectSliderType(id, type, Fn, idApart)')
 		const config = this.config[type]
-		this.history.update(type)
+		// this.history.update(type)
 		if (id) config.flat = id
 		config.idCopmlex = type
 		config.type = type
@@ -340,16 +345,21 @@ class App {
 		config.scrollBlock = this.scrollBlock.bind(this)
 		config.getFavourites = this.favourites.getFavourites
 		config.getFlatObj = this.getFlatObj.bind(this)
+		config.changeBlockIndex = this.changeBlockIndex
 
 		if ($(`#js-s3d__${type}`).length > 0) {
+			this.animateBlock('translate', 'down')
 			this[type].update(config)
 			if (idApart) {
 				this[type].toSlideNum(idApart)
 			}
 			// this.activeSectionList.push(config.idCopmlex);
 		} else {
-			console.log('374 else')
-			console.trace()
+			if (type === 'courtyard' || type === 'complex') {
+				this.loader.show()
+			} else {
+				this.animateBlock('translate', 'down')
+			}
 			this.createWrap(config, type !== 'courtyard' ? 'div' : 'canvas')
 			this[type] = new Fn(config)
 			this[type].init(config)
@@ -372,9 +382,9 @@ class App {
 			this.filter.hidden()
 		}
 		return block => {
-			$(`.js-s3d-select[data-type = ${this.activeSection}]`).removeClass('active')
-			$(`.js-s3d-select[data-type = ${block}]`).addClass('active')
-			$('.js-s3d-controller')[0].dataset.type = block
+			// $('.js-s3d-select .active').removeClass('active')
+			// $(`.js-s3d-select[data-type = ${block}]`).addClass('active')
+
 			setTimeout(() => {
 				this.complex.hiddenInfo()
 				this.complex.hiddenInfoFloor()
@@ -396,16 +406,24 @@ class App {
 					$('.js-s3d-filter').addClass('active-filter')
 					this.compass.set(this.compass.lastDeg)
 				}
-				this.sectionName.forEach(name => {
-					if (name === block) {
-						this.activeSection = name
-						$(`.js-s3d__wrapper__${name}`).css('z-index', '100')
-					} else {
-						$(`.js-s3d__wrapper__${name}`).css('z-index', '')
-					}
-				})
+
+				this.changeBlockIndex(block)
 			}, time)
 		}
+	}
+
+	changeBlockIndex(block) {
+		$('.js-s3d-select.active').removeClass('active')
+		this.sectionName.forEach(name => {
+			if (name === block) {
+				this.activeSection = name
+				$(`.js-s3d__wrapper__${name}`).css('z-index', '100')
+				$(`.js-s3d-select[data-type = ${name}]`).addClass('active')
+				$('.js-s3d-controller')[0].dataset.type = name
+			} else {
+				$(`.js-s3d__wrapper__${name}`).css('z-index', '')
+			}
+		})
 	}
 
 	changeCurrentFloor(floor) {

@@ -37,7 +37,7 @@ class Filter {
 		$('.js-s3d-filter__button--reset').on('click', () => this.resetFilter())
 		$('.js-s3d-filter__close').on('click', () => this.hidden())
 		// $('.js-s3d-filter__button--apply').on('click', () => this.showSvgSelect());
-		$('.js-s3d-filter__select').on('click', 'input', () => this.showSvgSelect())
+		$('.js-s3d-filter__select').on('click', 'input', () => this.showSvgSelect(this.applyFilter(this.flatList)))
 		// $('.js-s3d-filter__button--apply').on('click', () => $('.js-s3d-filter').removeClass('active'))
 		// $('.js-s3d-filter__close').on('click', () => {
 		// 	$('.js-s3d-filter').removeClass('active')

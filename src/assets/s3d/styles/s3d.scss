@@ -247,10 +247,10 @@
     height: 42px;
     width: 50%;
     min-width: 128px;
-    color: rgba(132, 41, 144, 1);
+    color: #ffffff;
     border: none;
     align-items: center;
-    background: #E1D7E4;
+    background: rgba(132, 41, 144, 1);
     font-family: $default-font;
     font-size: 12px;
     font-weight: 600;
@@ -259,7 +259,7 @@
     padding: 10px;
     letter-spacing: 0.1em;
     text-transform: capitalize;
-    text-decoration: underline;
+    //text-decoration: underline;
     transition: all .4s linear;
     cursor: pointer;
     &:focus{
@@ -284,7 +284,7 @@
     }
 
     &:hover:not( .active ):not( [ disabled ] ) {
-      background: rgba(132, 41, 144, 1);
+      background: #842990;
       color: rgba(255,255,255,1)
     }
 
@@ -441,7 +441,7 @@
   height: auto;
   flex-direction: column;
   padding-top: 100vh;
-  background: #F4F4F4;
+  background: #F4F4F2;
   opacity: 0;
 
   &.translate-layer__up{
@@ -466,22 +466,22 @@
 
   &--2{
     height: 70vh;
-    background: #F1EEE8;
+    background: #EEE9F0;
   }
 
   &--3{
     height: 50vh;
-    background: #EEE6DA;
+    background: #E4D7E9;
   }
 
   &--4{
     height: 30vh;
-    background: #E0D8CB;
+    background: #CDBAD3;
   }
 
   &--5{
     height: 20vh;
-    background: #CEC8BF;
+    background: #B5A2BB;
   }
 }
 @keyframes arrow_animation {
@@ -738,15 +738,15 @@ body{
   display: block;
 }
 
-header{
-  height: 90px;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: rgba(158,158,158,0.5);
-  z-index: 5665656565;
-}
+//header{
+//  height: 90px;
+//  width: 100%;
+//  position: fixed;
+//  top: 0;
+//  left: 0;
+//  background: rgba(158,158,158,0.5);
+//  z-index: 5665656565;
+//}
 
 .unselectable {
   -webkit-touch-callout: none; /*iOS Safari*/
