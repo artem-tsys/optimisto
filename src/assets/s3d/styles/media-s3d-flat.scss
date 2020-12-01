@@ -2,30 +2,56 @@
 
 @media screen and (min-width:575px) and (max-width:768px) {
     .s3d-flat {
-        padding: 100px 0 0 15px;
+        padding: var(--header-height) 0 0 15px;
+        overflow-y: auto;
+        //grid-template-columns: auto 3fr 4fr 3fr;
+        //grid-template-rows: auto auto 1fr 0.5fr auto auto;
+        //grid-template-areas: 'back mini . favourite'
+        //    'back mini img img'
+        //    'info info img img'
+        //    'info info plane plane'
+        //    'info info links links'
+        //    'tel tel links links';
 
-        grid-template-columns: auto 3fr 4fr 3fr;
-        grid-template-rows: auto auto 1fr 0.5fr auto auto;
-        grid-template-areas: 'back mini . favourite'
-            'back mini img img'
-            'info info img img'
-            'info info plane plane'
-            'info info links links'
-            'tel tel links links';
-        
+        grid-template-columns: auto 1fr 1fr auto;
+        grid-template-rows: auto auto auto auto 60px;
+        grid-template-areas:
+        'back buttons buttons favourite'
+        'img img info info'
+        'view view info info'
+        'plane plane plane plane'
+        'links links links links';
+
+        .s3d-tell{
+            display: none;
+        }
+        &__buttons-view{
+            margin: auto 0 0 0;
+        }
     }
     .s3d-flat__links {
-        column-count: 1;
-        padding-top: 15px;
-        padding-bottom: 15px;
+        //column-count: 1;
+        padding: 0 20px;
+        a, button, label{
+            flex: 1 1 20%;
+        }
+        .s3d-flat__like{
+            flex: 0 1 20%;
+        }
     } 
     
     .s3d-flat__list {
+        max-height: calc(var(--table-el-height) * 6);
         padding-left: 0;
     }
     .s3d-flat__table {
         margin: 30px 0 30px;
     }
+    .s3d-flat__floor {
+        max-height: 50vh;
+        margin: 30px 0 0;
+    }
+
 }
 @media screen and (max-width:575px) {
     .s3d-flat {
@@ -44,22 +70,23 @@
             margin-top: 25px;
             margin-bottom: 35px;
         }
-        &__mini-info {
-            width: 100%;
-            order: 3;
-        }
+        //&__mini-info {
+            //width: 100%;
+            //order: 3;
+        //}
         &__table {
+            border-radius: 20px;
             order: 4;
             margin-top: 40px;
-            margin-bottom: 40px;
-            box-shadow: 0px 4px 20px rgba(12, 13, 13, 0.2);
+            margin-bottom: 0;
+            box-shadow: 0 4px 20px rgba(12, 13, 13, 0.2);
             width: 100%;
-            padding-left: 18px;
-            padding-right: 10px;
-            padding-top: 35px;
-            padding-bottom: 35px;
+            height: auto;
+            height: intrinsic;
+            padding: 30px 12px;
             &__title {
-                font-size: 28px;
+                font-size: 24px;
+                //line-height: 32px;
             }
         }
         &__floor {
@@ -69,6 +96,7 @@
             width: calc(100% + 30px);
             margin-left: -15px;
             margin-right: -15px;
+            padding: 10px;
             order: 6;
             display: flex;
             flex-wrap: wrap;
@@ -91,15 +119,25 @@
         &__back {
             width: 36px;
             height: 36px;
+            &-wrap{
+                margin: 0 0 10px;
+            }
+
         }
+
+        &__favourites{
+            margin: 0 0 10px auto;
+        }
+
         &__list {
-            padding-left: 0px;
-            max-height: calc(var(--table-el-height) * 6);
-            overflow: scroll;
+            padding-left: 0;
+            //max-height: calc(var(--table-el-height) * 6);
+            //overflow: scroll;
+            margin-top: 0;
         }
         &__el {
             height: var(--table-el-height);
-            margin-right: 25px;
+            margin-right: 15px;
             &__value sub {
                 font-size: 0.5em;
             }
@@ -109,11 +147,36 @@
             margin-top: 40px;
             margin-bottom: 50px;
         }
-        .s3d-mini-info {
-            width: calc(100% / 3);
+        &__buttons{
+            height: 38px;
             width: 100%;
+            margin-top: 15px;
+            order: 1;
+            &-view{
+                order: 3;
+                width: 100%;
+                max-width: 280px;
+                margin: 0 auto;
+            }
+        }
+        &__button{
+            flex: 1 1 33%;
+            span{
+                font-size: 10px;
+                line-height: 20px;
+                padding: 3px 7px;
+            }
+        }
+
+        .s3d-mini-info {
+            //width: calc(100% / 3);
+            //width: 100%;
+
+            padding: 5px;
             &__amount {
-                font-size: 28px;
+                height: 55px;
+                width: 55px;
+                font-size: 18px;
             }
         }
     }

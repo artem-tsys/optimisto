@@ -20,11 +20,13 @@
     margin-left: 140px;
   }
   &__close{
-    position: absolute;
-    top: 60px;
-    right: 30px;
+    //position: absolute;
+    //top: 60px;
+    //right: 30px;
+    position: relative;
     height: 30px;
     width: 30px;
+    margin-right: 35px;
     cursor: pointer;
     &:after,&:before{
       content: "";
@@ -51,6 +53,8 @@
   &__top{
     width: 100%;
     display: flex;
+    align-items: center;
+    align-content: center;
     justify-content: space-between;
   }
   &__bottom{
@@ -141,42 +145,42 @@
   &__image{
     max-height: 100px;
   }
-  &__favourites{
-    display: flex;
-    align-items: center;
-    font-family: $default-font;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 24px;
-    margin-right: 35px;
-    cursor: pointer;
-    &-icon{
-      position: relative;
-      width: initial;
-      height: 26px;
-      margin-left: 20px;
-    }
-    &-amount{
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -55%);
-
-      font-family: $default-font;
-      font-weight: 500;
-      font-size: 12px;
-      line-height: 1.5em;
-      color: #FFFFFF;
-      pointer-events: none;
-      cursor: pointer;
-    }
-    svg{
-      height: 26px;
-      width: 28px;
-      fill: $color1;
-      cursor: pointer;
-    }
-  }
+  //&__favourites{
+  //  display: flex;
+  //  align-items: center;
+  //  font-family: $default-font;
+  //  font-weight: 500;
+  //  font-size: 14px;
+  //  line-height: 24px;
+  //  margin-right: 35px;
+  //  cursor: pointer;
+  //  &-icon{
+  //    position: relative;
+  //    width: initial;
+  //    height: 26px;
+  //    margin-left: 20px;
+  //  }
+  //  &-amount{
+  //    position: absolute;
+  //    top: 50%;
+  //    left: 50%;
+  //    transform: translate(-50%, -55%);
+  //
+  //    font-family: $default-font;
+  //    font-weight: 500;
+  //    font-size: 12px;
+  //    line-height: 1.5em;
+  //    color: #FFFFFF;
+  //    pointer-events: none;
+  //    cursor: pointer;
+  //  }
+  //  svg{
+  //    height: 26px;
+  //    width: 28px;
+  //    fill: $color1;
+  //    cursor: pointer;
+  //  }
+  //}
   &__mouse{
     display: flex;
     align-items: center;

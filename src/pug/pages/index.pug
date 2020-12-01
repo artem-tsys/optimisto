@@ -34,9 +34,15 @@ block content
                             .s3d-tell__icon
                                 +svg('tell')
                     .s3d-controller__elem.js-s3d-controller__elem
-                        button(type="button" data-type="complex").s3d-select.js-s3d-select.active 3D генплан
-                        button(type="button" data-type="courtyard").s3d-select.js-s3d-select 3D двор
-                        button(type="button" data-type="plannings").s3d-select.js-s3d-select Планировки
+                        button(type="button" data-type="complex").s3d-select.js-s3d-select.active
+                            +svg('house')
+                            |3D генплан
+                        button(type="button" data-type="courtyard").s3d-select.js-s3d-select
+                            +svg('house')
+                            |3D двор
+                        button(type="button" data-type="plannings").s3d-select.js-s3d-select
+                            +svg('planings')
+                            |Планировки
                     .s3d-title  Генплан
                     .js-s3d-infoBox.s3d-infoBox
                         .s3d-infoBox__image
@@ -75,49 +81,57 @@ block content
                                 span.s3d-pl__amount-flat__num.js-s3d__amount-flat__num 25
                                 | из
                                 span.s3d-pl__amount-flat__num.js-s3d__amount-flat__num-all 456
-                            .s3d-pl__favourites.js-s3d-favorite__wrap.s3d-hidden
+                            .s3d-pl__favourites.js-s3d-favorite__wrap.s3d-hidden.js-s3d__favourites
                                 | Избранное
-                                .s3d-pl__favourites-icon.js-s3d__favourites
+                                .s3d-pl__favourites-icon
                                     svg
                                         use(xlink:href="#icon-favourites")
                                     span.s3d-pl__favourites-amount.js-s3d-favourites-amount 0
 
                             .s3d-pl__list.js-s3d__pl__list
-                        .s3d-pl__bottom
-
-                            .s3d-controller__elem.js-s3d-controller__elem
-                                button(type="button" data-type="complex").s3d-select 3D генплан
-                                button(type="button" data-type="courtyard").s3d-select 3D Двор
-                                button(type="button" data-type="plannings").s3d-select.active Планировки
-                            a(type="tel").s3d-tell.s3d-genplan
-                                .s3d-tell__text (067) 747-0151
-                                .s3d-tell__icon-wrap
-                                    .s3d-tell__icon
-                                        +svg('tell')
+                        //.s3d-pl__bottom
+                        //
+                        //    .s3d-controller__elem.js-s3d-controller__elem
+                        //        button(type="button" data-type="complex").s3d-select 3D генплан
+                        //        button(type="button" data-type="courtyard").s3d-select 3D Двор
+                        //        button(type="button" data-type="plannings").s3d-select.active Планировки
+                        //    a(type="tel").s3d-tell.s3d-genplan
+                        //        .s3d-tell__text (067) 747-0151
+                        //        .s3d-tell__icon-wrap
+                        //            .s3d-tell__icon
+                        //                +svg('tell')
 
                             //.s3d-pl__mouse
                             //    +svg('scroll')
                 //.js-s3d__wrapper__apart.s3d__wrap.s3d__wrapper__apart
                 .s3d-fv.js-s3d__fv
-                    .s3d-fv__close.js-s3d__fv__close
-                    .s3d-fv__top.js-s3d-favorite__wrap.s3d-hidden
+
+                    .s3d-fv__top.js-s3d-favorite__wrap.s3d-hidden.js-s3d__favourites
                         .s3d-fv__title Избранное
-                        .s3d-fv__favourites
-                            | Избранное
-                            .s3d-fv__favourites-icon.js-s3d__favourites
-                                svg
-                                    use(xlink:href="#icon-favourites")
-                                span.s3d-fv__favourites-amount.js-s3d-favourites-amount 0
+                        .s3d-fv__close.js-s3d__fv__close
+                    //    .s3d-fv__favourites
+                    //        | Избранное
+                    //        .s3d-fv__favourites-icon
+                    //            svg
+                    //                use(xlink:href="#icon-favourites")
+                    //            span.s3d-fv__favourites-amount.js-s3d-favourites-amount 0
                     .s3d-fv__table
                         table
                             tr
-                                th Вид
-                                th №
-                                th Тип
-                                th Комнат
-                                th Этаж
-                                th Площадь м2
-                                th Удалить
+                                th
+                                    span Вид
+                                th
+                                    span №
+                                th
+                                    span Тип
+                                th
+                                    span Комнат
+                                th
+                                    span Этаж
+                                th
+                                    span Площадь м2
+                                th
+                                    span Удалить
                     .s3d-fv__bottom
                         a(type="tel").s3d-tell.s3d-genplan
                             .s3d-tell__text (067) 747-0151
@@ -192,8 +206,7 @@ block content
                                     th Площадь м2
                                     th В избранное
                             tbody
-                    .s3d-filter__bg
-                        img(src='/wp-content/themes/optimisto/assets/s3d/images/house.png')
+                    img( class='s3d-filter__bg' src='/wp-content/themes/optimisto/assets/s3d/images/house.png')
                     .s3d-filter__amount-flat
                         | Знайдено
                         span.s3d-filter__amount-flat__num.js-s3d__amount-flat__num 25

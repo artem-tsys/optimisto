@@ -17,9 +17,6 @@
     .s3d-fv__mouse {
         display: none;
     }
-    .s3d-pl__favourites-amount {
-        display: none;
-    }
 }
 
 @media screen and (max-width:575px){
@@ -29,9 +26,8 @@
         padding-left: 15px;
         padding-right: 15px;
         &__table {
-            margin: 0;
-            padding-left: 0;
-            margin-top: 22px;
+            padding: 0;
+            margin: 22px 0 0 0;
             table {
                 width: 100%;
             }
@@ -75,6 +71,7 @@
         &__close {
             width: 13px;
             height: 13px;
+            margin: 0;
             &:before,
             &:after {
                 background: #99918A;

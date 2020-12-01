@@ -1,11 +1,12 @@
 .s3d {
 
   &-controller {
+    display: grid;
     z-index: 102;
     position: absolute;
     top: 0;
     left: 0;
-    display: none;
+    //display: none;
     //display: grid;
     grid-gap: 30px;
     padding: 0 0 30px;
@@ -137,9 +138,19 @@
     }
 
     &[data-type="complex"],&[data-type="courtyard"]{
-      display: grid;
+      //display: grid;
       .s3d-tell__text{
         color: #ffffff;
+      }
+    }
+    &[data-type="plannings"],&[data-type="apart"]{
+      .s3d-controller{
+        &__openFilter{
+          display: none;
+        }
+        &__compass{
+          display: none;
+        }
       }
     }
   }

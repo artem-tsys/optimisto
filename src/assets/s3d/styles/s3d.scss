@@ -8,6 +8,11 @@
   }
 }
 
+$--header-height: 110px;
+@media screen and (min-width:575px){
+  $--header-height: 50px;
+}
+
 .disabled{
   visibility: hidden;
   display: none;
@@ -298,7 +303,15 @@
         stroke: #f3f1f9;
       }
     }
-
+    svg{
+      margin-bottom: 4px;
+      display: none;
+      width: 19px;
+      height: 17px;
+      fill: white;
+      //fill: transparent;
+      stroke: $color2;
+    }
 
   }
 
@@ -388,7 +401,7 @@
 
     &__complex{
       justify-content: center;
-      align-items: center;
+      align-items: stretch;
     }
 
     //&__apart{
@@ -783,7 +796,7 @@ body{
 @media screen and ( max-width : 768px ){
 
   .s3d__slideModule{
-    height: calc(100vh - 59px);
+    //height: calc(100vh - 59px);
   }
 
 }

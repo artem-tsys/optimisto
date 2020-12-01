@@ -49,7 +49,7 @@ class Slider {
 		this.rotate = true
 		this.animates = () => {}
 		this.ActiveHouse = data.ActiveHouse
-		this.resize = this.resize.bind(this)
+		// this.resize = this.resize.bind(this)
 		this.init = this.init.bind(this)
 		this.click = data.click
 		this.getFlatObj = data.getFlatObj
@@ -160,6 +160,11 @@ class Slider {
 		})
 		this.centerSlider(this.wrapper[0])
 		$('.js-s3d-blink').on('click', () => this.flatBlink())
+
+		$(window).resize(() => {
+			this.resizeCanvas()
+		})
+
 		// createMarkup('div' , '#js-s3d__wrapper', {
 		//   class:'s3d__helper js-s3d__helper',
 		//   content: '<img src="/wp-content/themes/optimisto/assets/s3d/images/icon/help-arrow.svg" class="s3d-arrow"/><img src="/wp-content/themes/optimisto/assets/s3d/images/icon/help-logo.svg" class="s3d__helper-logo"/> <div class="s3d__helper__text">Оберіть </br>будинок</div>'
@@ -208,8 +213,8 @@ class Slider {
 	}
 
 	centerSlider(elem) {
-		const scroll = (elem.scrollWidth / 2) - (document.documentElement.offsetWidth * 2)
-		$('.s3d__wrap').scrollLeft(scroll)
+		const scroll = (elem.scrollWidth - document.documentElement.offsetWidth) / 2
+		this.wrapper.scrollLeft(scroll)
 	}
 
 	update(config) {
@@ -323,18 +328,21 @@ class Slider {
 	resizeCanvas() {
 		const factorW = this.width / this.height
 		const factorH = this.height / this.width
-		const canvasWrapp = $('.js-s3d__wrapper__complex')
-		const canvas = $('#js-s3d__complex')
-		const diffW = this.width / canvasWrapp.width()
-		const diffH = this.height / canvasWrapp.height()
+		const canvasWrapp = this.wrapper
+		const canvas = $(`#js-s3d__${this.type}`)
+		const width = canvasWrapp.width()
+		const height = canvasWrapp.height()
+		const diffW = this.width / width
+		const diffH = this.height / height
 
 		if (diffW < diffH) {
-			canvas.width(canvasWrapp.width())
-			canvas.height(canvasWrapp.width() * factorH)
+			canvas.width(width)
+			canvas.height(width * factorH)
 		} else {
-			canvas.height(canvasWrapp.height())
-			canvas.width(canvasWrapp.height() * factorW)
+			canvas.height(height)
+			canvas.width(height * factorW)
 		}
+		this.centerSlider(this.wrapper[0])
 	}
 
 	// записывает позиции мышки
@@ -347,14 +355,14 @@ class Slider {
 		// $(this.activeSvg).css({ opacity: '0' })
 	}
 
-	resize() {
-		this.height = this.wrapper.height()
-		this.width = this.wrapper.width()
-		this.ctx.canvas.width = this.width
-		this.ctx.canvas.height = this.height
-		this.ctx.drawImage(this.images[this.activeElem], 0, 0, this.width, this.height)
-		this.centerSlider(this.wrapper[0])
-	}
+	// resize() {
+	// 	this.height = this.wrapper.height()
+	// 	this.width = this.wrapper.width()
+	// 	this.ctx.canvas.width = this.width
+	// 	this.ctx.canvas.height = this.height
+	// 	this.ctx.drawImage(this.images[this.activeElem], 0, 0, this.width, this.height)
+	// 	this.centerSlider(this.wrapper[0])
+	// }
 
 	// инициализация svg слайдера
 	createSvg() {

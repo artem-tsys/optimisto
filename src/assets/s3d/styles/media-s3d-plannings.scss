@@ -10,13 +10,21 @@
 
 @media screen and ( max-width: 1023px) {
     .s3d {
-        &-pl {}
+        &-pl {
+            &__list {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
     }
 }
 
 @media screen and ( max-width: 767px) {
     .s3d {
-        &-pl {}
+        &-pl {
+            &__list {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
     }
 }
 
@@ -26,6 +34,15 @@
         &-pl {
             max-width: 100vw ;
             overflow: hidden;
+            &__right{
+                padding-right: 20px;
+            }
+            &__link{
+                padding: 0 10px 0 44px;
+            }
+            &__favourites{
+                margin-right: 0;
+            }
         }
         &-pl__list {
             grid-template-columns: 1fr 1fr ;
@@ -47,6 +64,9 @@
             width: 100%;
             overflow: scroll;
             overflow-x: hidden;
+            &__link{
+                padding: 0 10px 0 44px;
+            }
         }
         &-pl__list {
             max-height: none;
@@ -66,7 +86,8 @@
             display: none;
         }
         &-pl__favourites {
-            display: none;
+            margin: 0;
+            //display: none;
         }
     }
 }

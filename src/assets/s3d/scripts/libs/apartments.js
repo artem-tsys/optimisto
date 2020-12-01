@@ -218,38 +218,6 @@ class Apartments {
                   <div class="s3d-flat__el__name">Спальня:</div>
                   <div class="s3d-flat__el__value">12 м<sub>2</sub></div>
                     </li>
-                    <li class="s3d-flat__el">
-                      <div class="s3d-flat__el__name">Спальня:</div>
-                      <div class="s3d-flat__el__value">12 м<sub>2</sub></div>
-                    </li>
-                    <li class="s3d-flat__el">
-                      <div class="s3d-flat__el__name">Спальня:</div>
-                      <div class="s3d-flat__el__value">12 м<sub>2</sub></div>
-                    </li>
-                    <div class="s3d-flat__el">
-                      <div class="s3d-flat__el__name">Спальня:</div>
-                      <div class="s3d-flat__el__value">12 м<sub>2</sub></div>
-                    </div>
-                    <div class="s3d-flat__el">
-                      <div class="s3d-flat__el__name">Спальня:</div>
-                      <div class="s3d-flat__el__value">12 м<sub>2</sub></div>
-                    </div>
-                    <div class="s3d-flat__el">
-                      <div class="s3d-flat__el__name">Спальня:</div>
-                      <div class="s3d-flat__el__value">12 м<sub>2</sub></div>
-                    </div>
-                    <div class="s3d-flat__el">
-                      <div class="s3d-flat__el__name">Спальня:</div>
-                      <div class="s3d-flat__el__value">12 м<sub>2</sub></div>
-                    </div>
-                    <div class="s3d-flat__el">
-                      <div class="s3d-flat__el__name">Спальня:</div>
-                      <div class="s3d-flat__el__value">12 м<sub>2</sub></div>
-                    </div>
-                    <div class="s3d-flat__el">
-                      <div class="s3d-flat__el__name">Спальня:</div>
-                      <div class="s3d-flat__el__value">12 м<sub>2</sub></div>
-                    </div>
                   </ul>
                 </div>
                 <a class="s3d-flat__tell s3d-tell s3d-genplan" type="tel">

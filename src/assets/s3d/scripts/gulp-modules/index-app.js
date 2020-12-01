@@ -61,9 +61,9 @@ function init() {
 		app = new App(config)
 		app.init()
 
-		$(window).resize(() => {
-			app.resize()
-		})
+		// $(window).resize(() => {
+		// 	app.resize()
+		// })
 	})
 }
 

@@ -4,7 +4,7 @@
     height: 100vh;
   }
   &__wrapper__apart{
-    padding: 90px 0 0 0;
+    padding: var(--header-height) 0 0 0;
   }
   &-flat {
     height: 100%;
@@ -313,7 +313,7 @@
     &__button{
       display: inline-block;
       height: 100%;
-      min-width: 70px;
+      //min-width: 70px;
       flex: 1 0 50%;
       cursor: pointer;
       span{

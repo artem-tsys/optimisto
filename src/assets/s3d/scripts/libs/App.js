@@ -105,7 +105,7 @@ class App {
 		this.complex = new Slider(config)
 		this.complex.init()
 		$('.js-s3d__wrapper__complex').css('z-index', '100')
-
+		$('.js-s3d-controller').data('type', 'complex')
 		// $('.s3d-select__head').on('click', e => {
 		// 	const self = this
 		// 	const block = $(e.currentTarget).next()
@@ -398,7 +398,7 @@ class App {
 					break
 				case 'plannings':
 					$('.js-s3d-filter').removeClass('active-filter')
-					if (document.documentElement.clientWidth > 768) {
+					if (document.documentElement.clientWidth > 767) {
 						this.filter.show()
 					}
 					break
@@ -453,57 +453,7 @@ class App {
 		}, time || 700)
 	}
 
-	// helpsInfo(){
-	//     if(!window.localStorage.getItem('helps')) {
-	//         $('.js-first-info').css({'visibility' :'visible'});
-	//
-	//       $('.js-first-info__button').on('click', e => {
-	//         switch (e.target.dataset.type){
-	//           case 'next':
-	//             let step = $('.js-first-info-step.active').removeClass('active').data('step');
-	//             $(`.js-first-info-step[data-step="${step+1}"]`).addClass('active');
-	//             break;
-	//           case 'end':
-	//             $('.js-first-info-step.active').removeClass('active');
-	//             window.localStorage.setItem('helps',true);
-	//             $('.js-first-info').css({'visibility' : ''});
-	//             break;
-	//         }
-	//       })
-	//     }
-	// }
-
 	resize() {
-		// const doc = $('.js-s3d__slideModule')
-		// let height = doc.height();
-		// const width = doc.width();
-		// if(height >= width) {
-		// if(height >= width*0.85) {
-		// if(height >= width*0.75) {
-		//     height = height/2;
-		//     $('.js-s3d__wrapper__complex').css({'height':'50%'});
-		//     $('.js-s3d__helper').css({'visibility':'visible'});
-		// $('.js-s3d__wrap').css({'height':'50vh'});
-		// $('.js-s3d-filter').addClass('filter-small');
-		// $('.js-s3d-controller').addClass('s3d-controller-small');
-		// if(width/height - 16/9 > 0) {
-		//     $('.js-s3d__slideModule').addClass('s3d-active-vertical');
-		// } else {
-		//     $('.js-s3d__slideModule').removeClass('active');
-		// }
-
-		// } else {
-		// $('.js-s3d__wrap').css({'height':''});
-		$('.js-s3d__wrapper__complex').css({ height: '' })
-		// $('.js-s3d__helper').css({'visibility':'hidden'});
-		// $('.js-s3d-filter').removeClass('filter-small');
-		// $('.js-s3d-controller').removeClass('s3d-controller-small');
-		// if(width/height - 16/9 < 0) {
-		//     $('.js-s3d__slideModule').removeClass('s3d-active-vertical');
-		// } else {
-		//     $('.js-s3d__slideModule').addClass('active');
-		// }
-		// }
 		this.complex.resizeCanvas()
 	}
 }
