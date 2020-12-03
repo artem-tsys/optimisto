@@ -231,6 +231,7 @@ class Slider {
 	update(config) {
 		// this.setConfig(config)
 		this.loader.hide(this.type)
+		// this.setActiveSvg(this.ActiveHouse.get())
 	}
 
 	// обновить картинки в канвасе
@@ -399,9 +400,9 @@ class Slider {
 
 	updateSvgActive(wrap, current) {
 		$(this.activeSvg).css({ opacity: '' })
-		const clas = this.type === 'house' ? `.js-s3d__svg-container${this.ActiveHouse.get()} ` : '.js-s3d__svg-container__complex '
-		$(`${clas}.s3d__svg__active`).removeClass('s3d__svg__active')
-		$(`${clas}.${wrap}__${this[current]}`).addClass('s3d__svg__active')
+		const clas = this.type === 'house' ? `.js-s3d__svg-container${this.ActiveHouse.get()} ` : `.js-s3d__svg-container__${this.type}`
+		$(`${clas} .s3d__svg__active`).removeClass('s3d__svg__active')
+		$(`${clas} .${wrap}__${this[current]}`).addClass('s3d__svg__active')
 		this.currentSlide = this[current]
 	}
 
@@ -614,6 +615,7 @@ class Slider {
 			fn()
 			if (this.activeElem === this.nextSlide) {
 				this.cancelAnimateSlide()
+				console.log('repeatChangeSlide')
 				this.updateSvgActive(this.type, 'nextSlide')
 				this.activeSvg.css({ opacity: '' })
 				$('.s3d__svg-container').css({ opacity: 1 })
