@@ -1,3 +1,22 @@
+//@media screen and (min-width:1024px) {
+//    .s3d-controller[data-type="favourite"], .s3d-controller[data-type="apart"]{
+//        display: none;
+//    }
+//    .s3d-controller[data-type="plannings"]{
+//
+//    }
+//}
+
+@media screen and (min-width:769px) and (max-width:1023px) {
+    .s3d-controller[data-type="complex"], .s3d-controller[data-type="courtyard"], .s3d-controller[data-type="plannings"]{
+        .s3d-tell{
+            &__text{
+                display: none;
+            }
+        }
+    }
+}
+
 @media screen and (min-width:576px) and (max-width:768px){
     .s3d-select[data-type="favourites"] svg{
         display: none;
@@ -23,9 +42,6 @@
     }
     .s3d-tell{
         grid-area: 5/3/5/3;
-        //&__text{
-        //    display: none;
-        //}
     }
 
     .s3d-controller[data-type="apart"]{

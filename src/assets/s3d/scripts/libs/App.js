@@ -146,7 +146,7 @@ class App {
 
 		// this.helpsInfo();
 		// this.loader.hide();
-		this.resize()
+		// this.resize()
 	}
 
 	showAvailableFlat() {
@@ -281,7 +281,11 @@ class App {
 			click: this.selectSlider,
 			activeFlat: this.activeFlat,
 		})
-		// $('.s3d-pl__filter').append($('.s3d-filter'))
+
+		this.deb = this.debounce(this.resize.bind(this), 700)
+		$(window).resize(() => {
+			this.deb(this)
+		})
 	}
 
 	createWrap(conf, tag) {
@@ -323,7 +327,6 @@ class App {
 			this.animateBlock('translate', 'down')
 			break
 		}
-		this.resize()
 	}
 
 	selectSliderType(id, type, Fn, idApart) {
@@ -356,6 +359,7 @@ class App {
 			// this.activeSectionList.push(config.idCopmlex);
 		} else {
 			if (type === 'courtyard' || type === 'complex') {
+				this.filter.hidden()
 				this.loader.show()
 			} else {
 				this.animateBlock('translate', 'down')
@@ -378,14 +382,11 @@ class App {
 	}
 
 	scrollToBlock(time = 600) {
-		if (this.filter) {
-			this.filter.hidden()
-		}
 		return block => {
-			// $('.js-s3d-select .active').removeClass('active')
-			// $(`.js-s3d-select[data-type = ${block}]`).addClass('active')
-
 			setTimeout(() => {
+				if (this.filter) {
+					this.filter.hidden()
+				}
 				this.complex.hiddenInfo()
 				this.complex.hiddenInfoFloor()
 				this.compass.save(this.compass.current)
@@ -397,10 +398,10 @@ class App {
 					this.compass.setFloor()
 					break
 				case 'plannings':
-					$('.js-s3d-filter').removeClass('active-filter')
 					if (document.documentElement.clientWidth > 767) {
 						this.filter.show()
 					}
+					$('.js-s3d-filter').removeClass('active-filter')
 					break
 				default:
 					$('.js-s3d-filter').addClass('active-filter')
@@ -454,6 +455,36 @@ class App {
 	}
 
 	resize() {
-		this.complex.resizeCanvas()
+		console.log('resize', this)
+		const type = $('.js-s3d-controller')[0].dataset.type
+		console.log('resize type', type)
+		if (document.documentElement.offsetWidth < 768) {
+			if (type === 'plannings') {
+				this.filter.hidden()
+				$('.js-s3d-filter').removeClass('plannings-filter')
+			} else {
+				this.filter.hidden()
+				$('.js-s3d-filter').addClass('plannings-filter')
+			}
+		} else {
+			if (type === 'plannings') {
+				this.filter.show()
+				$('.js-s3d-filter').removeClass('plannings-filter')
+			} else {
+				this.filter.hidden()
+				$('.js-s3d-filter').addClass('plannings-filter')
+			}
+		}
+	}
+
+	debounce(f, t) {
+		return function (args) {
+			let previousCall = this.lastCall
+			this.lastCall = Date.now()
+			if (previousCall && ((this.lastCall - previousCall) <= t)) {
+				clearTimeout(this.lastCallTimer)
+			}
+			this.lastCallTimer = setTimeout(() => f(args), t)
+		}
 	}
 }

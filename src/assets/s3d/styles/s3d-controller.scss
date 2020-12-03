@@ -72,6 +72,7 @@
       border-radius: 50px;
       overflow: hidden;
       pointer-events: painted;
+      z-index: 1;
       &__icon{
         display: flex;
         height: 40px;
@@ -92,10 +93,10 @@
         padding: 10px 20px;
         text-align: left;
         font-family: $default-font;
-        font-size: 11px;
-        font-weight: 500;
+        font-size: 12px;
+        font-weight: 600;
         line-height: 14px;
-        letter-spacing: 0.18em;
+        letter-spacing: 0.1em;
         color: $wc;
       }
 
@@ -151,6 +152,9 @@
         &__compass{
           display: none;
         }
+      }
+      &[data-type="apart"]{
+        display: none;
       }
     }
   }

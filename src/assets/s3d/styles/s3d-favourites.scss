@@ -145,42 +145,7 @@
   &__image{
     max-height: 100px;
   }
-  //&__favourites{
-  //  display: flex;
-  //  align-items: center;
-  //  font-family: $default-font;
-  //  font-weight: 500;
-  //  font-size: 14px;
-  //  line-height: 24px;
-  //  margin-right: 35px;
-  //  cursor: pointer;
-  //  &-icon{
-  //    position: relative;
-  //    width: initial;
-  //    height: 26px;
-  //    margin-left: 20px;
-  //  }
-  //  &-amount{
-  //    position: absolute;
-  //    top: 50%;
-  //    left: 50%;
-  //    transform: translate(-50%, -55%);
-  //
-  //    font-family: $default-font;
-  //    font-weight: 500;
-  //    font-size: 12px;
-  //    line-height: 1.5em;
-  //    color: #FFFFFF;
-  //    pointer-events: none;
-  //    cursor: pointer;
-  //  }
-  //  svg{
-  //    height: 26px;
-  //    width: 28px;
-  //    fill: $color1;
-  //    cursor: pointer;
-  //  }
-  //}
+
   &__mouse{
     display: flex;
     align-items: center;
@@ -193,9 +158,10 @@
     }
   }
   &__element{
+    cursor: pointer;
     transition: box-shadow 0.4s ease-in;
     &:hover{
-      box-shadow: 0 1px 4px 0 $color1;
+      box-shadow: 0 1px 4px 0 $color2;
     }
   }
   .s3d-tell__text{

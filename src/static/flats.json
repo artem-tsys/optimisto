@@ -15,12 +15,12 @@
           "3d": ""
       },
       "without": {
-        "2d": "without-2d.jpg",
+        "2d": "/wp-content/themes/optimisto/assets/s3d/images/without-2d.png",
         "3d": ""
       },
       "re-planning":{
-        "2d": "re-planning-2d.jpg",
-        "3d": "re-planning-3d.jpg"
+        "2d": "/wp-content/themes/optimisto/assets/s3d/images/re-planning-2d.png",
+        "3d": "/wp-content/themes/optimisto/assets/s3d/images/re-planning-3d.png"
       }
     },
     "compas": "0",

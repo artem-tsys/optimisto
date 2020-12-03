@@ -11,7 +11,7 @@
     flex: 0 0 auto;
     //background: #F2F2F2;
     background: transparent;
-    padding: 110px 40px 10px;
+    padding: $--header-height 40px 10px;
     grid-area: filter;
 
     &-wrap{
@@ -27,20 +27,26 @@
       width: 30%;
       min-width: 320px;
       transform: translate(0, 0);
-      transition: all .1s ease-out 0.5s;
-      padding-top: var(--header-height);
+      transition: all .1s ease-out ;
+      //transition: all .1s ease-out 0.5s;
       grid-area: filter;
       visibility: hidden;
       opacity: 0;
       background: transparent;
       &.active-filter{
         transform: translateX(-100%);
-        transition: transform .6s ease-in, opacity .4s linear .5s,visibility .1s linear .6s;
+        transition: transform .6s ease-out, opacity .4s ease-in .5s,visibility 1ms linear .6s;
+        .s3d-filter__close-wrap{
+          transform: translate(0, -50%);
+        }
         &.active {
           opacity: 1;
           transform: translateX(0);
           transition: transform .6s ease-out;
           visibility: visible;
+          .s3d-filter__close-wrap{
+            transform: translate(60%, -50%);
+          }
         }
       }
       &.active {
@@ -308,8 +314,8 @@
       height: 30px;
       cursor: pointer;
       border-radius: 50%;
-      border: 1px solid #892D95;
-      transition: border-color 0.3s ease-in;
+      //border: 1px solid #892D95;
+      transition: transform 0.5s ease-in-out;
       &-wrap{
         display: none;
         position: absolute;
@@ -323,15 +329,20 @@
         border-radius: 0 50px 50px 0;
         padding: 5px;
         background: #752180;
-        transform: translate(60%, -50%);
-        transition: transform 0.3s ease-in;
+        transform: translate(0, -50%);
+        //transform: translate(60%, -50%);
+        transition: transform 0.5s ease-in-out;
         z-index: -1;
         &:hover {
           //.s3d-filter__close-wrap{
-            transform: translate(90%, -50%);
+            transform: translate(80%, -50%)!important;
           //}
           .s3d-filter__close {
             border-color: #ffffff;
+            transform: rotate(90deg);
+          }
+          span{
+            color: $color1;
           }
         }
       }
@@ -342,7 +353,7 @@
         width: 24px;
         height: 1px;
         background: #FFFFFF;
-
+        transition: color 0.5s ease-in;
         &:nth-child( 1 ) {
           transform: translate(-50%, -50%)rotate(-45deg);
         }
@@ -486,7 +497,7 @@
       top: 117px;
     }
     &-filter{
-      padding: 110px 40px 0;
+      padding: $--header-height 40px 0;
       background: #F2F2F2;
       &__close-wrap{
         display: flex;
@@ -603,7 +614,7 @@
       &__buttons,
       &__floor {
         padding: 0 10px;
-        width: 50%;
+        //width: 50%;
       }
 
     }

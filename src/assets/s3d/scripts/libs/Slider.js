@@ -78,7 +78,7 @@ class Slider {
 				leave: 'touchcancel',
 				move: 'touchmove',
 			}
-			// this.gyroscopeStart()
+			this.gyroscopeStart()
 		} else {
 			this.wrapper.on(`${this.eventsName.end} ${this.eventsName.leave}`, e => {
 				if (e.target.classList.contains('s3d__button') || e.target.classList.contains('s3d-infoBox__link')) return
@@ -112,9 +112,7 @@ class Slider {
 						this.hoverFlatId = null
 					}
 					this.activeSvg = $(e.target).closest('svg')
-					// this.activeSvg[0].style.opacity = 0
 					this.activeSvg.css({ opacity: '0' })
-					// $(this.activeSvg).css({'fill':'transparent'});
 					this.checkMouseMovement.call(this, e)
 				} else if (e.target.tagName === 'polygon' && !this.infoBoxActive) {
 					if (this.hoverFlatId === +e.target.dataset.id) return
@@ -126,7 +124,6 @@ class Slider {
 				}
 			})
 		}
-		// this.updateImage()
 		this.firstLoadImage()
 
 		this.wrapper.on('click', 'polygon', e => {
@@ -150,12 +147,31 @@ class Slider {
 		this.infoBox.on('click', '.js-s3d-infoBox__close', () => {
 			this.hiddenInfo()
 		})
+		window.addEventListener('keydown', event => {
+			const data = {
+				dataset: {
+					type: '',
+				},
+			}
+			console.log(event, event.keyCode)
+			switch (event.keyCode) {
+			case 37:
+			case 100:
+				data.dataset.type = 'prev'
+				break
+			case 39:
+			case 102:
+				data.dataset.type = 'next'
+				break
+			default:
+				return false
+			}
+			this.checkDirectionRotate(data)
+		})
 
 		this.infoBox.on('click', '.s3d-infoBox__link', event => {
 			event.preventDefault()
-			// this.loader.show()
 			this.activeFlat.value = event.target.dataset.id
-			// this.click(event, this.type)
 			this.click(event.currentTarget.dataset.id, 'apart', event.currentTarget.dataset.id)
 		})
 		this.centerSlider(this.wrapper[0])
@@ -164,11 +180,6 @@ class Slider {
 		$(window).resize(() => {
 			this.resizeCanvas()
 		})
-
-		// createMarkup('div' , '#js-s3d__wrapper', {
-		//   class:'s3d__helper js-s3d__helper',
-		//   content: '<img src="/wp-content/themes/optimisto/assets/s3d/images/icon/help-arrow.svg" class="s3d-arrow"/><img src="/wp-content/themes/optimisto/assets/s3d/images/icon/help-logo.svg" class="s3d__helper-logo"/> <div class="s3d__helper__text">Оберіть </br>будинок</div>'
-		// });
 	}
 
 	gyroscopeStart() {
@@ -199,18 +210,18 @@ class Slider {
 								Z-axis', ${event.gamma}`)
 	}
 
-	setConfig(data) {
-		this.type = data.type || this.type
-		this.urlBase = data.url || this.urlBase
-		this.imageUrl = data.imageUrl || this.imageUrl
-		this.activeElem = data.activeSlide || this.activeElem
-		this.wrapperId = data.idCopmlex || this.wrapperId
-		this.currentSlide = data.activeSlide || this.currentSlide
-		this.nextSlide = data.activeSlide || this.nextSlide
-		this.svgConfig = data || this.svgConfig
-		this.controlPoint = data.controlPoint || this.controlPoint
-		this.mouseSpeed = data.mouseSpeed || this.mouseSpeed
-	}
+	// setConfig(data) {
+	// 	this.type = data.type || this.type
+	// 	this.urlBase = data.url || this.urlBase
+	// 	this.imageUrl = data.imageUrl || this.imageUrl
+	// 	this.activeElem = data.activeSlide || this.activeElem
+	// 	this.wrapperId = data.idCopmlex || this.wrapperId
+	// 	this.currentSlide = data.activeSlide || this.currentSlide
+	// 	this.nextSlide = data.activeSlide || this.nextSlide
+	// 	this.svgConfig = data || this.svgConfig
+	// 	this.controlPoint = data.controlPoint || this.controlPoint
+	// 	this.mouseSpeed = data.mouseSpeed || this.mouseSpeed
+	// }
 
 	centerSlider(elem) {
 		const scroll = (elem.scrollWidth - document.documentElement.offsetWidth) / 2
@@ -218,8 +229,7 @@ class Slider {
 	}
 
 	update(config) {
-		this.setConfig(config)
-		// this.updateImage()
+		// this.setConfig(config)
 		this.loader.hide(this.type)
 	}
 
@@ -354,15 +364,6 @@ class Slider {
 		// this.activeSvg = $(e.target).closest('svg')
 		// $(this.activeSvg).css({ opacity: '0' })
 	}
-
-	// resize() {
-	// 	this.height = this.wrapper.height()
-	// 	this.width = this.wrapper.width()
-	// 	this.ctx.canvas.width = this.width
-	// 	this.ctx.canvas.height = this.height
-	// 	this.ctx.drawImage(this.images[this.activeElem], 0, 0, this.width, this.height)
-	// 	this.centerSlider(this.wrapper[0])
-	// }
 
 	// инициализация svg слайдера
 	createSvg() {

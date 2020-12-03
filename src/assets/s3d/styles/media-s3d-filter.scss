@@ -2,12 +2,28 @@
 .s3d-filter__mobile-delimiter {
     display: none;
 }
-.s3d-filter-wrap.plannings-filter .s3d-filter__bg {
+.s3d-filter-wrap.active-filter .s3d-filter__bg {
     display: none;
 }
-@media screen and (max-width:768px)  and (min-width:576px) {
+
+@media screen and (max-width:1024px) and (min-width:768px){
+    .s3d-filter{
+        padding: $--header-height 20px 0;
+    }
+    .s3d-filter-select__list {
+        flex-wrap: wrap;
+    }
+    .s3d-filter-select__list>label{
+        order: 2;
+    }
+    .s3d-filter-select__list>span{
+        order: 1;
+    }
+}
+
+@media screen and (max-width:768px) and (min-width:576px) {
     .s3d-filter {
-        padding: var(--header-height) 15px 0;
+        padding: $--header-height 15px 0;
     }
     .s3d-filter__area, .s3d-filter__living-space, .s3d-filter__buttons, .s3d-filter__floor {
         width: 100%;
@@ -29,18 +45,18 @@
         display: none;
     }
     //3d genplan filter 
-    .plannings-filter .s3d-filter {
+    .active-filter .s3d-filter {
         padding:20px 15px 0;
     }
-    .plannings-filter .s3d-filter__table {
+    .active-filter .s3d-filter__table {
         padding: 0 0 15px 25px;
         margin: 0 15px 0 0;
     }
-    .plannings-filter .s3d-filter-select__list {
+    .active-filter .s3d-filter-select__list {
         width: 100%;
         margin-top: 20px;
     }
-    .plannings-filter .s3d-filter .irs--flat {
+    .active-filter .s3d-filter .irs--flat {
         margin-bottom: 15px;
     }
 }
@@ -48,7 +64,7 @@
     .s3d-filter-wrap .s3d-filter__bg {
         display: none;
     }
-    .s3d-filter-wrap.plannings-filter .s3d-filter__bg {
+    .s3d-filter-wrap.active-filter .s3d-filter__bg {
         display: none;
     }
     .s3d-filter-wrap {
@@ -73,8 +89,8 @@
         margin-left: auto;
         margin-right: auto;
     }
-    .plannings-filter,
-    .s3d-filter-wrap:not(.plannings-filter) {
+    .active-filter,
+    .s3d-filter-wrap:not(.active-filter) {
         width: 100%;
         --bottom-block-height: 67px;
         overflow: scroll;
@@ -147,7 +163,6 @@
         }
     }
     .s3d-filter {
-        padding-top: var(--header-height);
         &__area,
         &__living-space,
         &__buttons,
@@ -194,7 +209,7 @@
 }
 
 @media screen and (max-width:375px) {
-    .plannings-filter .s3d-filter__title {
+    .active-filter .s3d-filter__title {
         font-size: 24px;
     }
 }
@@ -203,7 +218,7 @@
 /*Фильтр не на генплане*/
 
 @media screen and (max-width:575px) {
-    .s3d-filter-wrap:not(.plannings-filter) {
+    .s3d-filter-wrap:not(.active-filter) {
         //padding-top: 50px;
         position: absolute;
         left: 0;

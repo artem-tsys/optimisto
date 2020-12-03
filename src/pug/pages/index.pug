@@ -7,6 +7,7 @@ block head
     link(rel='stylesheet' href="/wp-content/themes/optimisto/assets/s3d/styles/3d.min.css")
 block scripts
     //script(src='/wp-content/themes/optimisto/static/jquery.min.js')
+    script(src="/wp-content/themes/optimisto/assets/s3d/scripts/gsap.js")
     script(src='/wp-content/themes/optimisto/assets/s3d/scripts/libs.js')
     script(src='/wp-content/themes/optimisto/assets/s3d/scripts/index-app.js')
 
@@ -15,6 +16,7 @@ block content
         section.main
             .js-s3d__slideModule.s3d__slideModule.scroll
                 div#js-s3d__wrapper
+
                 .s3d-controller.js-s3d-controller.unselectable
                     //.s3d-controller__showFilter.js-s3d-controller__showFilter
                     //    input(class='js-s3d-controller__showFilter--input' id='filter-show' type='checkbox')
@@ -106,7 +108,7 @@ block content
                 //.js-s3d__wrapper__apart.s3d__wrap.s3d__wrapper__apart
                 .s3d-fv.js-s3d__fv
 
-                    .s3d-fv__top.js-s3d-favorite__wrap.s3d-hidden.js-s3d__favourites
+                    .s3d-fv__top.js-s3d-favorite__wrap.s3d-hidden
                         .s3d-fv__title Избранное
                         .s3d-fv__close.js-s3d__fv__close
                     //    .s3d-fv__favourites

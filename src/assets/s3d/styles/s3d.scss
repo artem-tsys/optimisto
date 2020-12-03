@@ -4,13 +4,8 @@
 *{
   box-sizing: border-box;
   &:focus{
-    outline: 0.5px solid #aaaaaa;
+    outline: 1px solid #aaaaaa!important;
   }
-}
-
-$--header-height: 110px;
-@media screen and (min-width:575px){
-  $--header-height: 50px;
 }
 
 .disabled{
@@ -255,7 +250,7 @@ $--header-height: 110px;
     color: #ffffff;
     border: none;
     align-items: center;
-    background: rgba(132, 41, 144, 1);
+    background: #752180;
     font-family: $default-font;
     font-size: 12px;
     font-weight: 600;
@@ -264,7 +259,6 @@ $--header-height: 110px;
     padding: 10px;
     letter-spacing: 0.1em;
     text-transform: capitalize;
-    //text-decoration: underline;
     transition: all .4s linear;
     cursor: pointer;
     &:focus{
@@ -399,9 +393,10 @@ $--header-height: 110px;
       background: #ffffff;
     }
 
-    &__complex{
+    &__complex,&__courtyard{
       justify-content: center;
       align-items: stretch;
+      overflow: hidden;
     }
 
     //&__apart{

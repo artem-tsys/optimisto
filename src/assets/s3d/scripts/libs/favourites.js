@@ -5,6 +5,7 @@ class Favourite {
 		this.wrap = conf.wrap
 		this.click = conf.click
 		this.activeFlat = conf.activeFlat
+		this.animationSpeed = 750
 
 		$('.js-s3d__slideModule').on('click', '.js-s3d__favourites', () => {
 			this.createMarkup()
@@ -13,13 +14,27 @@ class Favourite {
 
 		$('.js-s3d__slideModule').on('change', '.js-s3d-add__favourites', event => {
 			const id = $(event.currentTarget).data('id')
-			console.log('id', id)
 			if (checkValue(id)) return
 			if (event.target.checked) {
-				this.addStorage(id)
+				setTimeout(() => {
+					this.addStorage(id)
+				}, this.animationSpeed)
+				if (event.target.closest('label') !== null) {
+					this.moveToFavouriteEffectHandler(event.target.closest('label'));
+				}
 			} else {
-				this.removeElemStorage(id)
+				setTimeout(() => {
+					this.removeElemStorage(id)
+				}, this.animationSpeed)
+				if (event.target.closest('label') !== null) {
+					this.moveToFavouriteEffectHandler(event.target.closest('label'), true)
+				}
 			}
+			// if (event.target.checked) {
+			// 	this.addStorage(id)
+			// } else {
+			// 	this.removeElemStorage(id)
+			// }
 		})
 
 		$('.js-s3d__fv').on('click', '.js-s3d__fv__close', () => {
@@ -39,6 +54,7 @@ class Favourite {
 		// sessionStorage.clear()
 		this.createMarkup()
 		this.showSelectFlats()
+		this.addPulseCssEffect()
 	}
 
 	showSelectFlats() {
@@ -147,5 +163,114 @@ class Favourite {
 	updateAmount(value) {
 		$('.js-s3d-favourites-amount').html(value)
 		$('.js-s3d-favourites').attr('count', value)
+	}
+
+	addPulseCssEffect() {
+		this.animationPulseClass = 'pulse'
+		document.body.insertAdjacentHTML('beforeend', `
+		<style class="${this.animationPulseClass}">
+			.${this.animationPulseClass} {
+				border-radius: 50%;
+				cursor: pointer;
+				box-shadow: 0 0 0 rgba(255,255,255, 0.75);
+				animation: pulse 0.5s 1 ease-out;
+			}.${this.animationPulseClass}:hover {	animation: none;}@-webkit-keyframes ${this.animationPulseClass} {	0% {	  -webkit-box-shadow: 0 0 0 0 rgba(255,255,255, 0.4);	}	70% {		-webkit-box-shadow: 0 0 0 10px rgba(255,255,255, 0);	}	100% {		-webkit-box-shadow: 0 0 0 0 rgba(255,255,255, 0);	}}@keyframes pulse {	0% {	  -moz-box-shadow: 0 0 0 0 rgba(255,255,255, 0.4);	  box-shadow: 0 0 0 0 rgba(255,255,255, 0.4);	}	70% {		-moz-box-shadow: 0 0 0 10px rgba(255,255,255, 0);		box-shadow: 0 0 0 10px rgba(255,255,255, 0);	}	100% {		-moz-box-shadow: 0 0 0 0 rgba(255,255,255, 0);		box-shadow: 0 0 0 0 rgba(255,255,255, 0);	}}
+		</style>
+		`)
+	}
+
+	moveToFavouriteEffectHandler(target, reverse) {
+		const currentScreen = document.querySelector('.js-s3d-controller').dataset.type
+		const iconToAnimate = target.querySelector('svg')
+		let distance
+		if (document.documentElement.clientWidth < 576) {
+			distance = this.getBetweenDistance(document.querySelector('.s3d-mobile-only[data-type="favourites"]'), iconToAnimate)
+			this.animateFavouriteElement(document.querySelector('.s3d-mobile-only[data-type="favourites"]'), iconToAnimate, distance, reverse)
+			console.log(distance)
+		} else {
+			switch (currentScreen) {
+				case 'complex':
+					distance = this.getBetweenDistance(document.querySelector('.s3d-filter-wrap .s3d__favourites'), iconToAnimate)
+					this.animateFavouriteElement(document.querySelector('.s3d-filter-wrap .s3d__favourites'), iconToAnimate, distance, reverse)
+					break;
+				case 'plannings':
+					distance = this.getBetweenDistance(document.querySelector('.s3d-pl__favourites-icon'), iconToAnimate)
+					this.animateFavouriteElement(document.querySelector('.s3d-pl__favourites-icon'), iconToAnimate, distance, reverse)
+					break
+				case 'apart':
+					distance = this.getBetweenDistance(document.querySelector('.s3d-pl__favourites-icon'), iconToAnimate)
+					this.animateFavouriteElement(document.querySelector('.s3d-pl__favourites-icon'), iconToAnimate, distance, reverse)
+					break
+				default:
+					break
+			}
+		}
+	}
+
+	getBetweenDistance(elem1, elem2) {
+		// get the bounding rectangles
+		const el1 = elem1.getBoundingClientRect()
+		const el2 = elem2.getBoundingClientRect()
+		// get div1's center point
+		const div1x = el1.left + (el1.width / 2)
+		const div1y = el1.top + (el1.height / 2)
+
+		// get div2's center point
+		const div2x = el2.left + (el2.width / 2)
+		const div2y = el2.top + (el2.height / 2)
+
+		// calculate the distance using the Pythagorean Theorem (a^2 + b^2 = c^2)
+		const distanceSquared = Math.pow(div1x - div2x, 2) + Math.pow(div1y - div2y, 2)
+		const distance = Math.sqrt(distanceSquared)
+
+		return {
+			x: div1x - div2x,
+			y: div1y - div2y,
+		}
+	}
+
+	animateFavouriteElement(destination, element, distance, reverse) {
+		if (gsap === undefined) return
+		// console.log(Math.abs(div1x - div2x), 'X');
+		// console.log(Math.abs(div1y - div2y), 'Y');
+		const animatingElParams = element.getBoundingClientRect()
+		element.style.cssText += ` 
+			width:${animatingElParams.width}px;
+			height:${animatingElParams.height}px;
+			transform-origin:top left;`
+		element.style.cssText += `
+			fill: #85C441;
+			position:relative; 
+			z-index:2000;
+			stroke:none;
+			position:fixed; 
+			left:${animatingElParams.left}px; 
+			top:${animatingElParams.top}px;`
+		const speed = this.animationSpeed / 1000
+		// element.classList.add(this.animationPulseClass)
+		const tl = new TimelineMax({
+			delay: 0,
+			repeat: 0,
+			paused: true,
+			onComplete: () => {
+				element.classList.remove(this.animationPulseClass)
+				console.log(element.classList)
+				element.style.cssText = ''
+			},
+		})
+		if (reverse === true) {
+			tl.from(element, { y: distance.y, duration: speed, ease: Power1.easeIn })
+			tl.from(element, { x: distance.x, duration: speed / 2.5, ease: Power1.easeIn }, `-=${speed / 2.5}`)
+		} else {
+			tl.set(element, { classList: `+=${this.animationPulseClass}` })
+			tl.to(element, { y: distance.y, duration: speed, ease: Power1.easeIn })
+			tl.to(element, { x: distance.x, duration: speed / 2.5, ease: Power1.easeIn }, `-=${speed / 2.5}`)
+		}
+		tl.set(element, { x: 0, y: 0 })
+		// tl.set(element, {position:'',width:'',height:'',stroke:'', fill:'',top:'',left:'',x:'',y:''});
+		tl.set(element, { clearProps: 'all' })
+		tl.play()
+		// console.log(div2x, 'X2');
+		return distance
 	}
 }

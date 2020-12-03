@@ -173,8 +173,8 @@ class Apartments {
 	addHtmlAll(elem) {
 		return JSON.stringify(`
 			<div class="s3d-flat js-s3d-flat">
-			<div class="s3d-flat__back-wrap">
-			 <button class="s3d-flat__back js-s3d-flat__back" type="button">
+			<div class="s3d-flat__back-wrap js-s3d-flat__back">
+			 <button class="s3d-flat__back" type="button">
            <svg viewBox="0 0 9 12" fill="none" xmlns="http://www.w3.org/2000/svg">
              <path fill-rule="evenodd" clip-rule="evenodd" d="M9 12L-1.21594e-06 6L9 0L9 5.09367L9 6.90633L9 12Z" fill="white"></path>
            </svg>
@@ -231,7 +231,7 @@ class Apartments {
                   </div>
                   </a>
               	<img class="s3d-flat__image js-s3d-flat__image" src="assets/s3d/images/KV.png">
-                <div class="s3d-flat__favourites js-s3d-favorite__wrap s3d-hidden">Избранное
+                <div class="s3d-flat__favourites js-s3d-favorite__wrap s3d-hidden js-s3d__favourites">Избранное
                   <div class="s3d-flat__favourites-icon js-s3d__favourites">
                     <svg>
                       <use xlink:href="#icon-favourites"></use>

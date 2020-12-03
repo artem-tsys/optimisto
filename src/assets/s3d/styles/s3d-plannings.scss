@@ -7,10 +7,10 @@
   grid-template-columns: minmax(320px, 30%) auto;
   grid-template-rows: calc(100% - 42px) 42px;
   background: #E5E5E5;
-  padding: 100px 0 20px;
+  padding: $--header-height 0 20px;
   &__list{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     grid-auto-rows: auto;
     grid-gap: 30px;
     width: 100%;
@@ -31,7 +31,7 @@
 
     /*Handle*/
     &::-webkit-scrollbar-thumb {
-      background: #EB8271;
+      background: #752180;
     }
 
     &::-webkit-scrollbar-thumb:window-inactive {
@@ -75,9 +75,6 @@
     max-height: 40vh;
     margin: auto;
   }
-  &__row{
-    //display: flex;
-  }
   &__value{
     width: 10%;
     padding: 0 15px;
@@ -119,7 +116,6 @@
     align-items: center;
     justify-content: center;
     background: transparent;
-    //background: $color2;
     border: none;
     font-family: $default-font;
     font-weight: 500;
@@ -130,6 +126,8 @@
     color: #FFFFFF;
     transition: box-shadow .3s ease-out;
     cursor: pointer;
+    border-radius: 50px;
+    overflow: hidden;
     z-index: 1;
     &:after{
       content: '';
@@ -188,7 +186,6 @@
     }
     input:checked + svg{
       fill: #FFFFFF;
-      //fill: #1C4954;
       stroke: transparent;
     }
 
@@ -202,14 +199,12 @@
       transition: stroke .3s ease-out, fill .3s ease-out;
     }
     &:hover{
-      //background: #1C4954;
       box-shadow: 0 4px 15px rgba(122, 65, 56, 0.3);
       svg{
         fill: #FFFFFF;
       }
       & input:checked + svg{
         fill: #FFFFFF;
-        //fill: #E46C59;
       }
     }
   }
