@@ -94,11 +94,6 @@
     }
 
     tr{
-      transition: background-color 0.5s ease-in-out;
-      cursor: pointer;
-      &:hover{
-        background: #F4F4F2;
-      }
     }
     td{
       width: 10%;
@@ -164,9 +159,9 @@
   }
   &__element{
     cursor: pointer;
-    transition: box-shadow 0.4s ease-in;
+    transition: background-color 0.5s ease-in-out;
     &:hover{
-      box-shadow: 0 1px 4px 0 $color2;
+      background: #F4F4F2;
     }
   }
   .s3d-tell__text{

@@ -17,6 +17,12 @@
   padding: 0;
   &-logo{
     //margin-top: auto;
+    max-width: 80vw;
+    min-width: 300px;
+    @media screen and (max-width:575px){
+      width: 250px;
+      min-width: 220px;
+    }
   }
   &-mini {
     display: flex;

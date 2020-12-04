@@ -1,10 +1,10 @@
 * {
     --white: #FFFFFF;
     --gray: #DDD9D3;
-    --orange: #EB8271;
+    --orange: #752180;
     --black: #221F20;
     --very-gray: #99918A;
-    --blue: #1C4954;
+    --blue: #85C441;
     --other-gray: #F2F2F2;
 }
 //.s3d-select {
@@ -71,7 +71,7 @@
         cursor: pointer;
     }
     .irs--flat .irs-handle.state_hover > i:first-child, .irs--flat .irs-handle:hover > i:first-child {
-        background-color: #255763;
+        background-color: #85C441;
     }
     .s3d__button:hover {
         box-shadow: none;

@@ -219,7 +219,6 @@
 
 @media screen and (max-width:575px) {
     .s3d-filter-wrap:not(.active-filter) {
-        //padding-top: 50px;
         position: absolute;
         left: 0;
         top: 0;
@@ -253,9 +252,9 @@
 
     }
     .s3d-pl__favourites:hover {
-        color: var(--blue);
+        color: #85C441;
     }
     .s3d-filter__button--reset:hover {
-        color: var(--blue);
+        color: #85C441;
     }
 }
