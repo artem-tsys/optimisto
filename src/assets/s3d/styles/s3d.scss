@@ -348,6 +348,12 @@
       width: 28px;
       fill: #85C441;
       cursor: pointer;
+      transition: transform 0.4s ease-in-out;
+    }
+    &:hover{
+      svg{
+        transform: scale(1.2);
+      }
     }
   }
 

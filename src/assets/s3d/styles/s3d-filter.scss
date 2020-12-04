@@ -286,6 +286,12 @@
         *{
           pointer-events: none;
         }
+        &:hover:not(.active-flat) {
+          svg:not(.active-flat){
+            fill: transparent;
+            stroke: $color2;
+          }
+        }
       }
 
       &::-webkit-scrollbar {
@@ -312,7 +318,6 @@
       position: relative;
       width: 30px;
       height: 30px;
-      cursor: pointer;
       border-radius: 50%;
       //border: 1px solid #892D95;
       transition: transform 0.5s ease-in-out;
@@ -329,6 +334,7 @@
         border-radius: 0 50px 50px 0;
         padding: 5px;
         background: #752180;
+        cursor: pointer;
         transform: translate(0, -50%);
         //transform: translate(60%, -50%);
         transition: transform 0.5s ease-in-out;

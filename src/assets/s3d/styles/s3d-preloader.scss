@@ -98,7 +98,21 @@
 
 .preloader-active{
   display: flex;
+  .fs-preloader-logo{
+    animation: logo 1.3s ease-in-out infinite;
+  }
 }
 .first-loader.fs-preloader {
   height: 100% !important;
+}
+@keyframes logo {
+  from{
+    transform: scale(1);
+  }
+  50%{
+    transform: scale(1.1);
+  }
+  to{
+    transform: scale(1);
+  }
 }

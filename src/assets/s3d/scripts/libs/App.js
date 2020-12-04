@@ -456,7 +456,7 @@ class App {
 
 	resize() {
 		console.log('resize', this)
-		const type = $('.js-s3d-controller')[0].dataset.type
+		const type = $('.js-s3d-controller')[0].dataset.type || ''
 		console.log('resize type', type)
 		if (document.documentElement.offsetWidth < 768) {
 			if (type === 'plannings') {
@@ -479,7 +479,7 @@ class App {
 
 	debounce(f, t) {
 		return function (args) {
-			let previousCall = this.lastCall
+			const previousCall = this.lastCall
 			this.lastCall = Date.now()
 			if (previousCall && ((this.lastCall - previousCall) <= t)) {
 				clearTimeout(this.lastCallTimer)
