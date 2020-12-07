@@ -402,7 +402,7 @@
     &__complex,&__courtyard{
       justify-content: center;
       align-items: stretch;
-      overflow: hidden;
+      //overflow: hidden;
     }
 
     //&__apart{
@@ -750,6 +750,10 @@ html,body, .page__inner{
 
 body{
   display: block;
+}
+
+header{
+  background: rgba(244,244,242,0.5);
 }
 
 //header{

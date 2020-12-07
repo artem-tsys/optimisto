@@ -83,9 +83,9 @@ class App {
 		// this.history = new History({ scrollToBlock: this.scrollToBlock })
 		this.history.init()
 
-		this.getFlatList('/wp-content/themes/optimisto/static/flats.json', this.filterInit)
+		// this.getFlatList('/wp-content/themes/optimisto/static/flats.json', this.filterInit)
 		// this.getFlatList('static/apPars.php', this.filterInit)
-		// this.getFlatList('/wp-admin/admin-ajax.php', this.filterInit)
+		this.getFlatList('/wp-admin/admin-ajax.php', this.filterInit)
 
 		this.loader.show()
 		const config = this.config.complex
@@ -211,21 +211,21 @@ class App {
 	}
 
 	getFlatList(url, callback) {
-		// $.ajax({
-		// 	url,
-		// 	type: 'POST',
-		// 	data: 'action=getFlats',
-		// 	success: response => {
-		// 		callback(JSON.parse(response))
-		// 	},
-		// })
 		$.ajax({
 			url,
-			type: 'GET',
+			type: 'POST',
+			data: 'action=getFlats',
 			success: response => {
-				callback(response)
+				callback(JSON.parse(response))
 			},
 		})
+		// $.ajax({
+		// 	url,
+		// 	type: 'GET',
+		// 	success: response => {
+		// 		callback(response)
+		// 	},
+		// })
 	}
 
 	getFlatObj(id) {

@@ -78,7 +78,7 @@ class Slider {
 				leave: 'touchcancel',
 				move: 'touchmove',
 			}
-			this.gyroscopeStart()
+			// this.gyroscopeStart()
 		} else {
 			this.wrapper.on(`${this.eventsName.end} ${this.eventsName.leave}`, e => {
 				if (e.target.classList.contains('s3d__button') || e.target.classList.contains('s3d-infoBox__link')) return
@@ -153,7 +153,6 @@ class Slider {
 					type: '',
 				},
 			}
-			console.log(event, event.keyCode)
 			switch (event.keyCode) {
 			case 37:
 			case 100:
@@ -167,6 +166,7 @@ class Slider {
 				return false
 			}
 			this.checkDirectionRotate(data)
+			return true
 		})
 
 		this.infoBox.on('click', '.s3d-infoBox__link', event => {
@@ -315,12 +315,12 @@ class Slider {
 			text: 'new',
 		})
 		console.log(res)
-		// $.ajax('/wp-admin/admin-ajax.php', {
-		// 	method: 'POST',
-		// 	data: {
-		// 		data: res, action: '3dDebuger',
-		// 	},
-		// }).then(resolve => console.log(resolve))
+		$.ajax('/wp-admin/admin-ajax.php', {
+			method: 'POST',
+			data: {
+				data: res, action: '3dDebuger',
+			},
+		}).then(resolve => console.log(resolve))
 	}
 
 	progressBarUpdate() {
@@ -465,7 +465,7 @@ class Slider {
 		this.infoBox.find('.js-s3d-infoBox__table-number')[0].innerHTML = `${e.number || ''}`
 		this.infoBox.find('.js-s3d-infoBox__table-floor')[0].innerHTML = `${e.floor || ''}`
 		this.infoBox.find('.js-s3d-infoBox__table-room')[0].innerHTML = `${e.rooms || ''}`
-		this.infoBox.find('.js-s3d-infoBox__type')[0].innerHTML = `${e.type || ''}`
+		this.infoBox.find('.js-s3d-infoBox__type span')[0].innerHTML = `${e.type || ''}`
 		this.infoBox.find('.js-s3d-infoBox__table-area')[0].innerHTML = `${e['all_room'] || ''}`
 		this.infoBox.find('.js-s3d-infoBox__image')[0].src = `${e['img_small'] || ''}`
 		// this.infoBox.find('.js-s3d-infoBox__hover__text')[0].innerHTML = `${e.number || ''}`

@@ -147,7 +147,7 @@
       max-height: 40vh;
       width: 100%;
       max-width: 100%;
-      padding: 25px 20px;
+      padding: 25px 20px 32px;
       margin: 0;
       //position: absolute;
       background: #FFFFFF;
@@ -158,6 +158,9 @@
       img{
         display: inline-block;
         object-fit: contain;
+      }
+      span{
+        margin-left: 7px;
       }
     }
     &__close{
