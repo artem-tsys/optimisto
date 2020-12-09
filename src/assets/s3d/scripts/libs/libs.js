@@ -1,5 +1,6 @@
 @@include('../libs/jquery/jquery.min.js')
 @@include('../libs/ion.rangeSlider/js/ion.rangeSlider.js')
+@@include('../libs/magnific-popup/jquery.magnific-popup.min.js')
 @@include('../libs/input.js')
 @@include('../libs/markup.js')
 @@include('../libs/apartments.js')

@@ -95,6 +95,7 @@ class Apartments {
 	// вставляем разметку в DOM вешаем эвенты
 	setPlaneInPage(response) {
 		$(`#js-s3d__${this.idCopmlex}`).html(JSON.parse(response))
+		console.log(this.getFlatObj(this.activeFlat.value).images)
 		this.checkPlaning()
 		this.loader.hide(this.type)
 		// $('.flat-group2 ').on('click', 'polygon', this.openPopup)
@@ -129,13 +130,18 @@ class Apartments {
 		})
 
 		$('.js-s3d-flat').on('change', '.js-s3d__radio-type', el => {
-			const images = this.getFlatObj(this.activeFlat.value).image
-			this.showHideRadioView(images[el.currentTarget.dataset.type])
-			this.setNewImage(images)
+			const image = this.getFlatObj(this.activeFlat.value).images
+			this.showHideRadioView(image[el.currentTarget.dataset.type])
+			this.setNewImage(image)
 		})
 
 		$('.js-s3d-flat').on('change', '.js-s3d__radio-view', el => {
-			this.setNewImage(this.getFlatObj(this.activeFlat.value).image)
+			this.setNewImage(this.getFlatObj(this.activeFlat.value).images)
+		})
+
+		$('.js-s3d-flat__image').magnificPopup({
+			type: 'image',
+			showCloseBtn: true,
 		})
 		// меняет непонятные символы в ссылке
 		// this.conf = this.updateImage()
@@ -162,10 +168,12 @@ class Apartments {
 	updateFlat(flat, id) {
 		const wrap = $('.js-s3d__wrapper__apart')
 		wrap.find('.js-s3d-flat__image').attr('src', flat.img)
-		wrap.find('.js-s3d-flat__left').html(flat['left_block'])
+		wrap.find('.js-s3d-flat__image')[0].dataset.mfpSrc = flat.img
+		wrap.find('.js-s3d-flat__table').html(flat['left_block'])
 		wrap.find('.js-s3d__create-pdf').attr('href', flat.pdf)
-		$('.u-svg-plan--active').removeClass('u-svg-plan--active')
+		$('polygon.u-svg-plan--active').removeClass('u-svg-plan--active')
 		wrap.find(`.s3d-flat__floor [data-id=${id}]`).addClass('u-svg-plan--active')
+		this.checkPlaning()
 	}
 
 	addHtmlAll(elem) {
@@ -228,7 +236,7 @@ class Apartments {
                     </div>
                   </div>
                   </a>
-              	<img class="s3d-flat__image js-s3d-flat__image" src="assets/s3d/images/KV.png">
+              	<img class="s3d-flat__image js-s3d-flat__image" src="assets/s3d/images/KV.png" data-mfp-src="assets/s3d/images/KV.png">
                 <div class="s3d-flat__favourites js-s3d-favorite__wrap s3d-hidden js-s3d__favourites">Избранное
                   <div class="s3d-flat__favourites-icon js-s3d__favourites">
                     <svg>
@@ -302,6 +310,7 @@ class Apartments {
 	checkPlaning() {
 		let active = false
 		let currentTab = ''
+		$('.js-s3d-flat .show').removeClass('show')
 		$('.js-s3d__radio-type').each((i, type) => {
 			if (this.showHideRadioType(type.dataset.type) && !active) {
 				active = true
@@ -322,7 +331,8 @@ class Apartments {
 			$(`.js-s3d__radio-type[data-type= ${type}]`).addClass('show')
 			return true
 		}
-		$(`.js-s3d__radio-type[data-type= ${type}]`).remove()
+		// $(`.js-s3d__radio-type[data-type= ${type}]`).attr('disable', true)
+		// $(`.js-s3d__radio-type[data-type= ${type}]`).remove()
 		return false
 	}
 
@@ -334,6 +344,7 @@ class Apartments {
 		let index = 0
 		for (const el in type) {
 			if (this.checkSting(type[el])) {
+				$(`.js-s3d__radio-view[data-type=${el}]`).addClass('show')
 				if (index === 0) {
 					$(`.js-s3d__radio-view[data-type=${el}] input`).prop('checked', true)
 				}
@@ -363,6 +374,7 @@ class Apartments {
 			$('.js-s3d-flat__image').css('display', 'none')
 		} else {
 			$('.js-s3d-flat__image').attr('src', `/wp-content/themes/optimisto/assets${img[type][view]}`)
+			$('.js-s3d-flat__image')[0].dataset['mfpSrc'] = `/wp-content/themes/optimisto/assets${img[type][view]}`
 		}
 	}
 }

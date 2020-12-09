@@ -309,12 +309,11 @@ class Slider {
 
 	sendResponsiveError(elem, self) {
 		const res = Object.assign(self.browser, {
-			project: 'optimisto --wp',
+			project: 'optimisto--wp',
 			url: elem.src || elem.dataset.id || 'пусто',
 			type: 'error',
 			text: 'new',
 		})
-		console.log(res)
 		$.ajax('/wp-admin/admin-ajax.php', {
 			method: 'POST',
 			data: {
