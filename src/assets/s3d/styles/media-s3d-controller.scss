@@ -51,8 +51,8 @@
     }
     .s3d-controller__openFilter {
         height: 37px;
-        width: 116px;
-        margin: 0 0 0 10px;
+        width: initial;
+        margin: 0 auto 0 10px;
         svg {
             width: 16px;
             height: 14px;
@@ -148,6 +148,30 @@
             right: auto;
             bottom: auto;
             grid-area: none;
+            border-radius: 20px;
+            &__image{
+                max-height: 35vh;
+            }
+            &__table{
+                table{
+                    margin: 10px 15px;
+                }
+                td{
+                    font-size: 12px;
+                    line-height: 24px;
+                }
+            }
+            &__buttons{
+                height: 36px;
+                margin: 5px 15px 15px;
+            }
+            &__link{
+                font-size: 12px;
+                line-height: 20px;
+            }
+            .s3d-infoBox__add-favourites{
+                width: 36px;
+            }
         }
         .s3d-infoBox:not(.s3d-infoBox-active) {
             opacity: 0;

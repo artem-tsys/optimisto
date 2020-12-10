@@ -8,7 +8,7 @@
 
 @media screen and (max-width:1024px) and (min-width:768px){
     .s3d-filter{
-        padding: $--header-height 20px 0;
+        padding: var(--header-height) 20px 0;
     }
     .s3d-filter-select__list {
         flex-wrap: wrap;
@@ -23,7 +23,7 @@
 
 @media screen and (max-width:768px) and (min-width:576px) {
     .s3d-filter {
-        padding: $--header-height 15px 0;
+        padding: var(--header-height) 15px 0;
     }
     .s3d-filter__area, .s3d-filter__living-space, .s3d-filter__buttons, .s3d-filter__floor {
         width: 100%;

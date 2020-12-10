@@ -11,7 +11,7 @@
     flex: 0 0 auto;
     //background: #F2F2F2;
     background: transparent;
-    padding: $--header-height 40px 10px;
+    padding: var(--header-height) 40px 10px;
     grid-area: filter;
 
     &-wrap{
@@ -495,10 +495,10 @@
   .s3d{
     &__favourites{
       display: block;
-      top: 117px;
+      top: var(--header-height);
     }
     &-filter{
-      padding: $--header-height 40px 0;
+      padding: var(--header-height) 40px 0;
       background: #F2F2F2;
       &__close-wrap{
         display: flex;

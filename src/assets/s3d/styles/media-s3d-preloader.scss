@@ -1,0 +1,9 @@
+@media screen and (max-width:767px) {
+  .fs-preloader{
+    &-mini{
+      position: static;
+      transform: none;
+      margin: 30px 0 0 0;
+    }
+  }
+}

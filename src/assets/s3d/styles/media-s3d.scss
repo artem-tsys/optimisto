@@ -35,14 +35,15 @@
     .s3d__button-right {
         right: 14px;
     }
-    .s3d-infoBox__type {
-        right: 0;
-        left: auto;
-    }
+    //.s3d-infoBox__type {
+        //right: 0;
+        //left: auto;
+    //}
     .s3d-infoBox__close {
-        right: auto;
-        left: 10px;
+        //right: auto;
+        //left: 10px;
         top: 10px;
+        right: 10px;
         width: 13px;
         height: 13px;
         &:before,

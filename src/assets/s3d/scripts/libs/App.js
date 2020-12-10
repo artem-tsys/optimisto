@@ -330,7 +330,7 @@ class App {
 	}
 
 	selectSliderType(id, type, Fn, idApart) {
-		console.log('selectSliderType(id, type, Fn, idApart)')
+		console.log('selectSliderType(id, type, Fn, idApart)', this.favourites)
 		const config = this.config[type]
 		// this.history.update(type)
 		if (id) config.flat = id

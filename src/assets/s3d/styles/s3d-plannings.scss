@@ -7,7 +7,7 @@
   grid-template-columns: minmax(320px, 30%) auto;
   grid-template-rows: calc(100% - 42px) 42px;
   background: #E5E5E5;
-  padding: $--header-height 0 20px;
+  padding: var(--header-height) 0 20px;
   &__list{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -236,7 +236,7 @@
     font-family: $default-font;
     font-size: 14px;
     font-weight: 500;
-    line-height: 24px;
+    line-height: 1.6em;
     margin: 0 auto 5px 0;
 
     &__num {
@@ -250,7 +250,7 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 24px;
-    margin-right: 35px;
+    margin: 0 35px 5px auto;
     &-icon{
       position: relative;
       width: initial;

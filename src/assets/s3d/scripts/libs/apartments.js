@@ -95,7 +95,6 @@ class Apartments {
 	// вставляем разметку в DOM вешаем эвенты
 	setPlaneInPage(response) {
 		$(`#js-s3d__${this.idCopmlex}`).html(JSON.parse(response))
-		console.log(this.getFlatObj(this.activeFlat.value).images)
 		this.checkPlaning()
 		this.loader.hide(this.type)
 		// $('.flat-group2 ').on('click', 'polygon', this.openPopup)
@@ -103,7 +102,6 @@ class Apartments {
 		$('.js-flat-button-return').on('click', e => {
 			e.preventDefault()
 			this.click(e.currentTarget.dataset.id, 'complex', this.activeFlat.value)
-			// $('.js-s3d-select__floor').click()
 		})
 
 		$('.s3d-flat__floor').on('click', 'a', event => {
@@ -111,19 +109,19 @@ class Apartments {
 			this.addBlur('.s3d-flat__floor')
 			this.getNewFlat(event.currentTarget.dataset.id)
 		})
-		const favourite = this.getFavourites()
-		if (favourite.includes(+this.activeFlat.value)) {
-			$('.s3d-flat__favourites').removeClass('s3d-hidden')
-			$('.js-s3d-favourites-amount').html(favourite.length)
-			$('.s3d-flat__like input').prop('checked', true)
-		}
-		// $('.js-s3d-popup__mini-plan svg').on('click', 'polygon', e => {
-		// 	this.activeSvg = $(e.target).closest('svg')
-		// 	$(this.activeSvg).css({ fill: '' })
-		// 	$('.s3d-floor__helper').css({ opacity: 0, top: '-10000px' })
-		// 	this.click(e, 'floor')
-		// 	// $('.js-s3d-popup__mini-plan').removeClass('active')
-		// })
+		this.checkFavouriteApart()
+
+		$('.js-callback-form').on('click', e => {
+			$('.overlay').show()
+			$('.callback-form__popup').addClass('callback-form__popup--show')
+		})
+
+		$('.js-callback-form__close').on('click', e => {
+			e.stopPropagation()
+			$('.callback-form').removeClass('callback-form__popup--show')
+
+			setTimeout(() => $('.overlay').hide(), 700)
+		})
 
 		$('.js-s3d__show-3d').on('click', event => {
 			this.click(event.currentTarget.dataset.id, 'complex', this.activeFlat.value)
@@ -160,6 +158,7 @@ class Apartments {
 			url: '/wp-admin/admin-ajax.php',
 			data: `action=halfOfFlat&id=${id}`,
 		}).then(response => {
+			console.log('id', id)
 			this.activeFlat.value = id
 			this.updateFlat(JSON.parse(response), id)
 		})
@@ -171,9 +170,22 @@ class Apartments {
 		wrap.find('.js-s3d-flat__image')[0].dataset.mfpSrc = flat.img
 		wrap.find('.js-s3d-flat__table').html(flat['left_block'])
 		wrap.find('.js-s3d__create-pdf').attr('href', flat.pdf)
+		wrap.find('.js-s3d-add__favourites')[0].dataset.id = id
 		$('polygon.u-svg-plan--active').removeClass('u-svg-plan--active')
 		wrap.find(`.s3d-flat__floor [data-id=${id}]`).addClass('u-svg-plan--active')
 		this.checkPlaning()
+
+		this.checkFavouriteApart()
+	}
+
+	checkFavouriteApart() {
+		const favourite = this.getFavourites()
+		if (favourite.length > 0) {
+			$('.s3d-flat__favourites').removeClass('s3d-hidden')
+			$('.js-s3d-favourites-amount').html(favourite.length)
+		}
+
+		$('.s3d-flat__like input').prop('checked', favourite.includes(+this.activeFlat.value))
 	}
 
 	addHtmlAll(elem) {
@@ -191,7 +203,7 @@ class Apartments {
             <div class="s3d-flat__mini-info">
               <div class="s3d-mini-info">
                 <div class="s3d-mini-info__title">номер</div>
-                <div class="s3d-mini-info__amount">54</div>
+                <div class="s3d-mini-info__amount ">54</div>
               </div>
               <div class="s3d-mini-info">
                 <div class="s3d-mini-info__title">Этаж</div>
@@ -274,11 +286,11 @@ class Apartments {
                 	<button type="button" class="js-s3d__show-3d"><svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M17.6986 7.10868L16.1778 5.81272V1.51594C16.1771 1.38478 16.121 1.25924 16.0218 1.16679C15.9226 1.07434 15.7885 1.0225 15.6487 1.02262H11.9879C11.8481 1.02238 11.7138 1.07417 11.6145 1.16663C11.5152 1.2591 11.459 1.38471 11.4583 1.51594V1.79149L9.62154 0.226642C9.45175 0.0808559 9.22991 0 8.99974 0C8.76956 0 8.54773 0.0808559 8.37794 0.226642L0.300887 7.10868C0.163371 7.22599 0.0669817 7.37965 0.0244256 7.54939C-0.0181305 7.71913 -0.00485487 7.89698 0.0625021 8.0595C0.129859 8.22201 0.248135 8.36157 0.401737 8.45976C0.555339 8.55795 0.737054 8.61017 0.922927 8.60953H2.21296V15.5049C2.21321 15.6364 2.26909 15.7624 2.36832 15.8552C2.46755 15.948 2.60201 16.0001 2.74215 16H7.16939C7.30953 16.0001 7.44398 15.948 7.54321 15.8552C7.64244 15.7624 7.69832 15.6364 7.69857 15.5049V11.3183H10.3004V15.5049C10.3006 15.57 10.3144 15.6345 10.341 15.6946C10.3677 15.7548 10.4068 15.8094 10.456 15.8554C10.5051 15.9013 10.5635 15.9378 10.6277 15.9626C10.6919 15.9874 10.7607 16.0001 10.8301 16H15.2569C15.397 16.0001 15.5315 15.948 15.6307 15.8552C15.7299 15.7624 15.7858 15.6364 15.786 15.5049V8.60997H17.0765C17.2625 8.61071 17.4444 8.55853 17.5981 8.46032C17.7518 8.36211 17.8702 8.22248 17.9375 8.05986C18.0049 7.89725 18.0181 7.71929 17.9755 7.54947C17.9328 7.37965 17.8363 7.22596 17.6986 7.10868Z" />
 </svg>посмотреть в 3D</button>
-                	<button type="button" class="js-s3d-form--reservation__open"><svg width="14" height="19" viewBox="0 0 14 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                	<button type="button" class="js-s3d-form--reservation__open js-callback-form"><svg width="14" height="19" viewBox="0 0 14 19" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M13.2902 6.83376H12.1507V5.31424C12.1507 3.90481 11.5908 2.55312 10.5942 1.5565C9.59762 0.559891 8.24592 0 6.8365 0C5.42707 0 4.07538 0.559891 3.07876 1.5565C2.08215 2.55312 1.52226 3.90481 1.52226 5.31424V6.83376H0.382844C0.281706 6.83352 0.184602 6.8734 0.112831 6.94466C0.0410597 7.01592 0.000482467 7.11274 0 7.21387L0 16.7084C0.00072441 17.1117 0.161425 17.4981 0.446825 17.783C0.732226 18.0679 1.11901 18.2279 1.52226 18.2279H12.1507C12.554 18.2279 12.9408 18.0679 13.2262 17.783C13.5116 17.4981 13.6723 17.1117 13.673 16.7084V7.21387C13.6725 7.11274 13.6319 7.01592 13.5602 6.94466C13.4884 6.8734 13.3913 6.83352 13.2902 6.83376ZM7.97591 14.7641C7.98036 14.8176 7.97375 14.8714 7.9565 14.9222C7.93925 14.973 7.91173 15.0197 7.87565 15.0594C7.84011 15.0993 7.79658 15.1311 7.74788 15.153C7.69919 15.1748 7.64644 15.1861 7.59307 15.1861H6.07993C6.02656 15.1861 5.97381 15.1748 5.92511 15.153C5.87642 15.1311 5.83288 15.0993 5.79735 15.0594C5.76127 15.0197 5.73375 14.973 5.7165 14.9222C5.69925 14.8714 5.69264 14.8176 5.69708 14.7641L5.9432 12.6092C5.74866 12.4704 5.5901 12.2872 5.4807 12.0747C5.3713 11.8623 5.31423 11.6268 5.31424 11.3878C5.31424 10.9841 5.47462 10.5969 5.7601 10.3114C6.04558 10.0259 6.43277 9.86552 6.8365 9.86552C7.24023 9.86552 7.62742 10.0259 7.9129 10.3114C8.19838 10.5969 8.35876 10.9841 8.35876 11.3878C8.35877 11.6268 8.3017 11.8623 8.1923 12.0747C8.0829 12.2872 7.92433 12.4704 7.7298 12.6092L7.97591 14.7641ZM9.8719 6.83376H3.80109V5.31424C3.80109 4.5092 4.12089 3.73713 4.69014 3.16788C5.25939 2.59863 6.03146 2.27883 6.8365 2.27883C7.64154 2.27883 8.41361 2.59863 8.98285 3.16788C9.5521 3.73713 9.8719 4.5092 9.8719 5.31424V6.83376Z"/>
 </svg>заявка на бронь</button>
 <!--                	<button type="button" class="js-s3d-add__favourites" data-id="${elem.id}"><img src="assets/s3d/images/icon/heart.svg">в избранное</button>-->
-                	<label data-id="${elem.activeFlat.value}" class="s3d-flat__like js-s3d-add__favourites">
+                	<label data-id=${elem.activeFlat.value} class="s3d-flat__like js-s3d-add__favourites">
 										<input type="checkbox">
 										<svg role="presentation"><use xlink:href="#icon-favourites"></use></svg>в избранное</label>
                 </div>
@@ -318,6 +330,12 @@ class Apartments {
 				$(`.js-s3d__radio-type[data-type=${currentTab}] input`).prop('checked', true)
 			}
 		})
+		console.log($('.js-s3d__radio-type.show'))
+		const elem = $('.js-s3d__radio-type.show')
+		if (elem.length === 1) {
+			elem.removeClass('show')
+		}
+
 		this.showHideRadioType(currentTab)
 		this.setNewImage(this.getFlatObj(this.activeFlat.value).images)
 	}

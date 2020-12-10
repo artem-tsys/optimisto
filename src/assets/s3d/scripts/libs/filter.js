@@ -227,10 +227,14 @@ class Filter {
 				// this.filter[key].elem.reset();
 				this.filter[key].elem.update({ from: this.filter[key].elem.result.min, to: this.filter[key].elem.result.max })
 			} else {
-				// this.filter[key].elem.each((i, el) => { el.checked ? el.checked = false : '' })
+				this.filter[key].elem.each((i, el) => { el.checked ? el.checked = false : '' })
 			}
 		}
 		// this.filterFlatStart()
+		this.flatList.forEach(flat => {
+			flat.listHtmlLink.style.display = ''
+			flat.cardHtmlLink.style.display = ''
+		})
 	}
 
 	// запустить фильтрацию

@@ -16,7 +16,19 @@ $padding-wrap--small: 20px;
 $--bg : #71A461;
 
 
-$--header-height: 110px;
-@media screen and (min-width:575px){
-  $--header-height: 50px;
+
+:root{
+  --header-height: 90px;
+}
+
+@media screen and (max-width:1024px){
+  :root{
+    --header-height: 75px;
+  }
+}
+
+@media screen and (max-width:575px){
+  :root{
+    --header-height: 60px;
+  }
 }
