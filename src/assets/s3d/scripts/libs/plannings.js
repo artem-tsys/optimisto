@@ -26,10 +26,12 @@ class Plannings {
 
 	createList(data, wrap) {
 		const result = []
-		data.forEach(el => {
+		data.forEach((el, i) => {
 			const nodeElem = this.createCard(el)
 			el['cardHtmlLink'] = nodeElem
-			result.push(nodeElem)
+			if (i < 15) {
+				result.push(nodeElem)
+			}
 		})
 		$(wrap).append(result)
 	}
