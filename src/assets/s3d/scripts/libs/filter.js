@@ -1,6 +1,6 @@
 class Filter {
-	constructor(config, data, dataObj, selectFlat) {
-		this.wrapper = config.wrap || ''
+	constructor(filterConfig) {
+		// this.wrapper = config.wrap || ''
 		this.filterName = { range: ['area', 'floor'], checkbox: ['rooms'] }
 		this.filter = {}
 		this.nameFilterFlat = {
@@ -14,11 +14,12 @@ class Filter {
 		}
 		// name key js and name key in flat
 		// this.filterSelect = {}
-		this.flatList = data
-		this.flatListObj = dataObj
-		this.currentAmountFlat = data.length
-		this.selectFlat = selectFlat
-		this.addBlur = config.addBlur
+		this.flatList = filterConfig.flatList
+		this.flatListObj = filterConfig.flatListObj
+		this.currentAmountFlat = filterConfig.flatList.length
+		this.selectFlat = filterConfig.showSvgIn3D
+		this.getCurrentShowFlats = filterConfig.getCurrentShowFlats
+		this.addBlur = filterConfig.addBlur
 		// this.unActive = config.unActive
 		this.hidden = this.hidden.bind(this)
 		this.show = this.show.bind(this)
@@ -32,7 +33,6 @@ class Filter {
 		// $(this.filterHtml.room).on('click', 'input', () => this.showSvgSelect())
 		// $(this.filterHtml.close).on('click', () => this.hidden())
 		//
-
 		this.createListFlat(this.flatList, '.js-s3d-filter__table tbody')
 		$('.js-s3d-filter__button--reset').on('click', () => this.resetFilter())
 		$('.js-s3d-filter__close').on('click', () => this.hidden())
@@ -267,11 +267,15 @@ class Filter {
 		// if (filter.house.value.length === 0 || filter.rooms.value.length === 0) {
 		// 	return {}
 		// }
-		console.log(data)
+		console.log('filterFlat', data)
 		this.currentAmountFlat = 0
 		const select = data.filter(flat => {
-			flat.listHtmlLink.style.display = 'none'
-			flat.cardHtmlLink.style.display = 'none'
+			if (flat.listHtmlLink) {
+				flat.listHtmlLink.style.display = 'none'
+			}
+			if (flat.cardHtmlLink) {
+				flat.cardHtmlLink.style.display = 'none'
+			}
 			for (const param in filter) {
 				if (+flat.sale !== 1) return true
 				if (
@@ -302,11 +306,16 @@ class Filter {
 				flat[nameFilterFlat.house].push(flat[nameFilterFlat.floor])
 			}
 			this.currentAmountFlat += 1
-			flat.listHtmlLink.style.display = ''
-			flat.cardHtmlLink.style.display = ''
+			if (flat.listHtmlLink) {
+				flat.listHtmlLink.style.display = ''
+			}
+			if (flat.cardHtmlLink) {
+				flat.cardHtmlLink.style.display = ''
+			}
 			return flat
 		})
 		this.setAmountSelectFlat(this.currentAmountFlat)
+		this.getCurrentShowFlats(select)
 		return select
 	}
 

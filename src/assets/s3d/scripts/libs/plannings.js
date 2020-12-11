@@ -5,18 +5,25 @@ class Plannings {
 		this.wrap = conf.wrap
 		this.inApart = conf.click
 		this.activeFlat = conf.activeFlat
-		this.init()
+		this.getCurrentShowFlats = conf.getCurrentShowFlats
+		this.currentShow = 0
+		// this.init()
+		this.updateShowFlat = this.updateShowFlat.bind(this)
 	}
 
 	init() {
-		console.log('plannings init', this)
 		this.createList(this.list, this.wrap)
 		$('.js-s3d__pl__list').on('click', '.js-s3d-pl__link', event => {
-			console.log(($(event.currentTarget).closest('.s3d-pl__plane').data('id')))
-			console.log(this.inApart)
 			const id = $(event.currentTarget).closest('.s3d-pl__plane').data('id')
 			this.activeFlat.value = id
 			this.inApart(id, 'apart', id)
+		})
+		this.getCurrentShowFlats(this.list)
+		$('.js-s3d__pl__list').on('scroll', event => {
+			const amount = this.checkCountShowElemInPage(event.currentTarget)
+			if (amount) {
+				this.addCardInPage(amount)
+			}
 		})
 	}
 
@@ -24,14 +31,63 @@ class Plannings {
 		console.log('plannings update')
 	}
 
+	updateShowFlat(list) {
+		this.showFlatList = list
+	}
+
+	pagination() {
+		this.showFlatList[0].cardHtmlLink.parentNode.scrollTop = 0
+		this.showFlatList.forEach((el, i) => {
+			el.cardHtmlLink.style.display = 'none'
+			if (i < 15) {
+				const img = el.cardHtmlLink.querySelectorAll('img')[0]
+				el.cardHtmlLink.style.display = ''
+				if (img.src === '' || img.src === undefined) {
+					img.src = img.dataset.src
+				}
+			}
+		})
+		this.currentShow = 15
+	}
+
+	checkCountShowElemInPage(wrap) {
+		const elWidth = this.showFlatList[0].cardHtmlLink.offsetWidth
+		const elHeight = this.showFlatList[0].cardHtmlLink.offsetHeight
+		const wrapHeight = wrap.offsetHeight
+		const wrapWidth = wrap.offsetWidth
+		const amount = (Math.ceil(wrapWidth / elWidth) + Math.ceil(wrapHeight / elHeight)) * 2
+		if ((wrap.scrollHeight - elHeight - wrap.offsetHeight) < wrap.scrollTop && amount < this.showFlatList.length) {
+			if (this.currentShow + amount <= this.showFlatList.length) {
+				return amount
+			} else {
+				return (this.showFlatList.length - this.currentShow)
+			}
+		}
+		return false
+	}
+
+	addCardInPage(amount) {
+		for (let i = this.currentShow; i < (this.currentShow + amount); i++) {
+			const img = this.showFlatList[i].cardHtmlLink.querySelectorAll('img')[0]
+			this.showFlatList[i].cardHtmlLink.style.display = ''
+			if (img.src === '' || img.src === undefined) {
+				img.src = img.dataset.src
+			}
+		}
+		this.currentShow += amount
+	}
+
 	createList(data, wrap) {
 		const result = []
 		data.forEach((el, i) => {
 			const nodeElem = this.createCard(el)
-			el['cardHtmlLink'] = nodeElem
 			if (i < 15) {
-				result.push(nodeElem)
+				nodeElem.querySelectorAll('img')[0].src = el['img_small']
+			} else {
+				nodeElem.style.display = 'none'
 			}
+			el['cardHtmlLink'] = nodeElem
+			result.push(nodeElem)
 		})
 		$(wrap).append(result)
 	}
@@ -41,7 +97,7 @@ class Plannings {
 		div.dataset.id = el.id
 		div.classList = 's3d-pl__plane'
 		div.innerHTML = `
-        <div class="s3d-pl__type">тип ${el.type}</div><img class="s3d-pl__image" src=${el['img_small']}>
+        <div class="s3d-pl__type">тип ${el.type}</div><img class="s3d-pl__image" data-src=${el['img_small']}>
         <table class="s3d-pl__table">
           <tbody><tr class="s3d-pl__row">
             <td class="s3d-pl__value">${el.number}</td>

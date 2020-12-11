@@ -7,7 +7,7 @@ class App {
 		this.activeSectionList = ['complex', 'courtyard', 'plannings', 'apart']
 		this.activeSection = 'complex'
 		this.activeHouse = undefined
-		// this.flatList = {};
+		this.flatList = {};
 		this.init = this.init.bind(this)
 		this.filterInit = this.filterInit.bind(this)
 		this.loader = {
@@ -42,6 +42,7 @@ class App {
 		this.unActive = this.unActive.bind(this)
 		this.addBlur = this.addBlur.bind(this)
 		this.changeBlockIndex = this.changeBlockIndex.bind(this)
+		this.getCurrentShowFlats = this.getCurrentShowFlats.bind(this)
 		// this.animateBlock = this.animateBlock.bind(this);
 		this.ActiveHouse = {
 			get: () => this.activeHouse,
@@ -76,6 +77,21 @@ class App {
 			degFloor: -230,
 			lastDeg: -230,
 		}
+		this.currentShowFlats = {
+			flats: [],
+		}
+		this.currentShowFlats = new Proxy(this.currentShowFlats, {
+			self: this,
+			set(target, prop, val) {
+				if (val) {
+					console.trace()
+					console.log(this.self.plannings)
+					this.self.plannings.updateShowFlat(val)
+					this.self.plannings.pagination()
+				}
+				return val
+			},
+		})
 	}
 
 	init() {
@@ -228,6 +244,10 @@ class App {
 		})
 	}
 
+	getCurrentShowFlats(list) {
+		this.currentShowFlats.flats = list
+	}
+
 	getFlatObj(id) {
 		return this.flatListObj[id]
 	}
@@ -261,19 +281,27 @@ class App {
 		})
 		this.flatListObj = list
 		this.flatList = flats
-		this.config['addBlur'] = this.addBlur
-		this.filter = new Filter(this.config, this.flatList, this.flatListObj, this.showSvgIn3D)
+		const filterConfig = {
+			addBlur: this.addBlur,
+			flatList: this.flatList,
+			flatListObj: this.flatListObj,
+			showSvgIn3D: this.showSvgIn3D,
+			getCurrentShowFlats: this.getCurrentShowFlats,
+		}
+		this.filter = new Filter(filterConfig)
 		this.getMinMaxParam(this.flatList)
 		this.filter.init(this.configProject)
 
 		// plannings должен быть выше favourites.  plannings создает элементы записывает ссылку в обьект, favourites обращается по этой ссылке к элементу.
-		const plannings = new Plannings({
+		this.plannings = new Plannings({
 			wrap: '.js-s3d__pl__list',
 			data: this.flatListObj,
 			list: this.flatList,
 			click: this.selectSlider,
 			activeFlat: this.activeFlat,
+			getCurrentShowFlats: this.getCurrentShowFlats,
 		})
+		this.plannings.init()
 		this.favourites = new Favourite({
 			wrap: '.js-s3d__fv tbody',
 			data: this.flatListObj,
@@ -281,7 +309,6 @@ class App {
 			click: this.selectSlider,
 			activeFlat: this.activeFlat,
 		})
-
 		this.deb = this.debounce(this.resize.bind(this), 700)
 		$(window).resize(() => {
 			this.deb(this)
