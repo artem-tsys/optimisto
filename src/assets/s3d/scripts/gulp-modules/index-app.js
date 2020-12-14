@@ -53,7 +53,7 @@ function init() {
 			// $('.js-s3d__slideModule').addClass('s3d-mobile')
 			config.complex.imageUrl += 'mobile/'
 		}
-		if (isDevice('mobile')) {
+		if (isDevice('mobile') || document.documentElement.offsetWidth <= 768) {
 			$('.js-s3d__slideModule').addClass('s3d-mobile')
 			// config.complex.imageUrl += 'mobile/'
 		}

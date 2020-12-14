@@ -84,8 +84,6 @@ class App {
 			self: this,
 			set(target, prop, val) {
 				if (val) {
-					console.trace()
-					console.log(this.self.plannings)
 					this.self.plannings.updateShowFlat(val)
 					this.self.plannings.pagination()
 				}
@@ -99,9 +97,9 @@ class App {
 		// this.history = new History({ scrollToBlock: this.scrollToBlock })
 		this.history.init()
 
-		this.getFlatList('/wp-content/themes/optimisto/static/flats.json', this.filterInit)
+		// this.getFlatList('/wp-content/themes/optimisto/static/flats.json', this.filterInit)
 		// this.getFlatList('static/apPars.php', this.filterInit)
-		// this.getFlatList('/wp-admin/admin-ajax.php', this.filterInit)
+		this.getFlatList('/wp-admin/admin-ajax.php', this.filterInit)
 
 		this.loader.show()
 		const config = this.config.complex
@@ -227,21 +225,21 @@ class App {
 	}
 
 	getFlatList(url, callback) {
-		// $.ajax({
-		// 	url,
-		// 	type: 'POST',
-		// 	data: 'action=getFlats',
-		// 	success: response => {
-		// 		callback(JSON.parse(response))
-		// 	},
-		// })
 		$.ajax({
 			url,
-			type: 'GET',
+			type: 'POST',
+			data: 'action=getFlats',
 			success: response => {
-				callback(response)
+				callback(JSON.parse(response))
 			},
 		})
+		// $.ajax({
+		// 	url,
+		// 	type: 'GET',
+		// 	success: response => {
+		// 		callback(response)
+		// 	},
+		// })
 	}
 
 	getCurrentShowFlats(list) {
@@ -309,10 +307,10 @@ class App {
 			click: this.selectSlider,
 			activeFlat: this.activeFlat,
 		})
-		this.deb = this.debounce(this.resize.bind(this), 700)
-		$(window).resize(() => {
-			this.deb(this)
-		})
+		// this.deb = this.debounce(this.resize.bind(this), 700)
+		// $(window).resize(() => {
+		// 	this.deb(this)
+		// })
 	}
 
 	createWrap(conf, tag) {
@@ -425,10 +423,13 @@ class App {
 					this.compass.setFloor()
 					break
 				case 'plannings':
-					if (document.documentElement.clientWidth > 767) {
+					if (document.documentElement.clientWidth > 768) {
 						this.filter.show()
+						$('.js-s3d-filter').removeClass('active-filter')
+					} else {
+						this.filter.hidden()
+						$('.js-s3d-filter').addClass('active-filter')
 					}
-					$('.js-s3d-filter').removeClass('active-filter')
 					break
 				default:
 					$('.js-s3d-filter').addClass('active-filter')
@@ -467,7 +468,10 @@ class App {
 		layers[0].classList.remove('translate-layer__down', 'translate-layer__up', 'active')
 		layers[0].classList.add(`translate-layer__${clas}`)
 		setTimeout(() => layers[0].classList.add('active'), 100)
-		setTimeout(() => this.animateFlag = true, 1000)
+		setTimeout(() => {
+			this.animateFlag = true
+			return true
+		}, 1000)
 	}
 
 	unActive() {
@@ -482,25 +486,25 @@ class App {
 	}
 
 	resize() {
-		console.log('resize', this)
 		const type = $('.js-s3d-controller')[0].dataset.type || ''
-		console.log('resize type', type)
-		if (document.documentElement.offsetWidth < 768) {
+		if (document.documentElement.offsetWidth <= 768) {
 			if (type === 'plannings') {
 				this.filter.hidden()
-				$('.js-s3d-filter').removeClass('plannings-filter')
+				$('.js-s3d-filter').removeClass('active-filter')
 			} else {
 				this.filter.hidden()
-				$('.js-s3d-filter').addClass('plannings-filter')
+				$('.js-s3d-filter').addClass('active-filter')
 			}
 		} else {
 			if (type === 'plannings') {
 				this.filter.show()
-				$('.js-s3d-filter').removeClass('plannings-filter')
-			} else {
-				this.filter.hidden()
-				$('.js-s3d-filter').addClass('plannings-filter')
+				$('.js-s3d-filter').removeClass('active-filter')
+				return
 			}
+			// else {
+			this.filter.hidden()
+			$('.js-s3d-filter').addClass('active-filter')
+			// }
 		}
 	}
 

@@ -177,9 +177,13 @@ class Slider {
 		this.centerSlider(this.wrapper[0])
 		$('.js-s3d-blink').on('click', () => this.flatBlink())
 
+		this.deb = this.debounce(this.resizeCanvas.bind(this), 300)
 		$(window).resize(() => {
-			this.resizeCanvas()
+			this.deb(this)
 		})
+		// $(window).resize(() => {
+		// 	this.resizeCanvas()
+		// })
 	}
 
 	gyroscopeStart() {
@@ -738,5 +742,15 @@ class Slider {
 		this.animates = requestAnimationFrame(this.animate.bind(this))
 	}
 
+	debounce(f, t) {
+		return function (args) {
+			const previousCall = this.lastCall
+			this.lastCall = Date.now()
+			if (previousCall && ((this.lastCall - previousCall) <= t)) {
+				clearTimeout(this.lastCallTimer)
+			}
+			this.lastCallTimer = setTimeout(() => f(args), t)
+		}
+	}
 	// end block  change slide functions
 }

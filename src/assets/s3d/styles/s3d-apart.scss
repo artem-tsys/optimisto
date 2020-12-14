@@ -369,17 +369,9 @@
         }
       }
 
-      //&:nth-last-child(1) span{
-      //  border-radius: 0 40px 40px 0;
-      //}
-      //&:nth-child(1) span{
-      //  border-radius: 40px 0 0 40px;
-      //}
       &:hover{
         span{
           background: #9C2CAB;
-          //background: #E1D7E4;
-          //color: #752180;
           color: #ffffff;
         }
       }
@@ -391,10 +383,8 @@
         &:nth-last-child(1) span{
           border-top-right-radius: 40px;
           border-bottom-right-radius: 40px;
-          //border-radius: 0 40px 40px 0;
         }
         &:nth-child(1) span{
-          //border-radius: 40px 0 0 40px;
           border-top-left-radius: 40px;
           border-bottom-left-radius: 40px;
         }
@@ -406,8 +396,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    //height: 110px;
-    //width: 110px;
     padding: 15px;
 
     grid-area: mini;

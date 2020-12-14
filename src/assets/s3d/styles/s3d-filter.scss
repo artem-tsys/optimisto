@@ -487,7 +487,6 @@
 .active-filter{
   width: 460px;
   min-width: 320px;
-  padding-top: 0;
   grid-area: filter;
   background: #FFFFFF;
   opacity: 0;
@@ -617,7 +616,11 @@
         padding: 0 10px;
         //width: 50%;
       }
-
+      &__openFilter{
+        &__text{
+          padding: 3px 10px;
+        }
+      }
     }
   }
 }

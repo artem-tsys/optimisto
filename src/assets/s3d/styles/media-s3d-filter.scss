@@ -28,13 +28,13 @@
     .s3d-filter__area, .s3d-filter__living-space, .s3d-filter__buttons, .s3d-filter__floor {
         width: 100%;
     }
-    .s3d-filter-select__list {
+    .active-filter .s3d-filter-select__list {
         flex-wrap: wrap;
     }
-    .s3d-filter-select__list>label{
+    .active-filter .s3d-filter-select__list>label{
         order: 2;
     }
-    .s3d-filter-select__list>span{
+    .active-filter .s3d-filter-select__list>span{
         order: 1;
     }
     .s3d-filter .irs--flat {
@@ -46,7 +46,7 @@
     }
     //3d genplan filter 
     .active-filter .s3d-filter {
-        padding:20px 15px 0;
+        padding: var(--header-height) 15px 0;
     }
     .active-filter .s3d-filter__table {
         padding: 0 0 15px 25px;
