@@ -71,7 +71,7 @@ class Slider {
 		if (isDevice('ios')) {
 			this.mouseSpeed = 0.5
 		}
-		if (isDevice()) {
+		if (isDevice('mobile')) {
 			this.eventsName = {
 				start: 'touchstart',
 				end: 'touchend',
@@ -126,7 +126,7 @@ class Slider {
 		}
 		this.firstLoadImage()
 
-		this.wrapper.on('click', 'polygon', e => {
+		this.wrapper.on('click touch', 'polygon', e => {
 			e.preventDefault()
 			this.infoBoxActive = true
 			this.setStateInfoActive(this.getFlatObj(e.target.dataset.id))
@@ -174,7 +174,7 @@ class Slider {
 			this.activeFlat.value = event.target.dataset.id
 			this.click(event.currentTarget.dataset.id, 'apart', event.currentTarget.dataset.id)
 		})
-		this.centerSlider(this.wrapper[0])
+		// this.centerSlider(this.wrapper[0])
 		$('.js-s3d-blink').on('click', () => this.flatBlink())
 
 		this.deb = this.debounce(this.resizeCanvas.bind(this), 300)
@@ -356,6 +356,7 @@ class Slider {
 			canvas.height(height)
 			canvas.width(height * factorW)
 		}
+
 		this.centerSlider(this.wrapper[0])
 	}
 
@@ -458,7 +459,7 @@ class Slider {
 	// this.infoBox.css({ opacity: '1' })
 	// this.infoBox.css({ top: Yinner - 40 })
 	// this.infoBox.css({ left: Xinner })
-
+		console.log(e)
 		if (this.infoBox.hasClass('s3d-infoBox-active') && !ignore) {
 			return
 		} else if (!this.infoBox.hasClass('s3d-infoBox-hover')) {
@@ -567,7 +568,7 @@ class Slider {
 	flatBlink() {
 		for (let i = 1; i <= 4; i++) {
 			setTimeout(() => {
-				$('.s3d__svg__active polygon').css('opacity', (i % 2) ? 0.5 : 0)
+				$('.s3d__svg__active polygon').css('opacity', (i % 2) ? 0.5 : '')
 			}, (i * 200))
 		}
 	}

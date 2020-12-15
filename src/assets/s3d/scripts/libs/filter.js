@@ -73,6 +73,11 @@ class Filter {
 
 		$('.js-s3d__amount-flat__num-all').html(this.flatList.length)
 		this.setAmountSelectFlat(this.flatList.length)
+
+		this.deb = this.debounce(this.resize.bind(this), 300)
+		$(window).resize(() => {
+			this.deb(this)
+		})
 	}
 
 	getNameFilterFlat() { return this.nameFilterFlat }
@@ -368,5 +373,22 @@ class Filter {
 		})
 		$(wrap).append(...result)
 		// return result
+	}
+
+	debounce(f, t) {
+		return function (args) {
+			const previousCall = this.lastCall
+			this.lastCall = Date.now()
+			if (previousCall && ((this.lastCall - previousCall) <= t)) {
+				clearTimeout(this.lastCallTimer)
+			}
+			this.lastCallTimer = setTimeout(() => f(args), t)
+		}
+	}
+
+	resize() {
+		if (document.documentElement.offsetWidth < 568) {
+			$('.js-s3d-filter').removeClass('active')
+		}
 	}
 }

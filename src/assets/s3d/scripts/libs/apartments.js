@@ -158,7 +158,6 @@ class Apartments {
 			url: '/wp-admin/admin-ajax.php',
 			data: `action=halfOfFlat&id=${id}`,
 		}).then(response => {
-			console.log('id', id)
 			this.activeFlat.value = id
 			this.updateFlat(JSON.parse(response), id)
 		})
@@ -166,15 +165,18 @@ class Apartments {
 
 	updateFlat(flat, id) {
 		const wrap = $('.js-s3d__wrapper__apart')
-		wrap.find('.js-s3d-flat__image').attr('src', flat.img)
+		wrap.find('.js-s3d-flat__image')[0].src = flat.img
+		// wrap.find('.js-s3d-flat__image').attr('src', flat.img)
 		wrap.find('.js-s3d-flat__image')[0].dataset.mfpSrc = flat.img
-		wrap.find('.js-s3d-flat__table').html(flat['left_block'])
-		wrap.find('.js-s3d__create-pdf').attr('href', flat.pdf)
+		wrap.find('.js-s3d-flat__table').html(flat['leftBlock'])
+		// wrap.find('.js-s3d-flat__table').html(flat['left_block'])
+		// wrap.find('.js-s3d-flat__table').html(flat['left_block'])
+		// wrap.find('.js-s3d__create-pdf').attr('href', flat.pdf)
 		wrap.find('.js-s3d-add__favourites')[0].dataset.id = id
 		$('polygon.u-svg-plan--active').removeClass('u-svg-plan--active')
 		wrap.find(`.s3d-flat__floor [data-id=${id}]`).addClass('u-svg-plan--active')
-		this.checkPlaning()
 
+		this.checkPlaning()
 		this.checkFavouriteApart()
 	}
 
@@ -391,7 +393,8 @@ class Apartments {
 		if (type === undefined) {
 			$('.js-s3d-flat__image').css('display', 'none')
 		} else {
-			$('.js-s3d-flat__image').attr('src', `/wp-content/themes/optimisto/assets${img[type][view]}`)
+			$('.js-s3d-flat__image')[0].src = `/wp-content/themes/optimisto/assets${img[type][view]}`
+			// $('.js-s3d-flat__image').attr('src', `/wp-content/themes/optimisto/assets${img[type][view]}`)
 			$('.js-s3d-flat__image')[0].dataset['mfpSrc'] = `/wp-content/themes/optimisto/assets${img[type][view]}`
 		}
 	}

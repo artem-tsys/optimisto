@@ -1,10 +1,10 @@
-function loader(callback) {
+function loader(callback, slider) {
 	const arrTimes = []
 	let i = 0 // start
 	const timesToTest = 5
-	const tThreshold = 100 // ms
-	const numImage = 34
-	const testImage = `/wp-content/themes/optimisto/assets/s3d/images/optimisto/complex/${numImage}.jpg` // small image in your server
+	const tThreshold = 60 // ms
+	const numImage = 43
+	const testImage = `/wp-content/themes/optimisto/assets/s3d/images/optimisto/complex/${slider || numImage}.jpg` // small image in your server
 	const dummyImage = new Image()
 	let isConnectedFast = false
 

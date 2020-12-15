@@ -45,7 +45,7 @@ function init() {
 
 	let app
 	new Promise(resolve => {
-		loader(resolve)
+		loader(resolve, config.complex.activeSlide)
 	}).then(value => {
 		// console.log('load', value)
 		document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`)
@@ -62,7 +62,7 @@ function init() {
 		app = new App(config)
 		app.init()
 
-		$(window).resize(() => {
+		$(document).resize(() => {
 			// app.resize()
 			document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`)
 		})
