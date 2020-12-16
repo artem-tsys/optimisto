@@ -7,7 +7,7 @@ class App {
 		this.activeSectionList = ['complex', 'courtyard', 'plannings', 'apart']
 		this.activeSection = 'complex'
 		this.activeHouse = undefined
-		this.flatList = {};
+		this.flatList = {}
 		this.init = this.init.bind(this)
 		this.filterInit = this.filterInit.bind(this)
 		this.loader = {

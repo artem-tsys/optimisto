@@ -62,7 +62,7 @@ function init() {
 		app = new App(config)
 		app.init()
 
-		$(document).resize(() => {
+		$(window).resize(() => {
 			// app.resize()
 			document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`)
 		})

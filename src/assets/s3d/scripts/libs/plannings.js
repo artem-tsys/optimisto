@@ -36,18 +36,20 @@ class Plannings {
 	}
 
 	pagination() {
-		this.showFlatList[0].cardHtmlLink.parentNode.scrollTop = 0
-		this.showFlatList.forEach((el, i) => {
-			el.cardHtmlLink.style.display = 'none'
-			if (i < 15) {
-				const img = el.cardHtmlLink.querySelectorAll('img')[0]
-				el.cardHtmlLink.style.display = ''
-				if (img.src === '' || img.src === undefined) {
-					img.src = img.dataset.src
+		if (this.showFlatList.length > 0) {
+			this.showFlatList[0].cardHtmlLink.parentNode.scrollTop = 0
+			this.showFlatList.forEach((el, i) => {
+				el.cardHtmlLink.style.display = 'none'
+				if (i < 15) {
+					const img = el.cardHtmlLink.querySelectorAll('img')[0]
+					el.cardHtmlLink.style.display = ''
+					if (img.src === '' || img.src === undefined) {
+						img.src = img.dataset.src
+					}
 				}
-			}
-		})
-		this.currentShow = 15
+			})
+			this.currentShow = 15
+		}
 	}
 
 	checkCountShowElemInPage(wrap) {
