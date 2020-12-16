@@ -351,11 +351,9 @@
       }
     }
     &__button{
-      //display: inline-block;
       display: none;
       height: 100%;
-      //min-width: 70px;
-      flex: 1 0 50%;
+      flex: 1 0 20%;
       cursor: pointer;
       pointer-events: none;
       visibility: hidden;
