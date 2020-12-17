@@ -12,10 +12,12 @@ function init() {
 			class: 'js-s3d__wrapper',
 			numberSlide: {
 				min: 0,
-				max: 179,
+				max: 119,
 			},
-			controlPoint: [43, 89, 132, 175],
-			activeSlide: 43,
+			controlPoint: [29, 60, 88, 117],
+			// controlPoint: [43, 89, 132, 175],
+			activeSlide: 29,
+			// activeSlide: 43,
 			mouseSpeed: 1,
 			// mouseSpeed: 300,
 		},
@@ -29,10 +31,12 @@ function init() {
 			class: 'js-s3d__wrapper',
 			numberSlide: {
 				min: 0,
-				max: 179,
+				max: 119,
 			},
-			controlPoint: [18, 63, 108, 162],
-			activeSlide: 18,
+			controlPoint: [12, 42, 72, 108],
+			// controlPoint: [18, 63, 108, 162],
+			activeSlide: 12,
+			// activeSlide: 18,
 			mouseSpeed: 1,
 		},
 		apart: {
@@ -52,6 +56,7 @@ function init() {
 		if (!value.fastSpeed) {
 			// $('.js-s3d__slideModule').addClass('s3d-mobile')
 			config.complex.imageUrl += 'mobile/'
+			config.courtyard.imageUrl += 'mobile/'
 		}
 		if (isDevice('mobile') || document.documentElement.offsetWidth <= 768) {
 			$('.js-s3d__slideModule').addClass('s3d-mobile')
