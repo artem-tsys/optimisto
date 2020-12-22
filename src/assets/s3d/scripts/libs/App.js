@@ -17,17 +17,19 @@ class App {
 			},
 			hide: block => {
 				if (block) this.scrollToBlock(600)(block)
+				// this.loader.miniOn()
 				setTimeout(() => {
 					$('.fs-preloader').removeClass('preloader-active')
 					$('.fs-preloader-bg').css({ filter: 'none' })
 					$('.first-loader').removeClass('first-loader')
 				}, 200)
-				this.loader.miniOn()
 			},
 			turnOn: el => {
 				console.log('turnOn', el)
+				console.trace()
 				if (el && el.length > 0) {
 					el.addClass('s3d-unActive').prop('disabled', true)
+					return
 				}
 				const arr = ['.s3d__button', '.js-s3d-select[data-type="plannings"]', '.js-s3d-controller__openFilter']
 				arr.forEach(name => {

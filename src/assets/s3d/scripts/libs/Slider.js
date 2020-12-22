@@ -125,6 +125,11 @@ class Slider {
 				}
 			})
 		}
+
+		this.createSvg()
+		this.createInfo()
+		this.createArrow()
+		this.createBackground()
 		this.firstLoadImage()
 
 		this.wrapper.on('click touch', 'polygon', e => {
@@ -141,10 +146,6 @@ class Slider {
 			this.compass.save(this.compass.current)
 		})
 
-		this.createSvg()
-		this.createInfo()
-		this.createArrow()
-		this.createBackground()
 		this.infoBox.on('click', '.js-s3d-infoBox__close', () => {
 			this.hiddenInfo()
 		})
@@ -249,7 +250,9 @@ class Slider {
 	}
 
 	firstLoadImage() {
-		// this.loader.turnOn(this.wrapper.find('.s3d-button'))
+		console.log(this.wrapper)
+		console.log($(this.wrapper).find('.s3d__button'))
+		this.loader.turnOn($(this.wrapper).find('.s3d__button'))
 		// $('.js-s3d__slideModule').addClass('s3d-unActive')
 		this.ctx.canvas.width = this.width
 		this.ctx.canvas.height = this.height
@@ -266,6 +269,7 @@ class Slider {
 			self.ctx.drawImage(this, 0, 0, self.width, self.height)
 			setTimeout(() => {
 				self.loader.hide(self.type)
+				self.loader.miniOn()
 			}, 300)
 			self.rotate = false
 			self.changeBlockIndex(self.type)
