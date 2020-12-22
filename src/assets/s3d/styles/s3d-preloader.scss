@@ -15,6 +15,32 @@
   cursor: not-allowed;
   fill: $--bg;
   padding: 0;
+  &-before{
+    z-index: 9000;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: 100px;
+    height: 100px;
+    background: rgba(255,255,255,1);
+    position: absolute;
+    bottom: 90px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    border-radius: 50%;
+
+    pointer-events: none;
+    .fs-preloader-precent{
+      margin-top: 5px;
+    }
+    .fs-preloader-box{
+      width: 30px;
+      height: 30px;
+    }
+  }
+
   &-logo{
     //margin-top: auto;
     max-width: 80vw;
@@ -31,11 +57,9 @@
     align-content: center;
     justify-content: flex-start;
     position: absolute;
-    bottom: 70px;
+    bottom: 90px;
     left: 50%;
     transform: translate(-50%, 0);
-    //top: calc(50% - 20px);
-    //left: calc(50% - 20px);
   }
   @keyframes loader {
     0% { left: -100px }
@@ -47,9 +71,6 @@
     background: #EC008C;
     margin-bottom: 10px;
     animation: fsAnimate .5s linear infinite;
-    //position: absolute;
-    //top: 0;
-    //left: 0;
     border-radius: 3px;
   }
   @keyframes fsAnimate {
@@ -120,5 +141,26 @@
   }
   to{
     transform: scale(1);
+  }
+}
+
+@media screen and (max-width:768px){
+  .fs-preloader{
+    &-before {
+      width: 80px;
+      height: 80px;
+      bottom: 60px;
+      .fs-preloader-box{
+        width: 20px;
+        height: 20px;
+      }
+    }
+    &-mini{
+      bottom: 60px;
+    }
+    &-box{
+      width: 30px;
+      height: 30px;
+    }
   }
 }

@@ -371,8 +371,19 @@
   &-unActive{
     //pointer-events: none!important;
     cursor: wait!important;
+    pointer-events: none;
+    background: #bbbbbb;
+    svg{
+      fill: #ffffff;
+    }
     *{
       pointer-events: none!important;
+    }
+    &:hover{
+      background: #bbbbbb;
+      svg{
+        fill: #ffffff;
+      }
     }
   }
 
@@ -438,7 +449,6 @@
     height: 100%;
   }
 }
-
 
 .translate-layer{
   z-index: 600;
@@ -802,7 +812,6 @@ header{
   }
 
 }
-
 
 //.gyroscope{
 //  position: fixed;

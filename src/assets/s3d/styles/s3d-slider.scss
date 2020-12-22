@@ -12,7 +12,8 @@
     border-radius: 50%;
     overflow: hidden;
     align-items: center;
-    background: #F2F2F2;
+    background: $color2;
+    //background: #F2F2F2;
     //fill: $color2;
     padding: 8px;
     transform: translateY(-100%);
@@ -26,7 +27,8 @@
 
     svg {
       display: flex;
-      fill: $color2;
+      fill: #F2F2F2;
+      //fill: $color2;
       flex: 1 1 100%;
       transition: fill .3s ease-in;
     }

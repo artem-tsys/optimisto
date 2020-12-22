@@ -1,9 +1,9 @@
 class Apartments {
 	constructor(data) {
-		this.idCopmlex = data.idCopmlex
+		// this.idCopmlex = data.idCopmlex
 		this.type = data.type
 		this.loader = data.loader
-		this.wrapperId = data.idCopmlex
+		this.wrapperId = data.type
 		this.imagesKeys = data.imagesKeys
 		this.wrapper = $(`.js-s3d__wrapper__ ${this.wrapperId}`)
 		this.click = data.click
@@ -94,7 +94,7 @@ class Apartments {
 
 	// вставляем разметку в DOM вешаем эвенты
 	setPlaneInPage(response) {
-		$(`#js-s3d__${this.idCopmlex}`).html(JSON.parse(response))
+		$(`#js-s3d__${this.type}`).html(JSON.parse(response))
 		this.checkPlaning()
 		this.loader.hide(this.type)
 		// $('.flat-group2 ').on('click', 'polygon', this.openPopup)
@@ -164,6 +164,7 @@ class Apartments {
 	}
 
 	updateFlat(flat, id) {
+		console.log(flat)
 		const wrap = $('.js-s3d__wrapper__apart')
 		wrap.find('.js-s3d-flat__image')[0].src = flat.img
 		// wrap.find('.js-s3d-flat__image').attr('src', flat.img)
@@ -296,7 +297,7 @@ class Apartments {
 										<input type="checkbox">
 										<svg role="presentation"><use xlink:href="#icon-favourites"></use></svg>в избранное</label>
                 </div>
-                <div class="s3d-flat__buttons  js-s3d-flat__buttons-type">
+                <div class="s3d-flat__buttons js-s3d-flat__buttons-type">
                 <label class="s3d-flat__button js-s3d__radio-type" data-type="with" >
                 	<input type="radio" name="type" class="s3d-flat__button-input" value="with" checked/>
                 	<span>с мебелью</span></label>
@@ -322,6 +323,7 @@ class Apartments {
 	}
 
 	checkPlaning() {
+		console.log('checkPlaning')
 		let active = false
 		let currentTab = ''
 		$('.js-s3d-flat .show').removeClass('show')
