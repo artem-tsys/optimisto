@@ -134,6 +134,10 @@ class Slider {
 
 		this.wrapper.on('click touch', 'polygon', e => {
 			e.preventDefault()
+			// if (e.currentTarget.classList.contains('active-flat')) {
+			// 	this.activeFlat.value = e.target.dataset.id
+			// 	this.click(e.currentTarget.dataset.id, 'apart', e.currentTarget.dataset.id)
+			// }
 			this.infoBoxActive = true
 			this.setStateInfoActive(this.getFlatObj(e.target.dataset.id))
 			$('.js-s3d__svgWrap .active-flat').removeClass('active-flat')
@@ -141,7 +145,6 @@ class Slider {
 			$('.js-s3d-filter__table .active-flat').removeClass('active-flat')
 			$(`.js-s3d-filter__table [data-id=${e.target.dataset.id}]`).addClass('active-flat')
 			this.activeSvg = $(e.target).closest('svg')
-
 			$(this.activeSvg).css({ opacity: '' })
 			this.compass.save(this.compass.current)
 		})

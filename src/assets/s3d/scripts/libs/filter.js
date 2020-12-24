@@ -352,10 +352,12 @@ class Filter {
 	// создаёт html список квартир
 	createListFlat(list, wrap) {
 		const result = []
-		list.forEach(el => {
-			const tr = document.createElement('tr')
-			tr.dataset.id = el.id
-			tr.innerHTML = `
+		list.forEach(elem => {
+			const el = elem
+			if (+el['type_object'] === 1) {
+				const tr = document.createElement('tr')
+				tr.dataset.id = el.id
+				tr.innerHTML = `
 					<td>${el.type}</td>
 					<td>${el.rooms}</td>
 					<td>${el.floor}</td>
@@ -366,10 +368,10 @@ class Filter {
 							<svg role="presentation"><use xlink:href="#icon-favourites"></use></svg>
 						</label>
 					</td>
-			`
-			el['listHtmlLink'] = tr
-			// $(wrap).append(tr)
-			result.push(tr)
+				`
+				el['listHtmlLink'] = tr
+				result.push(tr)
+			}
 		})
 		$(wrap).append(...result)
 		// return result

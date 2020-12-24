@@ -369,7 +369,6 @@
   }
 
   &-unActive{
-    //pointer-events: none!important;
     cursor: wait!important;
     pointer-events: none;
     background: #bbbbbb;
@@ -766,7 +765,7 @@ header{
 
 .header__s3d:not(.big){
   padding: 10px 0;
-  background: rgba(244, 244, 242, 0.5);
+  background: rgba(255, 255, 255, 0.7);
   box-shadow: none;
   .header__logo{
     height: calc(var(--header-height) - 30px);

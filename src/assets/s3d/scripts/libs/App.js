@@ -26,7 +26,6 @@ class App {
 			},
 			turnOn: el => {
 				console.log('turnOn', el)
-				console.trace()
 				if (el && el.length > 0) {
 					el.addClass('s3d-unActive').prop('disabled', true)
 					return

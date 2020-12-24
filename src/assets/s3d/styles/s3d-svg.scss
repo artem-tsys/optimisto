@@ -47,8 +47,9 @@
         opacity: .7;
       }
       &.active-flat {
-        fill: $color2;
-        opacity: .7;
+        //fill: $color2;
+        fill: #F68A22;
+        opacity: .6;
       }
     }
   }
