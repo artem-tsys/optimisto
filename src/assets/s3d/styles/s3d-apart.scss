@@ -39,6 +39,7 @@
       max-height: 100%;
       //height: 100%;
       //width: 100%;
+      height: 100%;
       margin: auto;
       grid-area: img;
       img{
@@ -466,6 +467,9 @@ img.mfp-img{
   top: -50px;
   right: -50px;
   color: #ffffff;
+}
+.mfp-container{
+  padding: 50px;
 }
 
 @keyframes back {
