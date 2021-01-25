@@ -81,15 +81,15 @@ class Apartments {
 	// получаем разметку квартиры с планом этажа
 	getPlane(config) {
 		console.log('нужно раскоментировать')
-		// this.setPlaneInPage(this.addHtmlAll(config))
-		$.ajax({
-			type: 'POST',
-			// url: '/inc/functions.php',
-			// url: './static/apPars.php',
-			url: '/wp-admin/admin-ajax.php',
-			data: `action=createFlat&id=${config.activeFlat.value}`,
-			success: response => (this.setPlaneInPage(response)),
-		})
+		this.setPlaneInPage(this.addHtmlAll(config))
+		// $.ajax({
+		// 	type: 'POST',
+		// 	// url: '/inc/functions.php',
+		// 	// url: './static/apPars.php',
+		// 	url: '/wp-admin/admin-ajax.php',
+		// 	data: `action=createFlat&id=${config.activeFlat.value}`,
+		// 	success: response => (this.setPlaneInPage(response)),
+		// })
 	}
 
 	// вставляем разметку в DOM вешаем эвенты
@@ -170,7 +170,6 @@ class Apartments {
 		// wrap.find('.js-s3d-flat__image').attr('src', flat.img)
 		wrap.find('.js-s3d-flat__image')[0].dataset.mfpSrc = flat.img
 		wrap.find('.js-s3d-flat__table').html(flat['leftBlock'])
-		// wrap.find('.js-s3d-flat__table').html(flat['left_block'])
 		// wrap.find('.js-s3d-flat__table').html(flat['left_block'])
 		// wrap.find('.js-s3d__create-pdf').attr('href', flat.pdf)
 		wrap.find('.js-s3d-add__favourites')[0].dataset.id = id
@@ -323,7 +322,6 @@ class Apartments {
 	}
 
 	checkPlaning() {
-		console.log('checkPlaning')
 		let active = false
 		let currentTab = ''
 		$('.js-s3d-flat .show').removeClass('show')
@@ -334,7 +332,6 @@ class Apartments {
 				$(`.js-s3d__radio-type[data-type=${currentTab}] input`).prop('checked', true)
 			}
 		})
-		console.log($('.js-s3d__radio-type.show'))
 		const elem = $('.js-s3d__radio-type.show')
 		if (elem.length === 1) {
 			elem.removeClass('show')
@@ -396,7 +393,6 @@ class Apartments {
 			$('.js-s3d-flat__image').css('display', 'none')
 		} else {
 			$('.js-s3d-flat__image')[0].src = `/wp-content/themes/optimisto/assets${img[type][view]}`
-			// $('.js-s3d-flat__image').attr('src', `/wp-content/themes/optimisto/assets${img[type][view]}`)
 			$('.js-s3d-flat__image')[0].dataset['mfpSrc'] = `/wp-content/themes/optimisto/assets${img[type][view]}`
 		}
 	}

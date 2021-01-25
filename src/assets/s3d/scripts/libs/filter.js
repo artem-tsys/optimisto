@@ -282,7 +282,7 @@ class Filter {
 				flat.cardHtmlLink.style.display = 'none'
 			}
 			for (const param in filter) {
-				if (+flat.sale !== 1) return true
+				if (+flat.sale !== 1) return false
 				if (
 					filterName.checkbox.includes(param)
 					&& filter[param].value.length > 0
