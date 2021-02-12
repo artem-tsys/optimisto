@@ -25,7 +25,6 @@ class App {
 				}, 200)
 			},
 			turnOn: el => {
-				console.log('turnOn', el)
 				if (el && el.length > 0) {
 					el.addClass('s3d-unActive').prop('disabled', true)
 					return
@@ -36,7 +35,6 @@ class App {
 				})
 			},
 			turnOff: el => {
-				console.log('turnOff', el)
 				if (el && el.length > 0) {
 					el.removeClass('s3d-unActive').prop('disabled', false)
 					return
@@ -126,9 +124,9 @@ class App {
 		// this.history = new History({ scrollToBlock: this.scrollToBlock })
 		this.history.init()
 
-		this.getFlatList('/wp-content/themes/optimisto/static/flats2.json', this.filterInit)
+		// this.getFlatList('/wp-content/themes/optimisto/static/flats2.json', this.filterInit)
 		// this.getFlatList('static/apPars.php', this.filterInit)
-		// this.getFlatList('/wp-admin/admin-ajax.php', this.filterInit)
+		this.getFlatList('/wp-admin/admin-ajax.php', this.filterInit)
 
 		// this.loader.show()
 		this.loader.turnOn()
@@ -255,21 +253,21 @@ class App {
 	}
 
 	getFlatList(url, callback) {
-		// $.ajax({
-		// 	url,
-		// 	type: 'POST',
-		// 	data: 'action=getFlats',
-		// 	success: response => {
-		// 		callback(JSON.parse(response))
-		// 	},
-		// })
 		$.ajax({
 			url,
-			type: 'GET',
+			type: 'POST',
+			data: 'action=getFlats',
 			success: response => {
-				callback(response)
+				callback(JSON.parse(response))
 			},
 		})
+		// $.ajax({
+		// 	url,
+		// 	type: 'GET',
+		// 	success: response => {
+		// 		callback(response)
+		// 	},
+		// })
 	}
 
 	getCurrentShowFlats(list) {
@@ -387,7 +385,6 @@ class App {
 	}
 
 	selectSliderType(id, type, Fn, idApart) {
-		console.log('selectSliderType(id, type, Fn, idApart)', this.favourites)
 		const config = this.config[type]
 		// this.history.update(type)
 		if (id) config.flat = id

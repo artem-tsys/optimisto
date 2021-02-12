@@ -187,7 +187,6 @@ class Favourite {
 		if (document.documentElement.clientWidth < 576) {
 			distance = this.getBetweenDistance(document.querySelector('.s3d-mobile-only[data-type="favourites"]'), iconToAnimate)
 			this.animateFavouriteElement(document.querySelector('.s3d-mobile-only[data-type="favourites"]'), iconToAnimate, distance, reverse)
-			console.log(distance)
 		} else {
 			switch (currentScreen) {
 				case 'complex':
@@ -232,8 +231,6 @@ class Favourite {
 
 	animateFavouriteElement(destination, element, distance, reverse) {
 		if (gsap === undefined) return
-		// console.log(Math.abs(div1x - div2x), 'X');
-		// console.log(Math.abs(div1y - div2y), 'Y');
 		const animatingElParams = element.getBoundingClientRect()
 		element.style.cssText += ` 
 			width:${animatingElParams.width}px;
@@ -255,7 +252,6 @@ class Favourite {
 			paused: true,
 			onComplete: () => {
 				element.classList.remove(this.animationPulseClass)
-				console.log(element.classList)
 				element.style.cssText = ''
 			},
 		})
@@ -271,7 +267,6 @@ class Favourite {
 		// tl.set(element, {position:'',width:'',height:'',stroke:'', fill:'',top:'',left:'',x:'',y:''});
 		tl.set(element, { clearProps: 'all' })
 		tl.play()
-		// console.log(div2x, 'X2');
 		return distance
 	}
 }

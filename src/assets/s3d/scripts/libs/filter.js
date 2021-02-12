@@ -9,11 +9,11 @@ class Filter {
 			// house: 'build_name',
 			floor: 'floor',
 			rooms: 'rooms',
+			build: 'build',
 			// price: 'price',
 			// priceM2: 'price_m2',
 		}
 		// name key js and name key in flat
-		// this.filterSelect = {}
 		this.flatList = filterConfig.flatList
 		this.flatListObj = filterConfig.flatListObj
 		this.currentAmountFlat = filterConfig.flatList.length
@@ -26,22 +26,10 @@ class Filter {
 	}
 
 	init(config) {
-		// this.filterHtml = createFilter('.js-s3d__slideModule')
-
-		// $(this.filterHtml.reset).on('click', () => this.resetFilter())
-		// $(this.filterHtml.house).on('click', 'input', () => this.showSvgSelect())
-		// $(this.filterHtml.room).on('click', 'input', () => this.showSvgSelect())
-		// $(this.filterHtml.close).on('click', () => this.hidden())
-		//
 		this.createListFlat(this.flatList, '.js-s3d-filter__table tbody')
 		$('.js-s3d-filter__button--reset').on('click', () => this.resetFilter())
 		$('.js-s3d-filter__close').on('click', () => this.hidden())
-		// $('.js-s3d-filter__button--apply').on('click', () => this.showSvgSelect());
 		$('.js-s3d-filter__select').on('click', 'input', () => this.showSvgSelect(this.applyFilter(this.flatList)))
-		// $('.js-s3d-filter__button--apply').on('click', () => $('.js-s3d-filter').removeClass('active'))
-		// $('.js-s3d-filter__close').on('click', () => {
-		// 	$('.js-s3d-filter').removeClass('active')
-		// })
 
 		$('.js-s3d-controller__showFilter').on('click', () => this.showAvailableFlat())
 
@@ -53,7 +41,7 @@ class Filter {
 		})
 
 		$('.js-s3d-filter__table').on('click', 'tr', event => {
-			if ($(event.originalEvent.target).hasClass('js-s3d-add__favourites') || event.originalEvent.target.nodeName === 'INPUT') return
+			if ($(event.target).hasClass('js-s3d-add__favourites') || event.target.nodeName === 'INPUT' || event.currentTarget.dataset.id === undefined) return
 			this.selectFlat(event.currentTarget.dataset.id, 'complex')
 		})
 
@@ -73,6 +61,28 @@ class Filter {
 
 		$('.js-s3d__amount-flat__num-all').html(this.flatList.length)
 		this.setAmountSelectFlat(this.flatList.length)
+		
+		$('.js-s3d-filter__table thead').on('click', '.s3d-filter__th', e => {
+			const nameSort = (e.currentTarget && e.currentTarget.dataset && e.currentTarget.dataset.sort) ? e.currentTarget.dataset.sort : undefined
+			if (!nameSort || (nameSort && nameSort === 'none')) {
+				return
+			}
+			
+			if (this.nameSort === nameSort) {
+				this.directionSortUp = !this.directionSortUp
+			} else {
+				this.directionSortUp = true
+			}
+			$('.s3d-sort-active').removeClass('s3d-sort-active')
+			if (this.directionSortUp) {
+				$(e.currentTarget).addClass('s3d-sort-active')
+			}
+			
+			this.nameSort = nameSort
+			//const list = [...$('.js-s3d-filter__table tbody tr')].filter(el => el.style.display === 'none')
+			const result = sortArray([...$('.js-s3d-filter__table tbody tr')], this.nameFilterFlat[nameSort], this.flatListObj, this.directionSortUp)
+			this.createListFlat(result, '.js-s3d-filter__table tbody')
+		})
 
 		this.deb = this.debounce(this.resize.bind(this), 300)
 		$(window).resize(() => {
@@ -96,22 +106,6 @@ class Filter {
 		$('.js-s3d__wrapper__complex polygon').removeClass('active-selected')
 		data.forEach(flat => $(`.js-s3d__wrapper__complex polygon[data-id=${flat.id}]`).addClass('active-selected'))
 		// фильтр svg , ищет по дата атрибуту, нужно подстраивать атрибут и класс обертки
-		// for (const key in data) {
-		// 	// if ($('.js-s3d__svg-container__complex').length > 0) {
-		// 	// 	console.log('showSvgSelect', data, this.flatListObj[key])
-		// 	// 	console.log('showSvgSelect', key, this.flatListObj)
-		// 	// 	$(`.js-s3d__wrapper__complex polygon[data-id=${this.flatListObj[key].id}]`).css({ opacity: 0.5 })
-		// 	// }
-		// 	if (+data[key].length > 0) {
-		// 		// $('#js-s3d__wrapper__complex polygon[data-build="'+key+'"]').css({'opacity':0.5});
-		// 		console.log('showSvgSelect(data) data[key]', data[key])
-		// 		data[key].forEach(
-		// 			flat => {
-		// 				if ($('.js-s3d__svg-container__complex').length > 0) { $(`.js-s3d__wrapper__complex polygon[data-id="${flat}"]`).css({ opacity: 0.5 }) }
-		// 			},
-		// 		)
-		// 	}
-		// }
 	}
 
 	// скрывает - показывает квартиры на svg облёта
@@ -247,7 +241,6 @@ class Filter {
 		this.clearFilterParam()
 		this.checkFilter()
 		this.getFilterParam()
-		console.log('applyFilter')
 		return this.filterFlat(data, this.filter, this.filterName, this.nameFilterFlat)
 	}
 
@@ -272,7 +265,6 @@ class Filter {
 		// if (filter.house.value.length === 0 || filter.rooms.value.length === 0) {
 		// 	return {}
 		// }
-		console.log('filterFlat', data)
 		this.currentAmountFlat = 0
 		const select = data.filter(flat => {
 			if (flat.listHtmlLink) {
@@ -359,6 +351,7 @@ class Filter {
 				tr.dataset.id = el.id
 				tr.innerHTML = `
 					<td>${el.type}</td>
+					<td>${el.build}</td>
 					<td>${el.rooms}</td>
 					<td>${el.floor}</td>
 					<td>${el.all_room} m<sub>2</sub></td>
@@ -373,6 +366,7 @@ class Filter {
 				result.push(tr)
 			}
 		})
+		$(wrap).html('')
 		$(wrap).append(...result)
 		// return result
 	}

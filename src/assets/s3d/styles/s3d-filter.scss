@@ -181,7 +181,29 @@
         line-height: 24px;
       }
     }
-
+    &__th {
+      display: flex;
+      align-items: center;
+      align-content: center;
+      justify-content: center;
+    }
+    &__arrow{
+      display: flex;
+      width: 5px;
+      height: 3px;
+      margin-left: 5px;
+      &--svg{
+        transform-origin: center;
+        fill: $color2;
+        stroke: none;
+        transform: rotate(180deg);
+      }
+      .down{
+        svg{
+          transform: rotate(160deg);
+        }
+      }
+    }
     &__area,
     &__living-space,
     &__buttons,
@@ -241,7 +263,7 @@
       th{
         position: sticky;
         top: 0;
-        width: 10%;
+        //width: 10%;
         padding: 20px 0 5px;
         background: #FFFFFF;
         font-family: $default-font;
@@ -259,7 +281,7 @@
         vertical-align: middle;
         padding: 0 7px;
       }
-      svg{
+      .s3d-filter__table__label{
         height: 18px;
         width: 17px;
         fill: transparent;
@@ -268,12 +290,12 @@
       input{
         display: none;
       }
-      input:checked + svg{
+      input:checked + .s3d-filter__table__label{
         fill: $color2;
         stroke: transparent;
       }
       .active-flat{
-        input:checked + svg{
+        input:checked + .s3d-filter__table__label{
           fill: $color1;
           stroke: transparent;
         }

@@ -30,7 +30,6 @@ class Svg {
 	}
 
 	selectSvg(data) {
-		console.log(this.type, 33, data)
 		if (this.type === 'complex') {
 			this.createSvg(data.complex, this.type)
 		} else if (this.type === 'courtyard') {

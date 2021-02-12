@@ -99,7 +99,8 @@ class Plannings {
 		div.dataset.id = el.id
 		div.classList = 's3d-pl__plane'
 		div.innerHTML = `
-        <div class="s3d-pl__type">тип ${el.type}</div><img class="s3d-pl__image" data-src=${el['img_small']}>
+        <div class="s3d-pl__type">тип ${el.type}</div>
+        <img class="s3d-pl__image" data-src=${el['img_small']}>
         <table class="s3d-pl__table">
           <tbody><tr class="s3d-pl__row">
             <td class="s3d-pl__value">${el.number}</td>

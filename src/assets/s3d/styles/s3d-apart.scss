@@ -456,6 +456,11 @@
       border: 2px solid #85C441;
     }
   }
+  &-sort-active{
+    .s3d-filter__arrow--svg{
+      transform: rotate(0);
+    }
+  }
 }
 
 img.mfp-img{

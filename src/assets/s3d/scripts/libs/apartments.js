@@ -81,15 +81,15 @@ class Apartments {
 	// получаем разметку квартиры с планом этажа
 	getPlane(config) {
 		console.log('нужно раскоментировать')
-		this.setPlaneInPage(this.addHtmlAll(config))
-		// $.ajax({
-		// 	type: 'POST',
-		// 	// url: '/inc/functions.php',
-		// 	// url: './static/apPars.php',
-		// 	url: '/wp-admin/admin-ajax.php',
-		// 	data: `action=createFlat&id=${config.activeFlat.value}`,
-		// 	success: response => (this.setPlaneInPage(response)),
-		// })
+		// this.setPlaneInPage(this.addHtmlAll(config))
+		$.ajax({
+			type: 'POST',
+			// url: '/inc/functions.php',
+			// url: './static/apPars.php',
+			url: '/wp-admin/admin-ajax.php',
+			data: `action=createFlat&id=${config.activeFlat.value}`,
+			success: response => (this.setPlaneInPage(response)),
+		})
 	}
 
 	// вставляем разметку в DOM вешаем эвенты
@@ -164,7 +164,6 @@ class Apartments {
 	}
 
 	updateFlat(flat, id) {
-		console.log(flat)
 		const wrap = $('.js-s3d__wrapper__apart')
 		wrap.find('.js-s3d-flat__image')[0].src = flat.img
 		// wrap.find('.js-s3d-flat__image').attr('src', flat.img)

@@ -253,8 +253,6 @@ class Slider {
 	}
 
 	firstLoadImage() {
-		console.log(this.wrapper)
-		console.log($(this.wrapper).find('.s3d__button'))
 		this.loader.turnOn($(this.wrapper).find('.s3d__button'))
 		// $('.js-s3d__slideModule').addClass('s3d-unActive')
 		this.ctx.canvas.width = this.width
@@ -282,7 +280,6 @@ class Slider {
 	}
 
 	loadImage(i, type) {
-		console.log('loadImage')
 		const self = this
 		const img = new Image()
 		const index = i
@@ -474,7 +471,6 @@ class Slider {
 	// this.infoBox.css({ opacity: '1' })
 	// this.infoBox.css({ top: Yinner - 40 })
 	// this.infoBox.css({ left: Xinner })
-		console.log(e)
 		if (this.infoBox.hasClass('s3d-infoBox-active') && !ignore) {
 			return
 		} else if (!this.infoBox.hasClass('s3d-infoBox-hover')) {
@@ -634,7 +630,6 @@ class Slider {
 			fn()
 			if (this.activeElem === this.nextSlide) {
 				this.cancelAnimateSlide()
-				console.log('repeatChangeSlide')
 				this.updateSvgActive(this.type, 'nextSlide')
 				this.activeSvg.css({ opacity: '' })
 				$('.s3d__svg-container').css({ opacity: 1 })
@@ -682,7 +677,6 @@ class Slider {
 
 	// меняет слайд на следующий
 	changeNext() {
-		// console.log('changeNext', this.activeElem)
 		if (this.activeElem === this.numberSlide.max) {
 			this.result.max = this.controlPoint[0]
 			this.result.min = -1

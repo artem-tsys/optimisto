@@ -202,11 +202,33 @@ block content
                         table
                             thead
                                 tr
-                                    th Тип
-                                    th Комнат
-                                    th Этаж
-                                    th Площадь м2
-                                    th В избранное
+                                    th
+                                        span Тип
+                                    th
+                                        .s3d-filter__th(data-sort="build")
+                                            span Секция
+                                            .s3d-filter__arrow
+                                                svg( class="s3d-filter__arrow--svg" width="5" height="3" viewBox="0 0 5 3" fill="none" xmlns="http://www.w3.org/2000/svg")
+                                                    path( d="M-4.76837e-07 3L2.5 2.5828e-07L5 3L2.87764 3L2.12236 3L-4.76837e-07 3Z")
+                                    th
+                                        .s3d-filter__th(data-sort="rooms")
+                                            span Комнат
+                                            .s3d-filter__arrow
+                                                svg( class="s3d-filter__arrow--svg" width="5" height="3" viewBox="0 0 5 3" fill="none" xmlns="http://www.w3.org/2000/svg")
+                                                    path( d="M-4.76837e-07 3L2.5 2.5828e-07L5 3L2.87764 3L2.12236 3L-4.76837e-07 3Z")
+                                    th
+                                        .s3d-filter__th(data-sort="floor")
+                                            span Этаж
+                                            .s3d-filter__arrow
+                                                svg( class="s3d-filter__arrow--svg" width="5" height="3" viewBox="0 0 5 3" fill="none" xmlns="http://www.w3.org/2000/svg")
+                                                    path( d="M-4.76837e-07 3L2.5 2.5828e-07L5 3L2.87764 3L2.12236 3L-4.76837e-07 3Z")
+                                    th
+                                        .s3d-filter__th(data-sort="area")
+                                            span Площадь м2
+                                            .s3d-filter__arrow
+                                                svg( class="s3d-filter__arrow--svg" width="5" height="3" viewBox="0 0 5 3" fill="none" xmlns="http://www.w3.org/2000/svg")
+                                                    path( d="M-4.76837e-07 3L2.5 2.5828e-07L5 3L2.87764 3L2.12236 3L-4.76837e-07 3Z")
+                                    th
                             tbody
                     img( class='s3d-filter__bg' src='/wp-content/themes/optimisto/assets/s3d/images/house.png')
                     .s3d-filter__amount-flat
