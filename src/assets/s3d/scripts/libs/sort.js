@@ -2,10 +2,11 @@ function sortArray(arr, name, getFlat, directionSortUp) {
 	const result = arr.reduce((previous, current) => {
 		const id = +current.dataset.id
 		const flat = getFlat[id]
-		previous.push([flat, flat[name]])
+		previous.push([current, flat[name]])
 		return previous
 	}, [])
-	return result.sort(directionSortUp ? sortUp : sortDown).map(el => el[0])
+	const coll = result.sort(directionSortUp ? sortUp : sortDown).map(el => el[0])
+	return coll
 
 	function sortUp(a, b) {
 		if (+a[1] < +b[1]) {

@@ -1,6 +1,5 @@
 class Apartments {
 	constructor(data) {
-		// this.idCopmlex = data.idCopmlex
 		this.type = data.type
 		this.loader = data.loader
 		this.wrapperId = data.type
@@ -20,28 +19,15 @@ class Apartments {
 		// получаем разметку квартиры с планом этажа
 		this.getPlane(config)
 		const self = this
-		// $('.js-switch-btn').on('change', function () {
-		// 	const has = $(this).is(':checked')
-		// 	if (has && self.conf.plan3d) {
-		// 		self.conf.$img.src = self.conf.plan3dSrc
-		// 		self.conf.$mfpLink.href = self.conf.plan3dSrc
-		// 	} else {
-		// 		self.conf.$img.src = self.conf.planStandartSrc
-		// 		self.conf.$mfpLink.href = self.conf.planStandartSrc
-		// 	}
-		// })
 
 		$('#js-s3d__apart').on('click', '.js-s3d-flat__back', e => {
 			// this.loader.show()
 			this.click(+e.currentTarget.dataset.id, 'complex', this.activeFlat.value)
-			// this.scrollBlock(e, 'complex', this.activeFlat.value)
 		})
 	}
 
 	update(config) {
 		// переключатель планировки обычная/3д
-		// $('.s3d-filter__plan').removeClass('s3d-filter__plan-active')
-		// this.updateFlat(flat)
 		this.getPlane(config)
 	}
 
@@ -97,8 +83,6 @@ class Apartments {
 		$(`#js-s3d__${this.type}`).html(JSON.parse(response))
 		this.checkPlaning()
 		this.loader.hide(this.type)
-		// $('.flat-group2 ').on('click', 'polygon', this.openPopup)
-		// $('.js-s3d__wrapper__apart .form-js').on('click', () => $('.common-form-popup-js').addClass('active'))
 		$('.js-flat-button-return').on('click', e => {
 			e.preventDefault()
 			this.click(e.currentTarget.dataset.id, 'complex', this.activeFlat.value)
@@ -166,11 +150,8 @@ class Apartments {
 	updateFlat(flat, id) {
 		const wrap = $('.js-s3d__wrapper__apart')
 		wrap.find('.js-s3d-flat__image')[0].src = flat.img
-		// wrap.find('.js-s3d-flat__image').attr('src', flat.img)
 		wrap.find('.js-s3d-flat__image')[0].dataset.mfpSrc = flat.img
 		wrap.find('.js-s3d-flat__table').html(flat['leftBlock'])
-		// wrap.find('.js-s3d-flat__table').html(flat['left_block'])
-		// wrap.find('.js-s3d__create-pdf').attr('href', flat.pdf)
 		wrap.find('.js-s3d-add__favourites')[0].dataset.id = id
 		$('polygon.u-svg-plan--active').removeClass('u-svg-plan--active')
 		wrap.find(`.s3d-flat__floor [data-id=${id}]`).addClass('u-svg-plan--active')
@@ -349,8 +330,6 @@ class Apartments {
 			$(`.js-s3d__radio-type[data-type= ${type}]`).addClass('show')
 			return true
 		}
-		// $(`.js-s3d__radio-type[data-type= ${type}]`).attr('disable', true)
-		// $(`.js-s3d__radio-type[data-type= ${type}]`).remove()
 		return false
 	}
 

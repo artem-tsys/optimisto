@@ -2,7 +2,6 @@ class App {
 	constructor(data) {
 		this.config = data
 		this.id = data.id
-		// this.sectionName = ['complex']
 		this.sectionName = ['complex', 'courtyard', 'plannings', 'apart']
 		this.activeSectionList = ['complex', 'courtyard', 'plannings', 'apart']
 		this.activeSection = 'complex'
@@ -54,7 +53,6 @@ class App {
 		this.configProject = {}
 		this.flatListObj = {}
 		this.activeFlat = {
-			// value: null,
 			get value() {
 				return this.num
 			},
@@ -62,15 +60,12 @@ class App {
 				this.num = +val
 			},
 		}
-		// this.changeCurrentFloor = this.changeCurrentFloor.bind(this);
 		this.scrollToBlock = this.scrollToBlock.bind(this)
 		this.showSvgIn3D = this.showSvgIn3D.bind(this)
 		this.selectSlider = this.selectSlider.bind(this)
-		// this.unActive = this.unActive.bind(this)
 		this.addBlur = this.addBlur.bind(this)
 		this.changeBlockIndex = this.changeBlockIndex.bind(this)
 		this.getCurrentShowFlats = this.getCurrentShowFlats.bind(this)
-		// this.animateBlock = this.animateBlock.bind(this);
 		this.ActiveHouse = {
 			get: () => this.activeHouse,
 			set: num => {
@@ -121,14 +116,11 @@ class App {
 
 	init() {
 		this.history = new History({ scrollToBlock: this.scrollToBlock, animateBlock: this.animateBlock })
-		// this.history = new History({ scrollToBlock: this.scrollToBlock })
 		this.history.init()
 
 		// this.getFlatList('/wp-content/themes/optimisto/static/flats2.json', this.filterInit)
-		// this.getFlatList('static/apPars.php', this.filterInit)
 		this.getFlatList('/wp-admin/admin-ajax.php', this.filterInit)
 
-		// this.loader.show()
 		this.loader.turnOn()
 		const config = this.config.complex
 		config.idCopmlex = 'complex'
@@ -148,19 +140,6 @@ class App {
 		this.complex.init()
 		$('.js-s3d__wrapper__complex').css('z-index', '100')
 		$('.js-s3d-controller').data('type', 'complex')
-		// $('.s3d-select__head').on('click', e => {
-		// 	const self = this
-		// 	const block = $(e.currentTarget).next()
-		// 	block.css({ visibility: 'visible' })
-		// 	function select(ev) {
-		// 		if (ev.target.className === 's3d-select-value' && ev.target.dataset.house) {
-		// 			self.selectSlider(e, self.complex.type);
-		// 		}
-		// 		$('body').off('click', event => { select(event) })
-		// 		block.css({ visibility: 'hidden' })
-		// 	}
-		// 	$('body').on('mousedown', select)
-		// });
 
 		this.animateFlag = true
 
@@ -295,16 +274,12 @@ class App {
 	}
 
 	filterInit(data) {
-		// this.filter = new Filter(this.config, data)
 		const list = {}
 		const flats = data.filter(el => {
 			// условие откидывающее все кроме квартир
-			// if (el['type_object'] === '1') {
 			list[el.id] = el
 			list[el.id]['favourite'] = false
 			return el
-			// }
-			// return false
 		})
 		this.flatListObj = list
 		this.flatList = flats
@@ -502,10 +477,6 @@ class App {
 			return true
 		}, 1000)
 	}
-
-	// unActive() {
-	// 	$('.js-s3d__slideModule').removeClass('s3d-unActive')
-	// }
 
 	addBlur(wrap, time) {
 		$(wrap).addClass('s3d-blur')

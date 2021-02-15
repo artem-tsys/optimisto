@@ -77,11 +77,9 @@ class Filter {
 			if (this.directionSortUp) {
 				$(e.currentTarget).addClass('s3d-sort-active')
 			}
-			
 			this.nameSort = nameSort
-			//const list = [...$('.js-s3d-filter__table tbody tr')].filter(el => el.style.display === 'none')
 			const result = sortArray([...$('.js-s3d-filter__table tbody tr')], this.nameFilterFlat[nameSort], this.flatListObj, this.directionSortUp)
-			this.createListFlat(result, '.js-s3d-filter__table tbody')
+			$('.js-s3d-filter__table tbody').append(result)
 		})
 
 		this.deb = this.debounce(this.resize.bind(this), 300)
@@ -223,13 +221,11 @@ class Filter {
 		$('.js-s3d__svgWrap .active-selected').removeClass('active-selected')
 		for (const key in this.filter) {
 			if (this.filter[key].type === 'range') {
-				// this.filter[key].elem.reset();
 				this.filter[key].elem.update({ from: this.filter[key].elem.result.min, to: this.filter[key].elem.result.max })
 			} else {
 				this.filter[key].elem.each((i, el) => { el.checked ? el.checked = false : '' })
 			}
 		}
-		// this.filterFlatStart()
 		this.flatList.forEach(flat => {
 			flat.listHtmlLink.style.display = ''
 			flat.cardHtmlLink.style.display = ''
@@ -262,9 +258,6 @@ class Filter {
 	// поиск квартир по параметрам фильтра
 	filterFlat(data, filter, filterName, nameFilterFlat) {
 		// прерывает фильт если не выбран дом или комнаты
-		// if (filter.house.value.length === 0 || filter.rooms.value.length === 0) {
-		// 	return {}
-		// }
 		this.currentAmountFlat = 0
 		const select = data.filter(flat => {
 			if (flat.listHtmlLink) {
@@ -335,7 +328,6 @@ class Filter {
 
 	// сбросить данные о фильтрах и выбранные квартиры
 	clearFilterParam() {
-		// this.filterSelect = {}
 		this.filter = {}
 		$('#js-s3d__wrapper polygon').css({ opacity: '' })
 		this.setAmountSelectFlat(this.flatList.length)

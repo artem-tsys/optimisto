@@ -15,15 +15,9 @@ function init() {
 				max: 119,
 			},
 			controlPoint: [29, 60, 88, 117],
-			// controlPoint: [43, 89, 132, 175],
 			activeSlide: 29,
-			// activeSlide: 43,
 			mouseSpeed: 1,
-			// mouseSpeed: 300,
 		},
-		// floor: {
-		// 	id: 'js-s3d__wrapper',
-		// },
 		courtyard: {
 			id: '#js-s3d__wrapper',
 			url: '',
@@ -34,9 +28,7 @@ function init() {
 				max: 119,
 			},
 			controlPoint: [12, 42, 72, 108],
-			// controlPoint: [18, 63, 108, 162],
 			activeSlide: 12,
-			// activeSlide: 18,
 			mouseSpeed: 1,
 		},
 		apart: {
@@ -51,24 +43,19 @@ function init() {
 	new Promise(resolve => {
 		loader(resolve, config.complex.activeSlide)
 	}).then(value => {
-		// console.log('load', value)
 		document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`)
 		if (!value.fastSpeed) {
-			// $('.js-s3d__slideModule').addClass('s3d-mobile')
 			config.complex.imageUrl += 'mobile/'
 			config.courtyard.imageUrl += 'mobile/'
 		}
 		if (isDevice('mobile') || document.documentElement.offsetWidth <= 768) {
 			$('.js-s3d__slideModule').addClass('s3d-mobile')
-			// config.complex.imageUrl += 'mobile/'
 		}
 		config.complex['browser'] = Object.assign(isBrowser(), value)
-		// console.log(config.complex['browser'])
 		app = new App(config)
 		app.init()
 
 		$(window).resize(() => {
-			// app.resize()
 			document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`)
 		})
 	})
