@@ -12,9 +12,10 @@ class Plannings {
 	}
 
 	init() {
-		$.ajax('/wp-content/themes/optimisto/assets/s3d/template/cardPlannings.php').then(response => {
+		$.ajax('/wp-admin/admin-ajax.php?action=cardPlannings').then(response => {
+		// $.ajax('/wp-content/themes/optimisto/assets/s3d/template/cardPlannings.php').then(response => {
 			this.templateCard = JSON.parse(response)
-			
+
 			this.createList(this.list, this.wrap)
 			$('.js-s3d__pl__list').on('click', '.js-s3d-pl__link', event => {
 				const id = $(event.currentTarget).closest('.s3d-pl__plane').data('id')
