@@ -61,13 +61,13 @@ class Filter {
 
 		$('.js-s3d__amount-flat__num-all').html(this.flatList.length)
 		this.setAmountSelectFlat(this.flatList.length)
-		
+
 		$('.js-s3d-filter__table thead').on('click', '.s3d-filter__th', e => {
 			const nameSort = (e.currentTarget && e.currentTarget.dataset && e.currentTarget.dataset.sort) ? e.currentTarget.dataset.sort : undefined
 			if (!nameSort || (nameSort && nameSort === 'none')) {
 				return
 			}
-			
+
 			if (this.nameSort === nameSort) {
 				this.directionSortUp = !this.directionSortUp
 			} else {

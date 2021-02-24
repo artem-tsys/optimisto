@@ -36,6 +36,10 @@ const paths = {
 		src: './src/pug/**/*.pug',
 		dest: './wp-content/themes/optimisto',
 	},
+	phpTemplates: {
+		src: './src/assets/s3d/template/*.php',
+		dest: './wp-content/themes/optimisto/assets/s3d/template/',
+	},
 	styles: {
 		main: './src/assets/s3d/styles/main.scss',
 		src: ['./src/assets/s3d/styles/**/*.scss', './src/assets/s3d/styles/**/*.css'],
@@ -80,6 +84,7 @@ const paths = {
 function watch() {
 	gulp.watch(paths.styles.src, styles)
 	gulp.watch(paths.templates.src, templates)
+	gulp.watch(paths.phpTemplates.src, phpTemplates);
 	// gulp.watch(paths.scripts.src, scripts); //for webpack
 	gulp.watch(paths.gulpModules.src, gulpModules)
 	gulp.watch(paths.images.src, images)
@@ -111,6 +116,11 @@ function templates() {
 	return gulp.src(paths.templates.pages)
 		.pipe(pug({ pretty: true }))
 		.pipe(gulp.dest(paths.root))
+}
+
+function phpTemplates() {
+	return gulp.src(paths.phpTemplates.src)
+		.pipe(gulp.dest(paths.phpTemplates.dest))
 }
 
 // scss
@@ -254,7 +264,7 @@ gulp.task('default', gulp.series(
 	esLint,
 	libs,
 	// gulp.parallel(styles, templates, fonts, scripts, images, static, json),
-	gulp.parallel(styles, templates, fonts, gulpModules, images, staticFolder, json),
+	gulp.parallel(styles, phpTemplates, templates, fonts, gulpModules, images, staticFolder, json),
 	gulp.parallel(watch, server),
 ))
 
