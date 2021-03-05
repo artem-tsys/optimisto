@@ -229,7 +229,7 @@
         width: 100%;
         tr{
           &:hover:not(.active-flat){
-            background: $color1;
+            background: $color1!important;
             *{
               color: #FFFFFF;
             }
@@ -251,9 +251,17 @@
         background: #FFFFFF;
         color: #221F20;
         cursor: pointer;
-        &:nth-child(odd){
-          background: #F4F4F2;
+        &[data-style=none] {
+          display: none;
+          visibility: hidden;
         }
+        //&[data-style="visible"]:nth-child(odd){
+        //  background: #F4F4F2;
+        //}
+
+        //&:nth-child(odd){
+        //  background: #F4F4F2;
+        //}
         &.active-flat{
           background: $color2;
           color: #ffffff;

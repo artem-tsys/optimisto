@@ -66,12 +66,10 @@ class Apartments {
 
 	// получаем разметку квартиры с планом этажа
 	getPlane(config) {
-		console.log('нужно раскоментировать')
+		// console.log('нужно раскоментировать')
 		// this.setPlaneInPage(this.addHtmlAll(config))
 		$.ajax({
 			type: 'POST',
-			// url: '/inc/functions.php',
-			// url: './static/apPars.php',
 			url: '/wp-admin/admin-ajax.php',
 			data: `action=createFlat&id=${config.activeFlat.value}`,
 			success: response => (this.setPlaneInPage(response)),
@@ -80,7 +78,7 @@ class Apartments {
 
 	// вставляем разметку в DOM вешаем эвенты
 	setPlaneInPage(response) {
-		$(`#js-s3d__${this.type}`).html(JSON.parse(response))
+		$(`#js-s3d__${this.type}`).html(JSON.parse(response));
 		this.checkPlaning()
 		this.loader.hide(this.type)
 		$('.js-flat-button-return').on('click', e => {
@@ -243,21 +241,21 @@ class Apartments {
                 <image xlink:href="https://comfortlife.devbase.pro/img/projects/8/1/Іdealіst-P6-1604317030-6000x85-.jpg" x="0" y="0" height="100%" width="100%"></image>
                   <a xlink:href="/flat/?flat=34" class="appart__hover" data-section="1" data-tot_square="69.76" data-liv_square="0" data-rooms="2" data-number="2А" data-id="34">
                                      <polygon class=" u-svg-plan--active" points="998,1062,1002,2160,242,2054,132,1998,82,1902,78,654,82,546,128,460,216,430,528,386,538,1096,534,1072" data-id="34" data-section="1" data-tot_square="69.76" data-liv_square="0" data-rooms="2" data-number="2А">
-                                     </polygon> 
+                                     </polygon>
                                 </a>
                      <a xlink:href="/flat/?flat=35" class="appart__hover" data-section="1" data-tot_square="38.18" data-liv_square="0" data-rooms="1" data-number="1А" data-id="35">
                         <polygon class="" points="530,386,1388,238,1384,1100,534,1100" data-id="35" data-section="1" data-tot_square="38.18" data-liv_square="0" data-rooms="1" data-number="1А">
-                        </polygon> 
+                        </polygon>
                    </a>
                      <a xlink:href="/flat/?flat=36" class="appart__hover" data-section="1" data-tot_square="46.01" data-liv_square="0" data-rooms="1" data-number="1Б" data-id="36">
                         <polygon class="" points="1386,236,2242,92,2230,1096,1388,1100" data-id="36" data-section="1" data-tot_square="46.01" data-liv_square="0" data-rooms="1" data-number="1Б">
-                        </polygon> 
+                        </polygon>
                    </a>
                      <a xlink:href="/flat/?flat=37" class="appart__hover" data-section="1" data-tot_square="88.06" data-liv_square="0" data-rooms="2" data-number="2Б" data-id="37">
                         <polygon class="" points="2246,90,2526,48,2632,82,2692,168,2686,2158,2640,2274,2518,2320,2252,2288,1794,2230,1800,1100,2228,1100" data-id="37" data-section="1" data-tot_square="88.06" data-liv_square="0" data-rooms="2" data-number="2Б">
-                        </polygon> 
+                        </polygon>
                    </a>
-                                
+                   
                
             </svg>
                 </div>

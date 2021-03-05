@@ -186,9 +186,6 @@ class Slider {
 		$(window).resize(() => {
 			this.deb(this)
 		})
-		// $(window).resize(() => {
-		// 	this.resizeCanvas()
-		// })
 	}
 
 	gyroscopeStart() {
@@ -218,19 +215,6 @@ class Slider {
 								Y-axis', ${event.beta}
 								Z-axis', ${event.gamma}`)
 	}
-
-	// setConfig(data) {
-	// 	this.type = data.type || this.type
-	// 	this.urlBase = data.url || this.urlBase
-	// 	this.imageUrl = data.imageUrl || this.imageUrl
-	// 	this.activeElem = data.activeSlide || this.activeElem
-	// 	this.wrapperId = data.idCopmlex || this.wrapperId
-	// 	this.currentSlide = data.activeSlide || this.currentSlide
-	// 	this.nextSlide = data.activeSlide || this.nextSlide
-	// 	this.svgConfig = data || this.svgConfig
-	// 	this.controlPoint = data.controlPoint || this.controlPoint
-	// 	this.mouseSpeed = data.mouseSpeed || this.mouseSpeed
-	// }
 
 	centerSlider(elem) {
 		const scroll = (elem.scrollWidth - document.documentElement.offsetWidth) / 2

@@ -261,7 +261,8 @@ class Filter {
 		this.currentAmountFlat = 0
 		const select = data.filter(flat => {
 			if (flat.listHtmlLink) {
-				flat.listHtmlLink.style.display = 'none'
+				flat.listHtmlLink.dataset.style = 'none'
+				// flat.listHtmlLink.style.display = 'none'
 			}
 			if (flat.cardHtmlLink) {
 				flat.cardHtmlLink.style.display = 'none'
@@ -297,7 +298,8 @@ class Filter {
 			}
 			this.currentAmountFlat += 1
 			if (flat.listHtmlLink) {
-				flat.listHtmlLink.style.display = ''
+				// flat.listHtmlLink.style.display = ''
+				flat.listHtmlLink.dataset.style = 'visible'
 			}
 			if (flat.cardHtmlLink) {
 				flat.cardHtmlLink.style.display = ''
