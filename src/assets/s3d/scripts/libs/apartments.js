@@ -78,7 +78,7 @@ class Apartments {
 
 	// вставляем разметку в DOM вешаем эвенты
 	setPlaneInPage(response) {
-		$(`#js-s3d__${this.type}`).html(JSON.parse(response));
+		$(`#js-s3d__${this.type}`).html(JSON.parse(response))
 		this.checkPlaning()
 		this.loader.hide(this.type)
 		$('.js-flat-button-return').on('click', e => {

@@ -117,7 +117,6 @@ class Slider {
 				} else if (e.target.tagName === 'polygon' && !this.infoBoxActive) {
 					if (this.hoverFlatId === +e.target.dataset.id) return
 					this.hoverFlatId = +e.target.dataset.id
-
 					this.updateInfo(this.getFlatObj(+e.target.dataset.id))
 				} else if (!this.infoBoxActive) {
 					this.hoverFlatId = null
@@ -446,6 +445,19 @@ class Slider {
 		}, 200)
 	}
 
+	getDataSet(code) {
+		switch (code) {
+		case '1':
+			return 'nameFree'
+		case '2':
+			return 'nameReserve'
+		case '3':
+			return 'nameSold'
+		default:
+			return 'nameSold'
+		}
+	}
+
 	// подставляет данные в инфобокс
 	updateInfo(e, ignore) {
 		// передвигаем блок за мышкой
@@ -466,6 +478,9 @@ class Slider {
 		this.infoBox.find('.js-s3d-infoBox__table-room')[0].innerHTML = `${e.rooms || ''}`
 		this.infoBox.find('.js-s3d-infoBox__type span')[0].innerHTML = `${e.type || ''}`
 		this.infoBox.find('.js-s3d-infoBox__table-area')[0].innerHTML = `${e['all_room'] || ''}`
+
+		const saleWrap = this.infoBox.find('.js-s3d-infoBox__table-sale')[0]
+		saleWrap.innerHTML = saleWrap.dataset[this.getDataSet(e.sale)]
 		this.infoBox.find('.js-s3d-infoBox__image')[0].src = `${e['img_small'] || ''}`
 		// this.infoBox.find('.js-s3d-infoBox__hover__text')[0].innerHTML = `${e.number || ''}`
 		this.infoBox.find('.js-s3d-add__favourites input').prop('checked', e.favourite || false)
