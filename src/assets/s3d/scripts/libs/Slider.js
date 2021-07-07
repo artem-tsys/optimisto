@@ -19,14 +19,14 @@ class Slider {
 		this.currentSlide = data.activeSlide
 		this.nextSlide = data.activeSlide
 		// this.openHouses = [1]
-
+		
 		this.eventsName = {
 			start: 'mousedown',
 			end: 'mouseup',
 			leave: 'mouseleave',
 			move: 'mousemove',
 		}
-
+		
 		this.svgConfig = data
 		this.controlPoint = data.controlPoint
 		this.images = []
@@ -47,7 +47,8 @@ class Slider {
 		this.activeSvg = null
 		this.activeFloor = null
 		this.rotate = true
-		this.animates = () => {}
+		this.animates = () => {
+		}
 		this.ActiveHouse = data.ActiveHouse
 		// this.resize = this.resize.bind(this)
 		this.init = this.init.bind(this)
@@ -65,6 +66,15 @@ class Slider {
 		// this.unActive = data.unActive
 		this.progress = 0
 		this.loadImage = this.loadImage.bind(this)
+		this.filter = data.filter
+		this.getCurrentShowFlats = data.getCurrentShowFlats
+		// this.infoBlockTranslateFlybyWrapContainer = document.querySelector('.js-s3d-hover-translate')
+		// this.infoBlockTranslateFlybyContainer = document.querySelector('.js-s3d-hover-translate--text')
+		// this.lang = data.lang
+		// this.infoBlockTranslateFlybyTexts = data.infoBlockTranslateFlybyTexts
+		this.infoBlockTranslateFlybyHandler = data.infoBlockTranslateFlybyHandler
+		this.clearStyleInfoBlockTranslateFlyby = data.clearStyleInfoBlockTranslateFlyby
+		this.infoBlockTranslateFlyby = data.infoBlockTranslateFlyby
 	}
 
 	init() {
@@ -89,11 +99,9 @@ class Slider {
 					this.infoBoxHidden = false
 					if (this.rewindToPoint(this.controlPoint)) {
 						this.checkDirectionRotate()
-						// this.checkResult()
 					} else {
 						this.updateSvgActive(this.type, 'activeElem')
 					}
-					// $(this.activeSvg).css({'fill':''});
 				}
 			})
 
@@ -105,6 +113,7 @@ class Slider {
 			})
 
 			this.wrapper.on(this.eventsName.move, this.wrapperEvent, e => {
+				const { id, type } = e.target.dataset
 				if (this.flagMouse && this.rotate) {
 					if (!this.infoBoxHidden) {
 						this.hiddenInfo(e)
@@ -115,12 +124,22 @@ class Slider {
 					this.activeSvg.css({ opacity: '0' })
 					this.checkMouseMovement.call(this, e)
 				} else if (e.target.tagName === 'polygon' && !this.infoBoxActive) {
-					if (this.hoverFlatId === +e.target.dataset.id) return
-					this.hoverFlatId = +e.target.dataset.id
-					this.updateInfo(this.getFlatObj(+e.target.dataset.id))
+					if (this.hoverFlatId === +id) return
+					if (type && type === 'flyby') {
+						this.infoBlockTranslateFlyby(e)
+						this.hiddenInfo(e)
+						this.infoBoxHidden = true
+						this.hoverFlatId = null
+						return
+					} else {
+						this.clearStyleInfoBlockTranslateFlyby()
+					}
+					this.hoverFlatId = +id
+					this.updateInfo(this.getFlatObj(+id))
 				} else if (!this.infoBoxActive) {
 					this.hoverFlatId = null
 					this.hiddenInfo(e)
+					this.clearStyleInfoBlockTranslateFlyby()
 				}
 			})
 		}
@@ -137,6 +156,18 @@ class Slider {
 			// 	this.activeFlat.value = e.target.dataset.id
 			// 	this.click(e.currentTarget.dataset.id, 'apart', e.currentTarget.dataset.id)
 			// }
+			this.clearStyleInfoBlockTranslateFlyby()
+			const {
+				type, flyby, build,
+			} = e.target.dataset
+			if (type && type === 'flyby') {
+				this.hiddenInfo(e)
+				this.infoBoxHidden = true
+				this.hoverFlatId = null
+				this.infoBlockTranslateFlybyHandler(e, type, flyby, build)
+				return
+			}
+
 			this.infoBoxActive = true
 			this.setStateInfoActive(this.getFlatObj(e.target.dataset.id))
 			$('.js-s3d__svgWrap .active-flat').removeClass('active-flat')
@@ -223,17 +254,17 @@ class Slider {
 	update(config) {
 		// this.setConfig(config)
 		this.loader.hide(this.type)
-		// this.setActiveSvg(this.ActiveHouse.get())
+		this.setActiveSvg(this.ActiveHouse.get())
 	}
 
 	// обновить картинки в канвасе
-	updateImage() {
-		this.progress = 0
-		this.ctx.canvas.width = this.width
-		this.ctx.canvas.height = this.height
-		this.loadImage(0, 'complex')
-		this.setActiveSvg(this.ActiveHouse.get())
-	}
+	// updateImage() {
+	// 	this.progress = 0
+	// 	this.ctx.canvas.width = this.width
+	// 	this.ctx.canvas.height = this.height
+	// 	this.loadImage(0, 'complex1')
+	// 	this.setActiveSvg(this.ActiveHouse.get())
+	// }
 
 	firstLoadImage() {
 		this.loader.turnOn($(this.wrapper).find('.s3d__button'))
@@ -262,7 +293,7 @@ class Slider {
 		}
 	}
 
-	loadImage(i, type) {
+	loadImage(i, countRepeatLoad = 0) {
 		const self = this
 		const img = new Image()
 		const index = i
@@ -271,20 +302,16 @@ class Slider {
 		img.onload = function load() {
 			self.images[index] = this
 			self.progressBarUpdate()
-			// if (index === self.activeElem) {
-			// 	// let deg = self.startDegCompass * self.activeElem + (self.startDegCompass * 57);
-			// 	// $('.s3d-filter__compass svg').css('transform','rotate('+ deg +'deg)');
-			// 	self.compass.save(self.activeElem)
-			// 	self.ctx.drawImage(this, 0, 0, self.width, self.height)
-			// }
 			if (index === self.numberSlide.max) {
+				if (self.activeFlat.value) {
+					self.updateActiveFlat(self.activeFlat.value)
+				}
 				self.resizeCanvas()
 				self.ctx.drawImage(self.images[self.activeElem], 0, 0, self.width, self.height)
+				self.filter.showSvgSelect(self.getCurrentShowFlats())
 				setTimeout(() => {
-				// self.unActive()
 					self.loader.turnOff($(self.wrapper[0]).find('.s3d-button'))
 					self.loader.miniOff()
-				// self.loader.hide(self.type)
 				}, 300)
 				self.rotate = true
 				return index
@@ -293,14 +320,11 @@ class Slider {
 		}
 
 		img.onerror = function (e) {
-			// console.log('error')
-			// self.sendResponsiveError(this, self)
-			if (type === 'error') {
+			if (countRepeatLoad >= 5) {
 				self.sendResponsiveError(this, self)
 			} else {
-				self.loadImage(+this.dataset.id, 'error')
+				self.loadImage(+this.dataset.id, countRepeatLoad + 1)
 			}
-			// self.repeatLoadImage(this.dataset.id)
 		}
 	}
 
@@ -366,7 +390,7 @@ class Slider {
 	// инициализация svg слайдера
 	createSvg() {
 		const svg = new Svg(this.svgConfig)
-		svg.init(this.setActiveSvg.bind(this, this.ActiveHouse.get()))
+		svg.init()
 		this.activeSvg = $('.s3d__svg__active').closest('svg')
 	}
 
@@ -410,24 +434,30 @@ class Slider {
 		return $(`.js-s3d__svgWrap polygon[data-id=${id}]`).map((i, poly) => +poly.closest('.js-s3d__svgWrap').dataset.id).toArray()
 	}
 
-	// createInfo() {
-	// 	const infoBox = createMarkup('div', '.js-s3d__slideModule', { class: 'js-s3d-infoBox s3d-infoBox' })
-	//
-	// 	const infoBoxContent = `<ul>
-	//       <li class="js-s3d-infoBox__house s3d-infoBox__house">house: <span>5</span></li>
-	//       <!--<li class="js-s3d-infoBox__section">section: <span>7</span>-->
-	//       <!--<li class="js-s3d-infoBox__apartments">apartments: <span>10</span></li>-->
-	//       <li class="js-s3d-infoBox__floor s3d-infoBox__floor">floor: <span>10</span></li>
-	//   </ul>`
-	// 	$(infoBox).append(infoBoxContent)
-	// 	this.infoBox = $(infoBox)
-	// }
-
 	// start info functions ---------------
 	// создает блок с инфой
 	createInfo() {
 		this.infoBox = $('.js-s3d-infoBox')
 	}
+
+	// getInfoBlockTranslateText(build, flyby) {
+	// 	if (this.type.includes(flyby)) {
+	// 		return `${this.infoBlockTranslateFlybyTexts[this.lang].build}-${build}`
+	// 	}
+	// 	return this.infoBlockTranslateFlybyTexts[this.lang][flyby]
+	// }
+
+	// clearStyleInfoBlockTranslateFlyby() {
+	// 	this.infoBlockTranslateFlybyWrapContainer.style = ''
+	// }
+
+	// infoBlockTranslateFlyby(e) {
+	// 	const { clientX: x, clientY: y } = e
+	// 	const { build, flyby } = e.target.dataset
+	// 	const text = this.getInfoBlockTranslateText(build, flyby)
+	// 	this.infoBlockTranslateFlybyWrapContainer.style = `opacity: 1; top: ${y}px; left: ${x}px;`
+	// 	this.infoBlockTranslateFlybyContainer.innerText = text
+	// }
 
 	// меняет состояние инфоблока на активный
 	setStateInfoActive(elem) {
@@ -445,6 +475,18 @@ class Slider {
 		}, 200)
 	}
 
+	// infoBlockTranslateFlybyHandler(e, type, flyby, build) {
+	// 	if (!isDevice('mobile')) {
+	// 		this.click(e, flyby + build)
+	// 		return
+	// 	}
+	// 	if (type && type === 'flyby') {
+	// 		this.infoBlockTranslateFlyby(e)
+	// 		return
+	// 	}
+	// 	this.clearStyleInfoBlockTranslateFlyby()
+	// }
+
 	getDataSet(code) {
 		switch (code) {
 		case '1':
@@ -460,20 +502,16 @@ class Slider {
 
 	// подставляет данные в инфобокс
 	updateInfo(e, ignore) {
-		// передвигаем блок за мышкой
-	// const pos = $('.s3d__wrap').offset()
-	// const Xinner = e.pageX - pos.left
-	// const Yinner = e.pageY - pos.top
-	// this.infoBox.css({ opacity: '1' })
-	// this.infoBox.css({ top: Yinner - 40 })
-	// this.infoBox.css({ left: Xinner })
 		if (this.infoBox.hasClass('s3d-infoBox-active') && !ignore) {
 			return
-		} else if (!this.infoBox.hasClass('s3d-infoBox-hover')) {
+		}
+		if (!this.infoBox.hasClass('s3d-infoBox-hover')) {
 			this.infoBox.addClass('s3d-infoBox-hover')
 		}
-		// if (this.openHouses.includes(+e.build)) {
-		this.infoBox.find('.js-s3d-infoBox__table-number')[0].innerHTML = `${e['sec'] || ''}`
+
+		if (!e) return
+		// eslint-disable-next-line no-prototype-builtins
+		this.infoBox.find('.js-s3d-infoBox__table-number')[0].innerHTML = `${e.hasOwnProperty('sec') ? e['sec'] : ''}`
 		this.infoBox.find('.js-s3d-infoBox__table-floor')[0].innerHTML = `${e.floor || ''}`
 		this.infoBox.find('.js-s3d-infoBox__table-room')[0].innerHTML = `${e.rooms || ''}`
 		this.infoBox.find('.js-s3d-infoBox__type span')[0].innerHTML = `${e.type || ''}`
@@ -482,13 +520,7 @@ class Slider {
 		const saleWrap = this.infoBox.find('.js-s3d-infoBox__table-sale')[0]
 		saleWrap.innerHTML = saleWrap.dataset[this.getDataSet(e.sale)]
 		this.infoBox.find('.js-s3d-infoBox__image')[0].src = `${e['img_small'] || ''}`
-		// this.infoBox.find('.js-s3d-infoBox__hover__text')[0].innerHTML = `${e.number || ''}`
 		this.infoBox.find('.js-s3d-add__favourites input').prop('checked', e.favourite || false)
-		// this.infoBox.find('.js-s3d-infoBox__floor')[0].style.display = ''
-		// } else {
-		// 	this.infoBox.find('.js-s3d-infoBox__house')[0].innerHTML = 'Будинок не у продажу'
-		// 	this.infoBox.find('.js-s3d-infoBox__floor')[0].style.display = 'none'
-		// }
 	}
 
 	updateInfoFloorList(e) {
@@ -509,21 +541,6 @@ class Slider {
 		// }
 	}
 
-	// updateInfoFlatList(e) {
-	// 	const data = (e.target || e).dataset
-	// 	const list = $(`.js-s3d__svgWrap polygon[data-id=${data.floor}]`)
-	//
-	// 	list.each((i, el) => {
-	// 		this.updateInfoFlat(el, data)
-	// 	})
-	//
-	// 	if (this.openHouses.includes(+data.build)) {
-	// 		$(`[data-build=${data.build}] .floor-text`).html(data.floor)
-	// 	} else {
-	// 		$(`[data-build=${data.build}] .floor-text`).html('будинок не у продажу')
-	// 	}
-	// }
-
 	updateInfoFloor(e, data) {
 		// положение курсора внутри элемента
 		const parent = $(e).closest('svg')
@@ -540,22 +557,6 @@ class Slider {
 		// }
 	}
 
-	// updateInfoFlat(e, data) {
-	// 	// положение курсора внутри элемента
-	// 	const parent = $(e).closest('svg')
-	// 	const widthSvgPhoto = parent.attr('viewBox').split(' ')[2]
-	// 	const bbox = e.getBBox()
-	// 	const height = (widthSvgPhoto / 13) * 0.2
-	// 	const y = (bbox.y + (bbox.height / 2))
-	// 	$(parent).find(`.flat-info-svg[data-build=${data.build}]`).addClass('active-flat-info').attr('y', y - (height / 2))
-	//
-	// 	// if(this.openHouses.includes(+data.build)){
-	// 	//     $('[data-build='+ data.build +'] .floor-text').html(data.floor);
-	// 	// } else {
-	// 	//     $('[data-build='+ data.build +'] .floor-text').html('будинок не у продажу');
-	// 	// }
-	// }
-
 	updateActiveFloor(floor) {
 		this.activeFloor = floor
 		const nextFloorSvg = $(`.s3d__svg__active [data-build=${this.ActiveHouse.get()}][data-floor=${this.activeFloor}]`)[0]
@@ -566,8 +567,6 @@ class Slider {
 
 	updateActiveFlat(flat) {
 		this.activeFlat.value = flat
-		// const nextFlatSvg = $(`.s3d__svg__active [data-id=${this.activeFlat.value}]`)[0]
-		// this.updateInfoFlatList(nextFlatSvg)
 		$('.js-s3d__svgWrap .active-flat').removeClass('active-flat')
 		$('.js-s3d-filter__table .active-flat').removeClass('active-flat')
 		$(`.js-s3d__svgWrap [data-id=${this.activeFlat.value}]`).addClass('active-flat')
@@ -605,9 +604,8 @@ class Slider {
 
 	// start block  change slide functions
 	// находит ближайший слайд у которого есть polygon(data-id) при необходимости вращает модуль к нему
-	toSlideNum(id) {
-		const controlPoint = this.getNumSvgWithFlat(id)
-		const needChangeSlide = this.rewindToPoint(controlPoint)
+	toSlideNum(id, slide) {
+		const needChangeSlide = slide || this.rewindToPoint(this.getNumSvgWithFlat(id))
 
 		if (needChangeSlide) {
 			this.checkDirectionRotate() // test

@@ -16,6 +16,12 @@ block content
         section.main
             .js-s3d__slideModule.s3d__slideModule.scroll
                 div#js-s3d__wrapper
+                    .s3d-hover-translate-wrap.js-s3d-hover-translate
+                        .s3d-hover-translate.js-s3d-hover-translate--text Зовнішній фасад
+                        a(href='#' data-link data-type='').s3d-hover-translate__link Переглянути
+                        .s3d-hover-translate__close(data-closed)
+                            span
+                            span
                 .s3d-controller.js-s3d-controller.unselectable
                     //.s3d-controller__showFilter.js-s3d-controller__showFilter
                     //    input(class='js-s3d-controller__showFilter--input' id='filter-show' type='checkbox')
@@ -35,16 +41,38 @@ block content
                             .s3d-tell__icon
                                 +svg('tell')
                     .s3d-controller__elem.js-s3d-controller__elem
-                        button(type="button" data-type="complex").s3d-select.js-s3d-select.active
-                            +svg('house')
-                            |3D генплан
-                        button(type="button" data-type="courtyard").s3d-select.js-s3d-select
-                            +svg('house')
-                            |3D двор
+                        .s3d-select
+                            .s3d-select__number.s3d-select__house.js-s3d-select__hover.js-s3d-select-build(data-value='1')
+                                span.js-s3d-select-text Будинок 1
+                                svg(width="7" height="4" viewBox="0 0 7 4" fill="none" xmlns="http://www.w3.org/2000/svg").s3d-select__svg
+                                    path(d="M5.89812 0.5L3.5 3.2407L1.10188 0.5H5.89812Z" stroke-linecap="round")
+                            .s3d-select__group
+                                button(type="button" data-type="build" data-value="1").s3d-select__button.js-s3d-select Будинок 1
+                                button(type="button" data-type="build" data-value="2").s3d-select__button.js-s3d-select Будинок 2
+                        .s3d-select
+                            .s3d-select__number.s3d-select__house.js-s3d-select__hover.js-s3d-select-side(data-value='complex')
+                                span.js-s3d-select-text Зовнішній фасад
+                                svg(width="7" height="4" viewBox="0 0 7 4" fill="none" xmlns="http://www.w3.org/2000/svg").s3d-select__svg
+                                    path(d="M5.89812 0.5L3.5 3.2407L1.10188 0.5H5.89812Z" stroke-linecap="round")
+                            .s3d-select__group
+                                button(type="button" data-type="side" data-value="complex").s3d-select__button.js-s3d-select Зовнішній фасад
+                                button(type="button" data-type="side" data-value="courtyard").s3d-select__button.js-s3d-select Внутрішній фасад
+                        //button(type="button" data-type="complex").s3d-select.js-s3d-select.active
+                        //    +svg('house')
+                        //    | Дом 1 - внешний
+                        //button(type="button" data-type="courtyard").s3d-select.js-s3d-select
+                        //    +svg('house')
+                        //    | Дом 1 - внутрений
+                        //button(type="button" data-type="complex2").s3d-select.js-s3d-select.active
+                        //    +svg('house')
+                        //    | Дом 2 - внешний
+                        //button(type="button" data-type="courtyard2").s3d-select.js-s3d-select
+                        //    +svg('house')
+                        //    | Дом 2 - внутрений
                         button(type="button" data-type="plannings").s3d-select.js-s3d-select
-                            +svg('planings')
+                            //+svg('planings')
                             |Планировки
-                    .s3d-title  Генплан
+                    .s3d-title Генплан
                     .js-s3d-infoBox.s3d-infoBox
                         .s3d-infoBox__image
                             .s3d-infoBox__close.js-s3d-infoBox__close
@@ -190,11 +218,20 @@ block content
                                 .s3d-filter-select__input--wrap
                                     input.js-s3d-filter__rooms--input( type="checkbox" data-type="rooms" data-rooms="4" id="rooms-4")
                                     label.s3d-filter__rooms--label( for="rooms-4") 4+
+                        .s3d-filter__build.js-s3d-filter__build.js-s3d-filter__select
+                            .s3d-filter-select__title Будинок
+                            .s3d-filter-select__list
+                                .s3d-filter-select__input--wrap
+                                    input.js-s3d-filter__build--input( type="checkbox" data-type="build" data-build="1" id="build-1")
+                                    label.s3d-filter__build--label( for="build-1") 1
+                                .s3d-filter-select__input--wrap
+                                    input.js-s3d-filter__build--input( type="checkbox" data-type="build" data-build="2" id="build-2")
+                                    label.s3d-filter__build--label( for="build-2") 2
                         button.js-s3d-filter__button--reset.s3d-filter__button--reset( type="button")
                             .s3d-filter__button--reset-icon
                                 svg( role="presentation")
                                     use(xlink:href="#icon-reset")
-                            | Очистить фильтр
+                            span Очистить фильтр
                         .s3d__favourites.js-s3d__favourites.js-s3d-favorite__wrap.s3d-hidden
                             svg( role="presentation")
                                 use( xlink:href="#icon-favourites")
@@ -237,6 +274,34 @@ block content
                         span.s3d-filter__amount-flat__num.js-s3d__amount-flat__num 25
                         | из
                         span.s3d-filter__amount-flat__num.js-s3d__amount-flat__num-all 456
+
+                .s3d-popup-flyby__wrap.js-s3d-popup-flyby
+                    .s3d-popup-flyby__active.js-s3d-popup-flyby__active
+                    .s3d-popup-flyby__bg
+                        .s3d-popup-flyby__bg-active.js-s3d-popup-flyby__bg-active
+                        .s3d-popup-flyby__bg-all
+                    .s3d-popup-flyby
+                        .s3d-popup-flyby__close(data-type="close")
+                        .s3d-popup-flyby__title
+                            | Кв.
+                            span(data-type='title') 2А
+                        //.s3d-popup-flyby__line
+                        .s3d-popup-flyby__text(data-type='text')
+                            | Планування знаходиться на іншому будинку. Для перегляду його на 3D моделі вам треба перемкнутися на інший будинок.
+                        .s3d-popup-flyby__link
+                            span(data-type='next') Дивитися планування
+                        //.s3d-popup-flyby__lines-top
+                        //    svg( viewBox="0 0 236 31" fill="none" preserveAspectRatio="xMinYMax meet" xmlns="http://www.w3.org/2000/svg")
+                        //        path( d="M30 1V30H1V1H30Z" stroke="#CFBE97" fill="none" stroke-width="2")
+                        //        path( d="M7 25V7H12.6667V24H18.3333V7H24V25" fill="none" stroke="#CFBE97" stroke-width="2")
+                        //        path( d="M51 1L236 1" stroke="#CFBE97" fill="none" stroke-width="2")
+                        //.s3d-popup-flyby__lines-right
+                        //    svg( viewBox="0 0 2 320" fill="none" preserveAspectRatio="xMinYMax slice" xmlns="http://www.w3.org/2000/svg")
+                        //        path( d="M1 0L1 320" stroke="#CFBE97" stroke-width="2" fill="none")
+                        //.s3d-popup-flyby__lines-bottom
+                        //    svg( viewBox="0 0 236 26" fill="none" preserveAspectRatio="xMinYMax meet" xmlns="http://www.w3.org/2000/svg")
+                        //        path( d="M236 1L1 1L1 13L235 13L235 25L2.86197e-07 25" stroke="#CFBE97" stroke-width="2" fill="none")
+
 
                 include ../includes/loader.html
 

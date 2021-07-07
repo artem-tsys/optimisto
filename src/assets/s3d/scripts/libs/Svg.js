@@ -1,28 +1,17 @@
 class Svg {
 	constructor(data) {
 		this.complexData = {}
-		// this.imageUrl = data.imageUrl;
-		// this.id = data.id;
-		// this.numberSlide = data.numberSlide;
-		// this.controllPoint = data.controllPoint;
 		this.activeSlide = data.activeSlide
-		// this.mouseSpeed = data.mouseSpeed;
 		this.idCopmlex = data.idCopmlex
 		this.type = data.type
-		// this.click = data.click;
 	}
 
-	init(fn) {
-		this.setActiveSvg = fn
+	init() {
 		this.getData(this.selectSvg)
 	}
 
 	getData(fn) {
 		const self = this
-		// $.ajax('./datfaylik.php').done(function (msg) {
-		//     this.complexData = JSON.parse(msg);
-		//     fn.call(self, this.complexData)
-		// })
 		$.ajax('/wp-content/themes/optimisto/assets/s3d/svg.json').done(msg => {
 			// $.ajax('/wp-admin/svg.json').done(function (msg) {
 			fn.call(self, msg)
@@ -30,21 +19,27 @@ class Svg {
 	}
 
 	selectSvg(data) {
-		if (this.type === 'complex') {
-			this.createSvg(data.complex, this.type)
-		} else if (this.type === 'courtyard') {
-			this.createSvg(data.courtyard, this.type)
-		} else if (this.type === 'house') {
-			for (const i in data.house) { this.createSvg(data.house[i], i) }
-			this.setActiveSvg()
-		}
+		this.createSvg(data[this.type], this.type)
+
+		// if (this.type === 'complex1') {
+		// 	this.createSvg(data.complex1, this.type)
+		// } else if (this.type === 'courtyard1') {
+		// 	this.createSvg(data.courtyard1, this.type)
+		// } else if (this.type === 'complex2') {
+		// 	this.createSvg(data.courtyard2, this.type)
+		// } else if (this.type === 'courtyard2') {
+		// 	this.createSvg(data.courtyard2, this.type)
+		// } else if (this.type === 'house') {
+		// 	for (const i in data.house) { this.createSvg(data.house[i], i) }
+		// 	this.setActiveSvg()
+		// }
 	}
 
 	// получает
 	createSvg(data, name) {
-		const svgContainer = createMarkup('div', `#js-s3d__wrapper__${this.idCopmlex}`, { class: `s3d__svg-container s3d__svg-container__${name} js-s3d__svg-container__${name}` })
-		// const svgContainer = createMarkup('div', `.js-s3d__wrapper__${this.idCopmlex}`, { class: `s3d__svg-container s3d__svg-container${name === 'complex' ? '__complex' : name} js-s3d__svg-container${name === 'complex' ? '__complex' : name}` })
-
+		const svgContainer = createMarkup('div', `#js-s3d__wrapper__${this.idCopmlex}`, { class: `s3d__svg-container s3d__svg-container__complex js-s3d__svg-container__${name}` })
+		// const svgContainer = createMarkup('div', `#js-s3d__wrapper__${this.idCopmlex}`, { class: `s3d__svg-container s3d__svg-container__${name} js-s3d__svg-container__${name}` })
+		// const svgContainer = createMarkup('div', `.js-s3d__wrapper__${this.idCopmlex}`, { class: `s3d__svg-container s3d__svg-container${name === 'complex1' ? '__complex' : name} js-s3d__svg-container${name === 'complex1' ? '__complex' : name}` })
 		for (const key in data) {
 			const svgWrap = document.createElement('div')
 			if (+key === +this.activeSlide) {
@@ -54,6 +49,7 @@ class Svg {
 			}
 			svgWrap.dataset.id = key
 			$(svgContainer).append(svgWrap)
+
 			$.ajax(data[+key].path).done(svg => {
 				$(svgWrap).append(svg.documentElement)
 				this.showAvailableFlat()
@@ -82,11 +78,6 @@ class Svg {
 			$('.js-s3d-point__help').removeClass('point-active')
 		})
 	}
-
-	// createPointInfo() {
-	//     let svgContainer = createMarkup('div', '.js-s3d__slideModule' , {class:'js-s3d__svg-point__help s3d__svg-point__help'});
-	//     let content = ``;
-	// };
 
 	showAvailableFlat() {
 		if ($('.js-s3d-controller__showFilter--input').prop('checked')) {

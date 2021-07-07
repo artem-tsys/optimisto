@@ -8,7 +8,7 @@ class History {
 
 	init() {
 		// this.pageLoad()
-		// this.history.push('complex')
+		// this.history.push('complex1')
 		// window.onpopstate = () => {
 		// 	this.onPopstate()
 		// }

@@ -9,7 +9,7 @@ class Layout {
 		this.scrollToBlock = data.scrollToBlock
 		this.update = this.update.bind(this)
 		this.setFloorInPage = this.setFloorInPage.bind(this)
-		this.changeCurrentFloor = data.changeCurrentFloor
+		// this.changeCurrentFloor = data.changeCurrentFloor
 		this.floorEventType = 'mouseover' // event for helper
 		this.ActiveHouse = data.ActiveHouse
 	}
@@ -59,7 +59,7 @@ class Layout {
 	}
 
 	changeFloor(num) {
-		this.changeCurrentFloor(num)
+		// this.changeCurrentFloor(num)
 		this.loader.show()
 		$('.js-s3d-nav-floor__left-num').data('active', num).html(num)
 		$('.js-s3d-nav-floor__list .active').removeClass('active')

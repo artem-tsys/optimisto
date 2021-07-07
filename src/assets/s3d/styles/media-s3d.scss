@@ -55,7 +55,34 @@
         display: none;
     }
 }
-
+@media screen and (max-width:768px) {
+    .s3d-hover-translate {
+        background: none;
+        height: inherit;
+        font-size: 24px;
+        line-height: 1.3em;
+        text-transform: capitalize;
+        text-align: left;
+        color: #240A3A;
+        padding: 0;
+        border-radius: 0;
+        &-wrap {
+            top: 50%!important;
+            left: 50%!important;
+            transform: translate(-50%, -50%);
+            padding: 30px 30px 40px;
+            background: #FFFFFF;
+            box-shadow: 0 4px 20px rgba(36, 10, 58, 0.15);
+            border-radius: 20px;
+        }
+        &__link {
+            display: inline-block;
+        }
+        &__close {
+            display: inline-block;
+        }
+    }
+}
 //HOVERS
 @media screen and (min-width:769px) {
     .s3d-infoBox__link {
@@ -63,7 +90,7 @@
     }
     .s3d-infoBox__link:hover {
         box-shadow: 0 4px 15px rgba(36, 22, 19, 0.3);
-    } 
+    }
     .irs--flat .irs-handle i {
         transition: .3s ease-out;
     }
@@ -77,5 +104,44 @@
     .s3d__button:hover {
         box-shadow: none;
     }
-    
+
+    .s3d {
+        &-select {
+            &__button {
+                &:hover {
+                    background: $color2;
+                    color: $wc;
+                }
+            }
+            &:hover {
+                border-radius: 0;
+                background: #842990;
+                color: rgba(255,255,255,1);
+                .s3d-select__svg {
+                    stroke: #ffffff;
+                    transform: rotate(180deg);
+                }
+                .s3d-select__group {
+                    opacity: 1;
+                    pointer-events: painted;
+                    transition: opacity 0.4s ease-in-out 0.2s;
+                }
+            }
+            //&:hover:not( [ disabled ] ) {
+            //    border-radius: 0;
+            //    background: #842990;
+            //    color: rgba(255,255,255,1);
+            //    .s3d-select__svg {
+            //        stroke: #ffffff;
+            //        transform: rotate(180deg);
+            //    }
+            //    .s3d-select__group {
+            //        opacity: 1;
+            //        pointer-events: painted;
+            //        transition: opacity 0.4s ease-in-out 0.2s;
+            //    }
+            //}
+        }
+    }
+
 }

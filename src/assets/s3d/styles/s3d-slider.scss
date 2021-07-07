@@ -78,11 +78,13 @@
       }
     }
   }
-  &-infoBox{
+  &-infoBox {
     position: absolute;
-    bottom: 0;
+    top: 50%;
     right: 0;
-    grid-area: info-flat;
+    //grid-area: info-flat;
+    grid-column: -1;
+    grid-row: 1 / -1;
     display: flex;
     width: 250px;
     flex-direction: column;
@@ -94,13 +96,14 @@
     overflow: hidden;
     opacity: 0;
     visibility: hidden;
+    transform: translateY(-50%);
     z-index: 999;
     pointer-events: none;
     transition: all 0.4s ease-in;
     &__hover{
-      //position: absolute;
-      //bottom: 0;
-      //right: 0;
+      position: absolute;
+      bottom: 0;
+      right: 0;
       display: flex;
       height: 52px;
       width: 100%;
@@ -145,8 +148,11 @@
       position: relative;
       display: flex;
       justify-content: center;
-      height: inherit;
-      max-height: 40vh;
+      //height: inherit;
+      height: 30vh;
+      max-height: 250px;
+      //max-height: 40vh;
+
       width: 100%;
       max-width: 100%;
       padding: 25px 20px 32px;
@@ -157,7 +163,7 @@
       z-index: 2;
       transition: opacity 0.6s cubic-bezier(.41,.57,.26,1);
       //transform: translateY(100%);
-      img{
+      img {
         display: inline-block;
         object-fit: contain;
       }
@@ -230,7 +236,7 @@
         width: 100%;
         margin: 20px 15px;
       }
-      td{
+      td {
         padding: 0 13px;
         font-family: $default-font;
         font-weight: normal;
@@ -247,16 +253,21 @@
       }
       &-sale {
         margin: 0 15px 20px;
+        font-family: $default-font;
+        font-weight: normal;
+        font-size: 12px;
+        //line-height: 32px;
+        color: #221F20;
       }
     }
-    &__buttons{
+    &__buttons {
       position: relative;
       display: none;
       width: calc(100% - 30px);
       height: 44px;
       border-radius: 20px;
       overflow: hidden;
-      margin: 20px 15px;
+      margin: 0 15px 20px;
       z-index: 7;
       order: 3;
       visibility: hidden;

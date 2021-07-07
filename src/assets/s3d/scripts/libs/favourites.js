@@ -189,7 +189,7 @@ class Favourite {
 			this.animateFavouriteElement(document.querySelector('.s3d-mobile-only[data-type="favourites"]'), iconToAnimate, distance, reverse)
 		} else {
 			switch (currentScreen) {
-				case 'complex':
+				case 'complex1':
 					distance = this.getBetweenDistance(document.querySelector('.s3d-filter-wrap .s3d__favourites'), iconToAnimate)
 					this.animateFavouriteElement(document.querySelector('.s3d-filter-wrap .s3d__favourites'), iconToAnimate, distance, reverse)
 					break;
@@ -232,17 +232,17 @@ class Favourite {
 	animateFavouriteElement(destination, element, distance, reverse) {
 		if (gsap === undefined) return
 		const animatingElParams = element.getBoundingClientRect()
-		element.style.cssText += ` 
+		element.style.cssText += `
 			width:${animatingElParams.width}px;
 			height:${animatingElParams.height}px;
 			transform-origin:top left;`
 		element.style.cssText += `
 			fill: #85C441;
-			position:relative; 
+			position:relative;
 			z-index:2000;
 			stroke:none;
-			position:fixed; 
-			left:${animatingElParams.left}px; 
+			position:fixed;
+			left:${animatingElParams.left}px;
 			top:${animatingElParams.top}px;`
 		const speed = this.animationSpeed / 1000
 		// element.classList.add(this.animationPulseClass)

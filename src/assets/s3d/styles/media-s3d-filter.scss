@@ -53,7 +53,10 @@
     .s3d-filter__bg {
         display: none;
     }
-    //3d genplan filter 
+    //3d genplan filter
+    .active-filter {
+        width: 360px;
+    }
     .active-filter .s3d-filter {
         padding: var(--header-height) 15px 0;
     }
@@ -68,6 +71,7 @@
     .active-filter .s3d-filter .irs--flat {
         margin-bottom: 15px;
     }
+
 }
 @media screen and (max-width:575px) {
     .s3d-filter-wrap .s3d-filter__bg {
@@ -101,7 +105,7 @@
     .active-filter,
     .s3d-filter-wrap:not(.active-filter) {
         width: 100%;
-        --bottom-block-height: 67px;
+        //--bottom-block-height: 67px;
         overflow: scroll;
         .s3d-filter__close {
             display: flex;
@@ -180,20 +184,25 @@
             padding-right: 0;
         }
         &__rooms {
-            height: var(--bottom-block-height);
+            //height: var(--bottom-block-height);
         }
         &__button--reset {
+            margin: auto 0 15px auto;
             font-size: 10px;
             line-height: 24px;
-            height: var(--bottom-block-height);
+            //height: var(--bottom-block-height);
             align-items: flex-end;
-            padding-bottom: 5px;
+            justify-content: flex-end;
+            padding-bottom: 0;
+            span {
+                display: none;
+            }
         }
         &__button--reset-icon {
             margin-right: 7px;
             box-shadow: 0px 4px 20px rgba(28, 73, 84, 0.15);
         }
-        &__house--label,
+        &__build--label,
         &__rooms--label {
             margin-right: 7px;
             margin-bottom: 0;
@@ -253,7 +262,7 @@
 /*Фильтр не на генплане END*/
 
 
-//HOVERS 
+//HOVERS
 @media screen and (min-width:769px) {
     .s3d-pl__favourites {
         transition: color .3s;

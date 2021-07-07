@@ -1,45 +1,89 @@
 {
-  "complex": {
-    "43": {
-      "path": "/wp-content/themes/optimisto/assets/s3d/images/svg/complex/43.svg",
-      "dir": "/wp-content/themes/optimisto/assets/s3d/images/svg/complex/",
-      "name": "43.svg"
+  "complex1": {
+    "41": {
+      "path": "/wp-content/themes/optimisto/assets/s3d/images/svg/complex1/41.svg",
+      "dir": "/wp-content/themes/optimisto/assets/s3d/images/svg/complex1/",
+      "name": "41.svg"
     },
-    "89": {
-      "path": "/wp-content/themes/optimisto/assets/s3d/images/svg/complex/89.svg",
-      "dir": "/wp-content/themes/optimisto/assets/s3d/images/svg/complex/",
-      "name": "89.svg"
+    "85": {
+      "path": "/wp-content/themes/optimisto/assets/s3d/images/svg/complex1/85.svg",
+      "dir": "/wp-content/themes/optimisto/assets/s3d/images/svg/complex1/",
+      "name": "85.svg"
     },
     "132": {
-      "path": "/wp-content/themes/optimisto/assets/s3d/images/svg/complex/132.svg",
-      "dir": "/wp-content/themes/optimisto/assets/s3d/images/svg/complex/",
+      "path": "/wp-content/themes/optimisto/assets/s3d/images/svg/complex1/132.svg",
+      "dir": "/wp-content/themes/optimisto/assets/s3d/images/svg/complex1/",
       "name": "132.svg"
     },
-    "175": {
-      "path": "/wp-content/themes/optimisto/assets/s3d/images/svg/complex/175.svg",
-      "dir": "/wp-content/themes/optimisto/assets/s3d/images/svg/complex/",
-      "name": "175.svg"
+    "170": {
+      "path": "/wp-content/themes/optimisto/assets/s3d/images/svg/complex1/170.svg",
+      "dir": "/wp-content/themes/optimisto/assets/s3d/images/svg/complex1/",
+      "name": "170.svg"
     }
   },
-  "courtyard": {
+  "complex2": {
+    "2": {
+      "path": "/wp-content/themes/optimisto/assets/s3d/images/svg/complex2/2.svg",
+      "dir": "/wp-content/themes/optimisto/assets/s3d/images/svg/complex2/",
+      "name": "2.svg"
+    },
+    "46": {
+      "path": "/wp-content/themes/optimisto/assets/s3d/images/svg/complex2/46.svg",
+      "dir": "/wp-content/themes/optimisto/assets/s3d/images/svg/complex2/",
+      "name": "46.svg"
+    },
+    "91": {
+      "path": "/wp-content/themes/optimisto/assets/s3d/images/svg/complex2/91.svg",
+      "dir": "/wp-content/themes/optimisto/assets/s3d/images/svg/complex2/",
+      "name": "91.svg"
+    },
+    "134": {
+      "path": "/wp-content/themes/optimisto/assets/s3d/images/svg/complex2/134.svg",
+      "dir": "/wp-content/themes/optimisto/assets/s3d/images/svg/complex2/",
+      "name": "134.svg"
+    }
+  },
+  "courtyard1": {
     "18": {
-      "path": "/wp-content/themes/optimisto/assets/s3d/images/svg/courtyard/18.svg",
-      "dir": "/wp-content/themes/optimisto/assets/s3d/images/svg/courtyard/",
+      "path": "/wp-content/themes/optimisto/assets/s3d/images/svg/courtyard1/18.svg",
+      "dir": "/wp-content/themes/optimisto/assets/s3d/images/svg/courtyard1/",
       "name": "18.svg"
     },
     "63": {
-      "path": "/wp-content/themes/optimisto/assets/s3d/images/svg/courtyard/63.svg",
-      "dir": "/wp-content/themes/optimisto/assets/s3d/images/svg/courtyard/",
+      "path": "/wp-content/themes/optimisto/assets/s3d/images/svg/courtyard1/63.svg",
+      "dir": "/wp-content/themes/optimisto/assets/s3d/images/svg/courtyard1/",
       "name": "63.svg"
     },
     "108": {
-      "path": "/wp-content/themes/optimisto/assets/s3d/images/svg/courtyard/108.svg",
-      "dir": "/wp-content/themes/optimisto/assets/s3d/images/svg/courtyard/",
+      "path": "/wp-content/themes/optimisto/assets/s3d/images/svg/courtyard1/108.svg",
+      "dir": "/wp-content/themes/optimisto/assets/s3d/images/svg/courtyard1/",
       "name": "108.svg"
     },
     "162": {
-      "path": "/wp-content/themes/optimisto/assets/s3d/images/svg/courtyard/162.svg",
-      "dir": "/wp-content/themes/optimisto/assets/s3d/images/svg/courtyard/",
+      "path": "/wp-content/themes/optimisto/assets/s3d/images/svg/courtyard1/162.svg",
+      "dir": "/wp-content/themes/optimisto/assets/s3d/images/svg/courtyard1/",
+      "name": "162.svg"
+    }
+  },
+  "courtyard2": {
+    "18": {
+      "path": "/wp-content/themes/optimisto/assets/s3d/images/svg/courtyard2/18.svg",
+      "dir": "/wp-content/themes/optimisto/assets/s3d/images/svg/courtyard2/",
+      "name": "18.svg"
+    },
+    "63": {
+      "path": "/wp-content/themes/optimisto/assets/s3d/images/svg/courtyard2/63.svg",
+      "dir": "/wp-content/themes/optimisto/assets/s3d/images/svg/courtyard2/",
+      "name": "63.svg"
+    },
+    "108": {
+      "path": "/wp-content/themes/optimisto/assets/s3d/images/svg/courtyard2/108.svg",
+      "dir": "/wp-content/themes/optimisto/assets/s3d/images/svg/courtyard2/",
+      "name": "108.svg"
+    },
+    "162": {
+      "path": "/wp-content/themes/optimisto/assets/s3d/images/svg/courtyard2/162.svg",
+      "dir": "/wp-content/themes/optimisto/assets/s3d/images/svg/courtyard2/",
       "name": "162.svg"
     }
   }

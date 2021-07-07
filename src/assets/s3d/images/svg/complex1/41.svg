@@ -1,0 +1,354 @@
+<svg preserveAspectRatio="xMidYMid slice" id="floor--svg" viewBox="0 0 1920 1081" version="1.0"
+     xmlns="http://www.w3.org/2000/svg">
+    <polygon data-id="666" data-sec="1.08" data-build="1" data-floor="1"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="320.25,773.75,320.25,773.75,338,816.5,338,816.5,439,815.5,439,815.5,424.75,773.25,424.75,773.25"></polygon>
+    <polygon data-id="665" data-sec="1.08" data-build="1" data-floor="1"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="424.75,773.25,424.75,773.25,439,815.75,439,815.75,546.75,813.5,546.75,813.5,534,771.75,534,771.75"></polygon>
+    <polygon data-id="664" data-sec="1.08" data-build="1" data-floor="1"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="570.5,771.75,570.5,771.75,582.5,814,582.5,814,684.5,813.75,684.5,813.75,676.75,772,676.75,772"></polygon>
+    <polygon data-id="663" data-sec="1.08" data-build="1" data-floor="1"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="676.5,771.75,676.5,771.75,684.25,814,684.25,814,725.5,811.75,725.5,811.75,718.5,771.5,718.5,771.5"></polygon>
+    <polygon data-id="355" data-sec="1.08" data-build="1" data-floor="2"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="319.75,774.5,319.75,774.5,465,771.75,465,771.75,454.75,739.25,454.75,739.25,306.25,742.5,306.25,742.5"></polygon>
+    <polygon data-id="354" data-sec="1.08" data-build="1" data-floor="2"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="454.75,739.25,454.75,739.25,465.5,772.5,465.5,772.5,569.25,771,569.25,771,561,738.75,561,738.75"></polygon>
+    <polygon data-id="353" data-sec="1.08" data-build="1" data-floor="2"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="560.75,738.5,560.75,738.5,569.25,771,569.25,771,676.5,771,676.5,771,669.75,738,669.75,738"></polygon>
+    <polygon data-id="352" data-sec="1.08" data-build="1" data-floor="2"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="677,771,677,771,670,738,670,738,711.25,738,711.25,738,712.25,737.75,712.25,737.75,718.25,770.75,718.25,770.75"></polygon>
+    <polygon data-id="362" data-sec="1.08" data-build="1" data-floor="3"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="305.5,742,305.5,742,454.25,739,454.25,739,444,705.25,444,705.25,289.75,706.5,289.75,706.5"></polygon>
+    <polygon data-id="361" data-sec="1.08" data-build="1" data-floor="3"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="444,705,444,705,454.25,739.75,454.25,739.75,560.75,738.5,560.75,738.5,552.75,705,552.75,705,552.25,704,552.25,704"></polygon>
+    <polygon data-id="360" data-sec="1.08" data-build="1" data-floor="3"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="552,703.5,552,703.5,561.25,738.25,561.25,738.25,669.75,737.5,669.75,737.5,664,702.75,664,702.75"></polygon>
+    <polygon data-id="359" data-sec="1.08" data-build="1" data-floor="3"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="664,703,664,703,670,738.75,670,738.75,712.25,738,712.25,738,706.75,702.75,706.75,702.75"></polygon>
+    <polygon data-id="369" data-sec="1.08" data-build="1" data-floor="4"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="290,706.25,290,706.25,443.5,704.75,443.5,704.75,432.75,667,432.75,667,274.5,668.75,274.5,668.75"></polygon>
+    <polygon data-id="368" data-sec="1.08" data-build="1" data-floor="4"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="433,666.75,433,666.75,443.75,705.75,443.75,705.75,552,703,552,703,542.25,666.25,542.25,666.25"></polygon>
+    <polygon data-id="367" data-sec="1.08" data-build="1" data-floor="4"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="541.75,666,541.75,666,551.75,703,551.75,703,664,703.25,664,703.25,656,665.25,656,665.25"></polygon>
+    <polygon data-id="366" data-sec="1.08" data-build="1" data-floor="4"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="655.5,664.5,655.5,664.5,663.25,702.75,663.25,702.75,706.25,702,706.25,702,699.25,663.25,699.25,663.25"></polygon>
+    <polygon data-id="376" data-sec="1.08" data-build="1" data-floor="5"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="273.25,668.75,273.25,668.75,432.75,667,432.75,667,420.5,626.75,420.5,626.75,255.75,629.75,255.75,629.75"></polygon>
+    <polygon data-id="375" data-sec="1.08" data-build="1" data-floor="5"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="420.5,626.5,420.5,626.5,432.5,666.75,432.5,666.75,542,666,542,666,532,627.25,532,627.25"></polygon>
+    <polygon data-id="374" data-sec="1.08" data-build="1" data-floor="5"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="531.75,627,531.75,627,542.5,666,542.5,666,655.5,664,655.5,664,648.25,627,648.25,627"></polygon>
+    <polygon data-id="373" data-sec="1.08" data-build="1" data-floor="5"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="648.5,626.5,648.5,626.5,655.5,663.75,655.5,663.75,699.25,663.5,699.25,663.5,692.75,626.25,692.75,626.25"></polygon>
+    <polygon data-id="383" data-sec="1.08" data-build="1" data-floor="6"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="255.75,629,255.75,629,420.25,625.5,420.25,625.5,408.5,587,408.5,587,238.25,589,238.25,589"></polygon>
+    <polygon data-id="382" data-sec="1.08" data-build="1" data-floor="6"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="408,586.75,408,586.75,420,627,420,627,532,627,532,627,522,587.25,522,587.25"></polygon>
+    <polygon data-id="381" data-sec="1.08" data-build="1" data-floor="6"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="521.5,587,521.5,587,532,627,532,627,647.75,626.5,647.75,626.5,640.25,585.75,640.25,585.75"></polygon>
+    <polygon data-id="380" data-sec="1.08" data-build="1" data-floor="6"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="639.75,585.5,639.75,585.5,649,627,649,627,692.75,626,692.75,626,685.75,584.75,685.75,584.75"></polygon>
+    <polygon data-id="390" data-sec="1.08" data-build="1" data-floor="7"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="237.5,589.25,237.5,589.25,408.75,587.25,408.75,587.25,396.25,546,396.25,546,219.75,546.5,219.75,546.5"></polygon>
+    <polygon data-id="389" data-sec="1.08" data-build="1" data-floor="7"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="396,546.25,396,546.25,408.5,586.5,408.5,586.5,522.25,587,522.25,587,510.75,545.5,510.75,545.5"></polygon>
+    <polygon data-id="388" data-sec="1.08" data-build="1" data-floor="7"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="510.25,545.5,510.25,545.5,522.25,587.25,522.25,587.25,640.5,585.25,640.5,585.25,632.5,544.75,632.5,544.75"></polygon>
+    <polygon data-id="387" data-sec="1.08" data-build="1" data-floor="7"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="632,544.75,632,544.75,640.25,585.5,640.25,585.5,686.5,584.75,686.5,584.75,679,544.5,679,544.5"></polygon>
+    <polygon data-id="397" data-sec="1.08" data-build="1" data-floor="8"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="219.25,546.25,219.25,546.25,396.25,546.75,396.25,546.75,383.75,505.25,383.75,505.25,201.5,504,201.5,504"></polygon>
+    <polygon data-id="396" data-sec="1.08" data-build="1" data-floor="8"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="384,505,384,505,396,547.25,396,547.25,510.75,545.75,510.75,545.75,499.75,503.75,499.75,503.75"></polygon>
+    <polygon data-id="395" data-sec="1.08" data-build="1" data-floor="8"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="499.75,504,499.75,504,510.25,545.25,510.25,545.25,632.25,544.5,632.25,544.5,623.75,503.5,623.75,503.5"></polygon>
+    <polygon data-id="394" data-sec="1.08" data-build="1" data-floor="8"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="624.5,503,624.5,503,632.25,544.5,632.25,544.5,679.75,544.25,679.75,544.25,673.25,502,673.25,502"></polygon>
+    <polygon data-id="404" data-sec="1.08" data-build="1" data-floor="9"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="200.5,504,200.5,504,383.5,504.5,383.5,504.5,346.5,378.5,346.5,378.5,146,379,146,379"></polygon>
+    <polygon data-id="403" data-sec="1.08" data-build="1" data-floor="9"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="346.25,378.25,346.25,378.25,383.5,505.75,383.5,505.75,499.25,504,499.25,504,463.5,369.5,463.5,369.5,407.25,370,407.25,370,408.75,377,408.75,377"></polygon>
+    <polygon data-id="402" data-sec="1.08" data-build="1" data-floor="9"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="463.5,369.5,463.5,369.5,499.25,503.5,499.25,503.5,624.75,503.25,624.75,503.25,597.75,370.75,597.75,370.75"></polygon>
+    <polygon data-id="401" data-sec="1.08" data-build="1" data-floor="9"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="625,503.5,625,503.5,673.25,502.75,673.25,502.75,650.5,368.5,650.5,368.5,600.25,368.5,600.25,368.5,598.75,371,598.75,371"></polygon>
+    <polygon data-id="672" data-sec="1.09" data-build="1" data-floor="1"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="718.5,771.25,718.5,771.25,726,812.25,726,812.25,824.25,812.25,824.25,812.25,821.75,770.75,821.75,770.75"></polygon>
+    <polygon data-id="671" data-sec="1.09" data-build="1" data-floor="1"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="821.5,770.75,821.5,770.75,823.75,812.5,823.75,812.5,870,813,870,813,869.5,770.75,869.5,770.75"></polygon>
+    <polygon data-id="670" data-sec="1.09" data-build="1" data-floor="1"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="918.75,770.5,918.75,770.5,920,811.5,920,811.5,1085.75,811,1085.75,811,1088.75,769.25,1088.75,769.25"></polygon>
+    <polygon data-id="669" data-sec="1.09" data-build="1" data-floor="1"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1088.75,768.75,1088.75,768.75,1085.75,811.25,1085.75,811.25,1131.5,810.5,1131.5,810.5,1135.75,769.75,1135.75,769.75"></polygon>
+    <polygon data-id="411" data-sec="1.09" data-build="1" data-floor="2"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="712.25,737.75,712.25,737.75,718.25,770.25,718.25,770.25,813.25,770,813.25,770,809.5,737.5,809.5,737.5"></polygon>
+    <polygon data-id="410" data-sec="1.09" data-build="1" data-floor="2"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="809.5,737,809.5,737,813,770.5,813,770.5,918.25,770.25,918.25,770.25,916.75,735.75,916.75,735.75"></polygon>
+    <polygon data-id="409" data-sec="1.09" data-build="1" data-floor="2"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="917,736,917,736,918.25,770.5,918.25,770.5,1018.25,768.75,1018.25,768.75,1019.5,738,1019.5,738,1019.75,734.25,1019.75,734.25"></polygon>
+    <polygon data-id="408" data-sec="1.09" data-build="1" data-floor="2"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1019.75,734.25,1019.75,734.25,1018.25,769.75,1018.25,769.75,1134,768.5,1134,768.5,1137.75,735,1137.75,735"></polygon>
+    <polygon data-id="417" data-sec="1.09" data-build="1" data-floor="3"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="712,737.75,712,737.75,809.25,737,809.25,737,805.75,701.75,805.75,701.75,706,702.75,706,702.75"></polygon>
+    <polygon data-id="415" data-sec="1.09" data-build="1" data-floor="3"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="916,701.25,916,701.25,917,735.75,917,735.75,1019.75,734.25,1019.75,734.25,1020.5,699.25,1020.5,699.25"></polygon>
+    <polygon data-id="416" data-sec="1.09" data-build="1" data-floor="3"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="805.25,701.5,805.25,701.5,809,737.5,809,737.5,917,735.25,917,735.25,915.75,700.75,915.75,700.75"></polygon>
+    <polygon data-id="420" data-sec="1.09" data-build="1" data-floor="3"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1137.75,735.5,1137.75,735.5,1199.25,734.5,1199.25,734.5,1205.5,700.75,1205.5,700.75,1142.25,701,1142.25,701"></polygon>
+    <polygon data-id="414" data-sec="1.09" data-build="1" data-floor="3"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1020.75,699,1020.75,699,1019.5,734,1019.5,734,1137.5,735.25,1137.5,735.25,1141.25,699,1141.25,699"></polygon>
+    <polygon data-id="424" data-sec="1.09" data-build="1" data-floor="4"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="699.25,663.25,699.25,663.25,706.75,702.5,706.75,702.5,806.5,701.25,806.5,701.25,802.5,664,802.5,664"></polygon>
+    <polygon data-id="421" data-sec="1.09" data-build="1" data-floor="4"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1021.75,660,1021.75,660,1020.5,699,1020.5,699,1141,699,1141,699,1144.75,662.25,1144.75,662.25,1144.75,661.5,1144.75,661.5"></polygon>
+    <polygon data-id="423" data-sec="1.09" data-build="1" data-floor="4"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="802.75,663.5,802.75,663.5,806.25,701.5,806.25,701.5,916,700.75,916,700.75,915,664.5,915,664.5,915,662,915,662"></polygon>
+    <polygon data-id="422" data-sec="1.09" data-build="1" data-floor="4"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="915.5,662,915.5,662,916.5,701.25,916.5,701.25,1020.75,699.25,1020.75,699.25,1021.75,660,1021.75,660"></polygon>
+    <polygon data-id="427" data-sec="1.09" data-build="1" data-floor="4"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1145,661,1145,661,1141.5,700.5,1141.5,700.5,1205,700.75,1205,700.75,1211,662.25,1211,662.25,1210.75,661,1210.75,661"></polygon>
+    <polygon data-id="431" data-sec="1.09" data-build="1" data-floor="5"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="699.5,663.5,699.5,663.5,802.5,662.75,802.5,662.75,798.75,624.75,798.75,624.75,693.25,625.75,693.25,625.75"></polygon>
+    <polygon data-id="430" data-sec="1.09" data-build="1" data-floor="5"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="799.25,625,799.25,625,803.5,662.75,803.5,662.75,915.25,661.75,915.25,661.75,913.75,624.25,913.75,624.25"></polygon>
+    <polygon data-id="429" data-sec="1.09" data-build="1" data-floor="5"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="914,624.25,914,624.25,915.25,661.25,915.25,661.25,1022,660,1022,660,1023.25,624.75,1023.25,624.75"></polygon>
+    <polygon data-id="428" data-sec="1.09" data-build="1" data-floor="5"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1023.5,624.5,1023.5,624.5,1022.25,660.25,1022.25,660.25,1144.75,661.25,1144.75,661.25,1148.75,627.5,1148.75,627.5,1149.5,624.25,1149.5,624.25"></polygon>
+    <polygon data-id="438" data-sec="1.09" data-build="1" data-floor="6"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="686,584.75,686,584.75,693,626,693,626,798.25,625,798.25,625,793.75,584.75,793.75,584.75"></polygon>
+    <polygon data-id="437" data-sec="1.09" data-build="1" data-floor="6"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="794.25,584.75,794.25,584.75,798.5,625,798.5,625,914,623.5,914,623.5,913,585,913,585,912.5,584.5,912.5,584.5"></polygon>
+    <polygon data-id="436" data-sec="1.09" data-build="1" data-floor="6"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="913,584,913,584,914.25,624.75,914.25,624.75,1023.5,624.75,1023.5,624.75,1025,582.75,1025,582.75"></polygon>
+    <polygon data-id="435" data-sec="1.09" data-build="1" data-floor="6"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1024.75,582.25,1024.75,582.25,1024,624.75,1024,624.75,1149.25,624,1149.25,624,1154,582.5,1154,582.5"></polygon>
+    <polygon data-id="441" data-sec="1.09" data-build="1" data-floor="6"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1154.5,582.25,1154.5,582.25,1149.75,624.75,1149.75,624.75,1216.75,624.25,1216.75,624.25,1222.75,584,1222.75,584,1222.75,583.5,1222.75,583.5,1222.75,582.25,1222.75,582.25"></polygon>
+    <polygon data-id="434" data-sec="1.09" data-build="1" data-floor="5"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1149,624.5,1149,624.5,1145,661.25,1145,661.25,1211.25,661.25,1211.25,661.25,1217.5,624.25,1217.5,624.25"></polygon>
+    <polygon data-id="445" data-sec="1.09" data-build="1" data-floor="7"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="686.25,584.75,686.25,584.75,793.75,584.75,793.75,584.75,790,541,790,541,679.5,542.75,679.5,542.75"></polygon>
+    <polygon data-id="444" data-sec="1.09" data-build="1" data-floor="7"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="789.75,540.75,789.75,540.75,794,585,794,585,913.25,584.75,913.25,584.75,912.75,540.5,912.75,540.5"></polygon>
+    <polygon data-id="443" data-sec="1.09" data-build="1" data-floor="7"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="912.75,539.75,912.75,539.75,913.5,583.25,913.5,583.25,1025.75,582.5,1025.75,582.5,1027.5,539,1027.5,539"></polygon>
+    <polygon data-id="442" data-sec="1.09" data-build="1" data-floor="7"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1027.25,538.75,1027.25,538.75,1026.25,581.75,1026.25,581.75,1154.75,582.25,1154.75,582.25,1159.25,539.75,1159.25,539.75"></polygon>
+    <polygon data-id="448" data-sec="1.09" data-build="1" data-floor="7"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1159.25,539.5,1159.25,539.5,1155,582.25,1155,582.25,1223,583,1223,583,1230.25,538.5,1230.25,538.5"></polygon>
+    <polygon data-id="452" data-sec="1.09" data-build="1" data-floor="8"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="679.5,542.25,679.5,542.25,789.75,541.5,789.75,541.5,785.25,496.5,785.25,496.5,672.25,497.5,672.25,497.5"></polygon>
+    <polygon data-id="451" data-sec="1.09" data-build="1" data-floor="8"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="785,496.25,785,496.25,790.25,541,790.25,541,913.25,540.25,913.25,540.25,912.25,496,912.25,496"></polygon>
+    <polygon data-id="450" data-sec="1.09" data-build="1" data-floor="8"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="912,495.5,912,495.5,913,539.25,913,539.25,1027.5,538.75,1027.5,538.75,1028.5,495.75,1028.5,495.75"></polygon>
+    <polygon data-id="449" data-sec="1.09" data-build="1" data-floor="8"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1028.5,496,1028.5,496,1027.5,539,1027.5,539,1159,539.25,1159,539.25,1165,496.25,1165,496.25"></polygon>
+    <polygon data-id="455" data-sec="1.09" data-build="1" data-floor="8"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1165.25,495.75,1165.25,495.75,1159.25,539.5,1159.25,539.5,1230.5,538.25,1230.5,538.25,1237,495.25,1237,495.25"></polygon>
+    <polygon data-id="460" data-sec="1.09" data-build="1" data-floor="9"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="672,497.75,672,497.75,785.25,496.75,785.25,496.75,772,366.5,772,366.5,651.5,367.25,651.5,367.25,650.5,368,650.5,368"></polygon>
+    <polygon data-id="459" data-sec="1.09" data-build="1" data-floor="9"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="771.75,365.75,771.75,365.75,785,496,785,496,912.25,495.25,912.25,495.25,909.25,366,909.25,366"></polygon>
+    <polygon data-id="458" data-sec="1.09" data-build="1" data-floor="9"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="909.25,365.25,909.25,365.25,912.75,495,912.75,495,1029,496.25,1029,496.25,1035,365.5,1035,365.5"></polygon>
+    <polygon data-id="457" data-sec="1.09" data-build="1" data-floor="9"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1029.25,496.5,1029.25,496.5,1164.75,496,1164.75,496,1178.75,364.75,1178.75,364.75,1034.75,365.25,1034.75,365.25"></polygon>
+    <polygon data-id="456" data-sec="1.09" data-build="1" data-floor="9"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1178.75,364.5,1178.75,364.5,1165.25,496,1165.25,496,1237.75,495,1237.75,495,1261.75,364.75,1261.75,364.75"></polygon>
+    <polygon data-id="704" data-sec="1.10" data-build="1" data-floor="1"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1194,772,1194,772,1187.25,815.75,1187.25,815.75,1235,814.25,1235,814.25,1243.5,772.75,1243.5,772.75,1240,770.75,1240,770.75"></polygon>
+    <polygon data-id="703" data-sec="1.10" data-build="1" data-floor="1"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1243.5,771.5,1243.5,771.5,1235.25,814.5,1235.25,814.5,1330,813.25,1330,813.25,1340.25,771,1340.25,771"></polygon>
+    <polygon data-id="702" data-sec="1.10" data-build="1" data-floor="1"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1383.25,776,1383.25,776,1370.75,814,1370.75,814,1473,812,1473,812,1486.75,774.5,1486.75,774.5"></polygon>
+    <polygon data-id="701" data-sec="1.10" data-build="1" data-floor="1"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1487,774,1487,774,1473.25,812,1473.25,812,1578.75,812.25,1578.75,812.25,1595.25,773.5,1595.25,773.5"></polygon>
+    <polygon data-id="466" data-sec="1.10" data-build="1" data-floor="2"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1194,772.25,1194,772.25,1199.75,734,1199.75,734,1248.5,734.5,1248.5,734.5,1241.75,771,1241.75,771,1239.75,771,1239.75,771"></polygon>
+    <polygon data-id="465" data-sec="1.10" data-build="1" data-floor="2"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1248.25,734.5,1248.25,734.5,1242.25,771,1242.25,771,1340.5,770.75,1340.5,770.75,1349.75,736,1349.75,736,1350,735.75,1350,735.75"></polygon>
+    <polygon data-id="464" data-sec="1.10" data-build="1" data-floor="2"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1350,735,1350,735,1338.75,777.75,1338.75,777.75,1428.5,775.5,1428.5,775.5,1440.25,735,1440.25,735"></polygon>
+    <polygon data-id="463" data-sec="1.10" data-build="1" data-floor="2"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1440,735,1440,735,1428.75,775.5,1428.75,775.5,1595.75,774,1595.75,774,1611,736.5,1611,736.5,1612.5,734.25,1612.5,734.25"></polygon>
+    <polygon data-id="473" data-sec="1.10" data-build="1" data-floor="3"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1205.25,699.25,1205.25,699.25,1199.5,734.75,1199.5,734.75,1248.75,734.25,1248.75,734.25,1255.5,700,1255.5,700"></polygon>
+    <polygon data-id="472" data-sec="1.10" data-build="1" data-floor="3"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1255.75,699.5,1255.75,699.5,1248.75,734.75,1248.75,734.75,1350,735.75,1350,735.75,1359.75,701.25,1359.75,701.25,1359.75,701,1359.75,701"></polygon>
+    <polygon data-id="471" data-sec="1.10" data-build="1" data-floor="3"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1359.75,701,1359.75,701,1349.5,735.25,1349.5,735.25,1440,735,1440,735,1451.25,700.5,1451.25,700.5"></polygon>
+    <polygon data-id="470" data-sec="1.10" data-build="1" data-floor="3"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1451.25,700,1451.25,700,1439.75,735.25,1439.75,735.25,1612.25,734,1612.25,734,1626.5,700,1626.5,700"></polygon>
+    <polygon data-id="480" data-sec="1.10" data-build="1" data-floor="4"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1211.25,660.75,1211.25,660.75,1205.5,699.5,1205.5,699.5,1255.75,699.75,1255.75,699.75,1263.5,662.75,1263.5,662.75,1263,662,1263,662,1263.5,661.25,1263.5,661.25"></polygon>
+    <polygon data-id="479" data-sec="1.10" data-build="1" data-floor="4"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1263.25,662,1263.25,662,1255.75,699.5,1255.75,699.5,1359.5,700.5,1359.5,700.5,1369.25,663,1369.25,663"></polygon>
+    <polygon data-id="478" data-sec="1.10" data-build="1" data-floor="4"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1369.25,663,1369.25,663,1359.5,701,1359.5,701,1451.75,700,1451.75,700,1463.5,663,1463.5,663"></polygon>
+    <polygon data-id="477" data-sec="1.10" data-build="1" data-floor="4"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1463.5,662.25,1463.5,662.25,1451.5,700.5,1451.5,700.5,1627,700,1627,700,1645.25,662,1645.25,662"></polygon>
+    <polygon data-id="487" data-sec="1.10" data-build="1" data-floor="5"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1217.25,624,1217.25,624,1210.75,660.75,1210.75,660.75,1263,661.5,1263,661.5,1269.75,625.25,1269.75,625.25,1269.5,624.25,1269.5,624.25"></polygon>
+    <polygon data-id="486" data-sec="1.10" data-build="1" data-floor="5"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1269.75,624.5,1269.75,624.5,1263.25,661.75,1263.25,661.75,1368.75,662.5,1368.75,662.5,1379,624,1379,624"></polygon>
+    <polygon data-id="485" data-sec="1.10" data-build="1" data-floor="5"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1378.75,624.25,1378.75,624.25,1368,663.25,1368,663.25,1463.75,662.25,1463.75,662.25,1478.25,624,1478.25,624"></polygon>
+    <polygon data-id="484" data-sec="1.10" data-build="1" data-floor="5"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1478,623.25,1478,623.25,1463.75,662.25,1463.75,662.25,1645.25,662,1645.25,662,1659.75,626,1659.75,626,1660.75,624.75,1660.75,624.75"></polygon>
+    <polygon data-id="494" data-sec="1.10" data-build="1" data-floor="6"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1217,624.5,1217,624.5,1223.25,582.25,1223.25,582.25,1277.75,583.5,1277.75,583.5,1270.25,624.5,1270.25,624.5"></polygon>
+    <polygon data-id="493" data-sec="1.10" data-build="1" data-floor="6"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1277.75,583.25,1277.75,583.25,1270,624.5,1270,624.5,1379,624,1379,624,1390.75,582.5,1390.75,582.5"></polygon>
+    <polygon data-id="492" data-sec="1.10" data-build="1" data-floor="6"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1390.75,582.25,1390.75,582.25,1378.75,624.25,1378.75,624.25,1478,624,1478,624,1491.75,582.75,1491.75,582.75"></polygon>
+    <polygon data-id="491" data-sec="1.10" data-build="1" data-floor="6"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1492,582.5,1492,582.5,1478.25,623.25,1478.25,623.25,1660.5,624.75,1660.5,624.75,1679,582.5,1679,582.5"></polygon>
+    <polygon data-id="501" data-sec="1.10" data-build="1" data-floor="7"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1230.25,538,1230.25,538,1223,582.25,1223,582.25,1277.5,583.25,1277.5,583.25,1287,537.75,1287,537.75"></polygon>
+    <polygon data-id="500" data-sec="1.10" data-build="1" data-floor="7"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1287.25,537.75,1287.25,537.75,1278,583.25,1278,583.25,1391.25,582.25,1391.25,582.25,1402,538.5,1402,538.5"></polygon>
+    <polygon data-id="499" data-sec="1.10" data-build="1" data-floor="7"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1401.5,538,1401.5,538,1390,582.5,1390,582.5,1492,582,1492,582,1507,535.75,1507,535.75"></polygon>
+    <polygon data-id="498" data-sec="1.10" data-build="1" data-floor="7"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1507,535.25,1507,535.25,1492,582.5,1492,582.5,1679.5,582.25,1679.5,582.25,1698.5,537.5,1698.5,537.5"></polygon>
+    <polygon data-id="508" data-sec="1.10" data-build="1" data-floor="8"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1230.25,538.5,1230.25,538.5,1237.75,494.75,1237.75,494.75,1296.25,496,1296.25,496,1288.25,537.5,1288.25,537.5"></polygon>
+    <polygon data-id="507" data-sec="1.10" data-build="1" data-floor="8"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1295.75,495.75,1295.75,495.75,1288.25,538.25,1288.25,538.25,1402,537.5,1402,537.5,1414,495.75,1414,495.75"></polygon>
+    <polygon data-id="506" data-sec="1.10" data-build="1" data-floor="8"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1413.75,495.25,1413.75,495.25,1401.75,538.25,1401.75,538.25,1507.5,535.5,1507.5,535.5,1519.75,496.5,1519.75,496.5"></polygon>
+    <polygon data-id="505" data-sec="1.10" data-build="1" data-floor="8"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1519.75,495.75,1519.75,495.75,1507,535,1507,535,1698.25,537.75,1698.25,537.75,1717.25,495.5,1717.25,495.5"></polygon>
+    <polygon data-id="684" data-sec="1.10" data-build="1" data-floor="9"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1236.75,494.75,1236.75,494.75,1262,364.25,1262,364.25,1267.75,366.5,1267.75,366.5,1319.5,366.5,1319.5,366.5,1295,494.75,1295,494.75"></polygon>
+    <polygon data-id="681" data-sec="1.10" data-build="1" data-floor="9"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1319.5,366,1319.5,366,1294.75,495,1294.75,495,1295.75,496,1295.75,496,1413.75,495.75,1413.75,495.75,1448.5,366.75,1448.5,366.75"></polygon>
+    <polygon data-id="680" data-sec="1.10" data-build="1" data-floor="9"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1448.25,366.5,1448.25,366.5,1414,495.5,1414,495.5,1520.5,495.75,1520.5,495.75,1562.75,367,1562.75,367"></polygon>
+    <polygon data-id="686" data-sec="1.10" data-build="1" data-floor="9"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1563,366.5,1563,366.5,1520,496,1520,496,1717.5,495.75,1717.5,495.75,1774.5,365,1774.5,365"></polygon>
+    <polygon data-id="13011" data-sec="1.01" data-build="1" data-floor="9" data-type="flyby" data-flyby="courtyard"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="677.5,177,703,177.5,756,124.5,771.5,124,803,89.5,1142.5,85.5,1184.5,113.5,1355,249,1346,285,1236.5,286,1231.5,279,1211.5,279,1212,285.5,1020,285,1016.5,284.5,1019,261.5,997,260,998,242.5,978,245,977.5,251,935.5,253,935,249.5,885,247.5,883.5,255.5,886,285,570.5,285.5,566.5,268.5,574.5,269"></polygon>
+    <polygon data-id="13010" data-sec="2.04" data-build="2" data-floor="9" data-type="flyby" data-flyby="complex"
+             class="s3d-svg__house js-s3d-svg__house"
+             points="1400.5,67,1381.5,158.5,1600,279,1609,262,1782.5,349.5,1691.5,554,1919,743.5,1919.5,74,1884,67.5,1883.5,60"></polygon>
+</svg>

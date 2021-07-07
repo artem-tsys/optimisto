@@ -1,5 +1,4 @@
 .s3d {
-
   &-controller {
     display: grid;
     z-index: 102;
@@ -19,9 +18,8 @@
     grid-template-areas: '. . .'
                 'filter . compass'
                 '. . .'
-                '. . info-flat'
+                '. . .'
                 'title buttons call';
-
     &__elem {
       grid-area: buttons;
       display: flex;
@@ -29,13 +27,16 @@
       width: initial;
       margin: auto;
       border-radius: 50px;
-      overflow: hidden;
+      //overflow: hidden;
       align-items: flex-start;
       pointer-events: painted;
-      svg {
-        width: 31px;
-        height: 30px;
-      }
+      //position: relative;
+      //left: 50%;
+      //transform: translateX(-50%);
+      //svg {
+      //  width: 31px;
+      //  height: 30px;
+      //}
     }
 
     &__compass {
@@ -158,38 +159,4 @@
       }
     }
   }
-
-}
-
-
-@media screen and ( max-width : 1640px ) {
-
-  .s3d {
-
-    &-controller {
-    }
-  }
-}
-@media screen and ( max-width : 1023px ) {
-
-  .s3d {
-
-    &-controller {
-
-    }
-
-
-  }
-}
-
-@media screen and ( max-width : 767px ) {
-
-  .s3d {
-
-    &-controller {
-    }
-
-
-  }
-
 }

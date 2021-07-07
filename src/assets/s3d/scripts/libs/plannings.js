@@ -6,14 +6,15 @@ class Plannings {
 		this.inApart = conf.click
 		this.activeFlat = conf.activeFlat
 		this.getCurrentShowFlats = conf.getCurrentShowFlats
+		this.setCurrentShowFlats = conf.setCurrentShowFlats
 		this.currentShow = 0
 		// this.init()
 		this.updateShowFlat = this.updateShowFlat.bind(this)
 	}
 
 	init() {
-		$.ajax('/wp-admin/admin-ajax.php?action=cardPlannings').then(response => {
-		// $.ajax('/wp-content/themes/optimisto/assets/s3d/template/cardPlannings.php').then(response => {
+		const urlCard = ((window.location.hostname === 'localhost') ? '/wp-content/themes/optimisto/assets/s3d/template/cardPlannings.php' : '/wp-admin/admin-ajax.php?action=cardPlannings')
+		$.ajax(urlCard).then(response => {
 			this.templateCard = JSON.parse(response)
 
 			this.createList(this.list, this.wrap)
@@ -22,7 +23,7 @@ class Plannings {
 				this.activeFlat.value = id
 				this.inApart(id, 'apart', id)
 			})
-			this.getCurrentShowFlats(this.list)
+			// this.setCurrentShowFlats(this.list)
 			$('.js-s3d__pl__list').on('scroll', event => {
 				const amount = this.checkCountShowElemInPage(event.currentTarget)
 				if (amount) {
@@ -114,41 +115,4 @@ class Plannings {
 
 		return div
 	}
-
-	// createCard(el) {
-	// 	const div = document.createElement('div')
-	// 	div.dataset.id = el.id
-	// 	div.classList = 's3d-pl__plane'
-	// 	div.innerHTML = `
-  //       <div class="s3d-pl__type" data-key="type">тип ${el.type}</div>
-  //       <img class="s3d-pl__image"  data-key="src" data-src=${el['img_small']}>
-  //       <table class="s3d-pl__table">
-  //         <tbody><tr class="s3d-pl__row">
-  //           <td class="s3d-pl__value">${el.number}</td>
-  //           <td class="s3d-pl__name" data-key="number">№ квартиры</td>
-  //         </tr>
-  //         <tr class="s3d-pl__row">
-  //           <td class="s3d-pl__value">${el.floor}</td>
-  //           <td class="s3d-pl__name" data-key="floor">Этаж</td>
-  //         </tr>
-  //         <tr class="s3d-pl__row">
-  //           <td class="s3d-pl__value">${el.rooms}</td>
-  //           <td class="s3d-pl__name" data-key="rooms">Комнаты</td>
-  //         </tr>
-  //         <tr class="s3d-pl__row">
-  //           <td class="s3d-pl__value">${el['all_room']}</td>
-  //           <td class="s3d-pl__name" data-key="area">Площадь м2</td>
-  //         </tr>
-  //       </tbody></table>
-  //       <div class="s3d-pl__buttons"><button type="button" class="s3d-pl__link js-s3d-pl__link">Подробнее</button>
-  //         <label data-key="id" class="s3d-pl__add-favourites js-s3d-add__favourites">
-  //         	<input type="checkbox">
-  //           <svg>
-  //             <use xlink:href="#icon-favourites"></use>
-  //           </svg>
-  //         </label>
-  //       </div>
-	// 	`
-	// 	return div
-	// }
 }

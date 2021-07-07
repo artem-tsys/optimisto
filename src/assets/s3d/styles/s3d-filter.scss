@@ -32,7 +32,7 @@
       visibility: hidden;
       opacity: 0;
       background: transparent;
-      &.active-filter{
+      &.active-filter {
         transform: translateX(-100%);
         transition: transform .6s ease-out, opacity .4s ease-in .5s,visibility 1ms linear .6s;
         .s3d-filter__close-wrap{
@@ -72,7 +72,7 @@
       margin: 0 0 30px 0;
     }
 
-    &__house,
+    &__build,
     &__rooms {
       margin-bottom: 10px;
 
@@ -102,6 +102,7 @@
         margin: 0 15px 0 0;
         border-radius: 50%;
         background: transparent;
+        border: 1px solid gray;
         transition: background-color .3s ease-in, color .3s ease-in;
         &:hover {
           background: $color1;
@@ -110,8 +111,8 @@
       }
     }
 
-    &__house {
-      margin: 0 auto 30px;
+    &__build {
+      margin: 0 0 15px auto;
     }
 
     &__rooms {
@@ -289,12 +290,12 @@
         vertical-align: middle;
         padding: 0 7px;
       }
-      .s3d-filter__table__label{
-        height: 18px;
-        width: 17px;
-        fill: transparent;
-        stroke: #DDD9D3;
-      }
+      //.s3d-filter__table__label{
+      //  height: 18px;
+      //  width: 17px;
+      //  fill: transparent;
+      //  stroke: #DDD9D3;
+      //}
       input{
         display: none;
       }
@@ -308,7 +309,7 @@
           stroke: transparent;
         }
       }
-      &__label{
+      &__label {
         height: 100%;
         width: 30px;
         margin: 0 auto;
@@ -316,9 +317,15 @@
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        *{
-          pointer-events: none;
+        svg {
+          height: 18px;
+          width: 17px;
+          fill: transparent;
+          stroke: #DDD9D3;
         }
+        //*{
+        //        //  pointer-events: none;
+        //        //}
         &:hover:not(.active-flat) {
           svg:not(.active-flat){
             fill: transparent;
@@ -462,7 +469,7 @@
       font-size: 12px;
       font-weight: 500;
       line-height: 22px;
-      margin: auto 0 15px 10px;
+      margin: auto auto 15px;
       transition: color .4s ease-in-out;
       cursor: pointer;
       &-icon {
@@ -609,7 +616,7 @@
       flex-direction: row;
       flex-wrap: wrap;
 
-      &__house--label {
+      &__build--label {
         width: 34px;
         height: 34px;
         margin: 0 8px;
@@ -635,7 +642,7 @@
       }
 
       &__button--reset {
-        margin: 0 0 0 auto;
+        margin: 0 0 15px auto;
         order: 2;
       }
 
@@ -664,15 +671,15 @@
       font-size: 18px;
       padding: 5px;
 
-      span {
-        font-size: 12px;
-        line-height: 1em;
-        margin: 0;
-      }
-
-      svg {
-        display: none;
-      }
+      //span {
+      //  font-size: 12px;
+      //  line-height: 1em;
+      //  margin: 0;
+      //}
+      //
+      //svg {
+      //  display: none;
+      //}
 
       &__head {
         width: 160px;
@@ -696,7 +703,7 @@
         grid-column: 1;
       }
 
-      &__house--label,
+      &__build--label,
       &__rooms--label {
         width: 30px;
         height: 30px;

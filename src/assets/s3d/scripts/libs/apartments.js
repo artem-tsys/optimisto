@@ -22,7 +22,7 @@ class Apartments {
 
 		$('#js-s3d__apart').on('click', '.js-s3d-flat__back', e => {
 			// this.loader.show()
-			this.click(+e.currentTarget.dataset.id, 'complex', this.activeFlat.value)
+			this.click(+e.currentTarget.dataset.id, 'complex1', this.activeFlat.value)
 		})
 	}
 
@@ -67,13 +67,16 @@ class Apartments {
 	// получаем разметку квартиры с планом этажа
 	getPlane(config) {
 		// console.log('нужно раскоментировать')
-		// this.setPlaneInPage(this.addHtmlAll(config))
-		$.ajax({
-			type: 'POST',
-			url: '/wp-admin/admin-ajax.php',
-			data: `action=createFlat&id=${config.activeFlat.value}`,
-			success: response => (this.setPlaneInPage(response)),
-		})
+		if (window.location.hostname === 'localhost') {
+			$.ajax({
+				type: 'POST',
+				url: '/wp-admin/admin-ajax.php',
+				data: `action=createFlat&id=${config.activeFlat.value}`,
+				success: response => (this.setPlaneInPage(response)),
+			})
+		} else {
+			this.setPlaneInPage(this.addHtmlAll(config))
+		}
 	}
 
 	// вставляем разметку в DOM вешаем эвенты
@@ -83,7 +86,7 @@ class Apartments {
 		this.loader.hide(this.type)
 		$('.js-flat-button-return').on('click', e => {
 			e.preventDefault()
-			this.click(e.currentTarget.dataset.id, 'complex', this.activeFlat.value)
+			this.click(e.currentTarget.dataset.id, 'complex1', this.activeFlat.value)
 		})
 
 		$('.s3d-flat__floor').on('click', 'a', event => {
@@ -106,7 +109,7 @@ class Apartments {
 		})
 
 		$('.js-s3d__show-3d').on('click', event => {
-			this.click(event.currentTarget.dataset.id, 'complex', this.activeFlat.value)
+			this.click(event.currentTarget.dataset.id, 'complex1', this.activeFlat.value)
 		})
 
 		$('.js-s3d-flat').on('change', '.js-s3d__radio-type', el => {

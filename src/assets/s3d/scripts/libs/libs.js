@@ -5,6 +5,7 @@
 @@include('../libs/markup.js')
 @@include('../libs/apartments.js')
 
+@@include('../libs/popupChangeFlyby.js')
 @@include('../libs/sort.js')
 @@include('../libs/checkDevice.js')
 @@include('../libs/filter.js')

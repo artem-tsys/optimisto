@@ -76,7 +76,7 @@ foreach ($files as $item) {
 //print_r($svgs);
 //echo '</pre>';
 
-//print_r($svgs['complex']);
+//print_r($svgs['complex1']);
 
 echo json_encode($svgs);
 

@@ -1,7 +1,7 @@
 class Filter {
 	constructor(filterConfig) {
 		// this.wrapper = config.wrap || ''
-		this.filterName = { range: ['area', 'floor'], checkbox: ['rooms'] }
+		this.filterName = { range: ['area', 'floor'], checkbox: ['rooms', 'build'] }
 		this.filter = {}
 		this.nameFilterFlat = {
 			area: 'all_room',
@@ -17,12 +17,15 @@ class Filter {
 		this.flatList = filterConfig.flatList
 		this.flatListObj = filterConfig.flatListObj
 		this.currentAmountFlat = filterConfig.flatList.length
-		this.selectFlat = filterConfig.showSvgIn3D
+		// this.selectFlat = filterConfig.showSvgIn3D
 		this.getCurrentShowFlats = filterConfig.getCurrentShowFlats
+		this.setCurrentShowFlats = filterConfig.setCurrentShowFlats
 		this.addBlur = filterConfig.addBlur
+		this.initChangeFlybyHandler = filterConfig.initChangeFlybyHandler
 		// this.unActive = config.unActive
 		this.hidden = this.hidden.bind(this)
 		this.show = this.show.bind(this)
+		this.showSvgSelect = this.showSvgSelect.bind(this)
 	}
 
 	init(config) {
@@ -40,9 +43,20 @@ class Filter {
 			}
 		})
 
+		// $('.js-s3d-filter__table').on('click', 'tr', event => {
+		// 	if ($(event.target).hasClass('js-s3d-add__favourites') || event.target.nodeName === 'INPUT' || event.currentTarget.dataset.id === undefined) return
+		// 	this.selectFlat(event.currentTarget.dataset.id, 'complex1')
+		// })
 		$('.js-s3d-filter__table').on('click', 'tr', event => {
 			if ($(event.target).hasClass('js-s3d-add__favourites') || event.target.nodeName === 'INPUT' || event.currentTarget.dataset.id === undefined) return
-			this.selectFlat(event.currentTarget.dataset.id, 'complex')
+			const id = +event.currentTarget.dataset.id
+			if (
+				$(event.originalEvent.target).hasClass('js-s3d-add__favourites')
+				|| event.originalEvent.target.nodeName === 'INPUT') {
+				return
+			}
+			// const conf = this.checkFlatInSVG(id)
+			this.initChangeFlybyHandler(id, event.currentTarget)
 		})
 
 		this.filterName.checkbox.forEach(name => {
@@ -55,6 +69,7 @@ class Filter {
 				for (const key in config[this.nameFilterFlat[name]]) {
 					classes[key] = (key === 'min') ? Math.floor(+config[this.nameFilterFlat[name]][key]) : Math.ceil(+config[this.nameFilterFlat[name]][key])
 				}
+				console.log(classes, config)
 				this.createRange(classes)
 			}
 		})
@@ -101,8 +116,8 @@ class Filter {
 	showSvgSelect(data) {
 		// $('.js-s3d__wrapper__complex polygon').css({ opacity: 0 })
 		// data.forEach(flat => $(`.js-s3d__wrapper__complex polygon[data-id=${flat.id}]`).css({ opacity: 0.5 }))
-		$('.js-s3d__wrapper__complex polygon').removeClass('active-selected')
-		data.forEach(flat => $(`.js-s3d__wrapper__complex polygon[data-id=${flat.id}]`).addClass('active-selected'))
+		$('.s3d__svg-container polygon').removeClass('active-selected')
+		data.forEach(flat => $(`.s3d__svg-container polygon[data-id=${flat.id}]`).addClass('active-selected'))
 		// фильтр svg , ищет по дата атрибуту, нужно подстраивать атрибут и класс обертки
 	}
 
@@ -204,6 +219,7 @@ class Filter {
 
 	// добавить checkbox в список созданых фильтров
 	setCheckbox(config) {
+		console.log(config)
 		if (config.type !== undefined) {
 			if (!this.filter[config.type] || !this.filter[config.type].elem) {
 				this.filter[config.type] = {}
@@ -262,7 +278,6 @@ class Filter {
 		const select = data.filter(flat => {
 			if (flat.listHtmlLink) {
 				flat.listHtmlLink.dataset.style = 'none'
-				// flat.listHtmlLink.style.display = 'none'
 			}
 			if (flat.cardHtmlLink) {
 				flat.cardHtmlLink.style.display = 'none'
@@ -282,32 +297,36 @@ class Filter {
 					}
 				}
 			}
-			if (flat[nameFilterFlat.house] !== undefined
-				&& !flat[nameFilterFlat.house]
+
+			if (!flat[nameFilterFlat.build]
 			) {
 				// eslint-disable-next-line no-param-reassign
-				flat[nameFilterFlat.house].match(/^(\d+)/)[1] = []
+				flat[nameFilterFlat.build].match(/^(\d+)/)[1] = []
 			}
 
-			if (flat[nameFilterFlat.floor] !== undefined
-				&& flat[nameFilterFlat.house]
-				&& !flat[nameFilterFlat.house].includes(flat[nameFilterFlat.floor])
-				&& flat[nameFilterFlat.floor] > 0
-			) {
-				flat[nameFilterFlat.house].push(flat[nameFilterFlat.floor])
-			}
+			// if (flat[nameFilterFlat.floor] !== undefined
+			// 	&& flat[nameFilterFlat.build]
+			// 	&& !flat[nameFilterFlat.build].includes(flat[nameFilterFlat.floor])
+			// 	&& flat[nameFilterFlat.floor] > 0
+			// ) {
+			// 	console.log('nameFilterFlat.build', nameFilterFlat.build)
+			// 	console.log('flat[nameFilterFlat.build]', flat[nameFilterFlat.build])
+			// 	flat[nameFilterFlat.build].push(flat[nameFilterFlat.floor])
+			// }
 			this.currentAmountFlat += 1
 			if (flat.listHtmlLink) {
 				// flat.listHtmlLink.style.display = ''
+				// eslint-disable-next-line no-param-reassign
 				flat.listHtmlLink.dataset.style = 'visible'
 			}
 			if (flat.cardHtmlLink) {
+				// eslint-disable-next-line no-param-reassign
 				flat.cardHtmlLink.style.display = ''
 			}
 			return flat
 		})
 		this.setAmountSelectFlat(this.currentAmountFlat)
-		this.getCurrentShowFlats(select)
+		this.setCurrentShowFlats(select)
 		return select
 	}
 

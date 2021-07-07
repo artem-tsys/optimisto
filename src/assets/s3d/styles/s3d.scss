@@ -3,9 +3,9 @@
 // #s3d__wrapper__complex, #s3d__wrapper__floor, #s3d__wrapper__apart - обертка для canvas и Блока с svg. не фиксируется по ширине экрана
 *{
   box-sizing: border-box;
-  &:focus{
-    outline: 1px solid #aaaaaa!important;
-  }
+  //&:focus{
+  //  outline: 1px solid #aaaaaa!important;
+  //}
 }
 
 .disabled{
@@ -241,50 +241,116 @@
   }
 
   &-select {
+    position: relative;
     display: flex;
     justify-content: center;
     height: 42px;
-    width: 50%;
+    //width: 50%;
     min-width: 128px;
+    //color: #752180;
     color: #ffffff;
     border: none;
     align-items: center;
     background: #752180;
+    //background: #ffffff;
     font-family: $default-font;
     font-size: 12px;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1.3em;
     margin: 0;
-    padding: 10px;
-    letter-spacing: 0.1em;
-    text-transform: capitalize;
-    transition: all .4s linear;
+    border-left: 1px solid #E1D7E4;
+    padding: 10px 40px;
+    //text-transform: capitalize;
+    transition: all .4s linear, border-radius .2s linear;
     cursor: pointer;
+    &__number {
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+    }
+    &__group {
+      position: absolute;
+      top: 0;
+      transform: translateY(-100%);
+      left: 0;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 12px 0;
+      opacity: 0;
+      pointer-events: none;
+      //padding: 20px 40px;
+      transition: opacity 0.4s ease-in-out;
+      background: #FFFFFF;
+    }
+    &__button {
+      background: none;
+      border: none;
+      white-space: nowrap;
+      margin: 0;
+      padding: 12px 0px;
+      //padding: 12px 45px;
+      font-family: $default-font;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 100%;
+      color: #842990;
+      cursor: pointer;
+      transition: color 0.4s ease-in-out, background-color 0.4s ease-in-out;
+    }
+    &__svg {
+      display: inline-block;
+      width: 7px;
+      height: 4px;
+      margin-left: 10px;
+      stroke: $wc;
+      //stroke: #842990;
+    }
     &:focus{
-      outline: 1px solid $color1;
+      outline: 1px solid transparent;
     }
     &.active {
-      cursor: no-drop;
-      font-weight: 600;
+      //cursor: no-drop;
+      font-weight: 500;
       color: #786F79;
       background: #FFFFFF;
       text-decoration: none;
-      box-shadow: 0 4px 20px rgba(28, 73, 84, 0.15);
+      //box-shadow: 0 4px 20px rgba(28, 73, 84, 0.15);
       z-index: 5;
-      svg {
-        stroke: $wc;
+      .s3d-select__svg {
+        stroke: #842990;
       }
+      //svg {
+      //  stroke: $wc;
+      //}
 
       svg.icon-cube {
         fill: $wc;
         stroke: transparent;
       }
     }
-
-    &:hover:not( .active ):not( [ disabled ] ) {
-      background: #842990;
-      color: rgba(255,255,255,1)
+    &:first-child {
+      border-radius: 50px 0 0 50px;
+      border: none;
     }
+    &:last-child {
+      border-radius: 0 50px 50px 0;
+    }
+    &.s3d-select__hover {
+      border-radius: 0;
+      background: #842990;
+      color: rgba(255,255,255,1);
+      .s3d-select__svg {
+        stroke: #ffffff;
+        transform: rotate(180deg);
+      }
+      .s3d-select__group {
+        opacity: 1;
+        pointer-events: painted;
+        transition: opacity 0.4s ease-in-out 0.2s;
+      }
+    }
+
 
     &:disabled {
       color: #f3f1f9;
@@ -296,15 +362,15 @@
         stroke: #f3f1f9;
       }
     }
-    svg{
-      margin-bottom: 4px;
-      display: none;
-      width: 19px;
-      height: 17px;
-      fill: white;
-      //fill: transparent;
-      stroke: $color2;
-    }
+    //svg{
+    //  margin-bottom: 4px;
+    //  display: none;
+    //  width: 19px;
+    //  height: 17px;
+    //  fill: white;
+    //  //fill: transparent;
+    //  stroke: $color2;
+    //}
 
   }
 
@@ -389,6 +455,70 @@
   &-blur{
     transition: filter 0.5s cubic-bezier(.54,.23,.37,.9);
     filter: blur(5px);
+  }
+
+  &-hover-translate {
+    //width: min-content;
+    height: 0;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    border-radius: 50%;
+    padding: 50% 16px;
+    background: #85C441;
+    font-family: $default-font;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 140%;
+    text-transform: uppercase;
+    color: $wc;
+    &__close {
+      position: absolute;
+      top: 20px;
+      right: 12px;
+      display: none;
+      height: 30px;
+      width: 30px;
+      pointer-events: painted;
+      &:after, &:before {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 1px;
+        background: #842990;
+      }
+      &:after {
+        transform: translate(-50%, -50%)rotate(45deg);
+      }
+      &:before {
+        transform: translate(-50%, -50%)rotate(-45deg);
+      }
+    }
+    &__link {
+      display: none;
+      font-family: $default-font;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 1.8em;
+      color: $wc;
+      margin-top: 20px;
+      padding: 10px 60px;
+      background: #752180;
+      border-radius: 50px;
+      text-decoration: none;
+      pointer-events: painted;
+    }
+    &-wrap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 555;
+      opacity: 0;
+      pointer-events: none;
+    }
   }
 }
 
