@@ -18,7 +18,7 @@
     padding: 8px;
     transform: translateY(-100%);
     transition: background-color .3s ease-in, box-shadow .3s ease-in;
-    outline-color: $color2;
+    outline-color: transparent;
     cursor: pointer;
 
     * {

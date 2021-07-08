@@ -346,9 +346,9 @@
              class="s3d-svg__house js-s3d-svg__house"
              points="1563,366.5,1563,366.5,1520,496,1520,496,1717.5,495.75,1717.5,495.75,1774.5,365,1774.5,365"></polygon>
     <polygon data-id="13011" data-sec="1.01" data-build="1" data-floor="9" data-type="flyby" data-flyby="courtyard"
-             class="s3d-svg__house js-s3d-svg__house"
+             class="s3d-svg__house"
              points="677.5,177,703,177.5,756,124.5,771.5,124,803,89.5,1142.5,85.5,1184.5,113.5,1355,249,1346,285,1236.5,286,1231.5,279,1211.5,279,1212,285.5,1020,285,1016.5,284.5,1019,261.5,997,260,998,242.5,978,245,977.5,251,935.5,253,935,249.5,885,247.5,883.5,255.5,886,285,570.5,285.5,566.5,268.5,574.5,269"></polygon>
     <polygon data-id="13010" data-sec="2.04" data-build="2" data-floor="9" data-type="flyby" data-flyby="complex"
-             class="s3d-svg__house js-s3d-svg__house"
+             class="s3d-svg__house "
              points="1400.5,67,1381.5,158.5,1600,279,1609,262,1782.5,349.5,1691.5,554,1919,743.5,1919.5,74,1884,67.5,1883.5,60"></polygon>
 </svg>

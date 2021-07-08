@@ -114,6 +114,16 @@ class Slider {
 
 			this.wrapper.on(this.eventsName.move, this.wrapperEvent, e => {
 				const { id, type } = e.target.dataset
+				// if (e.target.tagName === 'polygon' && type && type === 'flyby') {
+				// 	// if (!this.infoBoxActive) {
+				// 	// 	this.hiddenInfo(e)
+				// 	// 	this.infoBoxHidden = true
+				// 	// 	this.hoverFlatId = null
+				// 	// }
+				// 	this.infoBlockTranslateFlyby(e)
+				// 	return
+				// }
+
 				if (this.flagMouse && this.rotate) {
 					if (!this.infoBoxHidden) {
 						this.hiddenInfo(e)
@@ -124,16 +134,19 @@ class Slider {
 					this.activeSvg.css({ opacity: '0' })
 					this.checkMouseMovement.call(this, e)
 				} else if (e.target.tagName === 'polygon' && !this.infoBoxActive) {
-					if (this.hoverFlatId === +id) return
-					if (type && type === 'flyby') {
+					if (e.target.tagName === 'polygon' && type && type === 'flyby') {
+						if (!this.infoBoxActive) {
+							this.hiddenInfo(e)
+							this.infoBoxHidden = true
+							this.hoverFlatId = null
+						}
 						this.infoBlockTranslateFlyby(e)
-						this.hiddenInfo(e)
-						this.infoBoxHidden = true
-						this.hoverFlatId = null
-						return
 					} else {
 						this.clearStyleInfoBlockTranslateFlyby()
 					}
+					if (this.infoBoxActive) return
+					if (this.hoverFlatId === +id) return
+
 					this.hoverFlatId = +id
 					this.updateInfo(this.getFlatObj(+id))
 				} else if (!this.infoBoxActive) {
@@ -179,9 +192,9 @@ class Slider {
 			this.compass.save(this.compass.current)
 		})
 
-		this.infoBox.on('click', '.js-s3d-infoBox__close', () => {
-			this.hiddenInfo()
-		})
+		// this.infoBox.on('click', '.js-s3d-infoBox__close', () => {
+		// 	this.hiddenInfo()
+		// })
 		window.addEventListener('keydown', event => {
 			const data = {
 				dataset: {
@@ -204,11 +217,11 @@ class Slider {
 			return true
 		})
 
-		this.infoBox.on('click', '.s3d-infoBox__link', event => {
-			event.preventDefault()
-			this.activeFlat.value = event.target.dataset.id
-			this.click(event.currentTarget.dataset.id, 'apart', event.currentTarget.dataset.id)
-		})
+		// this.infoBox.on('click', '.s3d-infoBox__link', event => {
+		// 	event.preventDefault()
+		// 	this.activeFlat.value = +event.currentTarget.dataset.id
+		// 	this.click(+event.currentTarget.dataset.id, 'apart', +event.currentTarget.dataset.id)
+		// })
 		// this.centerSlider(this.wrapper[0])
 		$('.js-s3d-blink').on('click', () => this.flatBlink())
 
@@ -587,9 +600,6 @@ class Slider {
 		this.infoBoxActive = false
 		this.infoBox.removeClass('s3d-infoBox-active')
 		this.infoBox.removeClass('s3d-infoBox-hover')
-		// this.infoBox.css({ opacity: '0' })
-		// this.infoBox.css({ top: '-10000px' })
-		// this.infoBox.css({ left: '-10000px' })
 	}
 
 	hiddenInfoFloor() {

@@ -245,22 +245,18 @@
     display: flex;
     justify-content: center;
     height: 42px;
-    //width: 50%;
     min-width: 128px;
-    //color: #752180;
     color: #ffffff;
     border: none;
     align-items: center;
     background: #752180;
-    //background: #ffffff;
     font-family: $default-font;
     font-size: 12px;
     font-weight: 500;
     line-height: 1.3em;
     margin: 0;
-    border-left: 1px solid #E1D7E4;
+    border-right: 1px solid #E1D7E4;
     padding: 10px 40px;
-    //text-transform: capitalize;
     transition: all .4s linear, border-radius .2s linear;
     cursor: pointer;
     &__number {
@@ -279,6 +275,7 @@
       padding: 12px 0;
       opacity: 0;
       pointer-events: none;
+      border-radius: 8px 8px 0 0;
       //padding: 20px 40px;
       transition: opacity 0.4s ease-in-out;
       background: #FFFFFF;
@@ -304,25 +301,19 @@
       height: 4px;
       margin-left: 10px;
       stroke: $wc;
-      //stroke: #842990;
     }
     &:focus{
       outline: 1px solid transparent;
     }
     &.active {
-      //cursor: no-drop;
       font-weight: 500;
-      color: #786F79;
+      color: #842990;
       background: #FFFFFF;
       text-decoration: none;
-      //box-shadow: 0 4px 20px rgba(28, 73, 84, 0.15);
       z-index: 5;
       .s3d-select__svg {
         stroke: #842990;
       }
-      //svg {
-      //  stroke: $wc;
-      //}
 
       svg.icon-cube {
         fill: $wc;
@@ -331,25 +322,29 @@
     }
     &:first-child {
       border-radius: 50px 0 0 50px;
-      border: none;
+    }
+    &:nth-child(2) {
+      width: 200px;
     }
     &:last-child {
       border-radius: 0 50px 50px 0;
+      border: none;
     }
-    &.s3d-select__hover {
-      border-radius: 0;
-      background: #842990;
-      color: rgba(255,255,255,1);
-      .s3d-select__svg {
-        stroke: #ffffff;
-        transform: rotate(180deg);
-      }
-      .s3d-select__group {
-        opacity: 1;
-        pointer-events: painted;
-        transition: opacity 0.4s ease-in-out 0.2s;
-      }
-    }
+    //&.s3d-select__hover {
+    //  //border-radius: 0;
+    //  background: #842990;
+    //  border-color: #842990;
+    //  color: rgba(255,255,255,1);
+    //  .s3d-select__svg {
+    //    stroke: #ffffff;
+    //    transform: rotate(180deg);
+    //  }
+    //  .s3d-select__group {
+    //    opacity: 1;
+    //    pointer-events: painted;
+    //    transition: opacity 0.4s ease-in-out 0.2s;
+    //  }
+    //}
 
 
     &:disabled {
@@ -458,7 +453,6 @@
   }
 
   &-hover-translate {
-    //width: min-content;
     height: 0;
     display: flex;
     align-items: center;

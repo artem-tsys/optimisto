@@ -202,6 +202,19 @@ class App {
 			this.selectSlider(e, e.target.dataset.type)
 			this.clearStyleInfoBlockTranslateFlyby()
 		})
+
+		this.infoBox = $('.js-s3d-infoBox')
+		this.infoBox.on('click', '.js-s3d-infoBox__close', () => {
+			this.infoBoxActive = false
+			this.infoBox.removeClass('s3d-infoBox-active')
+			this.infoBox.removeClass('s3d-infoBox-hover')
+		})
+
+		this.infoBox.on('click', '.s3d-infoBox__link', event => {
+			event.preventDefault()
+			this.activeFlat.value = +event.currentTarget.dataset.id
+			this.selectSlider(+event.currentTarget.dataset.id, 'apart', +event.currentTarget.dataset.id)
+		})
 	}
 
 	controllerHandler(name) {
@@ -468,6 +481,7 @@ class App {
 		const list = {}
 		const flats = data.filter(el => {
 			// условие откидывающее все кроме квартир
+			if (el.type === 'TEST_OUTSIDE' || el.type === 'TEST_INSIDE') return false
 			list[el.id] = el
 			list[el.id]['favourite'] = false
 			return el
@@ -570,7 +584,7 @@ class App {
 			this.selectSliderType(id, type, Slider, numSlide)
 			break
 		case 'apart':
-			// $('.fs-preloader').addClass('s3d-preloader__full')
+			$('.fs-preloader').addClass('s3d-preloader__full')
 			this.selectSliderType(id, type, Apartments)
 			break
 		case 'plannings':
@@ -607,6 +621,8 @@ class App {
 		config.infoBlockTranslateFlybyHandler = this.infoBlockTranslateFlybyHandler.bind(this)
 		config.clearStyleInfoBlockTranslateFlyby = this.clearStyleInfoBlockTranslateFlyby.bind(this)
 		config.infoBlockTranslateFlyby = this.infoBlockTranslateFlyby.bind(this)
+		console.log(624, this)
+		config.typePrevFlyby = this.activeSection
 		// config.lang = this.lang
 		// config.infoBlockTranslateFlybyTexts = this.infoBlockTranslateFlybyTexts
 
@@ -633,7 +649,7 @@ class App {
 				config.activeFlat.value = id
 			}
 			this[type] = new Fn(config)
-			this[type].init()
+			this[type].init(config)
 			this.activeSectionList.push(config.idCopmlex)
 			// делает кнопку переключателя неактивной
 			// $(`.js-s3d-select__${config.type}`).prop('disabled', false)
@@ -712,8 +728,8 @@ class App {
 	// }
 
 	// changeCurrentFlat(flat) {
-		// this.complex1.updateActiveFlat(flat)
-		// this.complex2.updateActiveFlat(flat)
+	// this.complex1.updateActiveFlat(flat)
+	// this.complex2.updateActiveFlat(flat)
 	// }
 
 	getInfoBlockTranslateText(build, flyby) {

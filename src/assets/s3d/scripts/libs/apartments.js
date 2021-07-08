@@ -11,6 +11,7 @@ class Apartments {
 		this.getFavourites = data.getFavourites
 		this.getFlatObj = data.getFlatObj
 		this.addBlur = data.addBlur
+		this.typePrevFlyby = data.typePrevFlyby
 	}
 
 	init(config) {
@@ -22,7 +23,8 @@ class Apartments {
 
 		$('#js-s3d__apart').on('click', '.js-s3d-flat__back', e => {
 			// this.loader.show()
-			this.click(+e.currentTarget.dataset.id, 'complex1', this.activeFlat.value)
+			console.log(this)
+			this.click(+e.currentTarget.dataset.id, this.typePrevFlyby, this.activeFlat.value)
 		})
 	}
 
@@ -66,16 +68,17 @@ class Apartments {
 
 	// получаем разметку квартиры с планом этажа
 	getPlane(config) {
+		console.log(69, config)
 		// console.log('нужно раскоментировать')
 		if (window.location.hostname === 'localhost') {
+			this.setPlaneInPage(this.addHtmlAll(config))
+		} else {
 			$.ajax({
 				type: 'POST',
 				url: '/wp-admin/admin-ajax.php',
 				data: `action=createFlat&id=${config.activeFlat.value}`,
 				success: response => (this.setPlaneInPage(response)),
 			})
-		} else {
-			this.setPlaneInPage(this.addHtmlAll(config))
 		}
 	}
 
@@ -86,7 +89,7 @@ class Apartments {
 		this.loader.hide(this.type)
 		$('.js-flat-button-return').on('click', e => {
 			e.preventDefault()
-			this.click(e.currentTarget.dataset.id, 'complex1', this.activeFlat.value)
+			this.click(e.currentTarget.dataset.id, this.typePrevFlyby, this.activeFlat.value)
 		})
 
 		$('.s3d-flat__floor').on('click', 'a', event => {
@@ -109,7 +112,7 @@ class Apartments {
 		})
 
 		$('.js-s3d__show-3d').on('click', event => {
-			this.click(event.currentTarget.dataset.id, 'complex1', this.activeFlat.value)
+			this.click(event.currentTarget.dataset.id, this.typePrevFlyby, this.activeFlat.value)
 		})
 
 		$('.js-s3d-flat').on('change', '.js-s3d__radio-type', el => {

@@ -114,6 +114,7 @@ class Filter {
 
 	// подсвечивает квартиры на svg облёта
 	showSvgSelect(data) {
+		console.log(117, data)
 		// $('.js-s3d__wrapper__complex polygon').css({ opacity: 0 })
 		// data.forEach(flat => $(`.js-s3d__wrapper__complex polygon[data-id=${flat.id}]`).css({ opacity: 0.5 }))
 		$('.s3d__svg-container polygon').removeClass('active-selected')
@@ -275,6 +276,7 @@ class Filter {
 	filterFlat(data, filter, filterName, nameFilterFlat) {
 		// прерывает фильт если не выбран дом или комнаты
 		this.currentAmountFlat = 0
+		console.log(279, data)
 		const select = data.filter(flat => {
 			if (flat.listHtmlLink) {
 				flat.listHtmlLink.dataset.style = 'none'
@@ -284,15 +286,24 @@ class Filter {
 			}
 			for (const param in filter) {
 				if (+flat.sale !== 1) return false
+				
 				if (
 					filterName.checkbox.includes(param)
 					&& filter[param].value.length > 0
 					&& !filter[param].value.some(key => +flat[nameFilterFlat[param]] === +key)
 				) {
+					console.log('param', param)
+					console.log('filter[param].value', filter[param].value)
+					console.log('flat[nameFilterFlat[param]]', flat[nameFilterFlat[param]])
+					console.log('-----------')
 					return false
 				} else if (filterName.range.includes(param)) {
 					if (+flat[nameFilterFlat[param]] < +filter[param].min
 						|| +flat[nameFilterFlat[param]] > +filter[param].max) {
+						console.log('param', param)
+						console.log('flat[nameFilterFlat[param]]', flat[nameFilterFlat[param]])
+						console.log('filter[param]', filter[param])
+						console.log('-----------')
 						return false
 					}
 				}
