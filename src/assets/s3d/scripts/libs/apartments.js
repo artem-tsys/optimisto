@@ -23,7 +23,6 @@ class Apartments {
 
 		$('#js-s3d__apart').on('click', '.js-s3d-flat__back', e => {
 			// this.loader.show()
-			console.log(this)
 			this.click(+e.currentTarget.dataset.id, this.typePrevFlyby, this.activeFlat.value)
 		})
 	}
@@ -68,8 +67,6 @@ class Apartments {
 
 	// получаем разметку квартиры с планом этажа
 	getPlane(config) {
-		console.log(69, config)
-		// console.log('нужно раскоментировать')
 		if (window.location.hostname === 'localhost') {
 			this.setPlaneInPage(this.addHtmlAll(config))
 		} else {

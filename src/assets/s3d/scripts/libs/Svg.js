@@ -20,19 +20,6 @@ class Svg {
 
 	selectSvg(data) {
 		this.createSvg(data[this.type], this.type)
-
-		// if (this.type === 'complex1') {
-		// 	this.createSvg(data.complex1, this.type)
-		// } else if (this.type === 'courtyard1') {
-		// 	this.createSvg(data.courtyard1, this.type)
-		// } else if (this.type === 'complex2') {
-		// 	this.createSvg(data.courtyard2, this.type)
-		// } else if (this.type === 'courtyard2') {
-		// 	this.createSvg(data.courtyard2, this.type)
-		// } else if (this.type === 'house') {
-		// 	for (const i in data.house) { this.createSvg(data.house[i], i) }
-		// 	this.setActiveSvg()
-		// }
 	}
 
 	// получает

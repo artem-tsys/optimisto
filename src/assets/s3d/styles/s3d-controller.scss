@@ -140,7 +140,7 @@
       }
     }
 
-    &[data-type="complex"],&[data-type="courtyard"]{
+    &[data-type="complex1"],&[data-type="courtyard1"],[data-type="complex2"],&[data-type="courtyard2"]{
       //display: grid;
       .s3d-tell__text{
         color: #ffffff;

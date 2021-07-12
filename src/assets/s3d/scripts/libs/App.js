@@ -99,21 +99,23 @@ class App {
 			lastDeg: -230,
 		}
 		this.currentShowFlats = []
-		this.currentShowFlats = new Proxy(this.currentShowFlats, {
-			self: this,
-			set(target, prop, val) {
-				if (val) {
-					this.self.plannings.updateShowFlat(val)
-					this.self.plannings.pagination()
-				}
-				return val
-			},
-		})
+		// this.currentShowFlats = new Proxy(this.currentShowFlats, {
+		// 	self: this,
+		// 	set(target, prop, val) {
+		// 		console.log(106, target, prop, val)
+		// 		if (val) {
+		// 			console.log(106)
+		// 			this.self.plannings.updateShowFlat(val)
+		// 			this.self.plannings.pagination()
+		// 		}
+		// 		return val
+		// 	},
+		// })
 		this.popupChangeFlyby = new PopupChangeFlyby({ selectFlat: this.showSvgIn3D })
 
 		this.getCurrentShowFlats = this.getCurrentShowFlats.bind(this)
 		this.setCurrentShowFlats = this.setCurrentShowFlats.bind(this)
-
+		
 		this.lang = document.querySelector('html').lang
 		this.infoBlockTranslateFlybyTexts = {
 			ua: {
@@ -371,7 +373,12 @@ class App {
 	}
 
 	setCurrentShowFlats(list) {
+		console.log(375, list)
+		console.log(376, this)
+		console.trace()
 		this.currentShowFlats = list
+		this.plannings.updateShowFlat(list)
+		this.plannings.pagination()
 	}
 
 	getCurrentShowFlats() {
@@ -621,7 +628,6 @@ class App {
 		config.infoBlockTranslateFlybyHandler = this.infoBlockTranslateFlybyHandler.bind(this)
 		config.clearStyleInfoBlockTranslateFlyby = this.clearStyleInfoBlockTranslateFlyby.bind(this)
 		config.infoBlockTranslateFlyby = this.infoBlockTranslateFlyby.bind(this)
-		console.log(624, this)
 		config.typePrevFlyby = this.activeSection
 		// config.lang = this.lang
 		// config.infoBlockTranslateFlybyTexts = this.infoBlockTranslateFlybyTexts
@@ -710,7 +716,6 @@ class App {
 			if (name === block) {
 				this.activeSection = name
 				$(`.js-s3d__wrapper__${name}`).css('z-index', '100')
-				console.log('changeBlockIndex', name)
 				$('.js-s3d-controller')[0].dataset.type = name
 				if (name === 'plannings') {
 					$(`.js-s3d-select[data-type = ${name}]`).addClass('active')

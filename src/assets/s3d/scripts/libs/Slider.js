@@ -68,10 +68,6 @@ class Slider {
 		this.loadImage = this.loadImage.bind(this)
 		this.filter = data.filter
 		this.getCurrentShowFlats = data.getCurrentShowFlats
-		// this.infoBlockTranslateFlybyWrapContainer = document.querySelector('.js-s3d-hover-translate')
-		// this.infoBlockTranslateFlybyContainer = document.querySelector('.js-s3d-hover-translate--text')
-		// this.lang = data.lang
-		// this.infoBlockTranslateFlybyTexts = data.infoBlockTranslateFlybyTexts
 		this.infoBlockTranslateFlybyHandler = data.infoBlockTranslateFlybyHandler
 		this.clearStyleInfoBlockTranslateFlyby = data.clearStyleInfoBlockTranslateFlyby
 		this.infoBlockTranslateFlyby = data.infoBlockTranslateFlyby
@@ -114,16 +110,6 @@ class Slider {
 
 			this.wrapper.on(this.eventsName.move, this.wrapperEvent, e => {
 				const { id, type } = e.target.dataset
-				// if (e.target.tagName === 'polygon' && type && type === 'flyby') {
-				// 	// if (!this.infoBoxActive) {
-				// 	// 	this.hiddenInfo(e)
-				// 	// 	this.infoBoxHidden = true
-				// 	// 	this.hoverFlatId = null
-				// 	// }
-				// 	this.infoBlockTranslateFlyby(e)
-				// 	return
-				// }
-
 				if (this.flagMouse && this.rotate) {
 					if (!this.infoBoxHidden) {
 						this.hiddenInfo(e)
@@ -192,9 +178,6 @@ class Slider {
 			this.compass.save(this.compass.current)
 		})
 
-		// this.infoBox.on('click', '.js-s3d-infoBox__close', () => {
-		// 	this.hiddenInfo()
-		// })
 		window.addEventListener('keydown', event => {
 			const data = {
 				dataset: {
@@ -217,12 +200,6 @@ class Slider {
 			return true
 		})
 
-		// this.infoBox.on('click', '.s3d-infoBox__link', event => {
-		// 	event.preventDefault()
-		// 	this.activeFlat.value = +event.currentTarget.dataset.id
-		// 	this.click(+event.currentTarget.dataset.id, 'apart', +event.currentTarget.dataset.id)
-		// })
-		// this.centerSlider(this.wrapper[0])
 		$('.js-s3d-blink').on('click', () => this.flatBlink())
 
 		this.deb = this.debounce(this.resizeCanvas.bind(this), 300)
@@ -321,7 +298,12 @@ class Slider {
 				}
 				self.resizeCanvas()
 				self.ctx.drawImage(self.images[self.activeElem], 0, 0, self.width, self.height)
-				self.filter.showSvgSelect(self.getCurrentShowFlats())
+				// if (sessionStorage.getItem('firstLoad')) {
+				// 	sessionStorage.setItem('firstLoad', true)
+				// } else {
+				// 	self.filter.showSvgSelect(self.getCurrentShowFlats())
+				// }
+
 				setTimeout(() => {
 					self.loader.turnOff($(self.wrapper[0]).find('.s3d-button'))
 					self.loader.miniOff()
@@ -453,25 +435,6 @@ class Slider {
 		this.infoBox = $('.js-s3d-infoBox')
 	}
 
-	// getInfoBlockTranslateText(build, flyby) {
-	// 	if (this.type.includes(flyby)) {
-	// 		return `${this.infoBlockTranslateFlybyTexts[this.lang].build}-${build}`
-	// 	}
-	// 	return this.infoBlockTranslateFlybyTexts[this.lang][flyby]
-	// }
-
-	// clearStyleInfoBlockTranslateFlyby() {
-	// 	this.infoBlockTranslateFlybyWrapContainer.style = ''
-	// }
-
-	// infoBlockTranslateFlyby(e) {
-	// 	const { clientX: x, clientY: y } = e
-	// 	const { build, flyby } = e.target.dataset
-	// 	const text = this.getInfoBlockTranslateText(build, flyby)
-	// 	this.infoBlockTranslateFlybyWrapContainer.style = `opacity: 1; top: ${y}px; left: ${x}px;`
-	// 	this.infoBlockTranslateFlybyContainer.innerText = text
-	// }
-
 	// меняет состояние инфоблока на активный
 	setStateInfoActive(elem) {
 		this.addBlur('.js-s3d-infoBox', 500)
@@ -487,18 +450,6 @@ class Slider {
 			this.updateInfo(elem, true)
 		}, 200)
 	}
-
-	// infoBlockTranslateFlybyHandler(e, type, flyby, build) {
-	// 	if (!isDevice('mobile')) {
-	// 		this.click(e, flyby + build)
-	// 		return
-	// 	}
-	// 	if (type && type === 'flyby') {
-	// 		this.infoBlockTranslateFlyby(e)
-	// 		return
-	// 	}
-	// 	this.clearStyleInfoBlockTranslateFlyby()
-	// }
 
 	getDataSet(code) {
 		switch (code) {
@@ -619,10 +570,7 @@ class Slider {
 
 		if (needChangeSlide) {
 			this.checkDirectionRotate() // test
-			// this.checkResult()
 		}
-		// this.hoverFlatId = +id
-		// this.infoBox.addClass('active')
 		this.infoBoxActive = true
 		this.updateActiveFlat(id)
 		this.updateInfo(this.getFlatObj(+id))

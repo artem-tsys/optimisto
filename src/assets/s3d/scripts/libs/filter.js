@@ -30,6 +30,7 @@ class Filter {
 
 	init(config) {
 		this.createListFlat(this.flatList, '.js-s3d-filter__table tbody')
+		// this.setCurrentShowFlats(this.flatList)
 		$('.js-s3d-filter__button--reset').on('click', () => this.resetFilter())
 		$('.js-s3d-filter__close').on('click', () => this.hidden())
 		$('.js-s3d-filter__select').on('click', 'input', () => this.showSvgSelect(this.applyFilter(this.flatList)))
@@ -43,10 +44,6 @@ class Filter {
 			}
 		})
 
-		// $('.js-s3d-filter__table').on('click', 'tr', event => {
-		// 	if ($(event.target).hasClass('js-s3d-add__favourites') || event.target.nodeName === 'INPUT' || event.currentTarget.dataset.id === undefined) return
-		// 	this.selectFlat(event.currentTarget.dataset.id, 'complex1')
-		// })
 		$('.js-s3d-filter__table').on('click', 'tr', event => {
 			if ($(event.target).hasClass('js-s3d-add__favourites') || event.target.nodeName === 'INPUT' || event.currentTarget.dataset.id === undefined) return
 			const id = +event.currentTarget.dataset.id
@@ -69,14 +66,13 @@ class Filter {
 				for (const key in config[this.nameFilterFlat[name]]) {
 					classes[key] = (key === 'min') ? Math.floor(+config[this.nameFilterFlat[name]][key]) : Math.ceil(+config[this.nameFilterFlat[name]][key])
 				}
-				console.log(classes, config)
 				this.createRange(classes)
 			}
 		})
 
 		$('.js-s3d__amount-flat__num-all').html(this.flatList.length)
 		this.setAmountSelectFlat(this.flatList.length)
-
+		// this.setCurrentShowFlats(this.flatList)
 		$('.js-s3d-filter__table thead').on('click', '.s3d-filter__th', e => {
 			const nameSort = (e.currentTarget && e.currentTarget.dataset && e.currentTarget.dataset.sort) ? e.currentTarget.dataset.sort : undefined
 			if (!nameSort || (nameSort && nameSort === 'none')) {
@@ -114,9 +110,6 @@ class Filter {
 
 	// подсвечивает квартиры на svg облёта
 	showSvgSelect(data) {
-		console.log(117, data)
-		// $('.js-s3d__wrapper__complex polygon').css({ opacity: 0 })
-		// data.forEach(flat => $(`.js-s3d__wrapper__complex polygon[data-id=${flat.id}]`).css({ opacity: 0.5 }))
 		$('.s3d__svg-container polygon').removeClass('active-selected')
 		data.forEach(flat => $(`.s3d__svg-container polygon[data-id=${flat.id}]`).addClass('active-selected'))
 		// фильтр svg , ищет по дата атрибуту, нужно подстраивать атрибут и класс обертки
@@ -243,10 +236,8 @@ class Filter {
 				this.filter[key].elem.each((i, el) => { el.checked ? el.checked = false : '' })
 			}
 		}
-		this.flatList.forEach(flat => {
-			flat.listHtmlLink.style.display = ''
-			flat.cardHtmlLink.style.display = ''
-		})
+		this.applyFilter(this.flatList)
+		this.setCurrentShowFlats(this.flatList)
 	}
 
 	// запустить фильтрацию
@@ -276,7 +267,6 @@ class Filter {
 	filterFlat(data, filter, filterName, nameFilterFlat) {
 		// прерывает фильт если не выбран дом или комнаты
 		this.currentAmountFlat = 0
-		console.log(279, data)
 		const select = data.filter(flat => {
 			if (flat.listHtmlLink) {
 				flat.listHtmlLink.dataset.style = 'none'
@@ -286,24 +276,16 @@ class Filter {
 			}
 			for (const param in filter) {
 				if (+flat.sale !== 1) return false
-				
+
 				if (
 					filterName.checkbox.includes(param)
 					&& filter[param].value.length > 0
 					&& !filter[param].value.some(key => +flat[nameFilterFlat[param]] === +key)
 				) {
-					console.log('param', param)
-					console.log('filter[param].value', filter[param].value)
-					console.log('flat[nameFilterFlat[param]]', flat[nameFilterFlat[param]])
-					console.log('-----------')
 					return false
 				} else if (filterName.range.includes(param)) {
 					if (+flat[nameFilterFlat[param]] < +filter[param].min
 						|| +flat[nameFilterFlat[param]] > +filter[param].max) {
-						console.log('param', param)
-						console.log('flat[nameFilterFlat[param]]', flat[nameFilterFlat[param]])
-						console.log('filter[param]', filter[param])
-						console.log('-----------')
 						return false
 					}
 				}

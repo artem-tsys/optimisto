@@ -16,7 +16,7 @@ class Plannings {
 		const urlCard = ((window.location.hostname === 'localhost') ? '/wp-content/themes/optimisto/assets/s3d/template/cardPlannings.php' : '/wp-admin/admin-ajax.php?action=cardPlannings')
 		$.ajax(urlCard).then(response => {
 			this.templateCard = JSON.parse(response)
-
+			this.showFlatList = this.list
 			this.createList(this.list, this.wrap)
 			$('.js-s3d__pl__list').on('click', '.js-s3d-pl__link', event => {
 				const id = $(event.currentTarget).closest('.s3d-pl__plane').data('id')
@@ -38,10 +38,13 @@ class Plannings {
 	}
 
 	updateShowFlat(list) {
+		console.log(list)
 		this.showFlatList = list
+		this.pagination()
 	}
 
 	pagination() {
+		console.log('this.showFlatList', this.showFlatList)
 		if (this.showFlatList.length > 0) {
 			this.showFlatList[0].cardHtmlLink.parentNode.scrollTop = 0
 			this.showFlatList.forEach((el, i) => {
@@ -59,6 +62,7 @@ class Plannings {
 	}
 
 	checkCountShowElemInPage(wrap) {
+		console.log('this.showFlatList', this.showFlatList)
 		const elWidth = this.showFlatList[0].cardHtmlLink.offsetWidth
 		const elHeight = this.showFlatList[0].cardHtmlLink.offsetHeight
 		const wrapHeight = wrap.offsetHeight
