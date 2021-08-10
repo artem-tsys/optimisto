@@ -114,6 +114,7 @@ class Slider {
 					if (!this.infoBoxHidden) {
 						this.hiddenInfo(e)
 						this.infoBoxHidden = true
+						this.infoBoxActive = false
 						this.hoverFlatId = null
 					}
 					this.activeSvg = $(e.target).closest('svg')
@@ -127,6 +128,7 @@ class Slider {
 							this.hoverFlatId = null
 						}
 						this.infoBlockTranslateFlyby(e)
+						return
 					} else {
 						this.clearStyleInfoBlockTranslateFlyby()
 					}
@@ -458,6 +460,10 @@ class Slider {
 		case '2':
 			return 'nameReserve'
 		case '3':
+			return 'nameClosed'
+		case '4':
+			return 'nameContract'
+		case '0':
 			return 'nameSold'
 		default:
 			return 'nameSold'
@@ -472,19 +478,30 @@ class Slider {
 		if (!this.infoBox.hasClass('s3d-infoBox-hover')) {
 			this.infoBox.addClass('s3d-infoBox-hover')
 		}
-
-		if (!e) return
+		if (!e || !e.id) return
+		const flat = this.getFlatObj(e.id)
 		// eslint-disable-next-line no-prototype-builtins
-		this.infoBox.find('.js-s3d-infoBox__table-number')[0].innerHTML = `${e.hasOwnProperty('sec') ? e['sec'] : ''}`
-		this.infoBox.find('.js-s3d-infoBox__table-floor')[0].innerHTML = `${e.floor || ''}`
-		this.infoBox.find('.js-s3d-infoBox__table-room')[0].innerHTML = `${e.rooms || ''}`
-		this.infoBox.find('.js-s3d-infoBox__type span')[0].innerHTML = `${e.type || ''}`
-		this.infoBox.find('.js-s3d-infoBox__table-area')[0].innerHTML = `${e['all_room'] || ''}`
+		this.infoBox.find('.js-s3d-infoBox__table-number')[0].innerHTML = `${flat.hasOwnProperty('sec') ? flat['sec'] : ''}`
+		this.infoBox.find('.js-s3d-infoBox__table-floor')[0].innerHTML = `${flat.floor || ''}`
+		this.infoBox.find('.js-s3d-infoBox__table-room')[0].innerHTML = `${flat.rooms || ''}`
+		this.infoBox.find('.js-s3d-infoBox__type span')[0].innerHTML = `${flat.type || ''}`
+		this.infoBox.find('.js-s3d-infoBox__table-area')[0].innerHTML = `${flat['all_room'] || ''}`
 
 		const saleWrap = this.infoBox.find('.js-s3d-infoBox__table-sale')[0]
-		saleWrap.innerHTML = saleWrap.dataset[this.getDataSet(e.sale)]
-		this.infoBox.find('.js-s3d-infoBox__image')[0].src = `${e['img_small'] || ''}`
-		this.infoBox.find('.js-s3d-add__favourites input').prop('checked', e.favourite || false)
+		saleWrap.innerHTML = saleWrap.dataset[this.getDataSet(flat.sale)]
+		this.infoBox.find('.js-s3d-infoBox__image')[0].src = `${flat['img_small'] || ''}`
+		this.infoBox.find('.js-s3d-add__favourites input').prop('checked', flat.favourite || false)
+
+		// this.infoBox.find('.js-s3d-infoBox__table-number')[0].innerHTML = `${e.hasOwnProperty('sec') ? e['sec'] : ''}`
+		// this.infoBox.find('.js-s3d-infoBox__table-floor')[0].innerHTML = `${e.floor || ''}`
+		// this.infoBox.find('.js-s3d-infoBox__table-room')[0].innerHTML = `${e.rooms || ''}`
+		// this.infoBox.find('.js-s3d-infoBox__type span')[0].innerHTML = `${e.type || ''}`
+		// this.infoBox.find('.js-s3d-infoBox__table-area')[0].innerHTML = `${e['all_room'] || ''}`
+		//
+		// const saleWrap = this.infoBox.find('.js-s3d-infoBox__table-sale')[0]
+		// saleWrap.innerHTML = saleWrap.dataset[this.getDataSet(e.sale)]
+		// this.infoBox.find('.js-s3d-infoBox__image')[0].src = `${e['img_small'] || ''}`
+		// this.infoBox.find('.js-s3d-add__favourites input').prop('checked', e.favourite || false)
 	}
 
 	updateInfoFloorList(e) {

@@ -214,7 +214,10 @@ class App {
 
 		this.infoBox.on('click', '.s3d-infoBox__link', event => {
 			event.preventDefault()
-			this.activeFlat.value = +event.currentTarget.dataset.id
+			const id = +event.currentTarget.dataset.id
+			const status = this.flatListObj[id].sale
+			if (status === '3') return
+			this.activeFlat.value = id
 			this.selectSlider(+event.currentTarget.dataset.id, 'apart', +event.currentTarget.dataset.id)
 		})
 	}
@@ -373,9 +376,6 @@ class App {
 	}
 
 	setCurrentShowFlats(list) {
-		console.log(375, list)
-		console.log(376, this)
-		console.trace()
 		this.currentShowFlats = list
 		this.plannings.updateShowFlat(list)
 		this.plannings.pagination()

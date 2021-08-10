@@ -41,7 +41,7 @@ function init() {
 				max: 179,
 			},
 			controlPoint: [2, 46, 91, 134],
-			activeSlide: 2,
+			activeSlide: 91,
 			mouseSpeed: 1,
 		},
 		courtyard2: {
