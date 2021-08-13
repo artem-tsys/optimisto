@@ -19,14 +19,13 @@ class Slider {
 		this.currentSlide = data.activeSlide
 		this.nextSlide = data.activeSlide
 		// this.openHouses = [1]
-		
+
 		this.eventsName = {
 			start: 'mousedown',
 			end: 'mouseup',
 			leave: 'mouseleave',
 			move: 'mousemove',
 		}
-		
 		this.svgConfig = data
 		this.controlPoint = data.controlPoint
 		this.images = []
@@ -181,19 +180,20 @@ class Slider {
 		})
 
 		window.addEventListener('keydown', event => {
-			const data = {
-				dataset: {
-					type: '',
-				},
-			}
+			let data = null
+			// const data = {
+			// 	dataset: {
+			// 		type: '',
+			// 	},
+			// }
 			switch (event.keyCode) {
 			case 37:
 			case 100:
-				data.dataset.type = 'prev'
+				data = 'prev'
 				break
 			case 39:
 			case 102:
-				data.dataset.type = 'next'
+				data = 'next'
 				break
 			default:
 				return false
@@ -396,7 +396,7 @@ class Slider {
 		arrowLeft.dataset.type = 'prev'
 		arrowLeft.disable = true
 		$(arrowLeft).append('<svg width="7" height="9" viewBox="0 0 7 9" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M7 9L-1.96701e-07 4.5L7 0L7 3.82025L7 5.17975L7 9Z"/></svg>')
-		$('.js-s3d__button-left').on('click', event => this.checkDirectionRotate(event.target))
+		$('.js-s3d__button-left').on('click', event => this.checkDirectionRotate(event.target.dataset.type))
 
 		const arrowRight = createMarkup('button', this.wrapper, { class: 's3d__button s3d__button-right js-s3d__button-right unselectable s3d-unActive' })
 		arrowRight.dataset.type = 'next'
@@ -404,7 +404,7 @@ class Slider {
 		$(arrowRight).append(`<svg width="7" height="9" viewBox="0 0 7 9" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M1.18021e-06 -2.38419e-06L7 4.5L0 9L5.00966e-07 5.17974L6.79242e-07 3.82025L1.18021e-06 -2.38419e-06Z" />
 </svg>`)
-		$('.js-s3d__button-right').on('click', event => this.checkDirectionRotate(event.target))
+		$('.js-s3d__button-right').on('click', event => this.checkDirectionRotate(event.target.dataset.type))
 	}
 
 	createBackground() {
@@ -420,8 +420,10 @@ class Slider {
 
 	updateSvgActive(wrap, current) {
 		$(this.activeSvg).css({ opacity: '' })
-		const clas = this.type === 'house' ? `.js-s3d__svg-container${this.ActiveHouse.get()} ` : `.js-s3d__svg-container__${this.type}`
+		const clas = `.js-s3d__svg-container__${this.type}`
+		// const clas = this.type === 'house' ? `.js-s3d__svg-container${this.ActiveHouse.get()} ` : `.js-s3d__svg-container__${this.type}`
 		$(`${clas} .s3d__svg__active`).removeClass('s3d__svg__active')
+		// $(`${clas} .${wrap}__${current}`).addClass('s3d__svg__active')
 		$(`${clas} .${wrap}__${this[current]}`).addClass('s3d__svg__active')
 		this.currentSlide = this[current]
 	}
@@ -491,17 +493,6 @@ class Slider {
 		saleWrap.innerHTML = saleWrap.dataset[this.getDataSet(flat.sale)]
 		this.infoBox.find('.js-s3d-infoBox__image')[0].src = `${flat['img_small'] || ''}`
 		this.infoBox.find('.js-s3d-add__favourites input').prop('checked', flat.favourite || false)
-
-		// this.infoBox.find('.js-s3d-infoBox__table-number')[0].innerHTML = `${e.hasOwnProperty('sec') ? e['sec'] : ''}`
-		// this.infoBox.find('.js-s3d-infoBox__table-floor')[0].innerHTML = `${e.floor || ''}`
-		// this.infoBox.find('.js-s3d-infoBox__table-room')[0].innerHTML = `${e.rooms || ''}`
-		// this.infoBox.find('.js-s3d-infoBox__type span')[0].innerHTML = `${e.type || ''}`
-		// this.infoBox.find('.js-s3d-infoBox__table-area')[0].innerHTML = `${e['all_room'] || ''}`
-		//
-		// const saleWrap = this.infoBox.find('.js-s3d-infoBox__table-sale')[0]
-		// saleWrap.innerHTML = saleWrap.dataset[this.getDataSet(e.sale)]
-		// this.infoBox.find('.js-s3d-infoBox__image')[0].src = `${e['img_small'] || ''}`
-		// this.infoBox.find('.js-s3d-add__favourites input').prop('checked', e.favourite || false)
 	}
 
 	updateInfoFloorList(e) {
@@ -583,11 +574,25 @@ class Slider {
 	// start block  change slide functions
 	// находит ближайший слайд у которого есть polygon(data-id) при необходимости вращает модуль к нему
 	toSlideNum(id, slide) {
-		const needChangeSlide = slide || this.rewindToPoint(this.getNumSvgWithFlat(id))
+		// const needChangeSlide = slide || this.rewindToPoint(this.getNumSvgWithFlat(id))
 
-		if (needChangeSlide) {
-			this.checkDirectionRotate() // test
+		// if (needChangeSlide) {
+		// 	// this.checkDirectionRotate() // test
+		// 	this.checkResult()
+		// }
+		let needChangeSlide
+		let pointsSlide
+		if (slide) {
+			needChangeSlide = !slide.includes(this.activeElem)
+			pointsSlide = slide
+		} else {
+			pointsSlide = this.getNumSvgWithFlat(id)
+			needChangeSlide = !pointsSlide.includes(this.activeElem)
 		}
+		if (needChangeSlide) {
+			this.checkDirectionRotate(undefined, pointsSlide)
+		}
+
 		this.infoBoxActive = true
 		this.updateActiveFlat(id)
 		this.updateInfo(this.getFlatObj(+id))
@@ -595,12 +600,28 @@ class Slider {
 	}
 
 	// запускает callback (прокрутку слайда) пока активный слайд не совпадёт со следующим (выявленным заранее)
-	repeatChangeSlide(fn) {
+	// repeatChangeSlide(fn) {
+	// 	this.rotate = false
+	// 	$('.s3d__svg-container').css({ opacity: 0 })
+	// 	return setInterval(() => {
+	// 		fn()
+	// 		if (this.activeElem === this.nextSlide) {
+	// 			this.cancelAnimateSlide()
+	// 			this.updateSvgActive(this.type, 'nextSlide')
+	// 			this.activeSvg.css({ opacity: '' })
+	// 			$('.s3d__svg-container').css({ opacity: 1 })
+	// 			this.rotate = true
+	// 		}
+	// 	}, 30)
+	// }
+
+	repeatChangeSlide(fn, nextSlideId) {
 		this.rotate = false
+		// const { rotateSpeed } = this;
 		$('.s3d__svg-container').css({ opacity: 0 })
 		return setInterval(() => {
 			fn()
-			if (this.activeElem === this.nextSlide) {
+			if (this.activeElem === nextSlideId) {
 				this.cancelAnimateSlide()
 				this.updateSvgActive(this.type, 'nextSlide')
 				this.activeSvg.css({ opacity: '' })
@@ -610,34 +631,70 @@ class Slider {
 		}, 30)
 	}
 
-	checkDirectionRotate(data) {
+	checkDirectionRotate(data, points = this.controlPoint) {
 		if (!this.rotate) return
-		// this.rotate = false
-		let direction = 'prev'
-		if ((data && data.dataset && data.dataset.type === 'next')) {
-			direction = 'next'
-		} else if (!data && ((this.result.max - this.result.min) / 2) + this.result.min <= this.activeElem) {
-			direction = 'next'
+		// this.emit('hideActiveSvg')
+		this.rewindToPoint(points)
+		const dataNextPoint = this.checkResult(points, data)
+		let fn
+		if (dataNextPoint.direction === 'next') {
+			fn = this['changeNext']
+		} else {
+			fn = this['changePrev']
 		}
-		this.checkResult(direction)
+		this.repeat = this.repeatChangeSlide(fn, dataNextPoint.nextPoint)
 	}
 
-	checkResult(type) {
-		this.rewindToPoint(this.controlPoint)
-		if (type === 'next' || (type === undefined && ((this.result.max - this.result.min) / 2) + this.result.min <= this.activeElem)) {
-			this.nextSlide = this.controlPoint[0]
+	checkResult(points, type) {
+		if (type === 'next' || (type === undefined && ((this.result.max - this.result.min) / 2) + this.result.min <= this.activeElem)
+		) {
 			if (this.result.max <= this.numberSlide.max) {
 				this.nextSlide = this.result.max
+				return { direction: 'next', nextPoint: this.result.max }
 			}
-			this.repeat = this.repeatChangeSlide(this.changeNext.bind(this))
-		} else {
-			this.nextSlide = this.controlPoint[this.controlPoint.length - 1]
-			if (this.result.min > this.numberSlide.min) {
-				this.nextSlide = this.result.min
-			}
-			this.repeat = this.repeatChangeSlide(this.changePrev.bind(this))
+			this.nextSlide = points[0]
+			return { direction: 'next', nextPoint: points[0] }
 		}
+		if (this.result.min > this.numberSlide.min) {
+			this.nextSlide = this.result.min
+			return { direction: 'prev', nextPoint: this.result.min }
+		}
+		this.nextSlide = points[points.length - 1]
+		return { direction: 'prev', nextPoint: points[points.length - 1] }
 	}
+
+	// checkDirectionRotate(data) {
+	// 	if (!this.rotate) return
+	// 	// this.rotate = false
+	// 	let direction = 'prev'
+	// 	if ((data && data.dataset && data.dataset.type === 'next')) {
+	// 		direction = 'next'
+	// 	} else if (!data && ((this.result.max - this.result.min) / 2) + this.result.min <= this.activeElem) {
+	// 		direction = 'next'
+	// 	}
+	// 	this.checkResult(direction)
+	// }
+	//
+	// checkResult(type) {
+	// 	this.rewindToPoint(this.controlPoint)
+	// 	if (type === 'next' || (type === undefined && ((this.result.max - this.result.min) / 2) + this.result.min <= this.activeElem)) {
+	// 		console.log('checkResult  if')
+	// 		this.nextSlide = this.controlPoint[0]
+	// 		console.log('this.result.max <= this.numberSlide.max', this.result.max, this.numberSlide.max)
+	// 		if (this.result.max <= this.numberSlide.max) {
+	// 			this.nextSlide = this.result.max
+	// 		}
+	// 		this.repeat = this.repeatChangeSlide(this.changeNext.bind(this))
+	// 	} else {
+	// 		console.log('checkResult  else')
+	// 		this.nextSlide = this.controlPoint[this.controlPoint.length - 1]
+	// 		console.log('this.result.min > this.numberSlide.min', this.result.min, this.numberSlide.min)
+	// 		if (this.result.min > this.numberSlide.min) {
+	// 			this.nextSlide = this.result.min
+	// 		}
+	// 		this.repeat = this.repeatChangeSlide(this.changePrev.bind(this))
+	// 	}
+	// }
 
 	// остановка анимации и сброс данных прокрутки
 	cancelAnimateSlide() {

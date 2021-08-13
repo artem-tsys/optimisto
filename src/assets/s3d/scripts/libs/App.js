@@ -115,7 +115,7 @@ class App {
 
 		this.getCurrentShowFlats = this.getCurrentShowFlats.bind(this)
 		this.setCurrentShowFlats = this.setCurrentShowFlats.bind(this)
-		
+
 		this.lang = document.querySelector('html').lang
 		this.infoBlockTranslateFlybyTexts = {
 			ua: {
@@ -216,7 +216,7 @@ class App {
 			event.preventDefault()
 			const id = +event.currentTarget.dataset.id
 			const status = this.flatListObj[id].sale
-			if (status === '3') return
+			if (status !== '1') return
 			this.activeFlat.value = id
 			this.selectSlider(+event.currentTarget.dataset.id, 'apart', +event.currentTarget.dataset.id)
 		})
@@ -476,7 +476,7 @@ class App {
 		}
 
 		if (foundApartments[type]) {
-			const slideNum = Object.keys(foundApartments[type])[0]
+			const slideNum = Object.keys(foundApartments[type]).map(value => +value)
 			this.showSvgIn3D(id, type, slideNum)
 			return
 		}
