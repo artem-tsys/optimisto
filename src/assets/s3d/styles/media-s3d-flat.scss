@@ -4,14 +4,6 @@
     .s3d-flat {
         padding: 0;
         overflow-y: auto;
-        //grid-template-columns: auto 3fr 4fr 3fr;
-        //grid-template-rows: auto auto 1fr 0.5fr auto auto;
-        //grid-template-areas: 'back mini . favourite'
-        //    'back mini img img'
-        //    'info info img img'
-        //    'info info plane plane'
-        //    'info info links links'
-        //    'tel tel links links';
 
         grid-template-columns: 30% 30% 20% 20%;
         grid-template-rows: auto 1fr 50px auto 60px;
@@ -38,7 +30,6 @@
         }
     }
     .s3d-flat__links {
-        //column-count: 1;
         padding: 0 20px;
         a, button, label{
             flex: 1 1 20%;
@@ -46,18 +37,14 @@
         .s3d-flat__like{
             flex: 0 1 20%;
         }
-    } 
-    
+    }
+
     .s3d-flat__list {
         max-height: calc(var(--table-el-height) * 6);
         padding-left: 0;
-        //overflow: hidden;
     }
     .s3d-flat__table {
         margin: 0;
-        //height: 100%;
-        //height: auto;
-        //height: intrinsic;
     }
     .s3d-flat__floor {
         max-height: 50vh;
@@ -74,7 +61,6 @@
         width: 100%;
         padding-left: 15px;
         padding-right: 15px;
-        //padding-top: 50px;
         --table-el-height: 42px;
         &__image {
             order: 2;
@@ -82,10 +68,6 @@
             margin-top: 25px;
             margin-bottom: 35px;
         }
-        //&__mini-info {
-            //width: 100%;
-            //order: 3;
-        //}
         &__table {
             border-radius: 20px;
             order: 4;
@@ -98,7 +80,9 @@
             padding: 30px 12px;
             &__title {
                 font-size: 24px;
-                //line-height: 32px;
+            }
+            &__price {
+                font-size: 18px;
             }
         }
         &__floor {
@@ -145,15 +129,12 @@
 
         &__list {
             padding-left: 0;
-            //max-height: calc(var(--table-el-height) * 6);
-            //overflow: scroll;
             margin-top: 0;
         }
         &__el {
             height: var(--table-el-height);
             font-size: 12px;
             padding: 0 15px;
-            //margin-right: 15px;
             &__value sub {
                 font-size: 0.5em;
             }
@@ -185,9 +166,6 @@
         }
 
         .s3d-mini-info {
-            //width: calc(100% / 3);
-            //width: 100%;
-
             padding: 5px;
             &__amount {
                 height: 55px;
@@ -202,17 +180,13 @@
 }
 
 
-//hovers 
+//hovers
 
 
 @media screen and (min-width:769px){
     .s3d-flat__back {
         transition: background-color .3s;
     }
-
-    //.s3d-flat__back:hover {
-    //    background-color :#255763;
-    //}
 
     .s3d-flat__links .s3d-flat__like,
     .s3d-flat__links a, .s3d-flat__links button

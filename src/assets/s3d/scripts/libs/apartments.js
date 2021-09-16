@@ -202,6 +202,7 @@ class Apartments {
               </div>
             </div>
          		<div class="s3d-flat__table__title">Квартира 2А</div>
+            <div class="s3d-flat__table__price"> 2 000 555 грн</div>
               <ul class="s3d-flat__list">
                 <li class="s3d-flat__el">
                   <div class="s3d-flat__el__name">Спальня:</div>

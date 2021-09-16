@@ -111,8 +111,6 @@
     &__table{
       display: flex;
       flex-direction: column;
-      //height: 100%;
-      //margin: auto 0;
       padding: 25px 35px;
       box-shadow: 0 4px 20px rgba(36, 10, 58, 0.15);
       border-radius: 20px 0 0 20px;
@@ -122,6 +120,14 @@
         font-weight: 500;
         font-size: 30px;
         line-height: 38px;
+        color: #221F20;
+        text-align: left;
+      }
+      &__price{
+        font-family: $default-font;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 1.5em;
         color: #221F20;
         text-align: left;
       }
