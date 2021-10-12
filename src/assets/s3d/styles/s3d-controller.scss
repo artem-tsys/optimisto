@@ -147,6 +147,7 @@
       }
     }
     &[data-type="plannings"],&[data-type="apart"]{
+      display: none;
       .s3d-controller{
         &__openFilter{
           display: none;
@@ -155,8 +156,10 @@
           display: none;
         }
       }
-      &[data-type="apart"]{
-        display: none;
+      .s3d-infoBox{
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
       }
     }
   }

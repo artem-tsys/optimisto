@@ -97,9 +97,9 @@
             order: 6;
             display: flex;
             flex-wrap: wrap;
-            &>* {
+            a, button {
                 width: 50%;
-                white-space: nowrap;
+                //white-space: nowrap;
             }
             a,
             button,

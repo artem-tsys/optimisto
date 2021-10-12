@@ -32,6 +32,10 @@ class Filter {
 		this.createListFlat(this.flatList, '.js-s3d-filter__table tbody')
 		// this.setCurrentShowFlats(this.flatList)
 		$('.js-s3d-filter__button--reset').on('click', () => this.resetFilter())
+		$('.js-s3d-filter__button--apply').on('click', () => {
+			this.showSvgSelect(this.applyFilter(this.flatList))
+			this.hidden()
+		})
 		$('.js-s3d-filter__close').on('click', () => this.hidden())
 		$('.js-s3d-filter__select').on('click', 'input', () => this.showSvgSelect(this.applyFilter(this.flatList)))
 

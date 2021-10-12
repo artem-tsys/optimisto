@@ -58,7 +58,7 @@
             grid-gap: 10px;
             padding: 0;
         }
-        
+
     }
 
 }
@@ -71,8 +71,8 @@
             display: flex;
             flex-wrap: wrap;
             width: 100%;
-            overflow: scroll;
-            overflow-x: hidden;
+            //overflow: scroll;
+            //overflow-x: hidden;
             &__link{
                 padding: 0 10px 0 44px;
             }
@@ -89,8 +89,9 @@
             }
         }
         &-pl__list {
-            max-height: none;
-            overflow: visible;
+            max-height: calc(100% - 25px);
+            //max-height: none;
+            //overflow: visible;
             //grid-template-columns: 1fr;
             padding: 0 15px;
         }

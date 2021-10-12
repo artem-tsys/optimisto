@@ -11,11 +11,11 @@
 //    background-color: var(--orange);
 //    color: var(--white);
 //}
+
 @media screen and (max-width:768px)  and (min-width:576px){
     .s3d-title {
         display: none;
     }
-
 }
 @media screen and (max-width:575px) {
     .s3d__wrap {
@@ -35,10 +35,6 @@
     .s3d__button-right {
         right: 14px;
     }
-    //.s3d-infoBox__type {
-        //right: 0;
-        //left: auto;
-    //}
     .s3d-infoBox__close {
         //right: auto;
         //left: 10px;

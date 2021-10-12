@@ -159,14 +159,23 @@ class App {
 		function hoverHandler(e) {
 			if (window.innerWidth > 769) return
 			e.stopPropagation()
-			e.currentTarget.closest('.s3d-select').classList.add('s3d-select__hover')
+			const target = e.currentTarget.closest('.s3d-select')
+			if (target.classList.contains('s3d-select__hover')) {
+				removeHoverHandler()
+				return
+			}
+			target.classList.add('s3d-select__hover')
 			$(document).on('click', removeHoverHandler)
 		}
 		$('.js-s3d-select__hover').on('click', hoverHandler)
 
 		$('.js-s3d-controller__elem').on('click', '.js-s3d-select', e => {
 			const { type, value } = e.currentTarget.dataset
-			if (!type || type === this.activeSection) return
+			console.log(type, this.activeSection)
+			if (!type || type === this.activeSection) {
+				removeHoverHandler()
+				return
+			}
 			let updatedType = ''
 			const side = $('.js-s3d-select-side')
 			const build = $('.js-s3d-select-build')
@@ -201,7 +210,8 @@ class App {
 
 		$('.js-s3d-hover-translate').on('click', '[data-link]', e => {
 			e.preventDefault()
-			this.selectSlider(e, e.target.dataset.type)
+			console.log(e, e.target.dataset.type)
+			this.selectSlider(null, e.target.dataset.type)
 			this.clearStyleInfoBlockTranslateFlyby()
 		})
 
@@ -574,6 +584,7 @@ class App {
 	}
 
 	selectSlider(id, type, numSlide) {
+		console.log(id, type)
 		// const houseNum = e.currentTarget.dataset.build || e.currentTarget.value
 		// this.loader.show()
 		// this.animateBlock('translate', 'down')
@@ -749,9 +760,9 @@ class App {
 		const { clientX: x, clientY: y } = e
 		const { build, flyby } = e.target.dataset
 		const text = this.getInfoBlockTranslateText(build, flyby)
-		this.infoBlockTranslateFlybyWrapContainer.style = `opacity: 1; top: ${y}px; left: ${x}px;`
+		this.infoBlockTranslateFlybyWrapContainer.style = `opacity: 1; top: ${y}px; left: ${x}px;pointer-events: painted;`
 		this.infoBlockTranslateFlybyContainer.innerText = text
-		this.infoBlockTranslateFlybyLinkContainer.dataset.type = `${flyby}-${build}`
+		this.infoBlockTranslateFlybyLinkContainer.dataset.type = `${flyby}${build}`
 	}
 
 	clearStyleInfoBlockTranslateFlyby() {
@@ -763,6 +774,7 @@ class App {
 			this.selectSlider(e, flyby + build)
 			return
 		}
+
 		if (type && type === 'flyby') {
 			this.infoBlockTranslateFlyby(e)
 			return

@@ -13,8 +13,6 @@
     overflow: hidden;
     align-items: center;
     background: $color2;
-    //background: #F2F2F2;
-    //fill: $color2;
     padding: 8px;
     transform: translateY(-100%);
     transition: background-color .3s ease-in, box-shadow .3s ease-in;
@@ -82,7 +80,6 @@
     position: absolute;
     top: 50%;
     right: 0;
-    //grid-area: info-flat;
     grid-column: -1;
     grid-row: 1 / -1;
     display: flex;
@@ -157,12 +154,10 @@
       max-width: 100%;
       padding: 25px 20px 32px;
       margin: 0;
-      //position: absolute;
       background: #FFFFFF;
       order: 1;
       z-index: 2;
       transition: opacity 0.6s cubic-bezier(.41,.57,.26,1);
-      //transform: translateY(100%);
       img {
         display: inline-block;
         object-fit: contain;
@@ -294,9 +289,6 @@
       overflow: hidden;
       pointer-events: painted;
       z-index: 1;
-      //&:focus{
-      //  outline: 1px solid #aaaaaa;
-      //}
       &:after{
         content: '';
         position: absolute;
@@ -321,12 +313,6 @@
         width: 100%;
         background: #752180;
         z-index: -2;
-      }
-
-      &:hover {
-        &:after{
-          transform: translate(0, 0);
-        }
       }
     }
     &__add-favourites{
@@ -361,17 +347,7 @@
         pointer-events: none;
         transition: stroke .3s ease-out, fill .3s ease-out;
       }
-      &:hover{
-        //background: #1C4954;
-        box-shadow: 0 4px 15px rgba(122, 65, 56, 0.3);
-        svg{
-          fill: #FFFFFF;
-        }
-        & input:checked + svg{
-          fill: #FFFFFF;
-          //fill: #E46C59;
-        }
-      }
+
     }
 
     &.s3d-infoBox-hover{
@@ -400,6 +376,32 @@
       }
     }
 
+  }
+}
+
+@media screen and (min-width: 1023px) {
+  .s3d {
+    &-infoBox {
+      &__link{
+        &:hover {
+          &:after{
+            transform: translate(0, 0);
+          }
+        }
+      }
+      &__add-favourites {
+        &:hover{
+          //background: #1C4954;
+          box-shadow: 0 4px 15px rgba(122, 65, 56, 0.3);
+          svg{
+            fill: #FFFFFF;
+          }
+          & input:checked + svg{
+            fill: #FFFFFF;
+          }
+        }
+      }
+    }
   }
 }
 

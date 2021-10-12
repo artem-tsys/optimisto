@@ -473,7 +473,7 @@
       display: none;
       height: 30px;
       width: 30px;
-      pointer-events: painted;
+      //pointer-events: painted;
       &:after, &:before {
         position: absolute;
         top: 50%;
@@ -503,7 +503,7 @@
       background: #752180;
       border-radius: 50px;
       text-decoration: none;
-      pointer-events: painted;
+      //pointer-events: painted;
     }
     &-wrap {
       position: absolute;
@@ -901,16 +901,6 @@ header{
   user-select: none;   /*Chrome/Safari/Opera*/
 }
 
-@media screen and ( max-width : 1640px ){
-
-}
-@media screen and ( max-width : 1023px ){
-
-}
-
-@media screen and ( max-width : 992px ){
-
-}
 @media screen and ( max-width : 767px ){
 
   .s3d{

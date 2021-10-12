@@ -38,13 +38,11 @@ class Plannings {
 	}
 
 	updateShowFlat(list) {
-		console.log(list)
 		this.showFlatList = list
 		this.pagination()
 	}
 
 	pagination() {
-		console.log('this.showFlatList', this.showFlatList)
 		if (this.showFlatList.length > 0) {
 			this.showFlatList[0].cardHtmlLink.parentNode.scrollTop = 0
 			this.showFlatList.forEach((el, i) => {
@@ -62,7 +60,6 @@ class Plannings {
 	}
 
 	checkCountShowElemInPage(wrap) {
-		console.log('this.showFlatList', this.showFlatList)
 		const elWidth = this.showFlatList[0].cardHtmlLink.offsetWidth
 		const elHeight = this.showFlatList[0].cardHtmlLink.offsetHeight
 		const wrapHeight = wrap.offsetHeight
@@ -114,7 +111,7 @@ class Plannings {
 		div.querySelector('[data-key="floor"]').innerHTML = el.floor
 		div.querySelector('[data-key="rooms"]').innerHTML = el.rooms
 		div.querySelector('[data-key="area"]').innerHTML = el['all_room']
-		div.querySelector('[data-key="src"]').src = el['img_small']
+		div.querySelector('[data-key="src"]').dataset.src = el['img_small']
 		div.querySelector('[data-key="checked"]').checked = checked
 
 		return div

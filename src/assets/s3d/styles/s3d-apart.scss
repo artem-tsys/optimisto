@@ -39,12 +39,12 @@
       max-height: 100%;
       //height: 100%;
       //width: 100%;
-      height: 100%;
+      //height: 100%;
       margin: auto;
       grid-area: img;
       img{
         display: inline-block;
-        height: 100%;
+        //height: 100%;
         width: 100%;
         //height: initial;
         //height: intrinsic;
@@ -126,10 +126,14 @@
       &__price{
         font-family: $default-font;
         font-weight: 500;
-        font-size: 24px;
+        font-size: 20px;
         line-height: 1.5em;
         color: #221F20;
         text-align: left;
+        sup {
+          font-size: 0.7em;
+          vertical-align: super;
+        }
       }
     }
     &__list{
@@ -235,11 +239,12 @@
         font-family: $default-font;
         font-weight: 500;
         font-size: 12px;
-        line-height: 24px;
+        line-height: 1.3em;
         letter-spacing: 0.1em;
         text-decoration-line: underline;
         text-transform: lowercase;
-        white-space: nowrap;
+        text-align: left;
+        //white-space: nowrap;
         color: #240A3A;
         cursor: pointer;
         break-inside: avoid;
