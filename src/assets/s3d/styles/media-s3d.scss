@@ -36,8 +36,6 @@
         right: 14px;
     }
     .s3d-infoBox__close {
-        //right: auto;
-        //left: 10px;
         top: 10px;
         right: 10px;
         width: 13px;
@@ -70,6 +68,7 @@
             background: #FFFFFF;
             box-shadow: 0 4px 20px rgba(36, 10, 58, 0.15);
             border-radius: 20px;
+            pointer-events: painted;
         }
         &__link {
             display: inline-block;
@@ -110,7 +109,6 @@
                 }
             }
             &:hover {
-                //border-radius: 0;
                 background: #842990;
                 color: rgba(255,255,255,1);
                 .s3d-select__svg {
@@ -129,20 +127,6 @@
                     border-color: transparent;
                 }
             }
-            //&:hover:not( [ disabled ] ) {
-            //    border-radius: 0;
-            //    background: #842990;
-            //    color: rgba(255,255,255,1);
-            //    .s3d-select__svg {
-            //        stroke: #ffffff;
-            //        transform: rotate(180deg);
-            //    }
-            //    .s3d-select__group {
-            //        opacity: 1;
-            //        pointer-events: painted;
-            //        transition: opacity 0.4s ease-in-out 0.2s;
-            //    }
-            //}
         }
     }
 

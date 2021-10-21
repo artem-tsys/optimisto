@@ -10,6 +10,7 @@ class Filter {
 			floor: 'floor',
 			rooms: 'rooms',
 			build: 'build',
+      section: 'sec_id',
 			// price: 'price',
 			// priceM2: 'price_m2',
 		}
@@ -31,6 +32,9 @@ class Filter {
 	init(config) {
 		this.createListFlat(this.flatList, '.js-s3d-filter__table tbody')
 		// this.setCurrentShowFlats(this.flatList)
+
+    const test = this.flatList.filter(h => +h.build === 1 && +h.sale === 1 && +h.floor >= 1)
+    console.log(test);
 		$('.js-s3d-filter__button--reset').on('click', () => this.resetFilter())
 		$('.js-s3d-filter__button--apply').on('click', () => {
 			this.showSvgSelect(this.applyFilter(this.flatList))
@@ -270,6 +274,7 @@ class Filter {
 	// поиск квартир по параметрам фильтра
 	filterFlat(data, filter, filterName, nameFilterFlat) {
 		// прерывает фильт если не выбран дом или комнаты
+
 		this.currentAmountFlat = 0
 		const select = data.filter(flat => {
 			if (flat.listHtmlLink) {
@@ -278,6 +283,7 @@ class Filter {
 			if (flat.cardHtmlLink) {
 				flat.cardHtmlLink.style.display = 'none'
 			}
+
 			for (const param in filter) {
 				if (+flat.sale !== 1) return false
 
@@ -295,8 +301,7 @@ class Filter {
 				}
 			}
 
-			if (!flat[nameFilterFlat.build]
-			) {
+			if (!flat[nameFilterFlat.build]) {
 				// eslint-disable-next-line no-param-reassign
 				flat[nameFilterFlat.build].match(/^(\d+)/)[1] = []
 			}
@@ -324,6 +329,7 @@ class Filter {
 		})
 		this.setAmountSelectFlat(this.currentAmountFlat)
 		this.setCurrentShowFlats(select)
+
 		return select
 	}
 
@@ -361,7 +367,7 @@ class Filter {
 				tr.dataset.id = el.id
 				tr.innerHTML = `
 					<td>${el.type}</td>
-					<td>${el.build}</td>
+					<td>${el.sec_id}</td>
 					<td>${el.rooms}</td>
 					<td>${el.floor}</td>
 					<td>${el.all_room} m<sub>2</sub></td>

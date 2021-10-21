@@ -304,13 +304,9 @@ class App {
 	}
 
 	showAvailableFlat() {
-		// $('.js-s3d-controller__showFilter--input').click();
 		if ($('.js-s3d-controller__showFilter--input').prop('checked')) {
-			// $('.js-s3d-controller__showFilter--input').prop('checked',false);
 			$('.js-s3d-svg__point-group').css({ opacity: '1', display: 'flex' })
 		} else {
-			// $('.js-s3d-controller__showFilter--input').prop('checked',true);
-			// $('#js-s3d__wrapper polygon').css({'opacity': ''});
 			$('.js-s3d-svg__point-group').css({ opacity: '0', display: 'none' })
 		}
 	}
@@ -352,16 +348,7 @@ class App {
 	filterButtonShowHide(type) {
 		if (type !== 'complex1') {
 			$('.js-s3d-filter').removeClass('active')
-			// $('.js-s3d-filter__show').css('display','none');
-			// return;
-		} else if (type !== 'apart') {
-			// $('.js-s3d-filter__open').css('display','flex');
-			// $('.js-s3d-filter__show').css('display','flex');
-			// return;
 		}
-		// $('.js-s3d-filter').show();
-		// $('.js-s3d-filter__open').css('display','flex');
-		// $('.js-s3d-filter__show').css('display','flex');
 	}
 
 	getFlatList(url, callback) {
@@ -426,20 +413,6 @@ class App {
 			this.structureFlats = resp
 		})
 	}
-
-	// checkNextFlyby(type, id) {
-	// 	const foundApartments = this.checkFlatInSVG(id)
-	// 	console.log(type, foundApartments)
-	// 	if (Object.keys(foundApartments).length == 0) {
-	// 		return null
-	// 	}
-	// 	if (foundApartments[type]) {
-	// 		return {
-	// 			change: false,
-	// 		}
-	// 	}
-	// 	return listId
-	// }
 
 	checkFlatInSVG(id) { // получает id квартиры, отдает объект с ключами где есть квартиры
 		const flyby = this.structureFlats
@@ -537,14 +510,9 @@ class App {
 			click: this.selectSlider,
 			activeFlat: this.activeFlat,
 		})
-		// this.deb = this.debounce(this.resize.bind(this), 700)
-		// $(window).resize(() => {
-		// 	this.deb(this)
-		// })
+
 		this.checkFirstLoadState()
 
-		//
-		//
 		//
 		//
 		this.loader.turnOn()
@@ -739,14 +707,6 @@ class App {
 		})
 	}
 
-	// changeCurrentFloor(floor) {
-	// 	this.complex.updateActiveFloor(floor)
-	// }
-
-	// changeCurrentFlat(flat) {
-	// this.complex1.updateActiveFlat(flat)
-	// this.complex2.updateActiveFlat(flat)
-	// }
 
 	getInfoBlockTranslateText(build, flyby) {
 		if (flyby.includes('complex')) {
@@ -760,7 +720,7 @@ class App {
 		const { clientX: x, clientY: y } = e
 		const { build, flyby } = e.target.dataset
 		const text = this.getInfoBlockTranslateText(build, flyby)
-		this.infoBlockTranslateFlybyWrapContainer.style = `opacity: 1; top: ${y}px; left: ${x}px;pointer-events: painted;`
+		this.infoBlockTranslateFlybyWrapContainer.style = `opacity: 1; top: ${y}px; left: ${x}px;`
 		this.infoBlockTranslateFlybyContainer.innerText = text
 		this.infoBlockTranslateFlybyLinkContainer.dataset.type = `${flyby}${build}`
 	}
