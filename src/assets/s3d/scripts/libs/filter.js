@@ -219,7 +219,6 @@ class Filter {
 
 	// добавить checkbox в список созданых фильтров
 	setCheckbox(config) {
-		console.log(config)
 		if (config.type !== undefined) {
 			if (!this.filter[config.type] || !this.filter[config.type].elem) {
 				this.filter[config.type] = {}

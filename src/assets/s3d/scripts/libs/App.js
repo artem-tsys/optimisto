@@ -209,7 +209,6 @@ class App {
 
 		$('.js-s3d-hover-translate').on('click', '[data-link]', e => {
 			e.preventDefault()
-			console.log(e, e.target.dataset.type)
 			this.selectSlider(null, e.target.dataset.type)
 			this.clearStyleInfoBlockTranslateFlyby()
 		})
@@ -297,9 +296,9 @@ class App {
 				})
 			})
 		})
-		// setTimeout(() => {
-		// 	console.log(JSON.stringify(result))
-		// }, 10000)
+		setTimeout(() => {
+			console.log(JSON.stringify(result))
+		}, 10000)
 	}
 
 	showAvailableFlat() {
@@ -551,7 +550,6 @@ class App {
 	}
 
 	selectSlider(id, type, numSlide) {
-		console.log(id, type)
 		// const houseNum = e.currentTarget.dataset.build || e.currentTarget.value
 		// this.loader.show()
 		// this.animateBlock('translate', 'down')
