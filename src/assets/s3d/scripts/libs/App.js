@@ -171,7 +171,6 @@ class App {
 
 		$('.js-s3d-controller__elem').on('click', '.js-s3d-select', e => {
 			const { type, value } = e.currentTarget.dataset
-			console.log(type, this.activeSection)
 			if (!type || type === this.activeSection) {
 				removeHoverHandler()
 				return

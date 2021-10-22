@@ -33,8 +33,6 @@ class Filter {
 		this.createListFlat(this.flatList, '.js-s3d-filter__table tbody')
 		// this.setCurrentShowFlats(this.flatList)
 
-    const test = this.flatList.filter(h => +h.build === 1 && +h.sale === 1 && +h.floor >= 1)
-    console.log(test);
 		$('.js-s3d-filter__button--reset').on('click', () => this.resetFilter())
 		$('.js-s3d-filter__button--apply').on('click', () => {
 			this.showSvgSelect(this.applyFilter(this.flatList))
@@ -362,7 +360,7 @@ class Filter {
 		const result = []
 		list.forEach(elem => {
 			const el = elem
-			if (+el['type_object'] === 1) {
+			if (+el['type_object'] === 1 && +el['sale'] === 1) {
 				const tr = document.createElement('tr')
 				tr.dataset.id = el.id
 				tr.innerHTML = `
