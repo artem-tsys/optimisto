@@ -4,8 +4,8 @@ class App {
 		this.id = data.id
 		this.sectionName = ['complex1', 'courtyard1', 'complex2', 'courtyard2', 'plannings', 'apart']
 		this.activeSectionList = ['complex1', 'courtyard1', 'complex2', 'courtyard2', 'plannings', 'apart']
-		this.activeSection = 'complex1 '
-    this.nameFirstLoadBlock = 'complex1';
+		this.activeSection = 'complex2 '
+    this.nameFirstLoadBlock = 'complex2';
 		this.activeHouse = undefined
 		this.flatList = {}
 		this.init = this.init.bind(this)
@@ -558,7 +558,7 @@ class App {
 		// this.animateBlock('translate', 'down')
 		switch (type) {
 		case 'complex1':
-			this.selectSliderType(id, type, Layout, numSlide)
+			this.selectSliderType(id, type, Slider, numSlide)
 			break
 		case 'courtyard1':
 			this.selectSliderType(id, type, Slider, numSlide)
