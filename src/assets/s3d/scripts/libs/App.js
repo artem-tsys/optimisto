@@ -4,7 +4,8 @@ class App {
 		this.id = data.id
 		this.sectionName = ['complex1', 'courtyard1', 'complex2', 'courtyard2', 'plannings', 'apart']
 		this.activeSectionList = ['complex1', 'courtyard1', 'complex2', 'courtyard2', 'plannings', 'apart']
-		this.activeSection = 'complex1'
+		this.activeSection = 'complex1 '
+    this.nameFirstLoadBlock = 'complex1';
 		this.activeHouse = undefined
 		this.flatList = {}
 		this.init = this.init.bind(this)
@@ -514,9 +515,9 @@ class App {
 		//
 		//
 		this.loader.turnOn()
-		const config = this.config.complex1
-		config.idCopmlex = 'complex1'
-		config.type = 'complex1'
+		const config = this.config[this.nameFirstLoadBlock]
+		config.idCopmlex = this.nameFirstLoadBlock
+		config.type = this.nameFirstLoadBlock
 		config.click = this.selectSlider.bind(this)
 		config.getFlatObj = this.getFlatObj.bind(this)
 		config.activeFlat = this.activeFlat
@@ -533,11 +534,13 @@ class App {
 		config.infoBlockTranslateFlyby = this.infoBlockTranslateFlyby.bind(this)
 
 		this.createWrap(config, 'canvas')
-		this.complex1 = new Slider(config)
-		this.complex1.init()
+		this[this.nameFirstLoadBlock] = new Slider(config)
+		this[this.nameFirstLoadBlock].init()
+		// this.complex2 = new Slider(config)
+		// this.complex2.init()
 
 		$('.js-s3d__wrapper__complex').css('z-index', '100')
-		$('.js-s3d-controller').data('type', 'complex1')
+		$('.js-s3d-controller').data('type', this.nameFirstLoadBlock)
 		this.setActiveButtonController('build')
 
 		this.animateFlag = true
